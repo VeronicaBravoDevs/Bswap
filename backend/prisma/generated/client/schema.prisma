@@ -1,0 +1,163 @@
+generator client {
+  provider      = "prisma-client-js"
+  output        = "./generated/client"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+enum ExchangeStatus {
+  pending
+  accepted
+  rejected
+}
+
+enum ReportStatus {
+  pending
+  reviewed
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                  BigInt   @id @default(autoincrement())
+  email               String   @unique
+  password_hash       String
+  name                String?
+  biography           String?
+  profile_picture     String?
+  google_id           String?  @unique
+  facebook_id         String?  @unique
+  privacy_preferences Json?
+  registration_date   DateTime @default(now())
+
+  books         Book[]
+  exchanges     Exchange[]
+  reviews       Review[]
+  comments      Comment[]
+  reactions     Reaction[]
+  audioNotes    AudioNote[]
+  notifications Notification[]
+  achievements  Achievement[]
+  reports       Report[]
+  userFriends   FriendFollower[] @relation("UserFriends")
+}
+
+model Book {
+  id                 BigInt  @id @default(autoincrement())
+  title              String
+  author             String
+  isbn               String? @unique
+  image              String?
+  genre              String?
+  exchange_available Boolean @default(false)
+  user_id            BigInt
+  user               User    @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  exchanges  Exchange[]
+  reviews    Review[]
+  audioNotes AudioNote[]
+  status     ExchangeStatus @default(pending)
+}
+
+model Exchange {
+  id           BigInt         @id @default(autoincrement())
+  book_id      BigInt
+  requester_id BigInt
+  status       ExchangeStatus @default(pending)
+  request_date DateTime       @default(now())
+
+  book      Book @relation(fields: [book_id], references: [id], onDelete: Cascade)
+  requester User @relation(fields: [requester_id], references: [id], onDelete: Cascade)
+}
+
+model Review {
+  id               BigInt   @id @default(autoincrement())
+  book_id          BigInt
+  user_id          BigInt
+  content          String
+  rating           Int
+  publication_date DateTime @default(now())
+
+  book Book @relation(fields: [book_id], references: [id], onDelete: Cascade)
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  comments  Comment[]
+  reactions Reaction[]
+}
+
+model AudioNote {
+  id             BigInt   @id @default(autoincrement())
+  user_id        BigInt
+  book_id        BigInt
+  audio_url      String?
+  converted_text String?
+  creation_date  DateTime @default(now())
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  book Book @relation(fields: [book_id], references: [id], onDelete: Cascade)
+}
+
+model Comment {
+  id           BigInt   @id @default(autoincrement())
+  review_id    BigInt
+  user_id      BigInt
+  content      String
+  comment_date DateTime @default(now())
+
+  review Review @relation(fields: [review_id], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model Reaction {
+  id            BigInt   @id @default(autoincrement())
+  review_id     BigInt
+  user_id       BigInt
+  type          String
+  reaction_date DateTime @default(now())
+
+  review Review @relation(fields: [review_id], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model FriendFollower {
+  id          BigInt   @id @default(autoincrement())
+  user_id     BigInt
+  friend_id   BigInt
+  follow_date DateTime @default(now())
+
+  User   User?   @relation(fields: [userId], references: [id], name: "UserFriends", onDelete: Cascade)
+  userId BigInt?
+}
+
+model Notification {
+  id                BigInt   @id @default(autoincrement())
+  user_id           BigInt
+  type              String
+  content           String
+  read              Boolean  @default(false)
+  notification_date DateTime @default(now())
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model Achievement {
+  id               BigInt   @id @default(autoincrement())
+  user_id          BigInt
+  description      String
+  achievement_date DateTime @default(now())
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model Report {
+  id               BigInt       @id @default(autoincrement())
+  user_id          BigInt
+  reported_content String
+  content_type     String
+  status           ReportStatus @default(pending)
+  report_date      DateTime     @default(now())
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
