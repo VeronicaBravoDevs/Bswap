@@ -124,8 +124,6 @@ exports.Prisma.UserScalarFieldEnum = {
   name: 'name',
   biography: 'biography',
   profile_picture: 'profile_picture',
-  google_id: 'google_id',
-  facebook_id: 'facebook_id',
   privacy_preferences: 'privacy_preferences',
   registration_date: 'registration_date'
 };

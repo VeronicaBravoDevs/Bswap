@@ -27,8 +27,6 @@ model User {
   name                String?
   biography           String?
   profile_picture     String?
-  google_id           String?  @unique
-  facebook_id         String?  @unique
   privacy_preferences Json?
   registration_date   DateTime @default(now())
 

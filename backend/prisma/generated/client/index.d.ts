@@ -2023,8 +2023,6 @@ export namespace Prisma {
     name: string | null
     biography: string | null
     profile_picture: string | null
-    google_id: string | null
-    facebook_id: string | null
     registration_date: Date | null
   }
 
@@ -2035,8 +2033,6 @@ export namespace Prisma {
     name: string | null
     biography: string | null
     profile_picture: string | null
-    google_id: string | null
-    facebook_id: string | null
     registration_date: Date | null
   }
 
@@ -2047,8 +2043,6 @@ export namespace Prisma {
     name: number
     biography: number
     profile_picture: number
-    google_id: number
-    facebook_id: number
     privacy_preferences: number
     registration_date: number
     _all: number
@@ -2062,8 +2056,6 @@ export namespace Prisma {
     name?: true
     biography?: true
     profile_picture?: true
-    google_id?: true
-    facebook_id?: true
     registration_date?: true
   }
 
@@ -2074,8 +2066,6 @@ export namespace Prisma {
     name?: true
     biography?: true
     profile_picture?: true
-    google_id?: true
-    facebook_id?: true
     registration_date?: true
   }
 
@@ -2086,8 +2076,6 @@ export namespace Prisma {
     name?: true
     biography?: true
     profile_picture?: true
-    google_id?: true
-    facebook_id?: true
     privacy_preferences?: true
     registration_date?: true
     _all?: true
@@ -2172,8 +2160,6 @@ export namespace Prisma {
     name: string | null
     biography: string | null
     profile_picture: string | null
-    google_id: string | null
-    facebook_id: string | null
     privacy_preferences: JsonValue | null
     registration_date: Date
     _count: UserCountAggregateOutputType | null
@@ -2202,8 +2188,6 @@ export namespace Prisma {
     name?: boolean
     biography?: boolean
     profile_picture?: boolean
-    google_id?: boolean
-    facebook_id?: boolean
     privacy_preferences?: boolean
     registration_date?: boolean
     books?: boolean | User$booksArgs<ExtArgs>
@@ -2226,8 +2210,6 @@ export namespace Prisma {
     name?: boolean
     biography?: boolean
     profile_picture?: boolean
-    google_id?: boolean
-    facebook_id?: boolean
     privacy_preferences?: boolean
     registration_date?: boolean
   }, ExtArgs["result"]["user"]>
@@ -2239,8 +2221,6 @@ export namespace Prisma {
     name?: boolean
     biography?: boolean
     profile_picture?: boolean
-    google_id?: boolean
-    facebook_id?: boolean
     privacy_preferences?: boolean
     registration_date?: boolean
   }, ExtArgs["result"]["user"]>
@@ -2252,13 +2232,11 @@ export namespace Prisma {
     name?: boolean
     biography?: boolean
     profile_picture?: boolean
-    google_id?: boolean
-    facebook_id?: boolean
     privacy_preferences?: boolean
     registration_date?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password_hash" | "name" | "biography" | "profile_picture" | "google_id" | "facebook_id" | "privacy_preferences" | "registration_date", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password_hash" | "name" | "biography" | "profile_picture" | "privacy_preferences" | "registration_date", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     books?: boolean | User$booksArgs<ExtArgs>
     exchanges?: boolean | User$exchangesArgs<ExtArgs>
@@ -2296,8 +2274,6 @@ export namespace Prisma {
       name: string | null
       biography: string | null
       profile_picture: string | null
-      google_id: string | null
-      facebook_id: string | null
       privacy_preferences: Prisma.JsonValue | null
       registration_date: Date
     }, ExtArgs["result"]["user"]>
@@ -2739,8 +2715,6 @@ export namespace Prisma {
     readonly name: FieldRef<"User", 'String'>
     readonly biography: FieldRef<"User", 'String'>
     readonly profile_picture: FieldRef<"User", 'String'>
-    readonly google_id: FieldRef<"User", 'String'>
-    readonly facebook_id: FieldRef<"User", 'String'>
     readonly privacy_preferences: FieldRef<"User", 'Json'>
     readonly registration_date: FieldRef<"User", 'DateTime'>
   }
@@ -14318,8 +14292,6 @@ export namespace Prisma {
     name: 'name',
     biography: 'biography',
     profile_picture: 'profile_picture',
-    google_id: 'google_id',
-    facebook_id: 'facebook_id',
     privacy_preferences: 'privacy_preferences',
     registration_date: 'registration_date'
   };
@@ -14601,8 +14573,6 @@ export namespace Prisma {
     name?: StringNullableFilter<"User"> | string | null
     biography?: StringNullableFilter<"User"> | string | null
     profile_picture?: StringNullableFilter<"User"> | string | null
-    google_id?: StringNullableFilter<"User"> | string | null
-    facebook_id?: StringNullableFilter<"User"> | string | null
     privacy_preferences?: JsonNullableFilter<"User">
     registration_date?: DateTimeFilter<"User"> | Date | string
     books?: BookListRelationFilter
@@ -14624,8 +14594,6 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     biography?: SortOrderInput | SortOrder
     profile_picture?: SortOrderInput | SortOrder
-    google_id?: SortOrderInput | SortOrder
-    facebook_id?: SortOrderInput | SortOrder
     privacy_preferences?: SortOrderInput | SortOrder
     registration_date?: SortOrder
     books?: BookOrderByRelationAggregateInput
@@ -14643,8 +14611,6 @@ export namespace Prisma {
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     email?: string
-    google_id?: string
-    facebook_id?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
@@ -14664,7 +14630,7 @@ export namespace Prisma {
     achievements?: AchievementListRelationFilter
     reports?: ReportListRelationFilter
     userFriends?: FriendFollowerListRelationFilter
-  }, "id" | "email" | "google_id" | "facebook_id">
+  }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
@@ -14673,8 +14639,6 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     biography?: SortOrderInput | SortOrder
     profile_picture?: SortOrderInput | SortOrder
-    google_id?: SortOrderInput | SortOrder
-    facebook_id?: SortOrderInput | SortOrder
     privacy_preferences?: SortOrderInput | SortOrder
     registration_date?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -14692,8 +14656,6 @@ export namespace Prisma {
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
     biography?: StringNullableWithAggregatesFilter<"User"> | string | null
     profile_picture?: StringNullableWithAggregatesFilter<"User"> | string | null
-    google_id?: StringNullableWithAggregatesFilter<"User"> | string | null
-    facebook_id?: StringNullableWithAggregatesFilter<"User"> | string | null
     privacy_preferences?: JsonNullableWithAggregatesFilter<"User">
     registration_date?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -15322,8 +15284,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     books?: BookCreateNestedManyWithoutUserInput
@@ -15345,8 +15305,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     books?: BookUncheckedCreateNestedManyWithoutUserInput
@@ -15368,8 +15326,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     books?: BookUpdateManyWithoutUserNestedInput
@@ -15391,8 +15347,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     books?: BookUncheckedUpdateManyWithoutUserNestedInput
@@ -15414,8 +15368,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
   }
@@ -15427,8 +15379,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15440,8 +15390,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -16235,8 +16183,6 @@ export namespace Prisma {
     name?: SortOrder
     biography?: SortOrder
     profile_picture?: SortOrder
-    google_id?: SortOrder
-    facebook_id?: SortOrder
     privacy_preferences?: SortOrder
     registration_date?: SortOrder
   }
@@ -16248,8 +16194,6 @@ export namespace Prisma {
     name?: SortOrder
     biography?: SortOrder
     profile_picture?: SortOrder
-    google_id?: SortOrder
-    facebook_id?: SortOrder
     registration_date?: SortOrder
   }
 
@@ -16260,8 +16204,6 @@ export namespace Prisma {
     name?: SortOrder
     biography?: SortOrder
     profile_picture?: SortOrder
-    google_id?: SortOrder
-    facebook_id?: SortOrder
     registration_date?: SortOrder
   }
 
@@ -18330,8 +18272,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     exchanges?: ExchangeCreateNestedManyWithoutRequesterInput
@@ -18352,8 +18292,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutRequesterInput
@@ -18470,8 +18408,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     exchanges?: ExchangeUpdateManyWithoutRequesterNestedInput
@@ -18492,8 +18428,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     exchanges?: ExchangeUncheckedUpdateManyWithoutRequesterNestedInput
@@ -18595,8 +18529,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     books?: BookCreateNestedManyWithoutUserInput
@@ -18617,8 +18549,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     books?: BookUncheckedCreateNestedManyWithoutUserInput
@@ -18694,8 +18624,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     books?: BookUpdateManyWithoutUserNestedInput
@@ -18716,8 +18644,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     books?: BookUncheckedUpdateManyWithoutUserNestedInput
@@ -18771,8 +18697,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     books?: BookCreateNestedManyWithoutUserInput
@@ -18793,8 +18717,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     books?: BookUncheckedCreateNestedManyWithoutUserInput
@@ -18918,8 +18840,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     books?: BookUpdateManyWithoutUserNestedInput
@@ -18940,8 +18860,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     books?: BookUncheckedUpdateManyWithoutUserNestedInput
@@ -18994,8 +18912,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     books?: BookCreateNestedManyWithoutUserInput
@@ -19016,8 +18932,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     books?: BookUncheckedCreateNestedManyWithoutUserInput
@@ -19087,8 +19001,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     books?: BookUpdateManyWithoutUserNestedInput
@@ -19109,8 +19021,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     books?: BookUncheckedUpdateManyWithoutUserNestedInput
@@ -19195,8 +19105,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     books?: BookCreateNestedManyWithoutUserInput
@@ -19217,8 +19125,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     books?: BookUncheckedCreateNestedManyWithoutUserInput
@@ -19286,8 +19192,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     books?: BookUpdateManyWithoutUserNestedInput
@@ -19308,8 +19212,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     books?: BookUncheckedUpdateManyWithoutUserNestedInput
@@ -19355,8 +19257,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     books?: BookCreateNestedManyWithoutUserInput
@@ -19377,8 +19277,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     books?: BookUncheckedCreateNestedManyWithoutUserInput
@@ -19446,8 +19344,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     books?: BookUpdateManyWithoutUserNestedInput
@@ -19468,8 +19364,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     books?: BookUncheckedUpdateManyWithoutUserNestedInput
@@ -19490,8 +19384,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     books?: BookCreateNestedManyWithoutUserInput
@@ -19512,8 +19404,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     books?: BookUncheckedCreateNestedManyWithoutUserInput
@@ -19550,8 +19440,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     books?: BookUpdateManyWithoutUserNestedInput
@@ -19572,8 +19460,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     books?: BookUncheckedUpdateManyWithoutUserNestedInput
@@ -19594,8 +19480,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     books?: BookCreateNestedManyWithoutUserInput
@@ -19616,8 +19500,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     books?: BookUncheckedCreateNestedManyWithoutUserInput
@@ -19654,8 +19536,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     books?: BookUpdateManyWithoutUserNestedInput
@@ -19676,8 +19556,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     books?: BookUncheckedUpdateManyWithoutUserNestedInput
@@ -19698,8 +19576,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     books?: BookCreateNestedManyWithoutUserInput
@@ -19720,8 +19596,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     books?: BookUncheckedCreateNestedManyWithoutUserInput
@@ -19758,8 +19632,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     books?: BookUpdateManyWithoutUserNestedInput
@@ -19780,8 +19652,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     books?: BookUncheckedUpdateManyWithoutUserNestedInput
@@ -19802,8 +19672,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     books?: BookCreateNestedManyWithoutUserInput
@@ -19824,8 +19692,6 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
-    google_id?: string | null
-    facebook_id?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     books?: BookUncheckedCreateNestedManyWithoutUserInput
@@ -19862,8 +19728,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     books?: BookUpdateManyWithoutUserNestedInput
@@ -19884,8 +19748,6 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
-    google_id?: NullableStringFieldUpdateOperationsInput | string | null
-    facebook_id?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     books?: BookUncheckedUpdateManyWithoutUserNestedInput
