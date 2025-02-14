@@ -1,0 +1,165 @@
+generator client {
+  provider      = "prisma-client-js"
+  output        = "./generated/client"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ExchangeStatus {
+  pending
+  accepted
+  rejected
+}
+
+enum ReportStatus {
+  pending
+  reviewed
+}
+
+model User {
+  id                  String   @id @default(cuid())
+  email               String   @unique
+  password_hash       String
+  name                String?
+  biography           String?
+  profile_picture     String?
+  privacy_preferences Json?
+  registration_date   DateTime @default(now())
+
+  exchanges     Exchange[]
+  reviews       Review[]
+  comments      Comment[]
+  reactions     Reaction[]
+  audioNotes    AudioNote[]
+  notifications Notification[]
+  achievements  Achievement[]
+  reports       Report[]
+  userFriends   FriendFollower[] @relation("UserFriends")
+  library       Book[]
+}
+
+model Book {
+  id                 String    @id @default(cuid())
+  title              String
+  author             String
+  isbn               String?   @unique
+  description        String?
+  published          DateTime?
+  publisher          String?
+  image              String?
+  genre              String?
+  exchange_available Boolean   @default(false)
+
+  exchanges  Exchange[]
+  reviews    Review[]
+  audioNotes AudioNote[]
+  status     ExchangeStatus @default(pending)
+  libraryId  String?
+  User       User?          @relation(fields: [userId], references: [id])
+  userId     String?
+}
+
+model Exchange {
+  id           String         @id @default(cuid())
+  book_id      String
+  requester_id String
+  status       ExchangeStatus @default(pending)
+  request_date DateTime       @default(now())
+
+  book      Book @relation(fields: [book_id], references: [id], onDelete: Cascade)
+  requester User @relation(fields: [requester_id], references: [id], onDelete: Cascade)
+}
+
+model Review {
+  id               String   @id @default(cuid())
+  book_id          String
+  user_id          String
+  content          String
+  rating           Int
+  publication_date DateTime @default(now())
+
+  book Book @relation(fields: [book_id], references: [id], onDelete: Cascade)
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  comments  Comment[]
+  reactions Reaction[]
+}
+
+model AudioNote {
+  id             String   @id @default(cuid())
+  user_id        String
+  book_id        String
+  audio_url      String?
+  converted_text String?
+  creation_date  DateTime @default(now())
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  book Book @relation(fields: [book_id], references: [id], onDelete: Cascade)
+}
+
+model Comment {
+  id           String   @id @default(cuid())
+  review_id    String
+  user_id      String
+  content      String
+  comment_date DateTime @default(now())
+
+  review Review @relation(fields: [review_id], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model Reaction {
+  id            String   @id @default(cuid())
+  review_id     String
+  user_id       String
+  type          String
+  reaction_date DateTime @default(now())
+
+  review Review @relation(fields: [review_id], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model FriendFollower {
+  id          String   @id @default(cuid())
+  user_id     String
+  friend_id   String
+  follow_date DateTime @default(now())
+
+  User   User?   @relation(fields: [userId], references: [id], name: "UserFriends", onDelete: Cascade)
+  userId String?
+}
+
+model Notification {
+  id                String   @id @default(cuid())
+  user_id           String
+  type              String
+  content           String
+  read              Boolean  @default(false)
+  notification_date DateTime @default(now())
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model Achievement {
+  id               String   @id @default(cuid())
+  user_id          String
+  description      String
+  achievement_date DateTime @default(now())
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model Report {
+  id               String       @id @default(cuid())
+  user_id          String
+  reported_content String
+  content_type     String
+  status           ReportStatus @default(pending)
+  report_date      DateTime     @default(now())
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
