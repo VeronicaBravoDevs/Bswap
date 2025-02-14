@@ -2012,22 +2012,12 @@ export namespace Prisma {
 
   export type AggregateUser = {
     _count: UserCountAggregateOutputType | null
-    _avg: UserAvgAggregateOutputType | null
-    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
 
-  export type UserAvgAggregateOutputType = {
-    id: number | null
-  }
-
-  export type UserSumAggregateOutputType = {
-    id: bigint | null
-  }
-
   export type UserMinAggregateOutputType = {
-    id: bigint | null
+    id: string | null
     email: string | null
     password_hash: string | null
     name: string | null
@@ -2039,7 +2029,7 @@ export namespace Prisma {
   }
 
   export type UserMaxAggregateOutputType = {
-    id: bigint | null
+    id: string | null
     email: string | null
     password_hash: string | null
     name: string | null
@@ -2064,14 +2054,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type UserAvgAggregateInputType = {
-    id?: true
-  }
-
-  export type UserSumAggregateInputType = {
-    id?: true
-  }
 
   export type UserMinAggregateInputType = {
     id?: true
@@ -2149,18 +2131,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: UserAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: UserSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: UserMinAggregateInputType
@@ -2191,14 +2161,12 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: UserCountAggregateInputType | true
-    _avg?: UserAvgAggregateInputType
-    _sum?: UserSumAggregateInputType
     _min?: UserMinAggregateInputType
     _max?: UserMaxAggregateInputType
   }
 
   export type UserGroupByOutputType = {
-    id: bigint
+    id: string
     email: string
     password_hash: string
     name: string | null
@@ -2209,8 +2177,6 @@ export namespace Prisma {
     privacy_preferences: JsonValue | null
     registration_date: Date
     _count: UserCountAggregateOutputType | null
-    _avg: UserAvgAggregateOutputType | null
-    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
@@ -2324,7 +2290,7 @@ export namespace Prisma {
       userFriends: Prisma.$FriendFollowerPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: bigint
+      id: string
       email: string
       password_hash: string
       name: string | null
@@ -2767,7 +2733,7 @@ export namespace Prisma {
    * Fields of the User model
    */ 
   interface UserFieldRefs {
-    readonly id: FieldRef<"User", 'BigInt'>
+    readonly id: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly password_hash: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
@@ -3429,43 +3395,31 @@ export namespace Prisma {
 
   export type AggregateBook = {
     _count: BookCountAggregateOutputType | null
-    _avg: BookAvgAggregateOutputType | null
-    _sum: BookSumAggregateOutputType | null
     _min: BookMinAggregateOutputType | null
     _max: BookMaxAggregateOutputType | null
   }
 
-  export type BookAvgAggregateOutputType = {
-    id: number | null
-    user_id: number | null
-  }
-
-  export type BookSumAggregateOutputType = {
-    id: bigint | null
-    user_id: bigint | null
-  }
-
   export type BookMinAggregateOutputType = {
-    id: bigint | null
+    id: string | null
     title: string | null
     author: string | null
     isbn: string | null
     image: string | null
     genre: string | null
     exchange_available: boolean | null
-    user_id: bigint | null
+    user_id: string | null
     status: $Enums.ExchangeStatus | null
   }
 
   export type BookMaxAggregateOutputType = {
-    id: bigint | null
+    id: string | null
     title: string | null
     author: string | null
     isbn: string | null
     image: string | null
     genre: string | null
     exchange_available: boolean | null
-    user_id: bigint | null
+    user_id: string | null
     status: $Enums.ExchangeStatus | null
   }
 
@@ -3482,16 +3436,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type BookAvgAggregateInputType = {
-    id?: true
-    user_id?: true
-  }
-
-  export type BookSumAggregateInputType = {
-    id?: true
-    user_id?: true
-  }
 
   export type BookMinAggregateInputType = {
     id?: true
@@ -3568,18 +3512,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: BookAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: BookSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: BookMinAggregateInputType
@@ -3610,25 +3542,21 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: BookCountAggregateInputType | true
-    _avg?: BookAvgAggregateInputType
-    _sum?: BookSumAggregateInputType
     _min?: BookMinAggregateInputType
     _max?: BookMaxAggregateInputType
   }
 
   export type BookGroupByOutputType = {
-    id: bigint
+    id: string
     title: string
     author: string
     isbn: string | null
     image: string | null
     genre: string | null
     exchange_available: boolean
-    user_id: bigint
+    user_id: string
     status: $Enums.ExchangeStatus
     _count: BookCountAggregateOutputType | null
-    _avg: BookAvgAggregateOutputType | null
-    _sum: BookSumAggregateOutputType | null
     _min: BookMinAggregateOutputType | null
     _max: BookMaxAggregateOutputType | null
   }
@@ -3726,14 +3654,14 @@ export namespace Prisma {
       audioNotes: Prisma.$AudioNotePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: bigint
+      id: string
       title: string
       author: string
       isbn: string | null
       image: string | null
       genre: string | null
       exchange_available: boolean
-      user_id: bigint
+      user_id: string
       status: $Enums.ExchangeStatus
     }, ExtArgs["result"]["book"]>
     composites: {}
@@ -4162,14 +4090,14 @@ export namespace Prisma {
    * Fields of the Book model
    */ 
   interface BookFieldRefs {
-    readonly id: FieldRef<"Book", 'BigInt'>
+    readonly id: FieldRef<"Book", 'String'>
     readonly title: FieldRef<"Book", 'String'>
     readonly author: FieldRef<"Book", 'String'>
     readonly isbn: FieldRef<"Book", 'String'>
     readonly image: FieldRef<"Book", 'String'>
     readonly genre: FieldRef<"Book", 'String'>
     readonly exchange_available: FieldRef<"Book", 'Boolean'>
-    readonly user_id: FieldRef<"Book", 'BigInt'>
+    readonly user_id: FieldRef<"Book", 'String'>
     readonly status: FieldRef<"Book", 'ExchangeStatus'>
   }
     
@@ -4663,36 +4591,22 @@ export namespace Prisma {
 
   export type AggregateExchange = {
     _count: ExchangeCountAggregateOutputType | null
-    _avg: ExchangeAvgAggregateOutputType | null
-    _sum: ExchangeSumAggregateOutputType | null
     _min: ExchangeMinAggregateOutputType | null
     _max: ExchangeMaxAggregateOutputType | null
   }
 
-  export type ExchangeAvgAggregateOutputType = {
-    id: number | null
-    book_id: number | null
-    requester_id: number | null
-  }
-
-  export type ExchangeSumAggregateOutputType = {
-    id: bigint | null
-    book_id: bigint | null
-    requester_id: bigint | null
-  }
-
   export type ExchangeMinAggregateOutputType = {
-    id: bigint | null
-    book_id: bigint | null
-    requester_id: bigint | null
+    id: string | null
+    book_id: string | null
+    requester_id: string | null
     status: $Enums.ExchangeStatus | null
     request_date: Date | null
   }
 
   export type ExchangeMaxAggregateOutputType = {
-    id: bigint | null
-    book_id: bigint | null
-    requester_id: bigint | null
+    id: string | null
+    book_id: string | null
+    requester_id: string | null
     status: $Enums.ExchangeStatus | null
     request_date: Date | null
   }
@@ -4706,18 +4620,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type ExchangeAvgAggregateInputType = {
-    id?: true
-    book_id?: true
-    requester_id?: true
-  }
-
-  export type ExchangeSumAggregateInputType = {
-    id?: true
-    book_id?: true
-    requester_id?: true
-  }
 
   export type ExchangeMinAggregateInputType = {
     id?: true
@@ -4782,18 +4684,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: ExchangeAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: ExchangeSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: ExchangeMinAggregateInputType
@@ -4824,21 +4714,17 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ExchangeCountAggregateInputType | true
-    _avg?: ExchangeAvgAggregateInputType
-    _sum?: ExchangeSumAggregateInputType
     _min?: ExchangeMinAggregateInputType
     _max?: ExchangeMaxAggregateInputType
   }
 
   export type ExchangeGroupByOutputType = {
-    id: bigint
-    book_id: bigint
-    requester_id: bigint
+    id: string
+    book_id: string
+    requester_id: string
     status: $Enums.ExchangeStatus
     request_date: Date
     _count: ExchangeCountAggregateOutputType | null
-    _avg: ExchangeAvgAggregateOutputType | null
-    _sum: ExchangeSumAggregateOutputType | null
     _min: ExchangeMinAggregateOutputType | null
     _max: ExchangeMaxAggregateOutputType | null
   }
@@ -4916,9 +4802,9 @@ export namespace Prisma {
       requester: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: bigint
-      book_id: bigint
-      requester_id: bigint
+      id: string
+      book_id: string
+      requester_id: string
       status: $Enums.ExchangeStatus
       request_date: Date
     }, ExtArgs["result"]["exchange"]>
@@ -5346,9 +5232,9 @@ export namespace Prisma {
    * Fields of the Exchange model
    */ 
   interface ExchangeFieldRefs {
-    readonly id: FieldRef<"Exchange", 'BigInt'>
-    readonly book_id: FieldRef<"Exchange", 'BigInt'>
-    readonly requester_id: FieldRef<"Exchange", 'BigInt'>
+    readonly id: FieldRef<"Exchange", 'String'>
+    readonly book_id: FieldRef<"Exchange", 'String'>
+    readonly requester_id: FieldRef<"Exchange", 'String'>
     readonly status: FieldRef<"Exchange", 'ExchangeStatus'>
     readonly request_date: FieldRef<"Exchange", 'DateTime'>
   }
@@ -5778,32 +5664,26 @@ export namespace Prisma {
   }
 
   export type ReviewAvgAggregateOutputType = {
-    id: number | null
-    book_id: number | null
-    user_id: number | null
     rating: number | null
   }
 
   export type ReviewSumAggregateOutputType = {
-    id: bigint | null
-    book_id: bigint | null
-    user_id: bigint | null
     rating: number | null
   }
 
   export type ReviewMinAggregateOutputType = {
-    id: bigint | null
-    book_id: bigint | null
-    user_id: bigint | null
+    id: string | null
+    book_id: string | null
+    user_id: string | null
     content: string | null
     rating: number | null
     publication_date: Date | null
   }
 
   export type ReviewMaxAggregateOutputType = {
-    id: bigint | null
-    book_id: bigint | null
-    user_id: bigint | null
+    id: string | null
+    book_id: string | null
+    user_id: string | null
     content: string | null
     rating: number | null
     publication_date: Date | null
@@ -5821,16 +5701,10 @@ export namespace Prisma {
 
 
   export type ReviewAvgAggregateInputType = {
-    id?: true
-    book_id?: true
-    user_id?: true
     rating?: true
   }
 
   export type ReviewSumAggregateInputType = {
-    id?: true
-    book_id?: true
-    user_id?: true
     rating?: true
   }
 
@@ -5949,9 +5823,9 @@ export namespace Prisma {
   }
 
   export type ReviewGroupByOutputType = {
-    id: bigint
-    book_id: bigint
-    user_id: bigint
+    id: string
+    book_id: string
+    user_id: string
     content: string
     rating: number
     publication_date: Date
@@ -6047,9 +5921,9 @@ export namespace Prisma {
       reactions: Prisma.$ReactionPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: bigint
-      book_id: bigint
-      user_id: bigint
+      id: string
+      book_id: string
+      user_id: string
       content: string
       rating: number
       publication_date: Date
@@ -6480,9 +6354,9 @@ export namespace Prisma {
    * Fields of the Review model
    */ 
   interface ReviewFieldRefs {
-    readonly id: FieldRef<"Review", 'BigInt'>
-    readonly book_id: FieldRef<"Review", 'BigInt'>
-    readonly user_id: FieldRef<"Review", 'BigInt'>
+    readonly id: FieldRef<"Review", 'String'>
+    readonly book_id: FieldRef<"Review", 'String'>
+    readonly user_id: FieldRef<"Review", 'String'>
     readonly content: FieldRef<"Review", 'String'>
     readonly rating: FieldRef<"Review", 'Int'>
     readonly publication_date: FieldRef<"Review", 'DateTime'>
@@ -6954,37 +6828,23 @@ export namespace Prisma {
 
   export type AggregateAudioNote = {
     _count: AudioNoteCountAggregateOutputType | null
-    _avg: AudioNoteAvgAggregateOutputType | null
-    _sum: AudioNoteSumAggregateOutputType | null
     _min: AudioNoteMinAggregateOutputType | null
     _max: AudioNoteMaxAggregateOutputType | null
   }
 
-  export type AudioNoteAvgAggregateOutputType = {
-    id: number | null
-    user_id: number | null
-    book_id: number | null
-  }
-
-  export type AudioNoteSumAggregateOutputType = {
-    id: bigint | null
-    user_id: bigint | null
-    book_id: bigint | null
-  }
-
   export type AudioNoteMinAggregateOutputType = {
-    id: bigint | null
-    user_id: bigint | null
-    book_id: bigint | null
+    id: string | null
+    user_id: string | null
+    book_id: string | null
     audio_url: string | null
     converted_text: string | null
     creation_date: Date | null
   }
 
   export type AudioNoteMaxAggregateOutputType = {
-    id: bigint | null
-    user_id: bigint | null
-    book_id: bigint | null
+    id: string | null
+    user_id: string | null
+    book_id: string | null
     audio_url: string | null
     converted_text: string | null
     creation_date: Date | null
@@ -7000,18 +6860,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type AudioNoteAvgAggregateInputType = {
-    id?: true
-    user_id?: true
-    book_id?: true
-  }
-
-  export type AudioNoteSumAggregateInputType = {
-    id?: true
-    user_id?: true
-    book_id?: true
-  }
 
   export type AudioNoteMinAggregateInputType = {
     id?: true
@@ -7079,18 +6927,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: AudioNoteAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: AudioNoteSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: AudioNoteMinAggregateInputType
@@ -7121,22 +6957,18 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: AudioNoteCountAggregateInputType | true
-    _avg?: AudioNoteAvgAggregateInputType
-    _sum?: AudioNoteSumAggregateInputType
     _min?: AudioNoteMinAggregateInputType
     _max?: AudioNoteMaxAggregateInputType
   }
 
   export type AudioNoteGroupByOutputType = {
-    id: bigint
-    user_id: bigint
-    book_id: bigint
+    id: string
+    user_id: string
+    book_id: string
     audio_url: string | null
     converted_text: string | null
     creation_date: Date
     _count: AudioNoteCountAggregateOutputType | null
-    _avg: AudioNoteAvgAggregateOutputType | null
-    _sum: AudioNoteSumAggregateOutputType | null
     _min: AudioNoteMinAggregateOutputType | null
     _max: AudioNoteMaxAggregateOutputType | null
   }
@@ -7218,9 +7050,9 @@ export namespace Prisma {
       book: Prisma.$BookPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: bigint
-      user_id: bigint
-      book_id: bigint
+      id: string
+      user_id: string
+      book_id: string
       audio_url: string | null
       converted_text: string | null
       creation_date: Date
@@ -7649,9 +7481,9 @@ export namespace Prisma {
    * Fields of the AudioNote model
    */ 
   interface AudioNoteFieldRefs {
-    readonly id: FieldRef<"AudioNote", 'BigInt'>
-    readonly user_id: FieldRef<"AudioNote", 'BigInt'>
-    readonly book_id: FieldRef<"AudioNote", 'BigInt'>
+    readonly id: FieldRef<"AudioNote", 'String'>
+    readonly user_id: FieldRef<"AudioNote", 'String'>
+    readonly book_id: FieldRef<"AudioNote", 'String'>
     readonly audio_url: FieldRef<"AudioNote", 'String'>
     readonly converted_text: FieldRef<"AudioNote", 'String'>
     readonly creation_date: FieldRef<"AudioNote", 'DateTime'>
@@ -8075,36 +7907,22 @@ export namespace Prisma {
 
   export type AggregateComment = {
     _count: CommentCountAggregateOutputType | null
-    _avg: CommentAvgAggregateOutputType | null
-    _sum: CommentSumAggregateOutputType | null
     _min: CommentMinAggregateOutputType | null
     _max: CommentMaxAggregateOutputType | null
   }
 
-  export type CommentAvgAggregateOutputType = {
-    id: number | null
-    review_id: number | null
-    user_id: number | null
-  }
-
-  export type CommentSumAggregateOutputType = {
-    id: bigint | null
-    review_id: bigint | null
-    user_id: bigint | null
-  }
-
   export type CommentMinAggregateOutputType = {
-    id: bigint | null
-    review_id: bigint | null
-    user_id: bigint | null
+    id: string | null
+    review_id: string | null
+    user_id: string | null
     content: string | null
     comment_date: Date | null
   }
 
   export type CommentMaxAggregateOutputType = {
-    id: bigint | null
-    review_id: bigint | null
-    user_id: bigint | null
+    id: string | null
+    review_id: string | null
+    user_id: string | null
     content: string | null
     comment_date: Date | null
   }
@@ -8118,18 +7936,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type CommentAvgAggregateInputType = {
-    id?: true
-    review_id?: true
-    user_id?: true
-  }
-
-  export type CommentSumAggregateInputType = {
-    id?: true
-    review_id?: true
-    user_id?: true
-  }
 
   export type CommentMinAggregateInputType = {
     id?: true
@@ -8194,18 +8000,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: CommentAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: CommentSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: CommentMinAggregateInputType
@@ -8236,21 +8030,17 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: CommentCountAggregateInputType | true
-    _avg?: CommentAvgAggregateInputType
-    _sum?: CommentSumAggregateInputType
     _min?: CommentMinAggregateInputType
     _max?: CommentMaxAggregateInputType
   }
 
   export type CommentGroupByOutputType = {
-    id: bigint
-    review_id: bigint
-    user_id: bigint
+    id: string
+    review_id: string
+    user_id: string
     content: string
     comment_date: Date
     _count: CommentCountAggregateOutputType | null
-    _avg: CommentAvgAggregateOutputType | null
-    _sum: CommentSumAggregateOutputType | null
     _min: CommentMinAggregateOutputType | null
     _max: CommentMaxAggregateOutputType | null
   }
@@ -8328,9 +8118,9 @@ export namespace Prisma {
       user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: bigint
-      review_id: bigint
-      user_id: bigint
+      id: string
+      review_id: string
+      user_id: string
       content: string
       comment_date: Date
     }, ExtArgs["result"]["comment"]>
@@ -8758,9 +8548,9 @@ export namespace Prisma {
    * Fields of the Comment model
    */ 
   interface CommentFieldRefs {
-    readonly id: FieldRef<"Comment", 'BigInt'>
-    readonly review_id: FieldRef<"Comment", 'BigInt'>
-    readonly user_id: FieldRef<"Comment", 'BigInt'>
+    readonly id: FieldRef<"Comment", 'String'>
+    readonly review_id: FieldRef<"Comment", 'String'>
+    readonly user_id: FieldRef<"Comment", 'String'>
     readonly content: FieldRef<"Comment", 'String'>
     readonly comment_date: FieldRef<"Comment", 'DateTime'>
   }
@@ -9183,36 +8973,22 @@ export namespace Prisma {
 
   export type AggregateReaction = {
     _count: ReactionCountAggregateOutputType | null
-    _avg: ReactionAvgAggregateOutputType | null
-    _sum: ReactionSumAggregateOutputType | null
     _min: ReactionMinAggregateOutputType | null
     _max: ReactionMaxAggregateOutputType | null
   }
 
-  export type ReactionAvgAggregateOutputType = {
-    id: number | null
-    review_id: number | null
-    user_id: number | null
-  }
-
-  export type ReactionSumAggregateOutputType = {
-    id: bigint | null
-    review_id: bigint | null
-    user_id: bigint | null
-  }
-
   export type ReactionMinAggregateOutputType = {
-    id: bigint | null
-    review_id: bigint | null
-    user_id: bigint | null
+    id: string | null
+    review_id: string | null
+    user_id: string | null
     type: string | null
     reaction_date: Date | null
   }
 
   export type ReactionMaxAggregateOutputType = {
-    id: bigint | null
-    review_id: bigint | null
-    user_id: bigint | null
+    id: string | null
+    review_id: string | null
+    user_id: string | null
     type: string | null
     reaction_date: Date | null
   }
@@ -9226,18 +9002,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type ReactionAvgAggregateInputType = {
-    id?: true
-    review_id?: true
-    user_id?: true
-  }
-
-  export type ReactionSumAggregateInputType = {
-    id?: true
-    review_id?: true
-    user_id?: true
-  }
 
   export type ReactionMinAggregateInputType = {
     id?: true
@@ -9302,18 +9066,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: ReactionAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: ReactionSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: ReactionMinAggregateInputType
@@ -9344,21 +9096,17 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ReactionCountAggregateInputType | true
-    _avg?: ReactionAvgAggregateInputType
-    _sum?: ReactionSumAggregateInputType
     _min?: ReactionMinAggregateInputType
     _max?: ReactionMaxAggregateInputType
   }
 
   export type ReactionGroupByOutputType = {
-    id: bigint
-    review_id: bigint
-    user_id: bigint
+    id: string
+    review_id: string
+    user_id: string
     type: string
     reaction_date: Date
     _count: ReactionCountAggregateOutputType | null
-    _avg: ReactionAvgAggregateOutputType | null
-    _sum: ReactionSumAggregateOutputType | null
     _min: ReactionMinAggregateOutputType | null
     _max: ReactionMaxAggregateOutputType | null
   }
@@ -9436,9 +9184,9 @@ export namespace Prisma {
       user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: bigint
-      review_id: bigint
-      user_id: bigint
+      id: string
+      review_id: string
+      user_id: string
       type: string
       reaction_date: Date
     }, ExtArgs["result"]["reaction"]>
@@ -9866,9 +9614,9 @@ export namespace Prisma {
    * Fields of the Reaction model
    */ 
   interface ReactionFieldRefs {
-    readonly id: FieldRef<"Reaction", 'BigInt'>
-    readonly review_id: FieldRef<"Reaction", 'BigInt'>
-    readonly user_id: FieldRef<"Reaction", 'BigInt'>
+    readonly id: FieldRef<"Reaction", 'String'>
+    readonly review_id: FieldRef<"Reaction", 'String'>
+    readonly user_id: FieldRef<"Reaction", 'String'>
     readonly type: FieldRef<"Reaction", 'String'>
     readonly reaction_date: FieldRef<"Reaction", 'DateTime'>
   }
@@ -10291,40 +10039,24 @@ export namespace Prisma {
 
   export type AggregateFriendFollower = {
     _count: FriendFollowerCountAggregateOutputType | null
-    _avg: FriendFollowerAvgAggregateOutputType | null
-    _sum: FriendFollowerSumAggregateOutputType | null
     _min: FriendFollowerMinAggregateOutputType | null
     _max: FriendFollowerMaxAggregateOutputType | null
   }
 
-  export type FriendFollowerAvgAggregateOutputType = {
-    id: number | null
-    user_id: number | null
-    friend_id: number | null
-    userId: number | null
-  }
-
-  export type FriendFollowerSumAggregateOutputType = {
-    id: bigint | null
-    user_id: bigint | null
-    friend_id: bigint | null
-    userId: bigint | null
-  }
-
   export type FriendFollowerMinAggregateOutputType = {
-    id: bigint | null
-    user_id: bigint | null
-    friend_id: bigint | null
+    id: string | null
+    user_id: string | null
+    friend_id: string | null
     follow_date: Date | null
-    userId: bigint | null
+    userId: string | null
   }
 
   export type FriendFollowerMaxAggregateOutputType = {
-    id: bigint | null
-    user_id: bigint | null
-    friend_id: bigint | null
+    id: string | null
+    user_id: string | null
+    friend_id: string | null
     follow_date: Date | null
-    userId: bigint | null
+    userId: string | null
   }
 
   export type FriendFollowerCountAggregateOutputType = {
@@ -10336,20 +10068,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type FriendFollowerAvgAggregateInputType = {
-    id?: true
-    user_id?: true
-    friend_id?: true
-    userId?: true
-  }
-
-  export type FriendFollowerSumAggregateInputType = {
-    id?: true
-    user_id?: true
-    friend_id?: true
-    userId?: true
-  }
 
   export type FriendFollowerMinAggregateInputType = {
     id?: true
@@ -10414,18 +10132,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: FriendFollowerAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: FriendFollowerSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: FriendFollowerMinAggregateInputType
@@ -10456,21 +10162,17 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: FriendFollowerCountAggregateInputType | true
-    _avg?: FriendFollowerAvgAggregateInputType
-    _sum?: FriendFollowerSumAggregateInputType
     _min?: FriendFollowerMinAggregateInputType
     _max?: FriendFollowerMaxAggregateInputType
   }
 
   export type FriendFollowerGroupByOutputType = {
-    id: bigint
-    user_id: bigint
-    friend_id: bigint
+    id: string
+    user_id: string
+    friend_id: string
     follow_date: Date
-    userId: bigint | null
+    userId: string | null
     _count: FriendFollowerCountAggregateOutputType | null
-    _avg: FriendFollowerAvgAggregateOutputType | null
-    _sum: FriendFollowerSumAggregateOutputType | null
     _min: FriendFollowerMinAggregateOutputType | null
     _max: FriendFollowerMaxAggregateOutputType | null
   }
@@ -10541,11 +10243,11 @@ export namespace Prisma {
       User: Prisma.$UserPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: bigint
-      user_id: bigint
-      friend_id: bigint
+      id: string
+      user_id: string
+      friend_id: string
       follow_date: Date
-      userId: bigint | null
+      userId: string | null
     }, ExtArgs["result"]["friendFollower"]>
     composites: {}
   }
@@ -10970,11 +10672,11 @@ export namespace Prisma {
    * Fields of the FriendFollower model
    */ 
   interface FriendFollowerFieldRefs {
-    readonly id: FieldRef<"FriendFollower", 'BigInt'>
-    readonly user_id: FieldRef<"FriendFollower", 'BigInt'>
-    readonly friend_id: FieldRef<"FriendFollower", 'BigInt'>
+    readonly id: FieldRef<"FriendFollower", 'String'>
+    readonly user_id: FieldRef<"FriendFollower", 'String'>
+    readonly friend_id: FieldRef<"FriendFollower", 'String'>
     readonly follow_date: FieldRef<"FriendFollower", 'DateTime'>
-    readonly userId: FieldRef<"FriendFollower", 'BigInt'>
+    readonly userId: FieldRef<"FriendFollower", 'String'>
   }
     
 
@@ -11414,25 +11116,13 @@ export namespace Prisma {
 
   export type AggregateNotification = {
     _count: NotificationCountAggregateOutputType | null
-    _avg: NotificationAvgAggregateOutputType | null
-    _sum: NotificationSumAggregateOutputType | null
     _min: NotificationMinAggregateOutputType | null
     _max: NotificationMaxAggregateOutputType | null
   }
 
-  export type NotificationAvgAggregateOutputType = {
-    id: number | null
-    user_id: number | null
-  }
-
-  export type NotificationSumAggregateOutputType = {
-    id: bigint | null
-    user_id: bigint | null
-  }
-
   export type NotificationMinAggregateOutputType = {
-    id: bigint | null
-    user_id: bigint | null
+    id: string | null
+    user_id: string | null
     type: string | null
     content: string | null
     read: boolean | null
@@ -11440,8 +11130,8 @@ export namespace Prisma {
   }
 
   export type NotificationMaxAggregateOutputType = {
-    id: bigint | null
-    user_id: bigint | null
+    id: string | null
+    user_id: string | null
     type: string | null
     content: string | null
     read: boolean | null
@@ -11458,16 +11148,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type NotificationAvgAggregateInputType = {
-    id?: true
-    user_id?: true
-  }
-
-  export type NotificationSumAggregateInputType = {
-    id?: true
-    user_id?: true
-  }
 
   export type NotificationMinAggregateInputType = {
     id?: true
@@ -11535,18 +11215,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: NotificationAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: NotificationSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: NotificationMinAggregateInputType
@@ -11577,22 +11245,18 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: NotificationCountAggregateInputType | true
-    _avg?: NotificationAvgAggregateInputType
-    _sum?: NotificationSumAggregateInputType
     _min?: NotificationMinAggregateInputType
     _max?: NotificationMaxAggregateInputType
   }
 
   export type NotificationGroupByOutputType = {
-    id: bigint
-    user_id: bigint
+    id: string
+    user_id: string
     type: string
     content: string
     read: boolean
     notification_date: Date
     _count: NotificationCountAggregateOutputType | null
-    _avg: NotificationAvgAggregateOutputType | null
-    _sum: NotificationSumAggregateOutputType | null
     _min: NotificationMinAggregateOutputType | null
     _max: NotificationMaxAggregateOutputType | null
   }
@@ -11667,8 +11331,8 @@ export namespace Prisma {
       user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: bigint
-      user_id: bigint
+      id: string
+      user_id: string
       type: string
       content: string
       read: boolean
@@ -12097,8 +11761,8 @@ export namespace Prisma {
    * Fields of the Notification model
    */ 
   interface NotificationFieldRefs {
-    readonly id: FieldRef<"Notification", 'BigInt'>
-    readonly user_id: FieldRef<"Notification", 'BigInt'>
+    readonly id: FieldRef<"Notification", 'String'>
+    readonly user_id: FieldRef<"Notification", 'String'>
     readonly type: FieldRef<"Notification", 'String'>
     readonly content: FieldRef<"Notification", 'String'>
     readonly read: FieldRef<"Notification", 'Boolean'>
@@ -12523,32 +12187,20 @@ export namespace Prisma {
 
   export type AggregateAchievement = {
     _count: AchievementCountAggregateOutputType | null
-    _avg: AchievementAvgAggregateOutputType | null
-    _sum: AchievementSumAggregateOutputType | null
     _min: AchievementMinAggregateOutputType | null
     _max: AchievementMaxAggregateOutputType | null
   }
 
-  export type AchievementAvgAggregateOutputType = {
-    id: number | null
-    user_id: number | null
-  }
-
-  export type AchievementSumAggregateOutputType = {
-    id: bigint | null
-    user_id: bigint | null
-  }
-
   export type AchievementMinAggregateOutputType = {
-    id: bigint | null
-    user_id: bigint | null
+    id: string | null
+    user_id: string | null
     description: string | null
     achievement_date: Date | null
   }
 
   export type AchievementMaxAggregateOutputType = {
-    id: bigint | null
-    user_id: bigint | null
+    id: string | null
+    user_id: string | null
     description: string | null
     achievement_date: Date | null
   }
@@ -12561,16 +12213,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type AchievementAvgAggregateInputType = {
-    id?: true
-    user_id?: true
-  }
-
-  export type AchievementSumAggregateInputType = {
-    id?: true
-    user_id?: true
-  }
 
   export type AchievementMinAggregateInputType = {
     id?: true
@@ -12632,18 +12274,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: AchievementAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: AchievementSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: AchievementMinAggregateInputType
@@ -12674,20 +12304,16 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: AchievementCountAggregateInputType | true
-    _avg?: AchievementAvgAggregateInputType
-    _sum?: AchievementSumAggregateInputType
     _min?: AchievementMinAggregateInputType
     _max?: AchievementMaxAggregateInputType
   }
 
   export type AchievementGroupByOutputType = {
-    id: bigint
-    user_id: bigint
+    id: string
+    user_id: string
     description: string
     achievement_date: Date
     _count: AchievementCountAggregateOutputType | null
-    _avg: AchievementAvgAggregateOutputType | null
-    _sum: AchievementSumAggregateOutputType | null
     _min: AchievementMinAggregateOutputType | null
     _max: AchievementMaxAggregateOutputType | null
   }
@@ -12754,8 +12380,8 @@ export namespace Prisma {
       user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: bigint
-      user_id: bigint
+      id: string
+      user_id: string
       description: string
       achievement_date: Date
     }, ExtArgs["result"]["achievement"]>
@@ -13182,8 +12808,8 @@ export namespace Prisma {
    * Fields of the Achievement model
    */ 
   interface AchievementFieldRefs {
-    readonly id: FieldRef<"Achievement", 'BigInt'>
-    readonly user_id: FieldRef<"Achievement", 'BigInt'>
+    readonly id: FieldRef<"Achievement", 'String'>
+    readonly user_id: FieldRef<"Achievement", 'String'>
     readonly description: FieldRef<"Achievement", 'String'>
     readonly achievement_date: FieldRef<"Achievement", 'DateTime'>
   }
@@ -13606,25 +13232,13 @@ export namespace Prisma {
 
   export type AggregateReport = {
     _count: ReportCountAggregateOutputType | null
-    _avg: ReportAvgAggregateOutputType | null
-    _sum: ReportSumAggregateOutputType | null
     _min: ReportMinAggregateOutputType | null
     _max: ReportMaxAggregateOutputType | null
   }
 
-  export type ReportAvgAggregateOutputType = {
-    id: number | null
-    user_id: number | null
-  }
-
-  export type ReportSumAggregateOutputType = {
-    id: bigint | null
-    user_id: bigint | null
-  }
-
   export type ReportMinAggregateOutputType = {
-    id: bigint | null
-    user_id: bigint | null
+    id: string | null
+    user_id: string | null
     reported_content: string | null
     content_type: string | null
     status: $Enums.ReportStatus | null
@@ -13632,8 +13246,8 @@ export namespace Prisma {
   }
 
   export type ReportMaxAggregateOutputType = {
-    id: bigint | null
-    user_id: bigint | null
+    id: string | null
+    user_id: string | null
     reported_content: string | null
     content_type: string | null
     status: $Enums.ReportStatus | null
@@ -13650,16 +13264,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type ReportAvgAggregateInputType = {
-    id?: true
-    user_id?: true
-  }
-
-  export type ReportSumAggregateInputType = {
-    id?: true
-    user_id?: true
-  }
 
   export type ReportMinAggregateInputType = {
     id?: true
@@ -13727,18 +13331,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: ReportAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: ReportSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: ReportMinAggregateInputType
@@ -13769,22 +13361,18 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ReportCountAggregateInputType | true
-    _avg?: ReportAvgAggregateInputType
-    _sum?: ReportSumAggregateInputType
     _min?: ReportMinAggregateInputType
     _max?: ReportMaxAggregateInputType
   }
 
   export type ReportGroupByOutputType = {
-    id: bigint
-    user_id: bigint
+    id: string
+    user_id: string
     reported_content: string
     content_type: string
     status: $Enums.ReportStatus
     report_date: Date
     _count: ReportCountAggregateOutputType | null
-    _avg: ReportAvgAggregateOutputType | null
-    _sum: ReportSumAggregateOutputType | null
     _min: ReportMinAggregateOutputType | null
     _max: ReportMaxAggregateOutputType | null
   }
@@ -13859,8 +13447,8 @@ export namespace Prisma {
       user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: bigint
-      user_id: bigint
+      id: string
+      user_id: string
       reported_content: string
       content_type: string
       status: $Enums.ReportStatus
@@ -14289,8 +13877,8 @@ export namespace Prisma {
    * Fields of the Report model
    */ 
   interface ReportFieldRefs {
-    readonly id: FieldRef<"Report", 'BigInt'>
-    readonly user_id: FieldRef<"Report", 'BigInt'>
+    readonly id: FieldRef<"Report", 'String'>
+    readonly user_id: FieldRef<"Report", 'String'>
     readonly reported_content: FieldRef<"Report", 'String'>
     readonly content_type: FieldRef<"Report", 'String'>
     readonly status: FieldRef<"Report", 'ReportStatus'>
@@ -14903,20 +14491,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'BigInt'
-   */
-  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
-    
-
-
-  /**
-   * Reference to a field of type 'BigInt[]'
-   */
-  export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>
-    
-
-
-  /**
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
@@ -15021,7 +14595,7 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    id?: BigIntFilter<"User"> | bigint | number
+    id?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
     password_hash?: StringFilter<"User"> | string
     name?: StringNullableFilter<"User"> | string | null
@@ -15067,7 +14641,7 @@ export namespace Prisma {
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: string
     email?: string
     google_id?: string
     facebook_id?: string
@@ -15104,17 +14678,15 @@ export namespace Prisma {
     privacy_preferences?: SortOrderInput | SortOrder
     registration_date?: SortOrder
     _count?: UserCountOrderByAggregateInput
-    _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
-    _sum?: UserSumOrderByAggregateInput
   }
 
   export type UserScalarWhereWithAggregatesInput = {
     AND?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"User"> | bigint | number
+    id?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
     password_hash?: StringWithAggregatesFilter<"User"> | string
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
@@ -15130,14 +14702,14 @@ export namespace Prisma {
     AND?: BookWhereInput | BookWhereInput[]
     OR?: BookWhereInput[]
     NOT?: BookWhereInput | BookWhereInput[]
-    id?: BigIntFilter<"Book"> | bigint | number
+    id?: StringFilter<"Book"> | string
     title?: StringFilter<"Book"> | string
     author?: StringFilter<"Book"> | string
     isbn?: StringNullableFilter<"Book"> | string | null
     image?: StringNullableFilter<"Book"> | string | null
     genre?: StringNullableFilter<"Book"> | string | null
     exchange_available?: BoolFilter<"Book"> | boolean
-    user_id?: BigIntFilter<"Book"> | bigint | number
+    user_id?: StringFilter<"Book"> | string
     status?: EnumExchangeStatusFilter<"Book"> | $Enums.ExchangeStatus
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     exchanges?: ExchangeListRelationFilter
@@ -15162,7 +14734,7 @@ export namespace Prisma {
   }
 
   export type BookWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: string
     isbn?: string
     AND?: BookWhereInput | BookWhereInput[]
     OR?: BookWhereInput[]
@@ -15172,7 +14744,7 @@ export namespace Prisma {
     image?: StringNullableFilter<"Book"> | string | null
     genre?: StringNullableFilter<"Book"> | string | null
     exchange_available?: BoolFilter<"Book"> | boolean
-    user_id?: BigIntFilter<"Book"> | bigint | number
+    user_id?: StringFilter<"Book"> | string
     status?: EnumExchangeStatusFilter<"Book"> | $Enums.ExchangeStatus
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     exchanges?: ExchangeListRelationFilter
@@ -15191,24 +14763,22 @@ export namespace Prisma {
     user_id?: SortOrder
     status?: SortOrder
     _count?: BookCountOrderByAggregateInput
-    _avg?: BookAvgOrderByAggregateInput
     _max?: BookMaxOrderByAggregateInput
     _min?: BookMinOrderByAggregateInput
-    _sum?: BookSumOrderByAggregateInput
   }
 
   export type BookScalarWhereWithAggregatesInput = {
     AND?: BookScalarWhereWithAggregatesInput | BookScalarWhereWithAggregatesInput[]
     OR?: BookScalarWhereWithAggregatesInput[]
     NOT?: BookScalarWhereWithAggregatesInput | BookScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"Book"> | bigint | number
+    id?: StringWithAggregatesFilter<"Book"> | string
     title?: StringWithAggregatesFilter<"Book"> | string
     author?: StringWithAggregatesFilter<"Book"> | string
     isbn?: StringNullableWithAggregatesFilter<"Book"> | string | null
     image?: StringNullableWithAggregatesFilter<"Book"> | string | null
     genre?: StringNullableWithAggregatesFilter<"Book"> | string | null
     exchange_available?: BoolWithAggregatesFilter<"Book"> | boolean
-    user_id?: BigIntWithAggregatesFilter<"Book"> | bigint | number
+    user_id?: StringWithAggregatesFilter<"Book"> | string
     status?: EnumExchangeStatusWithAggregatesFilter<"Book"> | $Enums.ExchangeStatus
   }
 
@@ -15216,9 +14786,9 @@ export namespace Prisma {
     AND?: ExchangeWhereInput | ExchangeWhereInput[]
     OR?: ExchangeWhereInput[]
     NOT?: ExchangeWhereInput | ExchangeWhereInput[]
-    id?: BigIntFilter<"Exchange"> | bigint | number
-    book_id?: BigIntFilter<"Exchange"> | bigint | number
-    requester_id?: BigIntFilter<"Exchange"> | bigint | number
+    id?: StringFilter<"Exchange"> | string
+    book_id?: StringFilter<"Exchange"> | string
+    requester_id?: StringFilter<"Exchange"> | string
     status?: EnumExchangeStatusFilter<"Exchange"> | $Enums.ExchangeStatus
     request_date?: DateTimeFilter<"Exchange"> | Date | string
     book?: XOR<BookScalarRelationFilter, BookWhereInput>
@@ -15236,12 +14806,12 @@ export namespace Prisma {
   }
 
   export type ExchangeWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: string
     AND?: ExchangeWhereInput | ExchangeWhereInput[]
     OR?: ExchangeWhereInput[]
     NOT?: ExchangeWhereInput | ExchangeWhereInput[]
-    book_id?: BigIntFilter<"Exchange"> | bigint | number
-    requester_id?: BigIntFilter<"Exchange"> | bigint | number
+    book_id?: StringFilter<"Exchange"> | string
+    requester_id?: StringFilter<"Exchange"> | string
     status?: EnumExchangeStatusFilter<"Exchange"> | $Enums.ExchangeStatus
     request_date?: DateTimeFilter<"Exchange"> | Date | string
     book?: XOR<BookScalarRelationFilter, BookWhereInput>
@@ -15255,19 +14825,17 @@ export namespace Prisma {
     status?: SortOrder
     request_date?: SortOrder
     _count?: ExchangeCountOrderByAggregateInput
-    _avg?: ExchangeAvgOrderByAggregateInput
     _max?: ExchangeMaxOrderByAggregateInput
     _min?: ExchangeMinOrderByAggregateInput
-    _sum?: ExchangeSumOrderByAggregateInput
   }
 
   export type ExchangeScalarWhereWithAggregatesInput = {
     AND?: ExchangeScalarWhereWithAggregatesInput | ExchangeScalarWhereWithAggregatesInput[]
     OR?: ExchangeScalarWhereWithAggregatesInput[]
     NOT?: ExchangeScalarWhereWithAggregatesInput | ExchangeScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"Exchange"> | bigint | number
-    book_id?: BigIntWithAggregatesFilter<"Exchange"> | bigint | number
-    requester_id?: BigIntWithAggregatesFilter<"Exchange"> | bigint | number
+    id?: StringWithAggregatesFilter<"Exchange"> | string
+    book_id?: StringWithAggregatesFilter<"Exchange"> | string
+    requester_id?: StringWithAggregatesFilter<"Exchange"> | string
     status?: EnumExchangeStatusWithAggregatesFilter<"Exchange"> | $Enums.ExchangeStatus
     request_date?: DateTimeWithAggregatesFilter<"Exchange"> | Date | string
   }
@@ -15276,9 +14844,9 @@ export namespace Prisma {
     AND?: ReviewWhereInput | ReviewWhereInput[]
     OR?: ReviewWhereInput[]
     NOT?: ReviewWhereInput | ReviewWhereInput[]
-    id?: BigIntFilter<"Review"> | bigint | number
-    book_id?: BigIntFilter<"Review"> | bigint | number
-    user_id?: BigIntFilter<"Review"> | bigint | number
+    id?: StringFilter<"Review"> | string
+    book_id?: StringFilter<"Review"> | string
+    user_id?: StringFilter<"Review"> | string
     content?: StringFilter<"Review"> | string
     rating?: IntFilter<"Review"> | number
     publication_date?: DateTimeFilter<"Review"> | Date | string
@@ -15302,12 +14870,12 @@ export namespace Prisma {
   }
 
   export type ReviewWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: string
     AND?: ReviewWhereInput | ReviewWhereInput[]
     OR?: ReviewWhereInput[]
     NOT?: ReviewWhereInput | ReviewWhereInput[]
-    book_id?: BigIntFilter<"Review"> | bigint | number
-    user_id?: BigIntFilter<"Review"> | bigint | number
+    book_id?: StringFilter<"Review"> | string
+    user_id?: StringFilter<"Review"> | string
     content?: StringFilter<"Review"> | string
     rating?: IntFilter<"Review"> | number
     publication_date?: DateTimeFilter<"Review"> | Date | string
@@ -15335,9 +14903,9 @@ export namespace Prisma {
     AND?: ReviewScalarWhereWithAggregatesInput | ReviewScalarWhereWithAggregatesInput[]
     OR?: ReviewScalarWhereWithAggregatesInput[]
     NOT?: ReviewScalarWhereWithAggregatesInput | ReviewScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"Review"> | bigint | number
-    book_id?: BigIntWithAggregatesFilter<"Review"> | bigint | number
-    user_id?: BigIntWithAggregatesFilter<"Review"> | bigint | number
+    id?: StringWithAggregatesFilter<"Review"> | string
+    book_id?: StringWithAggregatesFilter<"Review"> | string
+    user_id?: StringWithAggregatesFilter<"Review"> | string
     content?: StringWithAggregatesFilter<"Review"> | string
     rating?: IntWithAggregatesFilter<"Review"> | number
     publication_date?: DateTimeWithAggregatesFilter<"Review"> | Date | string
@@ -15347,9 +14915,9 @@ export namespace Prisma {
     AND?: AudioNoteWhereInput | AudioNoteWhereInput[]
     OR?: AudioNoteWhereInput[]
     NOT?: AudioNoteWhereInput | AudioNoteWhereInput[]
-    id?: BigIntFilter<"AudioNote"> | bigint | number
-    user_id?: BigIntFilter<"AudioNote"> | bigint | number
-    book_id?: BigIntFilter<"AudioNote"> | bigint | number
+    id?: StringFilter<"AudioNote"> | string
+    user_id?: StringFilter<"AudioNote"> | string
+    book_id?: StringFilter<"AudioNote"> | string
     audio_url?: StringNullableFilter<"AudioNote"> | string | null
     converted_text?: StringNullableFilter<"AudioNote"> | string | null
     creation_date?: DateTimeFilter<"AudioNote"> | Date | string
@@ -15369,12 +14937,12 @@ export namespace Prisma {
   }
 
   export type AudioNoteWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: string
     AND?: AudioNoteWhereInput | AudioNoteWhereInput[]
     OR?: AudioNoteWhereInput[]
     NOT?: AudioNoteWhereInput | AudioNoteWhereInput[]
-    user_id?: BigIntFilter<"AudioNote"> | bigint | number
-    book_id?: BigIntFilter<"AudioNote"> | bigint | number
+    user_id?: StringFilter<"AudioNote"> | string
+    book_id?: StringFilter<"AudioNote"> | string
     audio_url?: StringNullableFilter<"AudioNote"> | string | null
     converted_text?: StringNullableFilter<"AudioNote"> | string | null
     creation_date?: DateTimeFilter<"AudioNote"> | Date | string
@@ -15390,19 +14958,17 @@ export namespace Prisma {
     converted_text?: SortOrderInput | SortOrder
     creation_date?: SortOrder
     _count?: AudioNoteCountOrderByAggregateInput
-    _avg?: AudioNoteAvgOrderByAggregateInput
     _max?: AudioNoteMaxOrderByAggregateInput
     _min?: AudioNoteMinOrderByAggregateInput
-    _sum?: AudioNoteSumOrderByAggregateInput
   }
 
   export type AudioNoteScalarWhereWithAggregatesInput = {
     AND?: AudioNoteScalarWhereWithAggregatesInput | AudioNoteScalarWhereWithAggregatesInput[]
     OR?: AudioNoteScalarWhereWithAggregatesInput[]
     NOT?: AudioNoteScalarWhereWithAggregatesInput | AudioNoteScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"AudioNote"> | bigint | number
-    user_id?: BigIntWithAggregatesFilter<"AudioNote"> | bigint | number
-    book_id?: BigIntWithAggregatesFilter<"AudioNote"> | bigint | number
+    id?: StringWithAggregatesFilter<"AudioNote"> | string
+    user_id?: StringWithAggregatesFilter<"AudioNote"> | string
+    book_id?: StringWithAggregatesFilter<"AudioNote"> | string
     audio_url?: StringNullableWithAggregatesFilter<"AudioNote"> | string | null
     converted_text?: StringNullableWithAggregatesFilter<"AudioNote"> | string | null
     creation_date?: DateTimeWithAggregatesFilter<"AudioNote"> | Date | string
@@ -15412,9 +14978,9 @@ export namespace Prisma {
     AND?: CommentWhereInput | CommentWhereInput[]
     OR?: CommentWhereInput[]
     NOT?: CommentWhereInput | CommentWhereInput[]
-    id?: BigIntFilter<"Comment"> | bigint | number
-    review_id?: BigIntFilter<"Comment"> | bigint | number
-    user_id?: BigIntFilter<"Comment"> | bigint | number
+    id?: StringFilter<"Comment"> | string
+    review_id?: StringFilter<"Comment"> | string
+    user_id?: StringFilter<"Comment"> | string
     content?: StringFilter<"Comment"> | string
     comment_date?: DateTimeFilter<"Comment"> | Date | string
     review?: XOR<ReviewScalarRelationFilter, ReviewWhereInput>
@@ -15432,12 +14998,12 @@ export namespace Prisma {
   }
 
   export type CommentWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: string
     AND?: CommentWhereInput | CommentWhereInput[]
     OR?: CommentWhereInput[]
     NOT?: CommentWhereInput | CommentWhereInput[]
-    review_id?: BigIntFilter<"Comment"> | bigint | number
-    user_id?: BigIntFilter<"Comment"> | bigint | number
+    review_id?: StringFilter<"Comment"> | string
+    user_id?: StringFilter<"Comment"> | string
     content?: StringFilter<"Comment"> | string
     comment_date?: DateTimeFilter<"Comment"> | Date | string
     review?: XOR<ReviewScalarRelationFilter, ReviewWhereInput>
@@ -15451,19 +15017,17 @@ export namespace Prisma {
     content?: SortOrder
     comment_date?: SortOrder
     _count?: CommentCountOrderByAggregateInput
-    _avg?: CommentAvgOrderByAggregateInput
     _max?: CommentMaxOrderByAggregateInput
     _min?: CommentMinOrderByAggregateInput
-    _sum?: CommentSumOrderByAggregateInput
   }
 
   export type CommentScalarWhereWithAggregatesInput = {
     AND?: CommentScalarWhereWithAggregatesInput | CommentScalarWhereWithAggregatesInput[]
     OR?: CommentScalarWhereWithAggregatesInput[]
     NOT?: CommentScalarWhereWithAggregatesInput | CommentScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"Comment"> | bigint | number
-    review_id?: BigIntWithAggregatesFilter<"Comment"> | bigint | number
-    user_id?: BigIntWithAggregatesFilter<"Comment"> | bigint | number
+    id?: StringWithAggregatesFilter<"Comment"> | string
+    review_id?: StringWithAggregatesFilter<"Comment"> | string
+    user_id?: StringWithAggregatesFilter<"Comment"> | string
     content?: StringWithAggregatesFilter<"Comment"> | string
     comment_date?: DateTimeWithAggregatesFilter<"Comment"> | Date | string
   }
@@ -15472,9 +15036,9 @@ export namespace Prisma {
     AND?: ReactionWhereInput | ReactionWhereInput[]
     OR?: ReactionWhereInput[]
     NOT?: ReactionWhereInput | ReactionWhereInput[]
-    id?: BigIntFilter<"Reaction"> | bigint | number
-    review_id?: BigIntFilter<"Reaction"> | bigint | number
-    user_id?: BigIntFilter<"Reaction"> | bigint | number
+    id?: StringFilter<"Reaction"> | string
+    review_id?: StringFilter<"Reaction"> | string
+    user_id?: StringFilter<"Reaction"> | string
     type?: StringFilter<"Reaction"> | string
     reaction_date?: DateTimeFilter<"Reaction"> | Date | string
     review?: XOR<ReviewScalarRelationFilter, ReviewWhereInput>
@@ -15492,12 +15056,12 @@ export namespace Prisma {
   }
 
   export type ReactionWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: string
     AND?: ReactionWhereInput | ReactionWhereInput[]
     OR?: ReactionWhereInput[]
     NOT?: ReactionWhereInput | ReactionWhereInput[]
-    review_id?: BigIntFilter<"Reaction"> | bigint | number
-    user_id?: BigIntFilter<"Reaction"> | bigint | number
+    review_id?: StringFilter<"Reaction"> | string
+    user_id?: StringFilter<"Reaction"> | string
     type?: StringFilter<"Reaction"> | string
     reaction_date?: DateTimeFilter<"Reaction"> | Date | string
     review?: XOR<ReviewScalarRelationFilter, ReviewWhereInput>
@@ -15511,19 +15075,17 @@ export namespace Prisma {
     type?: SortOrder
     reaction_date?: SortOrder
     _count?: ReactionCountOrderByAggregateInput
-    _avg?: ReactionAvgOrderByAggregateInput
     _max?: ReactionMaxOrderByAggregateInput
     _min?: ReactionMinOrderByAggregateInput
-    _sum?: ReactionSumOrderByAggregateInput
   }
 
   export type ReactionScalarWhereWithAggregatesInput = {
     AND?: ReactionScalarWhereWithAggregatesInput | ReactionScalarWhereWithAggregatesInput[]
     OR?: ReactionScalarWhereWithAggregatesInput[]
     NOT?: ReactionScalarWhereWithAggregatesInput | ReactionScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"Reaction"> | bigint | number
-    review_id?: BigIntWithAggregatesFilter<"Reaction"> | bigint | number
-    user_id?: BigIntWithAggregatesFilter<"Reaction"> | bigint | number
+    id?: StringWithAggregatesFilter<"Reaction"> | string
+    review_id?: StringWithAggregatesFilter<"Reaction"> | string
+    user_id?: StringWithAggregatesFilter<"Reaction"> | string
     type?: StringWithAggregatesFilter<"Reaction"> | string
     reaction_date?: DateTimeWithAggregatesFilter<"Reaction"> | Date | string
   }
@@ -15532,11 +15094,11 @@ export namespace Prisma {
     AND?: FriendFollowerWhereInput | FriendFollowerWhereInput[]
     OR?: FriendFollowerWhereInput[]
     NOT?: FriendFollowerWhereInput | FriendFollowerWhereInput[]
-    id?: BigIntFilter<"FriendFollower"> | bigint | number
-    user_id?: BigIntFilter<"FriendFollower"> | bigint | number
-    friend_id?: BigIntFilter<"FriendFollower"> | bigint | number
+    id?: StringFilter<"FriendFollower"> | string
+    user_id?: StringFilter<"FriendFollower"> | string
+    friend_id?: StringFilter<"FriendFollower"> | string
     follow_date?: DateTimeFilter<"FriendFollower"> | Date | string
-    userId?: BigIntNullableFilter<"FriendFollower"> | bigint | number | null
+    userId?: StringNullableFilter<"FriendFollower"> | string | null
     User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
 
@@ -15550,14 +15112,14 @@ export namespace Prisma {
   }
 
   export type FriendFollowerWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: string
     AND?: FriendFollowerWhereInput | FriendFollowerWhereInput[]
     OR?: FriendFollowerWhereInput[]
     NOT?: FriendFollowerWhereInput | FriendFollowerWhereInput[]
-    user_id?: BigIntFilter<"FriendFollower"> | bigint | number
-    friend_id?: BigIntFilter<"FriendFollower"> | bigint | number
+    user_id?: StringFilter<"FriendFollower"> | string
+    friend_id?: StringFilter<"FriendFollower"> | string
     follow_date?: DateTimeFilter<"FriendFollower"> | Date | string
-    userId?: BigIntNullableFilter<"FriendFollower"> | bigint | number | null
+    userId?: StringNullableFilter<"FriendFollower"> | string | null
     User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id">
 
@@ -15568,29 +15130,27 @@ export namespace Prisma {
     follow_date?: SortOrder
     userId?: SortOrderInput | SortOrder
     _count?: FriendFollowerCountOrderByAggregateInput
-    _avg?: FriendFollowerAvgOrderByAggregateInput
     _max?: FriendFollowerMaxOrderByAggregateInput
     _min?: FriendFollowerMinOrderByAggregateInput
-    _sum?: FriendFollowerSumOrderByAggregateInput
   }
 
   export type FriendFollowerScalarWhereWithAggregatesInput = {
     AND?: FriendFollowerScalarWhereWithAggregatesInput | FriendFollowerScalarWhereWithAggregatesInput[]
     OR?: FriendFollowerScalarWhereWithAggregatesInput[]
     NOT?: FriendFollowerScalarWhereWithAggregatesInput | FriendFollowerScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"FriendFollower"> | bigint | number
-    user_id?: BigIntWithAggregatesFilter<"FriendFollower"> | bigint | number
-    friend_id?: BigIntWithAggregatesFilter<"FriendFollower"> | bigint | number
+    id?: StringWithAggregatesFilter<"FriendFollower"> | string
+    user_id?: StringWithAggregatesFilter<"FriendFollower"> | string
+    friend_id?: StringWithAggregatesFilter<"FriendFollower"> | string
     follow_date?: DateTimeWithAggregatesFilter<"FriendFollower"> | Date | string
-    userId?: BigIntNullableWithAggregatesFilter<"FriendFollower"> | bigint | number | null
+    userId?: StringNullableWithAggregatesFilter<"FriendFollower"> | string | null
   }
 
   export type NotificationWhereInput = {
     AND?: NotificationWhereInput | NotificationWhereInput[]
     OR?: NotificationWhereInput[]
     NOT?: NotificationWhereInput | NotificationWhereInput[]
-    id?: BigIntFilter<"Notification"> | bigint | number
-    user_id?: BigIntFilter<"Notification"> | bigint | number
+    id?: StringFilter<"Notification"> | string
+    user_id?: StringFilter<"Notification"> | string
     type?: StringFilter<"Notification"> | string
     content?: StringFilter<"Notification"> | string
     read?: BoolFilter<"Notification"> | boolean
@@ -15609,11 +15169,11 @@ export namespace Prisma {
   }
 
   export type NotificationWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: string
     AND?: NotificationWhereInput | NotificationWhereInput[]
     OR?: NotificationWhereInput[]
     NOT?: NotificationWhereInput | NotificationWhereInput[]
-    user_id?: BigIntFilter<"Notification"> | bigint | number
+    user_id?: StringFilter<"Notification"> | string
     type?: StringFilter<"Notification"> | string
     content?: StringFilter<"Notification"> | string
     read?: BoolFilter<"Notification"> | boolean
@@ -15629,18 +15189,16 @@ export namespace Prisma {
     read?: SortOrder
     notification_date?: SortOrder
     _count?: NotificationCountOrderByAggregateInput
-    _avg?: NotificationAvgOrderByAggregateInput
     _max?: NotificationMaxOrderByAggregateInput
     _min?: NotificationMinOrderByAggregateInput
-    _sum?: NotificationSumOrderByAggregateInput
   }
 
   export type NotificationScalarWhereWithAggregatesInput = {
     AND?: NotificationScalarWhereWithAggregatesInput | NotificationScalarWhereWithAggregatesInput[]
     OR?: NotificationScalarWhereWithAggregatesInput[]
     NOT?: NotificationScalarWhereWithAggregatesInput | NotificationScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"Notification"> | bigint | number
-    user_id?: BigIntWithAggregatesFilter<"Notification"> | bigint | number
+    id?: StringWithAggregatesFilter<"Notification"> | string
+    user_id?: StringWithAggregatesFilter<"Notification"> | string
     type?: StringWithAggregatesFilter<"Notification"> | string
     content?: StringWithAggregatesFilter<"Notification"> | string
     read?: BoolWithAggregatesFilter<"Notification"> | boolean
@@ -15651,8 +15209,8 @@ export namespace Prisma {
     AND?: AchievementWhereInput | AchievementWhereInput[]
     OR?: AchievementWhereInput[]
     NOT?: AchievementWhereInput | AchievementWhereInput[]
-    id?: BigIntFilter<"Achievement"> | bigint | number
-    user_id?: BigIntFilter<"Achievement"> | bigint | number
+    id?: StringFilter<"Achievement"> | string
+    user_id?: StringFilter<"Achievement"> | string
     description?: StringFilter<"Achievement"> | string
     achievement_date?: DateTimeFilter<"Achievement"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -15667,11 +15225,11 @@ export namespace Prisma {
   }
 
   export type AchievementWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: string
     AND?: AchievementWhereInput | AchievementWhereInput[]
     OR?: AchievementWhereInput[]
     NOT?: AchievementWhereInput | AchievementWhereInput[]
-    user_id?: BigIntFilter<"Achievement"> | bigint | number
+    user_id?: StringFilter<"Achievement"> | string
     description?: StringFilter<"Achievement"> | string
     achievement_date?: DateTimeFilter<"Achievement"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -15683,18 +15241,16 @@ export namespace Prisma {
     description?: SortOrder
     achievement_date?: SortOrder
     _count?: AchievementCountOrderByAggregateInput
-    _avg?: AchievementAvgOrderByAggregateInput
     _max?: AchievementMaxOrderByAggregateInput
     _min?: AchievementMinOrderByAggregateInput
-    _sum?: AchievementSumOrderByAggregateInput
   }
 
   export type AchievementScalarWhereWithAggregatesInput = {
     AND?: AchievementScalarWhereWithAggregatesInput | AchievementScalarWhereWithAggregatesInput[]
     OR?: AchievementScalarWhereWithAggregatesInput[]
     NOT?: AchievementScalarWhereWithAggregatesInput | AchievementScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"Achievement"> | bigint | number
-    user_id?: BigIntWithAggregatesFilter<"Achievement"> | bigint | number
+    id?: StringWithAggregatesFilter<"Achievement"> | string
+    user_id?: StringWithAggregatesFilter<"Achievement"> | string
     description?: StringWithAggregatesFilter<"Achievement"> | string
     achievement_date?: DateTimeWithAggregatesFilter<"Achievement"> | Date | string
   }
@@ -15703,8 +15259,8 @@ export namespace Prisma {
     AND?: ReportWhereInput | ReportWhereInput[]
     OR?: ReportWhereInput[]
     NOT?: ReportWhereInput | ReportWhereInput[]
-    id?: BigIntFilter<"Report"> | bigint | number
-    user_id?: BigIntFilter<"Report"> | bigint | number
+    id?: StringFilter<"Report"> | string
+    user_id?: StringFilter<"Report"> | string
     reported_content?: StringFilter<"Report"> | string
     content_type?: StringFilter<"Report"> | string
     status?: EnumReportStatusFilter<"Report"> | $Enums.ReportStatus
@@ -15723,11 +15279,11 @@ export namespace Prisma {
   }
 
   export type ReportWhereUniqueInput = Prisma.AtLeast<{
-    id?: bigint | number
+    id?: string
     AND?: ReportWhereInput | ReportWhereInput[]
     OR?: ReportWhereInput[]
     NOT?: ReportWhereInput | ReportWhereInput[]
-    user_id?: BigIntFilter<"Report"> | bigint | number
+    user_id?: StringFilter<"Report"> | string
     reported_content?: StringFilter<"Report"> | string
     content_type?: StringFilter<"Report"> | string
     status?: EnumReportStatusFilter<"Report"> | $Enums.ReportStatus
@@ -15743,18 +15299,16 @@ export namespace Prisma {
     status?: SortOrder
     report_date?: SortOrder
     _count?: ReportCountOrderByAggregateInput
-    _avg?: ReportAvgOrderByAggregateInput
     _max?: ReportMaxOrderByAggregateInput
     _min?: ReportMinOrderByAggregateInput
-    _sum?: ReportSumOrderByAggregateInput
   }
 
   export type ReportScalarWhereWithAggregatesInput = {
     AND?: ReportScalarWhereWithAggregatesInput | ReportScalarWhereWithAggregatesInput[]
     OR?: ReportScalarWhereWithAggregatesInput[]
     NOT?: ReportScalarWhereWithAggregatesInput | ReportScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"Report"> | bigint | number
-    user_id?: BigIntWithAggregatesFilter<"Report"> | bigint | number
+    id?: StringWithAggregatesFilter<"Report"> | string
+    user_id?: StringWithAggregatesFilter<"Report"> | string
     reported_content?: StringWithAggregatesFilter<"Report"> | string
     content_type?: StringWithAggregatesFilter<"Report"> | string
     status?: EnumReportStatusWithAggregatesFilter<"Report"> | $Enums.ReportStatus
@@ -15762,7 +15316,7 @@ export namespace Prisma {
   }
 
   export type UserCreateInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -15785,7 +15339,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -15808,7 +15362,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15831,7 +15385,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15854,7 +15408,7 @@ export namespace Prisma {
   }
 
   export type UserCreateManyInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -15867,7 +15421,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15880,7 +15434,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15893,7 +15447,7 @@ export namespace Prisma {
   }
 
   export type BookCreateInput = {
-    id?: bigint | number
+    id?: string
     title: string
     author: string
     isbn?: string | null
@@ -15908,14 +15462,14 @@ export namespace Prisma {
   }
 
   export type BookUncheckedCreateInput = {
-    id?: bigint | number
+    id?: string
     title: string
     author: string
     isbn?: string | null
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
-    user_id: bigint | number
+    user_id: string
     status?: $Enums.ExchangeStatus
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutBookInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutBookInput
@@ -15923,7 +15477,7 @@ export namespace Prisma {
   }
 
   export type BookUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15938,14 +15492,14 @@ export namespace Prisma {
   }
 
   export type BookUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    user_id?: StringFieldUpdateOperationsInput | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     exchanges?: ExchangeUncheckedUpdateManyWithoutBookNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutBookNestedInput
@@ -15953,19 +15507,19 @@ export namespace Prisma {
   }
 
   export type BookCreateManyInput = {
-    id?: bigint | number
+    id?: string
     title: string
     author: string
     isbn?: string | null
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
-    user_id: bigint | number
+    user_id: string
     status?: $Enums.ExchangeStatus
   }
 
   export type BookUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15976,19 +15530,19 @@ export namespace Prisma {
   }
 
   export type BookUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    user_id?: StringFieldUpdateOperationsInput | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
   }
 
   export type ExchangeCreateInput = {
-    id?: bigint | number
+    id?: string
     status?: $Enums.ExchangeStatus
     request_date?: Date | string
     book: BookCreateNestedOneWithoutExchangesInput
@@ -15996,15 +15550,15 @@ export namespace Prisma {
   }
 
   export type ExchangeUncheckedCreateInput = {
-    id?: bigint | number
-    book_id: bigint | number
-    requester_id: bigint | number
+    id?: string
+    book_id: string
+    requester_id: string
     status?: $Enums.ExchangeStatus
     request_date?: Date | string
   }
 
   export type ExchangeUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     request_date?: DateTimeFieldUpdateOperationsInput | Date | string
     book?: BookUpdateOneRequiredWithoutExchangesNestedInput
@@ -16012,37 +15566,37 @@ export namespace Prisma {
   }
 
   export type ExchangeUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    book_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    requester_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    book_id?: StringFieldUpdateOperationsInput | string
+    requester_id?: StringFieldUpdateOperationsInput | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     request_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ExchangeCreateManyInput = {
-    id?: bigint | number
-    book_id: bigint | number
-    requester_id: bigint | number
+    id?: string
+    book_id: string
+    requester_id: string
     status?: $Enums.ExchangeStatus
     request_date?: Date | string
   }
 
   export type ExchangeUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     request_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ExchangeUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    book_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    requester_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    book_id?: StringFieldUpdateOperationsInput | string
+    requester_id?: StringFieldUpdateOperationsInput | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     request_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ReviewCreateInput = {
-    id?: bigint | number
+    id?: string
     content: string
     rating: number
     publication_date?: Date | string
@@ -16053,9 +15607,9 @@ export namespace Prisma {
   }
 
   export type ReviewUncheckedCreateInput = {
-    id?: bigint | number
-    book_id: bigint | number
-    user_id: bigint | number
+    id?: string
+    book_id: string
+    user_id: string
     content: string
     rating: number
     publication_date?: Date | string
@@ -16064,7 +15618,7 @@ export namespace Prisma {
   }
 
   export type ReviewUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     publication_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16075,9 +15629,9 @@ export namespace Prisma {
   }
 
   export type ReviewUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    book_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    book_id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     publication_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16086,32 +15640,32 @@ export namespace Prisma {
   }
 
   export type ReviewCreateManyInput = {
-    id?: bigint | number
-    book_id: bigint | number
-    user_id: bigint | number
+    id?: string
+    book_id: string
+    user_id: string
     content: string
     rating: number
     publication_date?: Date | string
   }
 
   export type ReviewUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     publication_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ReviewUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    book_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    book_id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     publication_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AudioNoteCreateInput = {
-    id?: bigint | number
+    id?: string
     audio_url?: string | null
     converted_text?: string | null
     creation_date?: Date | string
@@ -16120,16 +15674,16 @@ export namespace Prisma {
   }
 
   export type AudioNoteUncheckedCreateInput = {
-    id?: bigint | number
-    user_id: bigint | number
-    book_id: bigint | number
+    id?: string
+    user_id: string
+    book_id: string
     audio_url?: string | null
     converted_text?: string | null
     creation_date?: Date | string
   }
 
   export type AudioNoteUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     audio_url?: NullableStringFieldUpdateOperationsInput | string | null
     converted_text?: NullableStringFieldUpdateOperationsInput | string | null
     creation_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16138,41 +15692,41 @@ export namespace Prisma {
   }
 
   export type AudioNoteUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    book_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    book_id?: StringFieldUpdateOperationsInput | string
     audio_url?: NullableStringFieldUpdateOperationsInput | string | null
     converted_text?: NullableStringFieldUpdateOperationsInput | string | null
     creation_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AudioNoteCreateManyInput = {
-    id?: bigint | number
-    user_id: bigint | number
-    book_id: bigint | number
+    id?: string
+    user_id: string
+    book_id: string
     audio_url?: string | null
     converted_text?: string | null
     creation_date?: Date | string
   }
 
   export type AudioNoteUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     audio_url?: NullableStringFieldUpdateOperationsInput | string | null
     converted_text?: NullableStringFieldUpdateOperationsInput | string | null
     creation_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AudioNoteUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    book_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    book_id?: StringFieldUpdateOperationsInput | string
     audio_url?: NullableStringFieldUpdateOperationsInput | string | null
     converted_text?: NullableStringFieldUpdateOperationsInput | string | null
     creation_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CommentCreateInput = {
-    id?: bigint | number
+    id?: string
     content: string
     comment_date?: Date | string
     review: ReviewCreateNestedOneWithoutCommentsInput
@@ -16180,15 +15734,15 @@ export namespace Prisma {
   }
 
   export type CommentUncheckedCreateInput = {
-    id?: bigint | number
-    review_id: bigint | number
-    user_id: bigint | number
+    id?: string
+    review_id: string
+    user_id: string
     content: string
     comment_date?: Date | string
   }
 
   export type CommentUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     comment_date?: DateTimeFieldUpdateOperationsInput | Date | string
     review?: ReviewUpdateOneRequiredWithoutCommentsNestedInput
@@ -16196,37 +15750,37 @@ export namespace Prisma {
   }
 
   export type CommentUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    review_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    review_id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     comment_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CommentCreateManyInput = {
-    id?: bigint | number
-    review_id: bigint | number
-    user_id: bigint | number
+    id?: string
+    review_id: string
+    user_id: string
     content: string
     comment_date?: Date | string
   }
 
   export type CommentUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     comment_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CommentUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    review_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    review_id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     comment_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ReactionCreateInput = {
-    id?: bigint | number
+    id?: string
     type: string
     reaction_date?: Date | string
     review: ReviewCreateNestedOneWithoutReactionsInput
@@ -16234,15 +15788,15 @@ export namespace Prisma {
   }
 
   export type ReactionUncheckedCreateInput = {
-    id?: bigint | number
-    review_id: bigint | number
-    user_id: bigint | number
+    id?: string
+    review_id: string
+    user_id: string
     type: string
     reaction_date?: Date | string
   }
 
   export type ReactionUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     reaction_date?: DateTimeFieldUpdateOperationsInput | Date | string
     review?: ReviewUpdateOneRequiredWithoutReactionsNestedInput
@@ -16250,92 +15804,92 @@ export namespace Prisma {
   }
 
   export type ReactionUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    review_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    review_id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     reaction_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ReactionCreateManyInput = {
-    id?: bigint | number
-    review_id: bigint | number
-    user_id: bigint | number
+    id?: string
+    review_id: string
+    user_id: string
     type: string
     reaction_date?: Date | string
   }
 
   export type ReactionUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     reaction_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ReactionUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    review_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    review_id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     reaction_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FriendFollowerCreateInput = {
-    id?: bigint | number
-    user_id: bigint | number
-    friend_id: bigint | number
+    id?: string
+    user_id: string
+    friend_id: string
     follow_date?: Date | string
     User?: UserCreateNestedOneWithoutUserFriendsInput
   }
 
   export type FriendFollowerUncheckedCreateInput = {
-    id?: bigint | number
-    user_id: bigint | number
-    friend_id: bigint | number
+    id?: string
+    user_id: string
+    friend_id: string
     follow_date?: Date | string
-    userId?: bigint | number | null
+    userId?: string | null
   }
 
   export type FriendFollowerUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    friend_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    friend_id?: StringFieldUpdateOperationsInput | string
     follow_date?: DateTimeFieldUpdateOperationsInput | Date | string
     User?: UserUpdateOneWithoutUserFriendsNestedInput
   }
 
   export type FriendFollowerUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    friend_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    friend_id?: StringFieldUpdateOperationsInput | string
     follow_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type FriendFollowerCreateManyInput = {
-    id?: bigint | number
-    user_id: bigint | number
-    friend_id: bigint | number
+    id?: string
+    user_id: string
+    friend_id: string
     follow_date?: Date | string
-    userId?: bigint | number | null
+    userId?: string | null
   }
 
   export type FriendFollowerUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    friend_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    friend_id?: StringFieldUpdateOperationsInput | string
     follow_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FriendFollowerUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    friend_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    friend_id?: StringFieldUpdateOperationsInput | string
     follow_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type NotificationCreateInput = {
-    id?: bigint | number
+    id?: string
     type: string
     content: string
     read?: boolean
@@ -16344,8 +15898,8 @@ export namespace Prisma {
   }
 
   export type NotificationUncheckedCreateInput = {
-    id?: bigint | number
-    user_id: bigint | number
+    id?: string
+    user_id: string
     type: string
     content: string
     read?: boolean
@@ -16353,7 +15907,7 @@ export namespace Prisma {
   }
 
   export type NotificationUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     read?: BoolFieldUpdateOperationsInput | boolean
@@ -16362,8 +15916,8 @@ export namespace Prisma {
   }
 
   export type NotificationUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     read?: BoolFieldUpdateOperationsInput | boolean
@@ -16371,8 +15925,8 @@ export namespace Prisma {
   }
 
   export type NotificationCreateManyInput = {
-    id?: bigint | number
-    user_id: bigint | number
+    id?: string
+    user_id: string
     type: string
     content: string
     read?: boolean
@@ -16380,7 +15934,7 @@ export namespace Prisma {
   }
 
   export type NotificationUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     read?: BoolFieldUpdateOperationsInput | boolean
@@ -16388,8 +15942,8 @@ export namespace Prisma {
   }
 
   export type NotificationUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     read?: BoolFieldUpdateOperationsInput | boolean
@@ -16397,55 +15951,55 @@ export namespace Prisma {
   }
 
   export type AchievementCreateInput = {
-    id?: bigint | number
+    id?: string
     description: string
     achievement_date?: Date | string
     user: UserCreateNestedOneWithoutAchievementsInput
   }
 
   export type AchievementUncheckedCreateInput = {
-    id?: bigint | number
-    user_id: bigint | number
+    id?: string
+    user_id: string
     description: string
     achievement_date?: Date | string
   }
 
   export type AchievementUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     achievement_date?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutAchievementsNestedInput
   }
 
   export type AchievementUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     achievement_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AchievementCreateManyInput = {
-    id?: bigint | number
-    user_id: bigint | number
+    id?: string
+    user_id: string
     description: string
     achievement_date?: Date | string
   }
 
   export type AchievementUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     achievement_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AchievementUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     achievement_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ReportCreateInput = {
-    id?: bigint | number
+    id?: string
     reported_content: string
     content_type: string
     status?: $Enums.ReportStatus
@@ -16454,8 +16008,8 @@ export namespace Prisma {
   }
 
   export type ReportUncheckedCreateInput = {
-    id?: bigint | number
-    user_id: bigint | number
+    id?: string
+    user_id: string
     reported_content: string
     content_type: string
     status?: $Enums.ReportStatus
@@ -16463,7 +16017,7 @@ export namespace Prisma {
   }
 
   export type ReportUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     reported_content?: StringFieldUpdateOperationsInput | string
     content_type?: StringFieldUpdateOperationsInput | string
     status?: EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus
@@ -16472,8 +16026,8 @@ export namespace Prisma {
   }
 
   export type ReportUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     reported_content?: StringFieldUpdateOperationsInput | string
     content_type?: StringFieldUpdateOperationsInput | string
     status?: EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus
@@ -16481,8 +16035,8 @@ export namespace Prisma {
   }
 
   export type ReportCreateManyInput = {
-    id?: bigint | number
-    user_id: bigint | number
+    id?: string
+    user_id: string
     reported_content: string
     content_type: string
     status?: $Enums.ReportStatus
@@ -16490,7 +16044,7 @@ export namespace Prisma {
   }
 
   export type ReportUpdateManyMutationInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     reported_content?: StringFieldUpdateOperationsInput | string
     content_type?: StringFieldUpdateOperationsInput | string
     status?: EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus
@@ -16498,23 +16052,12 @@ export namespace Prisma {
   }
 
   export type ReportUncheckedUpdateManyInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     reported_content?: StringFieldUpdateOperationsInput | string
     content_type?: StringFieldUpdateOperationsInput | string
     status?: EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus
     report_date?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type BigIntFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -16698,10 +16241,6 @@ export namespace Prisma {
     registration_date?: SortOrder
   }
 
-  export type UserAvgOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
@@ -16724,26 +16263,6 @@ export namespace Prisma {
     google_id?: SortOrder
     facebook_id?: SortOrder
     registration_date?: SortOrder
-  }
-
-  export type UserSumOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedBigIntFilter<$PrismaModel>
-    _min?: NestedBigIntFilter<$PrismaModel>
-    _max?: NestedBigIntFilter<$PrismaModel>
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -16850,11 +16369,6 @@ export namespace Prisma {
     status?: SortOrder
   }
 
-  export type BookAvgOrderByAggregateInput = {
-    id?: SortOrder
-    user_id?: SortOrder
-  }
-
   export type BookMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
@@ -16877,11 +16391,6 @@ export namespace Prisma {
     exchange_available?: SortOrder
     user_id?: SortOrder
     status?: SortOrder
-  }
-
-  export type BookSumOrderByAggregateInput = {
-    id?: SortOrder
-    user_id?: SortOrder
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -16915,12 +16424,6 @@ export namespace Prisma {
     request_date?: SortOrder
   }
 
-  export type ExchangeAvgOrderByAggregateInput = {
-    id?: SortOrder
-    book_id?: SortOrder
-    requester_id?: SortOrder
-  }
-
   export type ExchangeMaxOrderByAggregateInput = {
     id?: SortOrder
     book_id?: SortOrder
@@ -16935,12 +16438,6 @@ export namespace Prisma {
     requester_id?: SortOrder
     status?: SortOrder
     request_date?: SortOrder
-  }
-
-  export type ExchangeSumOrderByAggregateInput = {
-    id?: SortOrder
-    book_id?: SortOrder
-    requester_id?: SortOrder
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -16964,9 +16461,6 @@ export namespace Prisma {
   }
 
   export type ReviewAvgOrderByAggregateInput = {
-    id?: SortOrder
-    book_id?: SortOrder
-    user_id?: SortOrder
     rating?: SortOrder
   }
 
@@ -16989,9 +16483,6 @@ export namespace Prisma {
   }
 
   export type ReviewSumOrderByAggregateInput = {
-    id?: SortOrder
-    book_id?: SortOrder
-    user_id?: SortOrder
     rating?: SortOrder
   }
 
@@ -17020,12 +16511,6 @@ export namespace Prisma {
     creation_date?: SortOrder
   }
 
-  export type AudioNoteAvgOrderByAggregateInput = {
-    id?: SortOrder
-    user_id?: SortOrder
-    book_id?: SortOrder
-  }
-
   export type AudioNoteMaxOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
@@ -17044,12 +16529,6 @@ export namespace Prisma {
     creation_date?: SortOrder
   }
 
-  export type AudioNoteSumOrderByAggregateInput = {
-    id?: SortOrder
-    user_id?: SortOrder
-    book_id?: SortOrder
-  }
-
   export type ReviewScalarRelationFilter = {
     is?: ReviewWhereInput
     isNot?: ReviewWhereInput
@@ -17061,12 +16540,6 @@ export namespace Prisma {
     user_id?: SortOrder
     content?: SortOrder
     comment_date?: SortOrder
-  }
-
-  export type CommentAvgOrderByAggregateInput = {
-    id?: SortOrder
-    review_id?: SortOrder
-    user_id?: SortOrder
   }
 
   export type CommentMaxOrderByAggregateInput = {
@@ -17085,24 +16558,12 @@ export namespace Prisma {
     comment_date?: SortOrder
   }
 
-  export type CommentSumOrderByAggregateInput = {
-    id?: SortOrder
-    review_id?: SortOrder
-    user_id?: SortOrder
-  }
-
   export type ReactionCountOrderByAggregateInput = {
     id?: SortOrder
     review_id?: SortOrder
     user_id?: SortOrder
     type?: SortOrder
     reaction_date?: SortOrder
-  }
-
-  export type ReactionAvgOrderByAggregateInput = {
-    id?: SortOrder
-    review_id?: SortOrder
-    user_id?: SortOrder
   }
 
   export type ReactionMaxOrderByAggregateInput = {
@@ -17121,23 +16582,6 @@ export namespace Prisma {
     reaction_date?: SortOrder
   }
 
-  export type ReactionSumOrderByAggregateInput = {
-    id?: SortOrder
-    review_id?: SortOrder
-    user_id?: SortOrder
-  }
-
-  export type BigIntNullableFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
-  }
-
   export type UserNullableScalarRelationFilter = {
     is?: UserWhereInput | null
     isNot?: UserWhereInput | null
@@ -17148,13 +16592,6 @@ export namespace Prisma {
     user_id?: SortOrder
     friend_id?: SortOrder
     follow_date?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type FriendFollowerAvgOrderByAggregateInput = {
-    id?: SortOrder
-    user_id?: SortOrder
-    friend_id?: SortOrder
     userId?: SortOrder
   }
 
@@ -17174,29 +16611,6 @@ export namespace Prisma {
     userId?: SortOrder
   }
 
-  export type FriendFollowerSumOrderByAggregateInput = {
-    id?: SortOrder
-    user_id?: SortOrder
-    friend_id?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type BigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedBigIntNullableFilter<$PrismaModel>
-    _min?: NestedBigIntNullableFilter<$PrismaModel>
-    _max?: NestedBigIntNullableFilter<$PrismaModel>
-  }
-
   export type NotificationCountOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
@@ -17204,11 +16618,6 @@ export namespace Prisma {
     content?: SortOrder
     read?: SortOrder
     notification_date?: SortOrder
-  }
-
-  export type NotificationAvgOrderByAggregateInput = {
-    id?: SortOrder
-    user_id?: SortOrder
   }
 
   export type NotificationMaxOrderByAggregateInput = {
@@ -17229,21 +16638,11 @@ export namespace Prisma {
     notification_date?: SortOrder
   }
 
-  export type NotificationSumOrderByAggregateInput = {
-    id?: SortOrder
-    user_id?: SortOrder
-  }
-
   export type AchievementCountOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
     description?: SortOrder
     achievement_date?: SortOrder
-  }
-
-  export type AchievementAvgOrderByAggregateInput = {
-    id?: SortOrder
-    user_id?: SortOrder
   }
 
   export type AchievementMaxOrderByAggregateInput = {
@@ -17258,11 +16657,6 @@ export namespace Prisma {
     user_id?: SortOrder
     description?: SortOrder
     achievement_date?: SortOrder
-  }
-
-  export type AchievementSumOrderByAggregateInput = {
-    id?: SortOrder
-    user_id?: SortOrder
   }
 
   export type EnumReportStatusFilter<$PrismaModel = never> = {
@@ -17281,11 +16675,6 @@ export namespace Prisma {
     report_date?: SortOrder
   }
 
-  export type ReportAvgOrderByAggregateInput = {
-    id?: SortOrder
-    user_id?: SortOrder
-  }
-
   export type ReportMaxOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
@@ -17302,11 +16691,6 @@ export namespace Prisma {
     content_type?: SortOrder
     status?: SortOrder
     report_date?: SortOrder
-  }
-
-  export type ReportSumOrderByAggregateInput = {
-    id?: SortOrder
-    user_id?: SortOrder
   }
 
   export type EnumReportStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -17457,14 +16841,6 @@ export namespace Prisma {
     connectOrCreate?: FriendFollowerCreateOrConnectWithoutUserInput | FriendFollowerCreateOrConnectWithoutUserInput[]
     createMany?: FriendFollowerCreateManyUserInputEnvelope
     connect?: FriendFollowerWhereUniqueInput | FriendFollowerWhereUniqueInput[]
-  }
-
-  export type BigIntFieldUpdateOperationsInput = {
-    set?: bigint | number
-    increment?: bigint | number
-    decrement?: bigint | number
-    multiply?: bigint | number
-    divide?: bigint | number
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -18155,14 +17531,6 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUserFriendsInput, UserUpdateWithoutUserFriendsInput>, UserUncheckedUpdateWithoutUserFriendsInput>
   }
 
-  export type NullableBigIntFieldUpdateOperationsInput = {
-    set?: bigint | number | null
-    increment?: bigint | number
-    decrement?: bigint | number
-    multiply?: bigint | number
-    divide?: bigint | number
-  }
-
   export type UserCreateNestedOneWithoutNotificationsInput = {
     create?: XOR<UserCreateWithoutNotificationsInput, UserUncheckedCreateWithoutNotificationsInput>
     connectOrCreate?: UserCreateOrConnectWithoutNotificationsInput
@@ -18209,17 +17577,6 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutReportsInput, UserUpdateWithoutReportsInput>, UserUncheckedUpdateWithoutReportsInput>
   }
 
-  export type NestedBigIntFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
-  }
-
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -18259,44 +17616,6 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedBigIntFilter<$PrismaModel>
-    _min?: NestedBigIntFilter<$PrismaModel>
-    _max?: NestedBigIntFilter<$PrismaModel>
-  }
-
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -18312,6 +17631,17 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -18424,42 +17754,15 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type NestedBigIntNullableFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntNullableFilter<$PrismaModel> | bigint | number | null
-  }
-
-  export type NestedBigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel> | null
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel> | null
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntNullableWithAggregatesFilter<$PrismaModel> | bigint | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedBigIntNullableFilter<$PrismaModel>
-    _min?: NestedBigIntNullableFilter<$PrismaModel>
-    _max?: NestedBigIntNullableFilter<$PrismaModel>
-  }
-
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type NestedEnumReportStatusFilter<$PrismaModel = never> = {
@@ -18480,7 +17783,7 @@ export namespace Prisma {
   }
 
   export type BookCreateWithoutUserInput = {
-    id?: bigint | number
+    id?: string
     title: string
     author: string
     isbn?: string | null
@@ -18494,7 +17797,7 @@ export namespace Prisma {
   }
 
   export type BookUncheckedCreateWithoutUserInput = {
-    id?: bigint | number
+    id?: string
     title: string
     author: string
     isbn?: string | null
@@ -18518,15 +17821,15 @@ export namespace Prisma {
   }
 
   export type ExchangeCreateWithoutRequesterInput = {
-    id?: bigint | number
+    id?: string
     status?: $Enums.ExchangeStatus
     request_date?: Date | string
     book: BookCreateNestedOneWithoutExchangesInput
   }
 
   export type ExchangeUncheckedCreateWithoutRequesterInput = {
-    id?: bigint | number
-    book_id: bigint | number
+    id?: string
+    book_id: string
     status?: $Enums.ExchangeStatus
     request_date?: Date | string
   }
@@ -18542,7 +17845,7 @@ export namespace Prisma {
   }
 
   export type ReviewCreateWithoutUserInput = {
-    id?: bigint | number
+    id?: string
     content: string
     rating: number
     publication_date?: Date | string
@@ -18552,8 +17855,8 @@ export namespace Prisma {
   }
 
   export type ReviewUncheckedCreateWithoutUserInput = {
-    id?: bigint | number
-    book_id: bigint | number
+    id?: string
+    book_id: string
     content: string
     rating: number
     publication_date?: Date | string
@@ -18572,15 +17875,15 @@ export namespace Prisma {
   }
 
   export type CommentCreateWithoutUserInput = {
-    id?: bigint | number
+    id?: string
     content: string
     comment_date?: Date | string
     review: ReviewCreateNestedOneWithoutCommentsInput
   }
 
   export type CommentUncheckedCreateWithoutUserInput = {
-    id?: bigint | number
-    review_id: bigint | number
+    id?: string
+    review_id: string
     content: string
     comment_date?: Date | string
   }
@@ -18596,15 +17899,15 @@ export namespace Prisma {
   }
 
   export type ReactionCreateWithoutUserInput = {
-    id?: bigint | number
+    id?: string
     type: string
     reaction_date?: Date | string
     review: ReviewCreateNestedOneWithoutReactionsInput
   }
 
   export type ReactionUncheckedCreateWithoutUserInput = {
-    id?: bigint | number
-    review_id: bigint | number
+    id?: string
+    review_id: string
     type: string
     reaction_date?: Date | string
   }
@@ -18620,7 +17923,7 @@ export namespace Prisma {
   }
 
   export type AudioNoteCreateWithoutUserInput = {
-    id?: bigint | number
+    id?: string
     audio_url?: string | null
     converted_text?: string | null
     creation_date?: Date | string
@@ -18628,8 +17931,8 @@ export namespace Prisma {
   }
 
   export type AudioNoteUncheckedCreateWithoutUserInput = {
-    id?: bigint | number
-    book_id: bigint | number
+    id?: string
+    book_id: string
     audio_url?: string | null
     converted_text?: string | null
     creation_date?: Date | string
@@ -18646,7 +17949,7 @@ export namespace Prisma {
   }
 
   export type NotificationCreateWithoutUserInput = {
-    id?: bigint | number
+    id?: string
     type: string
     content: string
     read?: boolean
@@ -18654,7 +17957,7 @@ export namespace Prisma {
   }
 
   export type NotificationUncheckedCreateWithoutUserInput = {
-    id?: bigint | number
+    id?: string
     type: string
     content: string
     read?: boolean
@@ -18672,13 +17975,13 @@ export namespace Prisma {
   }
 
   export type AchievementCreateWithoutUserInput = {
-    id?: bigint | number
+    id?: string
     description: string
     achievement_date?: Date | string
   }
 
   export type AchievementUncheckedCreateWithoutUserInput = {
-    id?: bigint | number
+    id?: string
     description: string
     achievement_date?: Date | string
   }
@@ -18694,7 +17997,7 @@ export namespace Prisma {
   }
 
   export type ReportCreateWithoutUserInput = {
-    id?: bigint | number
+    id?: string
     reported_content: string
     content_type: string
     status?: $Enums.ReportStatus
@@ -18702,7 +18005,7 @@ export namespace Prisma {
   }
 
   export type ReportUncheckedCreateWithoutUserInput = {
-    id?: bigint | number
+    id?: string
     reported_content: string
     content_type: string
     status?: $Enums.ReportStatus
@@ -18720,16 +18023,16 @@ export namespace Prisma {
   }
 
   export type FriendFollowerCreateWithoutUserInput = {
-    id?: bigint | number
-    user_id: bigint | number
-    friend_id: bigint | number
+    id?: string
+    user_id: string
+    friend_id: string
     follow_date?: Date | string
   }
 
   export type FriendFollowerUncheckedCreateWithoutUserInput = {
-    id?: bigint | number
-    user_id: bigint | number
-    friend_id: bigint | number
+    id?: string
+    user_id: string
+    friend_id: string
     follow_date?: Date | string
   }
 
@@ -18763,14 +18066,14 @@ export namespace Prisma {
     AND?: BookScalarWhereInput | BookScalarWhereInput[]
     OR?: BookScalarWhereInput[]
     NOT?: BookScalarWhereInput | BookScalarWhereInput[]
-    id?: BigIntFilter<"Book"> | bigint | number
+    id?: StringFilter<"Book"> | string
     title?: StringFilter<"Book"> | string
     author?: StringFilter<"Book"> | string
     isbn?: StringNullableFilter<"Book"> | string | null
     image?: StringNullableFilter<"Book"> | string | null
     genre?: StringNullableFilter<"Book"> | string | null
     exchange_available?: BoolFilter<"Book"> | boolean
-    user_id?: BigIntFilter<"Book"> | bigint | number
+    user_id?: StringFilter<"Book"> | string
     status?: EnumExchangeStatusFilter<"Book"> | $Enums.ExchangeStatus
   }
 
@@ -18794,9 +18097,9 @@ export namespace Prisma {
     AND?: ExchangeScalarWhereInput | ExchangeScalarWhereInput[]
     OR?: ExchangeScalarWhereInput[]
     NOT?: ExchangeScalarWhereInput | ExchangeScalarWhereInput[]
-    id?: BigIntFilter<"Exchange"> | bigint | number
-    book_id?: BigIntFilter<"Exchange"> | bigint | number
-    requester_id?: BigIntFilter<"Exchange"> | bigint | number
+    id?: StringFilter<"Exchange"> | string
+    book_id?: StringFilter<"Exchange"> | string
+    requester_id?: StringFilter<"Exchange"> | string
     status?: EnumExchangeStatusFilter<"Exchange"> | $Enums.ExchangeStatus
     request_date?: DateTimeFilter<"Exchange"> | Date | string
   }
@@ -18821,9 +18124,9 @@ export namespace Prisma {
     AND?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
     OR?: ReviewScalarWhereInput[]
     NOT?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
-    id?: BigIntFilter<"Review"> | bigint | number
-    book_id?: BigIntFilter<"Review"> | bigint | number
-    user_id?: BigIntFilter<"Review"> | bigint | number
+    id?: StringFilter<"Review"> | string
+    book_id?: StringFilter<"Review"> | string
+    user_id?: StringFilter<"Review"> | string
     content?: StringFilter<"Review"> | string
     rating?: IntFilter<"Review"> | number
     publication_date?: DateTimeFilter<"Review"> | Date | string
@@ -18849,9 +18152,9 @@ export namespace Prisma {
     AND?: CommentScalarWhereInput | CommentScalarWhereInput[]
     OR?: CommentScalarWhereInput[]
     NOT?: CommentScalarWhereInput | CommentScalarWhereInput[]
-    id?: BigIntFilter<"Comment"> | bigint | number
-    review_id?: BigIntFilter<"Comment"> | bigint | number
-    user_id?: BigIntFilter<"Comment"> | bigint | number
+    id?: StringFilter<"Comment"> | string
+    review_id?: StringFilter<"Comment"> | string
+    user_id?: StringFilter<"Comment"> | string
     content?: StringFilter<"Comment"> | string
     comment_date?: DateTimeFilter<"Comment"> | Date | string
   }
@@ -18876,9 +18179,9 @@ export namespace Prisma {
     AND?: ReactionScalarWhereInput | ReactionScalarWhereInput[]
     OR?: ReactionScalarWhereInput[]
     NOT?: ReactionScalarWhereInput | ReactionScalarWhereInput[]
-    id?: BigIntFilter<"Reaction"> | bigint | number
-    review_id?: BigIntFilter<"Reaction"> | bigint | number
-    user_id?: BigIntFilter<"Reaction"> | bigint | number
+    id?: StringFilter<"Reaction"> | string
+    review_id?: StringFilter<"Reaction"> | string
+    user_id?: StringFilter<"Reaction"> | string
     type?: StringFilter<"Reaction"> | string
     reaction_date?: DateTimeFilter<"Reaction"> | Date | string
   }
@@ -18903,9 +18206,9 @@ export namespace Prisma {
     AND?: AudioNoteScalarWhereInput | AudioNoteScalarWhereInput[]
     OR?: AudioNoteScalarWhereInput[]
     NOT?: AudioNoteScalarWhereInput | AudioNoteScalarWhereInput[]
-    id?: BigIntFilter<"AudioNote"> | bigint | number
-    user_id?: BigIntFilter<"AudioNote"> | bigint | number
-    book_id?: BigIntFilter<"AudioNote"> | bigint | number
+    id?: StringFilter<"AudioNote"> | string
+    user_id?: StringFilter<"AudioNote"> | string
+    book_id?: StringFilter<"AudioNote"> | string
     audio_url?: StringNullableFilter<"AudioNote"> | string | null
     converted_text?: StringNullableFilter<"AudioNote"> | string | null
     creation_date?: DateTimeFilter<"AudioNote"> | Date | string
@@ -18931,8 +18234,8 @@ export namespace Prisma {
     AND?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
     OR?: NotificationScalarWhereInput[]
     NOT?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
-    id?: BigIntFilter<"Notification"> | bigint | number
-    user_id?: BigIntFilter<"Notification"> | bigint | number
+    id?: StringFilter<"Notification"> | string
+    user_id?: StringFilter<"Notification"> | string
     type?: StringFilter<"Notification"> | string
     content?: StringFilter<"Notification"> | string
     read?: BoolFilter<"Notification"> | boolean
@@ -18959,8 +18262,8 @@ export namespace Prisma {
     AND?: AchievementScalarWhereInput | AchievementScalarWhereInput[]
     OR?: AchievementScalarWhereInput[]
     NOT?: AchievementScalarWhereInput | AchievementScalarWhereInput[]
-    id?: BigIntFilter<"Achievement"> | bigint | number
-    user_id?: BigIntFilter<"Achievement"> | bigint | number
+    id?: StringFilter<"Achievement"> | string
+    user_id?: StringFilter<"Achievement"> | string
     description?: StringFilter<"Achievement"> | string
     achievement_date?: DateTimeFilter<"Achievement"> | Date | string
   }
@@ -18985,8 +18288,8 @@ export namespace Prisma {
     AND?: ReportScalarWhereInput | ReportScalarWhereInput[]
     OR?: ReportScalarWhereInput[]
     NOT?: ReportScalarWhereInput | ReportScalarWhereInput[]
-    id?: BigIntFilter<"Report"> | bigint | number
-    user_id?: BigIntFilter<"Report"> | bigint | number
+    id?: StringFilter<"Report"> | string
+    user_id?: StringFilter<"Report"> | string
     reported_content?: StringFilter<"Report"> | string
     content_type?: StringFilter<"Report"> | string
     status?: EnumReportStatusFilter<"Report"> | $Enums.ReportStatus
@@ -19013,15 +18316,15 @@ export namespace Prisma {
     AND?: FriendFollowerScalarWhereInput | FriendFollowerScalarWhereInput[]
     OR?: FriendFollowerScalarWhereInput[]
     NOT?: FriendFollowerScalarWhereInput | FriendFollowerScalarWhereInput[]
-    id?: BigIntFilter<"FriendFollower"> | bigint | number
-    user_id?: BigIntFilter<"FriendFollower"> | bigint | number
-    friend_id?: BigIntFilter<"FriendFollower"> | bigint | number
+    id?: StringFilter<"FriendFollower"> | string
+    user_id?: StringFilter<"FriendFollower"> | string
+    friend_id?: StringFilter<"FriendFollower"> | string
     follow_date?: DateTimeFilter<"FriendFollower"> | Date | string
-    userId?: BigIntNullableFilter<"FriendFollower"> | bigint | number | null
+    userId?: StringNullableFilter<"FriendFollower"> | string | null
   }
 
   export type UserCreateWithoutBooksInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -19043,7 +18346,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutBooksInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -19070,15 +18373,15 @@ export namespace Prisma {
   }
 
   export type ExchangeCreateWithoutBookInput = {
-    id?: bigint | number
+    id?: string
     status?: $Enums.ExchangeStatus
     request_date?: Date | string
     requester: UserCreateNestedOneWithoutExchangesInput
   }
 
   export type ExchangeUncheckedCreateWithoutBookInput = {
-    id?: bigint | number
-    requester_id: bigint | number
+    id?: string
+    requester_id: string
     status?: $Enums.ExchangeStatus
     request_date?: Date | string
   }
@@ -19094,7 +18397,7 @@ export namespace Prisma {
   }
 
   export type ReviewCreateWithoutBookInput = {
-    id?: bigint | number
+    id?: string
     content: string
     rating: number
     publication_date?: Date | string
@@ -19104,8 +18407,8 @@ export namespace Prisma {
   }
 
   export type ReviewUncheckedCreateWithoutBookInput = {
-    id?: bigint | number
-    user_id: bigint | number
+    id?: string
+    user_id: string
     content: string
     rating: number
     publication_date?: Date | string
@@ -19124,7 +18427,7 @@ export namespace Prisma {
   }
 
   export type AudioNoteCreateWithoutBookInput = {
-    id?: bigint | number
+    id?: string
     audio_url?: string | null
     converted_text?: string | null
     creation_date?: Date | string
@@ -19132,8 +18435,8 @@ export namespace Prisma {
   }
 
   export type AudioNoteUncheckedCreateWithoutBookInput = {
-    id?: bigint | number
-    user_id: bigint | number
+    id?: string
+    user_id: string
     audio_url?: string | null
     converted_text?: string | null
     creation_date?: Date | string
@@ -19161,7 +18464,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutBooksInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19183,7 +18486,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutBooksInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19253,7 +18556,7 @@ export namespace Prisma {
   }
 
   export type BookCreateWithoutExchangesInput = {
-    id?: bigint | number
+    id?: string
     title: string
     author: string
     isbn?: string | null
@@ -19267,14 +18570,14 @@ export namespace Prisma {
   }
 
   export type BookUncheckedCreateWithoutExchangesInput = {
-    id?: bigint | number
+    id?: string
     title: string
     author: string
     isbn?: string | null
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
-    user_id: bigint | number
+    user_id: string
     status?: $Enums.ExchangeStatus
     reviews?: ReviewUncheckedCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteUncheckedCreateNestedManyWithoutBookInput
@@ -19286,7 +18589,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutExchangesInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -19308,7 +18611,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutExchangesInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -19346,7 +18649,7 @@ export namespace Prisma {
   }
 
   export type BookUpdateWithoutExchangesInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19360,14 +18663,14 @@ export namespace Prisma {
   }
 
   export type BookUncheckedUpdateWithoutExchangesInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    user_id?: StringFieldUpdateOperationsInput | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     reviews?: ReviewUncheckedUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUncheckedUpdateManyWithoutBookNestedInput
@@ -19385,7 +18688,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutExchangesInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19407,7 +18710,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutExchangesInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19429,7 +18732,7 @@ export namespace Prisma {
   }
 
   export type BookCreateWithoutReviewsInput = {
-    id?: bigint | number
+    id?: string
     title: string
     author: string
     isbn?: string | null
@@ -19443,14 +18746,14 @@ export namespace Prisma {
   }
 
   export type BookUncheckedCreateWithoutReviewsInput = {
-    id?: bigint | number
+    id?: string
     title: string
     author: string
     isbn?: string | null
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
-    user_id: bigint | number
+    user_id: string
     status?: $Enums.ExchangeStatus
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteUncheckedCreateNestedManyWithoutBookInput
@@ -19462,7 +18765,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutReviewsInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -19484,7 +18787,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutReviewsInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -19511,15 +18814,15 @@ export namespace Prisma {
   }
 
   export type CommentCreateWithoutReviewInput = {
-    id?: bigint | number
+    id?: string
     content: string
     comment_date?: Date | string
     user: UserCreateNestedOneWithoutCommentsInput
   }
 
   export type CommentUncheckedCreateWithoutReviewInput = {
-    id?: bigint | number
-    user_id: bigint | number
+    id?: string
+    user_id: string
     content: string
     comment_date?: Date | string
   }
@@ -19535,15 +18838,15 @@ export namespace Prisma {
   }
 
   export type ReactionCreateWithoutReviewInput = {
-    id?: bigint | number
+    id?: string
     type: string
     reaction_date?: Date | string
     user: UserCreateNestedOneWithoutReactionsInput
   }
 
   export type ReactionUncheckedCreateWithoutReviewInput = {
-    id?: bigint | number
-    user_id: bigint | number
+    id?: string
+    user_id: string
     type: string
     reaction_date?: Date | string
   }
@@ -19570,7 +18873,7 @@ export namespace Prisma {
   }
 
   export type BookUpdateWithoutReviewsInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19584,14 +18887,14 @@ export namespace Prisma {
   }
 
   export type BookUncheckedUpdateWithoutReviewsInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    user_id?: StringFieldUpdateOperationsInput | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     exchanges?: ExchangeUncheckedUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUncheckedUpdateManyWithoutBookNestedInput
@@ -19609,7 +18912,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutReviewsInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19631,7 +18934,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutReviewsInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19685,7 +18988,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutAudioNotesInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -19707,7 +19010,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutAudioNotesInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -19734,7 +19037,7 @@ export namespace Prisma {
   }
 
   export type BookCreateWithoutAudioNotesInput = {
-    id?: bigint | number
+    id?: string
     title: string
     author: string
     isbn?: string | null
@@ -19748,14 +19051,14 @@ export namespace Prisma {
   }
 
   export type BookUncheckedCreateWithoutAudioNotesInput = {
-    id?: bigint | number
+    id?: string
     title: string
     author: string
     isbn?: string | null
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
-    user_id: bigint | number
+    user_id: string
     status?: $Enums.ExchangeStatus
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutBookInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutBookInput
@@ -19778,7 +19081,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutAudioNotesInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19800,7 +19103,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutAudioNotesInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19833,7 +19136,7 @@ export namespace Prisma {
   }
 
   export type BookUpdateWithoutAudioNotesInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19847,21 +19150,21 @@ export namespace Prisma {
   }
 
   export type BookUncheckedUpdateWithoutAudioNotesInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    user_id?: StringFieldUpdateOperationsInput | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     exchanges?: ExchangeUncheckedUpdateManyWithoutBookNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutBookNestedInput
   }
 
   export type ReviewCreateWithoutCommentsInput = {
-    id?: bigint | number
+    id?: string
     content: string
     rating: number
     publication_date?: Date | string
@@ -19871,9 +19174,9 @@ export namespace Prisma {
   }
 
   export type ReviewUncheckedCreateWithoutCommentsInput = {
-    id?: bigint | number
-    book_id: bigint | number
-    user_id: bigint | number
+    id?: string
+    book_id: string
+    user_id: string
     content: string
     rating: number
     publication_date?: Date | string
@@ -19886,7 +19189,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutCommentsInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -19908,7 +19211,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutCommentsInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -19946,7 +19249,7 @@ export namespace Prisma {
   }
 
   export type ReviewUpdateWithoutCommentsInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     publication_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19956,9 +19259,9 @@ export namespace Prisma {
   }
 
   export type ReviewUncheckedUpdateWithoutCommentsInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    book_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    book_id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     publication_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19977,7 +19280,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutCommentsInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19999,7 +19302,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutCommentsInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20021,7 +19324,7 @@ export namespace Prisma {
   }
 
   export type ReviewCreateWithoutReactionsInput = {
-    id?: bigint | number
+    id?: string
     content: string
     rating: number
     publication_date?: Date | string
@@ -20031,9 +19334,9 @@ export namespace Prisma {
   }
 
   export type ReviewUncheckedCreateWithoutReactionsInput = {
-    id?: bigint | number
-    book_id: bigint | number
-    user_id: bigint | number
+    id?: string
+    book_id: string
+    user_id: string
     content: string
     rating: number
     publication_date?: Date | string
@@ -20046,7 +19349,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutReactionsInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -20068,7 +19371,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutReactionsInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -20106,7 +19409,7 @@ export namespace Prisma {
   }
 
   export type ReviewUpdateWithoutReactionsInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     publication_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20116,9 +19419,9 @@ export namespace Prisma {
   }
 
   export type ReviewUncheckedUpdateWithoutReactionsInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    book_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    book_id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     publication_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20137,7 +19440,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutReactionsInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20159,7 +19462,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutReactionsInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20181,7 +19484,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutUserFriendsInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -20203,7 +19506,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutUserFriendsInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -20241,7 +19544,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutUserFriendsInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20263,7 +19566,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutUserFriendsInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20285,7 +19588,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutNotificationsInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -20307,7 +19610,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutNotificationsInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -20345,7 +19648,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutNotificationsInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20367,7 +19670,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutNotificationsInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20389,7 +19692,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutAchievementsInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -20411,7 +19714,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutAchievementsInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -20449,7 +19752,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutAchievementsInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20471,7 +19774,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutAchievementsInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20493,7 +19796,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutReportsInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -20515,7 +19818,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutReportsInput = {
-    id?: bigint | number
+    id?: string
     email: string
     password_hash: string
     name?: string | null
@@ -20553,7 +19856,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutReportsInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20575,7 +19878,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutReportsInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password_hash?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20597,7 +19900,7 @@ export namespace Prisma {
   }
 
   export type BookCreateManyUserInput = {
-    id?: bigint | number
+    id?: string
     title: string
     author: string
     isbn?: string | null
@@ -20608,44 +19911,44 @@ export namespace Prisma {
   }
 
   export type ExchangeCreateManyRequesterInput = {
-    id?: bigint | number
-    book_id: bigint | number
+    id?: string
+    book_id: string
     status?: $Enums.ExchangeStatus
     request_date?: Date | string
   }
 
   export type ReviewCreateManyUserInput = {
-    id?: bigint | number
-    book_id: bigint | number
+    id?: string
+    book_id: string
     content: string
     rating: number
     publication_date?: Date | string
   }
 
   export type CommentCreateManyUserInput = {
-    id?: bigint | number
-    review_id: bigint | number
+    id?: string
+    review_id: string
     content: string
     comment_date?: Date | string
   }
 
   export type ReactionCreateManyUserInput = {
-    id?: bigint | number
-    review_id: bigint | number
+    id?: string
+    review_id: string
     type: string
     reaction_date?: Date | string
   }
 
   export type AudioNoteCreateManyUserInput = {
-    id?: bigint | number
-    book_id: bigint | number
+    id?: string
+    book_id: string
     audio_url?: string | null
     converted_text?: string | null
     creation_date?: Date | string
   }
 
   export type NotificationCreateManyUserInput = {
-    id?: bigint | number
+    id?: string
     type: string
     content: string
     read?: boolean
@@ -20653,13 +19956,13 @@ export namespace Prisma {
   }
 
   export type AchievementCreateManyUserInput = {
-    id?: bigint | number
+    id?: string
     description: string
     achievement_date?: Date | string
   }
 
   export type ReportCreateManyUserInput = {
-    id?: bigint | number
+    id?: string
     reported_content: string
     content_type: string
     status?: $Enums.ReportStatus
@@ -20667,14 +19970,14 @@ export namespace Prisma {
   }
 
   export type FriendFollowerCreateManyUserInput = {
-    id?: bigint | number
-    user_id: bigint | number
-    friend_id: bigint | number
+    id?: string
+    user_id: string
+    friend_id: string
     follow_date?: Date | string
   }
 
   export type BookUpdateWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20688,7 +19991,7 @@ export namespace Prisma {
   }
 
   export type BookUncheckedUpdateWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20702,7 +20005,7 @@ export namespace Prisma {
   }
 
   export type BookUncheckedUpdateManyWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20713,28 +20016,28 @@ export namespace Prisma {
   }
 
   export type ExchangeUpdateWithoutRequesterInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     request_date?: DateTimeFieldUpdateOperationsInput | Date | string
     book?: BookUpdateOneRequiredWithoutExchangesNestedInput
   }
 
   export type ExchangeUncheckedUpdateWithoutRequesterInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    book_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    book_id?: StringFieldUpdateOperationsInput | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     request_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ExchangeUncheckedUpdateManyWithoutRequesterInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    book_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    book_id?: StringFieldUpdateOperationsInput | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     request_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ReviewUpdateWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     publication_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20744,8 +20047,8 @@ export namespace Prisma {
   }
 
   export type ReviewUncheckedUpdateWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    book_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    book_id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     publication_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20754,57 +20057,57 @@ export namespace Prisma {
   }
 
   export type ReviewUncheckedUpdateManyWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    book_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    book_id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     publication_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CommentUpdateWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     comment_date?: DateTimeFieldUpdateOperationsInput | Date | string
     review?: ReviewUpdateOneRequiredWithoutCommentsNestedInput
   }
 
   export type CommentUncheckedUpdateWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    review_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    review_id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     comment_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CommentUncheckedUpdateManyWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    review_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    review_id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     comment_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ReactionUpdateWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     reaction_date?: DateTimeFieldUpdateOperationsInput | Date | string
     review?: ReviewUpdateOneRequiredWithoutReactionsNestedInput
   }
 
   export type ReactionUncheckedUpdateWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    review_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    review_id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     reaction_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ReactionUncheckedUpdateManyWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    review_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    review_id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     reaction_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AudioNoteUpdateWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     audio_url?: NullableStringFieldUpdateOperationsInput | string | null
     converted_text?: NullableStringFieldUpdateOperationsInput | string | null
     creation_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20812,23 +20115,23 @@ export namespace Prisma {
   }
 
   export type AudioNoteUncheckedUpdateWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    book_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    book_id?: StringFieldUpdateOperationsInput | string
     audio_url?: NullableStringFieldUpdateOperationsInput | string | null
     converted_text?: NullableStringFieldUpdateOperationsInput | string | null
     creation_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AudioNoteUncheckedUpdateManyWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    book_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    book_id?: StringFieldUpdateOperationsInput | string
     audio_url?: NullableStringFieldUpdateOperationsInput | string | null
     converted_text?: NullableStringFieldUpdateOperationsInput | string | null
     creation_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type NotificationUpdateWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     read?: BoolFieldUpdateOperationsInput | boolean
@@ -20836,7 +20139,7 @@ export namespace Prisma {
   }
 
   export type NotificationUncheckedUpdateWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     read?: BoolFieldUpdateOperationsInput | boolean
@@ -20844,7 +20147,7 @@ export namespace Prisma {
   }
 
   export type NotificationUncheckedUpdateManyWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     read?: BoolFieldUpdateOperationsInput | boolean
@@ -20852,25 +20155,25 @@ export namespace Prisma {
   }
 
   export type AchievementUpdateWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     achievement_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AchievementUncheckedUpdateWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     achievement_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AchievementUncheckedUpdateManyWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     achievement_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ReportUpdateWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     reported_content?: StringFieldUpdateOperationsInput | string
     content_type?: StringFieldUpdateOperationsInput | string
     status?: EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus
@@ -20878,7 +20181,7 @@ export namespace Prisma {
   }
 
   export type ReportUncheckedUpdateWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     reported_content?: StringFieldUpdateOperationsInput | string
     content_type?: StringFieldUpdateOperationsInput | string
     status?: EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus
@@ -20886,7 +20189,7 @@ export namespace Prisma {
   }
 
   export type ReportUncheckedUpdateManyWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     reported_content?: StringFieldUpdateOperationsInput | string
     content_type?: StringFieldUpdateOperationsInput | string
     status?: EnumReportStatusFieldUpdateOperationsInput | $Enums.ReportStatus
@@ -20894,72 +20197,72 @@ export namespace Prisma {
   }
 
   export type FriendFollowerUpdateWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    friend_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    friend_id?: StringFieldUpdateOperationsInput | string
     follow_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FriendFollowerUncheckedUpdateWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    friend_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    friend_id?: StringFieldUpdateOperationsInput | string
     follow_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FriendFollowerUncheckedUpdateManyWithoutUserInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
-    friend_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    friend_id?: StringFieldUpdateOperationsInput | string
     follow_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ExchangeCreateManyBookInput = {
-    id?: bigint | number
-    requester_id: bigint | number
+    id?: string
+    requester_id: string
     status?: $Enums.ExchangeStatus
     request_date?: Date | string
   }
 
   export type ReviewCreateManyBookInput = {
-    id?: bigint | number
-    user_id: bigint | number
+    id?: string
+    user_id: string
     content: string
     rating: number
     publication_date?: Date | string
   }
 
   export type AudioNoteCreateManyBookInput = {
-    id?: bigint | number
-    user_id: bigint | number
+    id?: string
+    user_id: string
     audio_url?: string | null
     converted_text?: string | null
     creation_date?: Date | string
   }
 
   export type ExchangeUpdateWithoutBookInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     request_date?: DateTimeFieldUpdateOperationsInput | Date | string
     requester?: UserUpdateOneRequiredWithoutExchangesNestedInput
   }
 
   export type ExchangeUncheckedUpdateWithoutBookInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    requester_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    requester_id?: StringFieldUpdateOperationsInput | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     request_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ExchangeUncheckedUpdateManyWithoutBookInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    requester_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    requester_id?: StringFieldUpdateOperationsInput | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     request_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ReviewUpdateWithoutBookInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     publication_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20969,8 +20272,8 @@ export namespace Prisma {
   }
 
   export type ReviewUncheckedUpdateWithoutBookInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     publication_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20979,15 +20282,15 @@ export namespace Prisma {
   }
 
   export type ReviewUncheckedUpdateManyWithoutBookInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
     publication_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AudioNoteUpdateWithoutBookInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     audio_url?: NullableStringFieldUpdateOperationsInput | string | null
     converted_text?: NullableStringFieldUpdateOperationsInput | string | null
     creation_date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20995,73 +20298,73 @@ export namespace Prisma {
   }
 
   export type AudioNoteUncheckedUpdateWithoutBookInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     audio_url?: NullableStringFieldUpdateOperationsInput | string | null
     converted_text?: NullableStringFieldUpdateOperationsInput | string | null
     creation_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AudioNoteUncheckedUpdateManyWithoutBookInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     audio_url?: NullableStringFieldUpdateOperationsInput | string | null
     converted_text?: NullableStringFieldUpdateOperationsInput | string | null
     creation_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CommentCreateManyReviewInput = {
-    id?: bigint | number
-    user_id: bigint | number
+    id?: string
+    user_id: string
     content: string
     comment_date?: Date | string
   }
 
   export type ReactionCreateManyReviewInput = {
-    id?: bigint | number
-    user_id: bigint | number
+    id?: string
+    user_id: string
     type: string
     reaction_date?: Date | string
   }
 
   export type CommentUpdateWithoutReviewInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     comment_date?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutCommentsNestedInput
   }
 
   export type CommentUncheckedUpdateWithoutReviewInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     comment_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CommentUncheckedUpdateManyWithoutReviewInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     comment_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ReactionUpdateWithoutReviewInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     reaction_date?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutReactionsNestedInput
   }
 
   export type ReactionUncheckedUpdateWithoutReviewInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     reaction_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ReactionUncheckedUpdateManyWithoutReviewInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    user_id?: BigIntFieldUpdateOperationsInput | bigint | number
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     reaction_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
