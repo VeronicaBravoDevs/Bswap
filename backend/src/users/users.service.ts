@@ -4,6 +4,8 @@ import { User } from 'prisma/generated/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { BooksService } from 'src/books/books.service';
+import { MockService } from 'src/mock/mock.service';
 
 
 
@@ -14,6 +16,8 @@ export class UsersService {
 
   constructor(
     private readonly prismaService: PrismaService,
+    private readonly bookService: BooksService,
+    private readonly mockService: MockService,
   ) { }
 
   async findByEmail(email: string) {
@@ -24,38 +28,55 @@ export class UsersService {
   }
 
   async create(createUserDto: CreateUserDto) {
-
     createUserDto.email.toLocaleLowerCase();
-
-    const user = await this.findByEmail(createUserDto.email)
-
+  
+    const user = await this.findByEmail(createUserDto.email);
+  
     if (user) {
       throw new HttpException('User Already Exist', HttpStatus.CONFLICT);
-    };
+    }
+  
     try {
-      const hashedPassword = await bcrypt.hash(
-        createUserDto.password,
-        roundOfHashing
-      );
-
-      const { email, password, ...rest } = createUserDto;
-
-      const user = await this.prismaService.user.create({
+      const hashedPassword = await bcrypt.hash(createUserDto.password, roundOfHashing);
+      const { email, password, library, ...rest } = createUserDto;
+  
+      const newUser = await this.prismaService.user.create({
         data: {
           ...rest,
           email,
           password_hash: hashedPassword,
-        }
-      })
-      return user;
-    } catch (error){
-      console.log(error)
-      throw new HttpException(
-        'Internal server error',
-        HttpStatus.INTERNAL_SERVER_ERROR,
+        },
+      });
+  
+      const mockBooks = await this.mockService.getMockData();
+      console.log(mockBooks)
+      const userBooks = mockBooks.data.slice(0, 3);
+      await Promise.all(
+        userBooks.map(async (book) => {
+          await this.prismaService.book.create({
+            data: {
+              title: book.title,
+              author: book.author,
+              userId: newUser.id,  // Asocia los libros al usuario recién creado
+            },
+          });
+        })
       );
+  
+      const userWithBooks = await this.prismaService.user.findUnique({
+        where: { id: newUser.id },
+        include: {
+          library: true,  // Incluye los libros en la respuesta
+        },
+      });
+  
+      return userWithBooks;
+    } catch (error) {
+      console.error(error);
+      throw new HttpException('Internal server error', HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
+  
 
   async findAll() {
 
@@ -96,9 +117,10 @@ export class UsersService {
         );
       }
 
-      const {...rest} = updateUserDto;
+      const {password, ...rest} = updateUserDto;
       const updateData: any = {
         ...rest,
+        password_hash: password,
       };
 
 

@@ -1,5 +1,6 @@
 import { ApiProperty, OmitType } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
+
 import {
     IsEmail,
     IsNotEmpty,
@@ -8,7 +9,9 @@ import {
     MaxLength,
     MinLength,
     ValidateNested,
+    IsArray,
 } from 'class-validator';
+
 
 
 export class CreateUserDto {
@@ -41,4 +44,10 @@ export class CreateUserDto {
         message: 'La contraseña no puede tener más de 20 caracteres.',
     })
     password: string
+
+    @ApiProperty()
+    @IsArray()
+    library?: string
+  
+
 }

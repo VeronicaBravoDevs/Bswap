@@ -133,11 +133,15 @@ exports.Prisma.BookScalarFieldEnum = {
   title: 'title',
   author: 'author',
   isbn: 'isbn',
+  description: 'description',
+  published: 'published',
+  publisher: 'publisher',
   image: 'image',
   genre: 'genre',
   exchange_available: 'exchange_available',
-  user_id: 'user_id',
-  status: 'status'
+  status: 'status',
+  libraryId: 'libraryId',
+  userId: 'userId'
 };
 
 exports.Prisma.ExchangeScalarFieldEnum = {

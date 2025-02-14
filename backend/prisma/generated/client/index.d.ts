@@ -1806,7 +1806,6 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    books: number
     exchanges: number
     reviews: number
     comments: number
@@ -1816,10 +1815,10 @@ export namespace Prisma {
     achievements: number
     reports: number
     userFriends: number
+    library: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    books?: boolean | UserCountOutputTypeCountBooksArgs
     exchanges?: boolean | UserCountOutputTypeCountExchangesArgs
     reviews?: boolean | UserCountOutputTypeCountReviewsArgs
     comments?: boolean | UserCountOutputTypeCountCommentsArgs
@@ -1829,6 +1828,7 @@ export namespace Prisma {
     achievements?: boolean | UserCountOutputTypeCountAchievementsArgs
     reports?: boolean | UserCountOutputTypeCountReportsArgs
     userFriends?: boolean | UserCountOutputTypeCountUserFriendsArgs
+    library?: boolean | UserCountOutputTypeCountLibraryArgs
   }
 
   // Custom InputTypes
@@ -1840,13 +1840,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the UserCountOutputType
      */
     select?: UserCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountBooksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BookWhereInput
   }
 
   /**
@@ -1910,6 +1903,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountUserFriendsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FriendFollowerWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountLibraryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BookWhereInput
   }
 
 
@@ -2190,7 +2190,6 @@ export namespace Prisma {
     profile_picture?: boolean
     privacy_preferences?: boolean
     registration_date?: boolean
-    books?: boolean | User$booksArgs<ExtArgs>
     exchanges?: boolean | User$exchangesArgs<ExtArgs>
     reviews?: boolean | User$reviewsArgs<ExtArgs>
     comments?: boolean | User$commentsArgs<ExtArgs>
@@ -2200,6 +2199,7 @@ export namespace Prisma {
     achievements?: boolean | User$achievementsArgs<ExtArgs>
     reports?: boolean | User$reportsArgs<ExtArgs>
     userFriends?: boolean | User$userFriendsArgs<ExtArgs>
+    library?: boolean | User$libraryArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2238,7 +2238,6 @@ export namespace Prisma {
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password_hash" | "name" | "biography" | "profile_picture" | "privacy_preferences" | "registration_date", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    books?: boolean | User$booksArgs<ExtArgs>
     exchanges?: boolean | User$exchangesArgs<ExtArgs>
     reviews?: boolean | User$reviewsArgs<ExtArgs>
     comments?: boolean | User$commentsArgs<ExtArgs>
@@ -2248,6 +2247,7 @@ export namespace Prisma {
     achievements?: boolean | User$achievementsArgs<ExtArgs>
     reports?: boolean | User$reportsArgs<ExtArgs>
     userFriends?: boolean | User$userFriendsArgs<ExtArgs>
+    library?: boolean | User$libraryArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2256,7 +2256,6 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      books: Prisma.$BookPayload<ExtArgs>[]
       exchanges: Prisma.$ExchangePayload<ExtArgs>[]
       reviews: Prisma.$ReviewPayload<ExtArgs>[]
       comments: Prisma.$CommentPayload<ExtArgs>[]
@@ -2266,6 +2265,7 @@ export namespace Prisma {
       achievements: Prisma.$AchievementPayload<ExtArgs>[]
       reports: Prisma.$ReportPayload<ExtArgs>[]
       userFriends: Prisma.$FriendFollowerPayload<ExtArgs>[]
+      library: Prisma.$BookPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2670,7 +2670,6 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    books<T extends User$booksArgs<ExtArgs> = {}>(args?: Subset<T, User$booksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     exchanges<T extends User$exchangesArgs<ExtArgs> = {}>(args?: Subset<T, User$exchangesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExchangePayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     reviews<T extends User$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, User$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     comments<T extends User$commentsArgs<ExtArgs> = {}>(args?: Subset<T, User$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
@@ -2680,6 +2679,7 @@ export namespace Prisma {
     achievements<T extends User$achievementsArgs<ExtArgs> = {}>(args?: Subset<T, User$achievementsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AchievementPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     reports<T extends User$reportsArgs<ExtArgs> = {}>(args?: Subset<T, User$reportsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     userFriends<T extends User$userFriendsArgs<ExtArgs> = {}>(args?: Subset<T, User$userFriendsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FriendFollowerPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    library<T extends User$libraryArgs<ExtArgs> = {}>(args?: Subset<T, User$libraryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3105,30 +3105,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.books
-   */
-  export type User$booksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Book
-     */
-    select?: BookSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Book
-     */
-    omit?: BookOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BookInclude<ExtArgs> | null
-    where?: BookWhereInput
-    orderBy?: BookOrderByWithRelationInput | BookOrderByWithRelationInput[]
-    cursor?: BookWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: BookScalarFieldEnum | BookScalarFieldEnum[]
-  }
-
-  /**
    * User.exchanges
    */
   export type User$exchangesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3345,6 +3321,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.library
+   */
+  export type User$libraryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Book
+     */
+    select?: BookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Book
+     */
+    omit?: BookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookInclude<ExtArgs> | null
+    where?: BookWhereInput
+    orderBy?: BookOrderByWithRelationInput | BookOrderByWithRelationInput[]
+    cursor?: BookWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BookScalarFieldEnum | BookScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3378,11 +3378,15 @@ export namespace Prisma {
     title: string | null
     author: string | null
     isbn: string | null
+    description: string | null
+    published: Date | null
+    publisher: string | null
     image: string | null
     genre: string | null
     exchange_available: boolean | null
-    user_id: string | null
     status: $Enums.ExchangeStatus | null
+    libraryId: string | null
+    userId: string | null
   }
 
   export type BookMaxAggregateOutputType = {
@@ -3390,11 +3394,15 @@ export namespace Prisma {
     title: string | null
     author: string | null
     isbn: string | null
+    description: string | null
+    published: Date | null
+    publisher: string | null
     image: string | null
     genre: string | null
     exchange_available: boolean | null
-    user_id: string | null
     status: $Enums.ExchangeStatus | null
+    libraryId: string | null
+    userId: string | null
   }
 
   export type BookCountAggregateOutputType = {
@@ -3402,11 +3410,15 @@ export namespace Prisma {
     title: number
     author: number
     isbn: number
+    description: number
+    published: number
+    publisher: number
     image: number
     genre: number
     exchange_available: number
-    user_id: number
     status: number
+    libraryId: number
+    userId: number
     _all: number
   }
 
@@ -3416,11 +3428,15 @@ export namespace Prisma {
     title?: true
     author?: true
     isbn?: true
+    description?: true
+    published?: true
+    publisher?: true
     image?: true
     genre?: true
     exchange_available?: true
-    user_id?: true
     status?: true
+    libraryId?: true
+    userId?: true
   }
 
   export type BookMaxAggregateInputType = {
@@ -3428,11 +3444,15 @@ export namespace Prisma {
     title?: true
     author?: true
     isbn?: true
+    description?: true
+    published?: true
+    publisher?: true
     image?: true
     genre?: true
     exchange_available?: true
-    user_id?: true
     status?: true
+    libraryId?: true
+    userId?: true
   }
 
   export type BookCountAggregateInputType = {
@@ -3440,11 +3460,15 @@ export namespace Prisma {
     title?: true
     author?: true
     isbn?: true
+    description?: true
+    published?: true
+    publisher?: true
     image?: true
     genre?: true
     exchange_available?: true
-    user_id?: true
     status?: true
+    libraryId?: true
+    userId?: true
     _all?: true
   }
 
@@ -3525,11 +3549,15 @@ export namespace Prisma {
     title: string
     author: string
     isbn: string | null
+    description: string | null
+    published: Date | null
+    publisher: string | null
     image: string | null
     genre: string | null
     exchange_available: boolean
-    user_id: string
     status: $Enums.ExchangeStatus
+    libraryId: string | null
+    userId: string | null
     _count: BookCountAggregateOutputType | null
     _min: BookMinAggregateOutputType | null
     _max: BookMaxAggregateOutputType | null
@@ -3554,15 +3582,19 @@ export namespace Prisma {
     title?: boolean
     author?: boolean
     isbn?: boolean
+    description?: boolean
+    published?: boolean
+    publisher?: boolean
     image?: boolean
     genre?: boolean
     exchange_available?: boolean
-    user_id?: boolean
     status?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    libraryId?: boolean
+    userId?: boolean
     exchanges?: boolean | Book$exchangesArgs<ExtArgs>
     reviews?: boolean | Book$reviewsArgs<ExtArgs>
     audioNotes?: boolean | Book$audioNotesArgs<ExtArgs>
+    User?: boolean | Book$UserArgs<ExtArgs>
     _count?: boolean | BookCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["book"]>
 
@@ -3571,12 +3603,16 @@ export namespace Prisma {
     title?: boolean
     author?: boolean
     isbn?: boolean
+    description?: boolean
+    published?: boolean
+    publisher?: boolean
     image?: boolean
     genre?: boolean
     exchange_available?: boolean
-    user_id?: boolean
     status?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    libraryId?: boolean
+    userId?: boolean
+    User?: boolean | Book$UserArgs<ExtArgs>
   }, ExtArgs["result"]["book"]>
 
   export type BookSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3584,12 +3620,16 @@ export namespace Prisma {
     title?: boolean
     author?: boolean
     isbn?: boolean
+    description?: boolean
+    published?: boolean
+    publisher?: boolean
     image?: boolean
     genre?: boolean
     exchange_available?: boolean
-    user_id?: boolean
     status?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    libraryId?: boolean
+    userId?: boolean
+    User?: boolean | Book$UserArgs<ExtArgs>
   }, ExtArgs["result"]["book"]>
 
   export type BookSelectScalar = {
@@ -3597,46 +3637,54 @@ export namespace Prisma {
     title?: boolean
     author?: boolean
     isbn?: boolean
+    description?: boolean
+    published?: boolean
+    publisher?: boolean
     image?: boolean
     genre?: boolean
     exchange_available?: boolean
-    user_id?: boolean
     status?: boolean
+    libraryId?: boolean
+    userId?: boolean
   }
 
-  export type BookOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "author" | "isbn" | "image" | "genre" | "exchange_available" | "user_id" | "status", ExtArgs["result"]["book"]>
+  export type BookOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "author" | "isbn" | "description" | "published" | "publisher" | "image" | "genre" | "exchange_available" | "status" | "libraryId" | "userId", ExtArgs["result"]["book"]>
   export type BookInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     exchanges?: boolean | Book$exchangesArgs<ExtArgs>
     reviews?: boolean | Book$reviewsArgs<ExtArgs>
     audioNotes?: boolean | Book$audioNotesArgs<ExtArgs>
+    User?: boolean | Book$UserArgs<ExtArgs>
     _count?: boolean | BookCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type BookIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    User?: boolean | Book$UserArgs<ExtArgs>
   }
   export type BookIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    User?: boolean | Book$UserArgs<ExtArgs>
   }
 
   export type $BookPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Book"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
       exchanges: Prisma.$ExchangePayload<ExtArgs>[]
       reviews: Prisma.$ReviewPayload<ExtArgs>[]
       audioNotes: Prisma.$AudioNotePayload<ExtArgs>[]
+      User: Prisma.$UserPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       title: string
       author: string
       isbn: string | null
+      description: string | null
+      published: Date | null
+      publisher: string | null
       image: string | null
       genre: string | null
       exchange_available: boolean
-      user_id: string
       status: $Enums.ExchangeStatus
+      libraryId: string | null
+      userId: string | null
     }, ExtArgs["result"]["book"]>
     composites: {}
   }
@@ -4031,10 +4079,10 @@ export namespace Prisma {
    */
   export interface Prisma__BookClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
     exchanges<T extends Book$exchangesArgs<ExtArgs> = {}>(args?: Subset<T, Book$exchangesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExchangePayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     reviews<T extends Book$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, Book$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     audioNotes<T extends Book$audioNotesArgs<ExtArgs> = {}>(args?: Subset<T, Book$audioNotesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AudioNotePayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    User<T extends Book$UserArgs<ExtArgs> = {}>(args?: Subset<T, Book$UserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4068,11 +4116,15 @@ export namespace Prisma {
     readonly title: FieldRef<"Book", 'String'>
     readonly author: FieldRef<"Book", 'String'>
     readonly isbn: FieldRef<"Book", 'String'>
+    readonly description: FieldRef<"Book", 'String'>
+    readonly published: FieldRef<"Book", 'DateTime'>
+    readonly publisher: FieldRef<"Book", 'String'>
     readonly image: FieldRef<"Book", 'String'>
     readonly genre: FieldRef<"Book", 'String'>
     readonly exchange_available: FieldRef<"Book", 'Boolean'>
-    readonly user_id: FieldRef<"Book", 'String'>
     readonly status: FieldRef<"Book", 'ExchangeStatus'>
+    readonly libraryId: FieldRef<"Book", 'String'>
+    readonly userId: FieldRef<"Book", 'String'>
   }
     
 
@@ -4538,6 +4590,25 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AudioNoteScalarFieldEnum | AudioNoteScalarFieldEnum[]
+  }
+
+  /**
+   * Book.User
+   */
+  export type Book$UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
   }
 
   /**
@@ -14304,11 +14375,15 @@ export namespace Prisma {
     title: 'title',
     author: 'author',
     isbn: 'isbn',
+    description: 'description',
+    published: 'published',
+    publisher: 'publisher',
     image: 'image',
     genre: 'genre',
     exchange_available: 'exchange_available',
-    user_id: 'user_id',
-    status: 'status'
+    status: 'status',
+    libraryId: 'libraryId',
+    userId: 'userId'
   };
 
   export type BookScalarFieldEnum = (typeof BookScalarFieldEnum)[keyof typeof BookScalarFieldEnum]
@@ -14575,7 +14650,6 @@ export namespace Prisma {
     profile_picture?: StringNullableFilter<"User"> | string | null
     privacy_preferences?: JsonNullableFilter<"User">
     registration_date?: DateTimeFilter<"User"> | Date | string
-    books?: BookListRelationFilter
     exchanges?: ExchangeListRelationFilter
     reviews?: ReviewListRelationFilter
     comments?: CommentListRelationFilter
@@ -14585,6 +14659,7 @@ export namespace Prisma {
     achievements?: AchievementListRelationFilter
     reports?: ReportListRelationFilter
     userFriends?: FriendFollowerListRelationFilter
+    library?: BookListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -14596,7 +14671,6 @@ export namespace Prisma {
     profile_picture?: SortOrderInput | SortOrder
     privacy_preferences?: SortOrderInput | SortOrder
     registration_date?: SortOrder
-    books?: BookOrderByRelationAggregateInput
     exchanges?: ExchangeOrderByRelationAggregateInput
     reviews?: ReviewOrderByRelationAggregateInput
     comments?: CommentOrderByRelationAggregateInput
@@ -14606,6 +14680,7 @@ export namespace Prisma {
     achievements?: AchievementOrderByRelationAggregateInput
     reports?: ReportOrderByRelationAggregateInput
     userFriends?: FriendFollowerOrderByRelationAggregateInput
+    library?: BookOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -14620,7 +14695,6 @@ export namespace Prisma {
     profile_picture?: StringNullableFilter<"User"> | string | null
     privacy_preferences?: JsonNullableFilter<"User">
     registration_date?: DateTimeFilter<"User"> | Date | string
-    books?: BookListRelationFilter
     exchanges?: ExchangeListRelationFilter
     reviews?: ReviewListRelationFilter
     comments?: CommentListRelationFilter
@@ -14630,6 +14704,7 @@ export namespace Prisma {
     achievements?: AchievementListRelationFilter
     reports?: ReportListRelationFilter
     userFriends?: FriendFollowerListRelationFilter
+    library?: BookListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -14668,15 +14743,19 @@ export namespace Prisma {
     title?: StringFilter<"Book"> | string
     author?: StringFilter<"Book"> | string
     isbn?: StringNullableFilter<"Book"> | string | null
+    description?: StringNullableFilter<"Book"> | string | null
+    published?: DateTimeNullableFilter<"Book"> | Date | string | null
+    publisher?: StringNullableFilter<"Book"> | string | null
     image?: StringNullableFilter<"Book"> | string | null
     genre?: StringNullableFilter<"Book"> | string | null
     exchange_available?: BoolFilter<"Book"> | boolean
-    user_id?: StringFilter<"Book"> | string
     status?: EnumExchangeStatusFilter<"Book"> | $Enums.ExchangeStatus
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    libraryId?: StringNullableFilter<"Book"> | string | null
+    userId?: StringNullableFilter<"Book"> | string | null
     exchanges?: ExchangeListRelationFilter
     reviews?: ReviewListRelationFilter
     audioNotes?: AudioNoteListRelationFilter
+    User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
 
   export type BookOrderByWithRelationInput = {
@@ -14684,15 +14763,19 @@ export namespace Prisma {
     title?: SortOrder
     author?: SortOrder
     isbn?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    published?: SortOrderInput | SortOrder
+    publisher?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
     genre?: SortOrderInput | SortOrder
     exchange_available?: SortOrder
-    user_id?: SortOrder
     status?: SortOrder
-    user?: UserOrderByWithRelationInput
+    libraryId?: SortOrderInput | SortOrder
+    userId?: SortOrderInput | SortOrder
     exchanges?: ExchangeOrderByRelationAggregateInput
     reviews?: ReviewOrderByRelationAggregateInput
     audioNotes?: AudioNoteOrderByRelationAggregateInput
+    User?: UserOrderByWithRelationInput
   }
 
   export type BookWhereUniqueInput = Prisma.AtLeast<{
@@ -14703,15 +14786,19 @@ export namespace Prisma {
     NOT?: BookWhereInput | BookWhereInput[]
     title?: StringFilter<"Book"> | string
     author?: StringFilter<"Book"> | string
+    description?: StringNullableFilter<"Book"> | string | null
+    published?: DateTimeNullableFilter<"Book"> | Date | string | null
+    publisher?: StringNullableFilter<"Book"> | string | null
     image?: StringNullableFilter<"Book"> | string | null
     genre?: StringNullableFilter<"Book"> | string | null
     exchange_available?: BoolFilter<"Book"> | boolean
-    user_id?: StringFilter<"Book"> | string
     status?: EnumExchangeStatusFilter<"Book"> | $Enums.ExchangeStatus
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    libraryId?: StringNullableFilter<"Book"> | string | null
+    userId?: StringNullableFilter<"Book"> | string | null
     exchanges?: ExchangeListRelationFilter
     reviews?: ReviewListRelationFilter
     audioNotes?: AudioNoteListRelationFilter
+    User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id" | "isbn">
 
   export type BookOrderByWithAggregationInput = {
@@ -14719,11 +14806,15 @@ export namespace Prisma {
     title?: SortOrder
     author?: SortOrder
     isbn?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    published?: SortOrderInput | SortOrder
+    publisher?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
     genre?: SortOrderInput | SortOrder
     exchange_available?: SortOrder
-    user_id?: SortOrder
     status?: SortOrder
+    libraryId?: SortOrderInput | SortOrder
+    userId?: SortOrderInput | SortOrder
     _count?: BookCountOrderByAggregateInput
     _max?: BookMaxOrderByAggregateInput
     _min?: BookMinOrderByAggregateInput
@@ -14737,11 +14828,15 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"Book"> | string
     author?: StringWithAggregatesFilter<"Book"> | string
     isbn?: StringNullableWithAggregatesFilter<"Book"> | string | null
+    description?: StringNullableWithAggregatesFilter<"Book"> | string | null
+    published?: DateTimeNullableWithAggregatesFilter<"Book"> | Date | string | null
+    publisher?: StringNullableWithAggregatesFilter<"Book"> | string | null
     image?: StringNullableWithAggregatesFilter<"Book"> | string | null
     genre?: StringNullableWithAggregatesFilter<"Book"> | string | null
     exchange_available?: BoolWithAggregatesFilter<"Book"> | boolean
-    user_id?: StringWithAggregatesFilter<"Book"> | string
     status?: EnumExchangeStatusWithAggregatesFilter<"Book"> | $Enums.ExchangeStatus
+    libraryId?: StringNullableWithAggregatesFilter<"Book"> | string | null
+    userId?: StringNullableWithAggregatesFilter<"Book"> | string | null
   }
 
   export type ExchangeWhereInput = {
@@ -15286,7 +15381,6 @@ export namespace Prisma {
     profile_picture?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
-    books?: BookCreateNestedManyWithoutUserInput
     exchanges?: ExchangeCreateNestedManyWithoutRequesterInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
     comments?: CommentCreateNestedManyWithoutUserInput
@@ -15296,6 +15390,7 @@ export namespace Prisma {
     achievements?: AchievementCreateNestedManyWithoutUserInput
     reports?: ReportCreateNestedManyWithoutUserInput
     userFriends?: FriendFollowerCreateNestedManyWithoutUserInput
+    library?: BookCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -15307,7 +15402,6 @@ export namespace Prisma {
     profile_picture?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
-    books?: BookUncheckedCreateNestedManyWithoutUserInput
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutRequesterInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
@@ -15317,6 +15411,7 @@ export namespace Prisma {
     achievements?: AchievementUncheckedCreateNestedManyWithoutUserInput
     reports?: ReportUncheckedCreateNestedManyWithoutUserInput
     userFriends?: FriendFollowerUncheckedCreateNestedManyWithoutUserInput
+    library?: BookUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -15328,7 +15423,6 @@ export namespace Prisma {
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    books?: BookUpdateManyWithoutUserNestedInput
     exchanges?: ExchangeUpdateManyWithoutRequesterNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     comments?: CommentUpdateManyWithoutUserNestedInput
@@ -15338,6 +15432,7 @@ export namespace Prisma {
     achievements?: AchievementUpdateManyWithoutUserNestedInput
     reports?: ReportUpdateManyWithoutUserNestedInput
     userFriends?: FriendFollowerUpdateManyWithoutUserNestedInput
+    library?: BookUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -15349,7 +15444,6 @@ export namespace Prisma {
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    books?: BookUncheckedUpdateManyWithoutUserNestedInput
     exchanges?: ExchangeUncheckedUpdateManyWithoutRequesterNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
@@ -15359,6 +15453,7 @@ export namespace Prisma {
     achievements?: AchievementUncheckedUpdateManyWithoutUserNestedInput
     reports?: ReportUncheckedUpdateManyWithoutUserNestedInput
     userFriends?: FriendFollowerUncheckedUpdateManyWithoutUserNestedInput
+    library?: BookUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -15399,14 +15494,18 @@ export namespace Prisma {
     title: string
     author: string
     isbn?: string | null
+    description?: string | null
+    published?: Date | string | null
+    publisher?: string | null
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
     status?: $Enums.ExchangeStatus
-    user: UserCreateNestedOneWithoutBooksInput
+    libraryId?: string | null
     exchanges?: ExchangeCreateNestedManyWithoutBookInput
     reviews?: ReviewCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteCreateNestedManyWithoutBookInput
+    User?: UserCreateNestedOneWithoutLibraryInput
   }
 
   export type BookUncheckedCreateInput = {
@@ -15414,11 +15513,15 @@ export namespace Prisma {
     title: string
     author: string
     isbn?: string | null
+    description?: string | null
+    published?: Date | string | null
+    publisher?: string | null
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
-    user_id: string
     status?: $Enums.ExchangeStatus
+    libraryId?: string | null
+    userId?: string | null
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutBookInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteUncheckedCreateNestedManyWithoutBookInput
@@ -15429,14 +15532,18 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
-    user?: UserUpdateOneRequiredWithoutBooksNestedInput
+    libraryId?: NullableStringFieldUpdateOperationsInput | string | null
     exchanges?: ExchangeUpdateManyWithoutBookNestedInput
     reviews?: ReviewUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUpdateManyWithoutBookNestedInput
+    User?: UserUpdateOneWithoutLibraryNestedInput
   }
 
   export type BookUncheckedUpdateInput = {
@@ -15444,11 +15551,15 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
-    user_id?: StringFieldUpdateOperationsInput | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
+    libraryId?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     exchanges?: ExchangeUncheckedUpdateManyWithoutBookNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUncheckedUpdateManyWithoutBookNestedInput
@@ -15459,11 +15570,15 @@ export namespace Prisma {
     title: string
     author: string
     isbn?: string | null
+    description?: string | null
+    published?: Date | string | null
+    publisher?: string | null
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
-    user_id: string
     status?: $Enums.ExchangeStatus
+    libraryId?: string | null
+    userId?: string | null
   }
 
   export type BookUpdateManyMutationInput = {
@@ -15471,10 +15586,14 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
+    libraryId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type BookUncheckedUpdateManyInput = {
@@ -15482,11 +15601,15 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
-    user_id?: StringFieldUpdateOperationsInput | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
+    libraryId?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ExchangeCreateInput = {
@@ -16071,12 +16194,6 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type BookListRelationFilter = {
-    every?: BookWhereInput
-    some?: BookWhereInput
-    none?: BookWhereInput
-  }
-
   export type ExchangeListRelationFilter = {
     every?: ExchangeWhereInput
     some?: ExchangeWhereInput
@@ -16131,13 +16248,15 @@ export namespace Prisma {
     none?: FriendFollowerWhereInput
   }
 
+  export type BookListRelationFilter = {
+    every?: BookWhereInput
+    some?: BookWhereInput
+    none?: BookWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
-  }
-
-  export type BookOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type ExchangeOrderByRelationAggregateInput = {
@@ -16173,6 +16292,10 @@ export namespace Prisma {
   }
 
   export type FriendFollowerOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type BookOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -16282,6 +16405,17 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type BoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -16294,9 +16428,9 @@ export namespace Prisma {
     not?: NestedEnumExchangeStatusFilter<$PrismaModel> | $Enums.ExchangeStatus
   }
 
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
+  export type UserNullableScalarRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
   }
 
   export type BookCountOrderByAggregateInput = {
@@ -16304,11 +16438,15 @@ export namespace Prisma {
     title?: SortOrder
     author?: SortOrder
     isbn?: SortOrder
+    description?: SortOrder
+    published?: SortOrder
+    publisher?: SortOrder
     image?: SortOrder
     genre?: SortOrder
     exchange_available?: SortOrder
-    user_id?: SortOrder
     status?: SortOrder
+    libraryId?: SortOrder
+    userId?: SortOrder
   }
 
   export type BookMaxOrderByAggregateInput = {
@@ -16316,11 +16454,15 @@ export namespace Prisma {
     title?: SortOrder
     author?: SortOrder
     isbn?: SortOrder
+    description?: SortOrder
+    published?: SortOrder
+    publisher?: SortOrder
     image?: SortOrder
     genre?: SortOrder
     exchange_available?: SortOrder
-    user_id?: SortOrder
     status?: SortOrder
+    libraryId?: SortOrder
+    userId?: SortOrder
   }
 
   export type BookMinOrderByAggregateInput = {
@@ -16328,11 +16470,29 @@ export namespace Prisma {
     title?: SortOrder
     author?: SortOrder
     isbn?: SortOrder
+    description?: SortOrder
+    published?: SortOrder
+    publisher?: SortOrder
     image?: SortOrder
     genre?: SortOrder
     exchange_available?: SortOrder
-    user_id?: SortOrder
     status?: SortOrder
+    libraryId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -16356,6 +16516,11 @@ export namespace Prisma {
   export type BookScalarRelationFilter = {
     is?: BookWhereInput
     isNot?: BookWhereInput
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
   }
 
   export type ExchangeCountOrderByAggregateInput = {
@@ -16524,11 +16689,6 @@ export namespace Prisma {
     reaction_date?: SortOrder
   }
 
-  export type UserNullableScalarRelationFilter = {
-    is?: UserWhereInput | null
-    isNot?: UserWhereInput | null
-  }
-
   export type FriendFollowerCountOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
@@ -16645,13 +16805,6 @@ export namespace Prisma {
     _max?: NestedEnumReportStatusFilter<$PrismaModel>
   }
 
-  export type BookCreateNestedManyWithoutUserInput = {
-    create?: XOR<BookCreateWithoutUserInput, BookUncheckedCreateWithoutUserInput> | BookCreateWithoutUserInput[] | BookUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: BookCreateOrConnectWithoutUserInput | BookCreateOrConnectWithoutUserInput[]
-    createMany?: BookCreateManyUserInputEnvelope
-    connect?: BookWhereUniqueInput | BookWhereUniqueInput[]
-  }
-
   export type ExchangeCreateNestedManyWithoutRequesterInput = {
     create?: XOR<ExchangeCreateWithoutRequesterInput, ExchangeUncheckedCreateWithoutRequesterInput> | ExchangeCreateWithoutRequesterInput[] | ExchangeUncheckedCreateWithoutRequesterInput[]
     connectOrCreate?: ExchangeCreateOrConnectWithoutRequesterInput | ExchangeCreateOrConnectWithoutRequesterInput[]
@@ -16715,7 +16868,7 @@ export namespace Prisma {
     connect?: FriendFollowerWhereUniqueInput | FriendFollowerWhereUniqueInput[]
   }
 
-  export type BookUncheckedCreateNestedManyWithoutUserInput = {
+  export type BookCreateNestedManyWithoutUserInput = {
     create?: XOR<BookCreateWithoutUserInput, BookUncheckedCreateWithoutUserInput> | BookCreateWithoutUserInput[] | BookUncheckedCreateWithoutUserInput[]
     connectOrCreate?: BookCreateOrConnectWithoutUserInput | BookCreateOrConnectWithoutUserInput[]
     createMany?: BookCreateManyUserInputEnvelope
@@ -16785,6 +16938,13 @@ export namespace Prisma {
     connect?: FriendFollowerWhereUniqueInput | FriendFollowerWhereUniqueInput[]
   }
 
+  export type BookUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<BookCreateWithoutUserInput, BookUncheckedCreateWithoutUserInput> | BookCreateWithoutUserInput[] | BookUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BookCreateOrConnectWithoutUserInput | BookCreateOrConnectWithoutUserInput[]
+    createMany?: BookCreateManyUserInputEnvelope
+    connect?: BookWhereUniqueInput | BookWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -16795,20 +16955,6 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
-  }
-
-  export type BookUpdateManyWithoutUserNestedInput = {
-    create?: XOR<BookCreateWithoutUserInput, BookUncheckedCreateWithoutUserInput> | BookCreateWithoutUserInput[] | BookUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: BookCreateOrConnectWithoutUserInput | BookCreateOrConnectWithoutUserInput[]
-    upsert?: BookUpsertWithWhereUniqueWithoutUserInput | BookUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: BookCreateManyUserInputEnvelope
-    set?: BookWhereUniqueInput | BookWhereUniqueInput[]
-    disconnect?: BookWhereUniqueInput | BookWhereUniqueInput[]
-    delete?: BookWhereUniqueInput | BookWhereUniqueInput[]
-    connect?: BookWhereUniqueInput | BookWhereUniqueInput[]
-    update?: BookUpdateWithWhereUniqueWithoutUserInput | BookUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: BookUpdateManyWithWhereWithoutUserInput | BookUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: BookScalarWhereInput | BookScalarWhereInput[]
   }
 
   export type ExchangeUpdateManyWithoutRequesterNestedInput = {
@@ -16937,7 +17083,7 @@ export namespace Prisma {
     deleteMany?: FriendFollowerScalarWhereInput | FriendFollowerScalarWhereInput[]
   }
 
-  export type BookUncheckedUpdateManyWithoutUserNestedInput = {
+  export type BookUpdateManyWithoutUserNestedInput = {
     create?: XOR<BookCreateWithoutUserInput, BookUncheckedCreateWithoutUserInput> | BookCreateWithoutUserInput[] | BookUncheckedCreateWithoutUserInput[]
     connectOrCreate?: BookCreateOrConnectWithoutUserInput | BookCreateOrConnectWithoutUserInput[]
     upsert?: BookUpsertWithWhereUniqueWithoutUserInput | BookUpsertWithWhereUniqueWithoutUserInput[]
@@ -17077,10 +17223,18 @@ export namespace Prisma {
     deleteMany?: FriendFollowerScalarWhereInput | FriendFollowerScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutBooksInput = {
-    create?: XOR<UserCreateWithoutBooksInput, UserUncheckedCreateWithoutBooksInput>
-    connectOrCreate?: UserCreateOrConnectWithoutBooksInput
-    connect?: UserWhereUniqueInput
+  export type BookUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<BookCreateWithoutUserInput, BookUncheckedCreateWithoutUserInput> | BookCreateWithoutUserInput[] | BookUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BookCreateOrConnectWithoutUserInput | BookCreateOrConnectWithoutUserInput[]
+    upsert?: BookUpsertWithWhereUniqueWithoutUserInput | BookUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: BookCreateManyUserInputEnvelope
+    set?: BookWhereUniqueInput | BookWhereUniqueInput[]
+    disconnect?: BookWhereUniqueInput | BookWhereUniqueInput[]
+    delete?: BookWhereUniqueInput | BookWhereUniqueInput[]
+    connect?: BookWhereUniqueInput | BookWhereUniqueInput[]
+    update?: BookUpdateWithWhereUniqueWithoutUserInput | BookUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: BookUpdateManyWithWhereWithoutUserInput | BookUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: BookScalarWhereInput | BookScalarWhereInput[]
   }
 
   export type ExchangeCreateNestedManyWithoutBookInput = {
@@ -17104,6 +17258,12 @@ export namespace Prisma {
     connect?: AudioNoteWhereUniqueInput | AudioNoteWhereUniqueInput[]
   }
 
+  export type UserCreateNestedOneWithoutLibraryInput = {
+    create?: XOR<UserCreateWithoutLibraryInput, UserUncheckedCreateWithoutLibraryInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLibraryInput
+    connect?: UserWhereUniqueInput
+  }
+
   export type ExchangeUncheckedCreateNestedManyWithoutBookInput = {
     create?: XOR<ExchangeCreateWithoutBookInput, ExchangeUncheckedCreateWithoutBookInput> | ExchangeCreateWithoutBookInput[] | ExchangeUncheckedCreateWithoutBookInput[]
     connectOrCreate?: ExchangeCreateOrConnectWithoutBookInput | ExchangeCreateOrConnectWithoutBookInput[]
@@ -17125,20 +17285,16 @@ export namespace Prisma {
     connect?: AudioNoteWhereUniqueInput | AudioNoteWhereUniqueInput[]
   }
 
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
   }
 
   export type EnumExchangeStatusFieldUpdateOperationsInput = {
     set?: $Enums.ExchangeStatus
-  }
-
-  export type UserUpdateOneRequiredWithoutBooksNestedInput = {
-    create?: XOR<UserCreateWithoutBooksInput, UserUncheckedCreateWithoutBooksInput>
-    connectOrCreate?: UserCreateOrConnectWithoutBooksInput
-    upsert?: UserUpsertWithoutBooksInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBooksInput, UserUpdateWithoutBooksInput>, UserUncheckedUpdateWithoutBooksInput>
   }
 
   export type ExchangeUpdateManyWithoutBookNestedInput = {
@@ -17181,6 +17337,16 @@ export namespace Prisma {
     update?: AudioNoteUpdateWithWhereUniqueWithoutBookInput | AudioNoteUpdateWithWhereUniqueWithoutBookInput[]
     updateMany?: AudioNoteUpdateManyWithWhereWithoutBookInput | AudioNoteUpdateManyWithWhereWithoutBookInput[]
     deleteMany?: AudioNoteScalarWhereInput | AudioNoteScalarWhereInput[]
+  }
+
+  export type UserUpdateOneWithoutLibraryNestedInput = {
+    create?: XOR<UserCreateWithoutLibraryInput, UserUncheckedCreateWithoutLibraryInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLibraryInput
+    upsert?: UserUpsertWithoutLibraryInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutLibraryInput, UserUpdateWithoutLibraryInput>, UserUncheckedUpdateWithoutLibraryInput>
   }
 
   export type ExchangeUncheckedUpdateManyWithoutBookNestedInput = {
@@ -17650,6 +17816,17 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -17660,6 +17837,20 @@ export namespace Prisma {
     in?: $Enums.ExchangeStatus[] | ListEnumExchangeStatusFieldRefInput<$PrismaModel>
     notIn?: $Enums.ExchangeStatus[] | ListEnumExchangeStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumExchangeStatusFilter<$PrismaModel> | $Enums.ExchangeStatus
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -17722,44 +17913,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumReportStatusFilter<$PrismaModel>
     _max?: NestedEnumReportStatusFilter<$PrismaModel>
-  }
-
-  export type BookCreateWithoutUserInput = {
-    id?: string
-    title: string
-    author: string
-    isbn?: string | null
-    image?: string | null
-    genre?: string | null
-    exchange_available?: boolean
-    status?: $Enums.ExchangeStatus
-    exchanges?: ExchangeCreateNestedManyWithoutBookInput
-    reviews?: ReviewCreateNestedManyWithoutBookInput
-    audioNotes?: AudioNoteCreateNestedManyWithoutBookInput
-  }
-
-  export type BookUncheckedCreateWithoutUserInput = {
-    id?: string
-    title: string
-    author: string
-    isbn?: string | null
-    image?: string | null
-    genre?: string | null
-    exchange_available?: boolean
-    status?: $Enums.ExchangeStatus
-    exchanges?: ExchangeUncheckedCreateNestedManyWithoutBookInput
-    reviews?: ReviewUncheckedCreateNestedManyWithoutBookInput
-    audioNotes?: AudioNoteUncheckedCreateNestedManyWithoutBookInput
-  }
-
-  export type BookCreateOrConnectWithoutUserInput = {
-    where: BookWhereUniqueInput
-    create: XOR<BookCreateWithoutUserInput, BookUncheckedCreateWithoutUserInput>
-  }
-
-  export type BookCreateManyUserInputEnvelope = {
-    data: BookCreateManyUserInput | BookCreateManyUserInput[]
-    skipDuplicates?: boolean
   }
 
   export type ExchangeCreateWithoutRequesterInput = {
@@ -17988,35 +18141,50 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type BookUpsertWithWhereUniqueWithoutUserInput = {
+  export type BookCreateWithoutUserInput = {
+    id?: string
+    title: string
+    author: string
+    isbn?: string | null
+    description?: string | null
+    published?: Date | string | null
+    publisher?: string | null
+    image?: string | null
+    genre?: string | null
+    exchange_available?: boolean
+    status?: $Enums.ExchangeStatus
+    libraryId?: string | null
+    exchanges?: ExchangeCreateNestedManyWithoutBookInput
+    reviews?: ReviewCreateNestedManyWithoutBookInput
+    audioNotes?: AudioNoteCreateNestedManyWithoutBookInput
+  }
+
+  export type BookUncheckedCreateWithoutUserInput = {
+    id?: string
+    title: string
+    author: string
+    isbn?: string | null
+    description?: string | null
+    published?: Date | string | null
+    publisher?: string | null
+    image?: string | null
+    genre?: string | null
+    exchange_available?: boolean
+    status?: $Enums.ExchangeStatus
+    libraryId?: string | null
+    exchanges?: ExchangeUncheckedCreateNestedManyWithoutBookInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutBookInput
+    audioNotes?: AudioNoteUncheckedCreateNestedManyWithoutBookInput
+  }
+
+  export type BookCreateOrConnectWithoutUserInput = {
     where: BookWhereUniqueInput
-    update: XOR<BookUpdateWithoutUserInput, BookUncheckedUpdateWithoutUserInput>
     create: XOR<BookCreateWithoutUserInput, BookUncheckedCreateWithoutUserInput>
   }
 
-  export type BookUpdateWithWhereUniqueWithoutUserInput = {
-    where: BookWhereUniqueInput
-    data: XOR<BookUpdateWithoutUserInput, BookUncheckedUpdateWithoutUserInput>
-  }
-
-  export type BookUpdateManyWithWhereWithoutUserInput = {
-    where: BookScalarWhereInput
-    data: XOR<BookUpdateManyMutationInput, BookUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type BookScalarWhereInput = {
-    AND?: BookScalarWhereInput | BookScalarWhereInput[]
-    OR?: BookScalarWhereInput[]
-    NOT?: BookScalarWhereInput | BookScalarWhereInput[]
-    id?: StringFilter<"Book"> | string
-    title?: StringFilter<"Book"> | string
-    author?: StringFilter<"Book"> | string
-    isbn?: StringNullableFilter<"Book"> | string | null
-    image?: StringNullableFilter<"Book"> | string | null
-    genre?: StringNullableFilter<"Book"> | string | null
-    exchange_available?: BoolFilter<"Book"> | boolean
-    user_id?: StringFilter<"Book"> | string
-    status?: EnumExchangeStatusFilter<"Book"> | $Enums.ExchangeStatus
+  export type BookCreateManyUserInputEnvelope = {
+    data: BookCreateManyUserInput | BookCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type ExchangeUpsertWithWhereUniqueWithoutRequesterInput = {
@@ -18265,49 +18433,39 @@ export namespace Prisma {
     userId?: StringNullableFilter<"FriendFollower"> | string | null
   }
 
-  export type UserCreateWithoutBooksInput = {
-    id?: string
-    email: string
-    password_hash: string
-    name?: string | null
-    biography?: string | null
-    profile_picture?: string | null
-    privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
-    registration_date?: Date | string
-    exchanges?: ExchangeCreateNestedManyWithoutRequesterInput
-    reviews?: ReviewCreateNestedManyWithoutUserInput
-    comments?: CommentCreateNestedManyWithoutUserInput
-    reactions?: ReactionCreateNestedManyWithoutUserInput
-    audioNotes?: AudioNoteCreateNestedManyWithoutUserInput
-    notifications?: NotificationCreateNestedManyWithoutUserInput
-    achievements?: AchievementCreateNestedManyWithoutUserInput
-    reports?: ReportCreateNestedManyWithoutUserInput
-    userFriends?: FriendFollowerCreateNestedManyWithoutUserInput
+  export type BookUpsertWithWhereUniqueWithoutUserInput = {
+    where: BookWhereUniqueInput
+    update: XOR<BookUpdateWithoutUserInput, BookUncheckedUpdateWithoutUserInput>
+    create: XOR<BookCreateWithoutUserInput, BookUncheckedCreateWithoutUserInput>
   }
 
-  export type UserUncheckedCreateWithoutBooksInput = {
-    id?: string
-    email: string
-    password_hash: string
-    name?: string | null
-    biography?: string | null
-    profile_picture?: string | null
-    privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
-    registration_date?: Date | string
-    exchanges?: ExchangeUncheckedCreateNestedManyWithoutRequesterInput
-    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
-    comments?: CommentUncheckedCreateNestedManyWithoutUserInput
-    reactions?: ReactionUncheckedCreateNestedManyWithoutUserInput
-    audioNotes?: AudioNoteUncheckedCreateNestedManyWithoutUserInput
-    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
-    achievements?: AchievementUncheckedCreateNestedManyWithoutUserInput
-    reports?: ReportUncheckedCreateNestedManyWithoutUserInput
-    userFriends?: FriendFollowerUncheckedCreateNestedManyWithoutUserInput
+  export type BookUpdateWithWhereUniqueWithoutUserInput = {
+    where: BookWhereUniqueInput
+    data: XOR<BookUpdateWithoutUserInput, BookUncheckedUpdateWithoutUserInput>
   }
 
-  export type UserCreateOrConnectWithoutBooksInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutBooksInput, UserUncheckedCreateWithoutBooksInput>
+  export type BookUpdateManyWithWhereWithoutUserInput = {
+    where: BookScalarWhereInput
+    data: XOR<BookUpdateManyMutationInput, BookUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type BookScalarWhereInput = {
+    AND?: BookScalarWhereInput | BookScalarWhereInput[]
+    OR?: BookScalarWhereInput[]
+    NOT?: BookScalarWhereInput | BookScalarWhereInput[]
+    id?: StringFilter<"Book"> | string
+    title?: StringFilter<"Book"> | string
+    author?: StringFilter<"Book"> | string
+    isbn?: StringNullableFilter<"Book"> | string | null
+    description?: StringNullableFilter<"Book"> | string | null
+    published?: DateTimeNullableFilter<"Book"> | Date | string | null
+    publisher?: StringNullableFilter<"Book"> | string | null
+    image?: StringNullableFilter<"Book"> | string | null
+    genre?: StringNullableFilter<"Book"> | string | null
+    exchange_available?: BoolFilter<"Book"> | boolean
+    status?: EnumExchangeStatusFilter<"Book"> | $Enums.ExchangeStatus
+    libraryId?: StringNullableFilter<"Book"> | string | null
+    userId?: StringNullableFilter<"Book"> | string | null
   }
 
   export type ExchangeCreateWithoutBookInput = {
@@ -18390,55 +18548,49 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type UserUpsertWithoutBooksInput = {
-    update: XOR<UserUpdateWithoutBooksInput, UserUncheckedUpdateWithoutBooksInput>
-    create: XOR<UserCreateWithoutBooksInput, UserUncheckedCreateWithoutBooksInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutBooksInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutBooksInput, UserUncheckedUpdateWithoutBooksInput>
-  }
-
-  export type UserUpdateWithoutBooksInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password_hash?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    biography?: NullableStringFieldUpdateOperationsInput | string | null
-    profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+  export type UserCreateWithoutLibraryInput = {
+    id?: string
+    email: string
+    password_hash: string
+    name?: string | null
+    biography?: string | null
+    profile_picture?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
-    registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    exchanges?: ExchangeUpdateManyWithoutRequesterNestedInput
-    reviews?: ReviewUpdateManyWithoutUserNestedInput
-    comments?: CommentUpdateManyWithoutUserNestedInput
-    reactions?: ReactionUpdateManyWithoutUserNestedInput
-    audioNotes?: AudioNoteUpdateManyWithoutUserNestedInput
-    notifications?: NotificationUpdateManyWithoutUserNestedInput
-    achievements?: AchievementUpdateManyWithoutUserNestedInput
-    reports?: ReportUpdateManyWithoutUserNestedInput
-    userFriends?: FriendFollowerUpdateManyWithoutUserNestedInput
+    registration_date?: Date | string
+    exchanges?: ExchangeCreateNestedManyWithoutRequesterInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutUserInput
+    reactions?: ReactionCreateNestedManyWithoutUserInput
+    audioNotes?: AudioNoteCreateNestedManyWithoutUserInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    achievements?: AchievementCreateNestedManyWithoutUserInput
+    reports?: ReportCreateNestedManyWithoutUserInput
+    userFriends?: FriendFollowerCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedUpdateWithoutBooksInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password_hash?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    biography?: NullableStringFieldUpdateOperationsInput | string | null
-    profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+  export type UserUncheckedCreateWithoutLibraryInput = {
+    id?: string
+    email: string
+    password_hash: string
+    name?: string | null
+    biography?: string | null
+    profile_picture?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
-    registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    exchanges?: ExchangeUncheckedUpdateManyWithoutRequesterNestedInput
-    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
-    comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
-    reactions?: ReactionUncheckedUpdateManyWithoutUserNestedInput
-    audioNotes?: AudioNoteUncheckedUpdateManyWithoutUserNestedInput
-    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
-    achievements?: AchievementUncheckedUpdateManyWithoutUserNestedInput
-    reports?: ReportUncheckedUpdateManyWithoutUserNestedInput
-    userFriends?: FriendFollowerUncheckedUpdateManyWithoutUserNestedInput
+    registration_date?: Date | string
+    exchanges?: ExchangeUncheckedCreateNestedManyWithoutRequesterInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutUserInput
+    reactions?: ReactionUncheckedCreateNestedManyWithoutUserInput
+    audioNotes?: AudioNoteUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    achievements?: AchievementUncheckedCreateNestedManyWithoutUserInput
+    reports?: ReportUncheckedCreateNestedManyWithoutUserInput
+    userFriends?: FriendFollowerUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutLibraryInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutLibraryInput, UserUncheckedCreateWithoutLibraryInput>
   }
 
   export type ExchangeUpsertWithWhereUniqueWithoutBookInput = {
@@ -18489,18 +18641,73 @@ export namespace Prisma {
     data: XOR<AudioNoteUpdateManyMutationInput, AudioNoteUncheckedUpdateManyWithoutBookInput>
   }
 
+  export type UserUpsertWithoutLibraryInput = {
+    update: XOR<UserUpdateWithoutLibraryInput, UserUncheckedUpdateWithoutLibraryInput>
+    create: XOR<UserCreateWithoutLibraryInput, UserUncheckedCreateWithoutLibraryInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutLibraryInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutLibraryInput, UserUncheckedUpdateWithoutLibraryInput>
+  }
+
+  export type UserUpdateWithoutLibraryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password_hash?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    biography?: NullableStringFieldUpdateOperationsInput | string | null
+    profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
+    registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    exchanges?: ExchangeUpdateManyWithoutRequesterNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
+    comments?: CommentUpdateManyWithoutUserNestedInput
+    reactions?: ReactionUpdateManyWithoutUserNestedInput
+    audioNotes?: AudioNoteUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    achievements?: AchievementUpdateManyWithoutUserNestedInput
+    reports?: ReportUpdateManyWithoutUserNestedInput
+    userFriends?: FriendFollowerUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutLibraryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password_hash?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    biography?: NullableStringFieldUpdateOperationsInput | string | null
+    profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
+    registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    exchanges?: ExchangeUncheckedUpdateManyWithoutRequesterNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
+    reactions?: ReactionUncheckedUpdateManyWithoutUserNestedInput
+    audioNotes?: AudioNoteUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    achievements?: AchievementUncheckedUpdateManyWithoutUserNestedInput
+    reports?: ReportUncheckedUpdateManyWithoutUserNestedInput
+    userFriends?: FriendFollowerUncheckedUpdateManyWithoutUserNestedInput
+  }
+
   export type BookCreateWithoutExchangesInput = {
     id?: string
     title: string
     author: string
     isbn?: string | null
+    description?: string | null
+    published?: Date | string | null
+    publisher?: string | null
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
     status?: $Enums.ExchangeStatus
-    user: UserCreateNestedOneWithoutBooksInput
+    libraryId?: string | null
     reviews?: ReviewCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteCreateNestedManyWithoutBookInput
+    User?: UserCreateNestedOneWithoutLibraryInput
   }
 
   export type BookUncheckedCreateWithoutExchangesInput = {
@@ -18508,11 +18715,15 @@ export namespace Prisma {
     title: string
     author: string
     isbn?: string | null
+    description?: string | null
+    published?: Date | string | null
+    publisher?: string | null
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
-    user_id: string
     status?: $Enums.ExchangeStatus
+    libraryId?: string | null
+    userId?: string | null
     reviews?: ReviewUncheckedCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteUncheckedCreateNestedManyWithoutBookInput
   }
@@ -18531,7 +18742,6 @@ export namespace Prisma {
     profile_picture?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
-    books?: BookCreateNestedManyWithoutUserInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
     comments?: CommentCreateNestedManyWithoutUserInput
     reactions?: ReactionCreateNestedManyWithoutUserInput
@@ -18540,6 +18750,7 @@ export namespace Prisma {
     achievements?: AchievementCreateNestedManyWithoutUserInput
     reports?: ReportCreateNestedManyWithoutUserInput
     userFriends?: FriendFollowerCreateNestedManyWithoutUserInput
+    library?: BookCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutExchangesInput = {
@@ -18551,7 +18762,6 @@ export namespace Prisma {
     profile_picture?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
-    books?: BookUncheckedCreateNestedManyWithoutUserInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     reactions?: ReactionUncheckedCreateNestedManyWithoutUserInput
@@ -18560,6 +18770,7 @@ export namespace Prisma {
     achievements?: AchievementUncheckedCreateNestedManyWithoutUserInput
     reports?: ReportUncheckedCreateNestedManyWithoutUserInput
     userFriends?: FriendFollowerUncheckedCreateNestedManyWithoutUserInput
+    library?: BookUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutExchangesInput = {
@@ -18583,13 +18794,17 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
-    user?: UserUpdateOneRequiredWithoutBooksNestedInput
+    libraryId?: NullableStringFieldUpdateOperationsInput | string | null
     reviews?: ReviewUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUpdateManyWithoutBookNestedInput
+    User?: UserUpdateOneWithoutLibraryNestedInput
   }
 
   export type BookUncheckedUpdateWithoutExchangesInput = {
@@ -18597,11 +18812,15 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
-    user_id?: StringFieldUpdateOperationsInput | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
+    libraryId?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     reviews?: ReviewUncheckedUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUncheckedUpdateManyWithoutBookNestedInput
   }
@@ -18626,7 +18845,6 @@ export namespace Prisma {
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    books?: BookUpdateManyWithoutUserNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     comments?: CommentUpdateManyWithoutUserNestedInput
     reactions?: ReactionUpdateManyWithoutUserNestedInput
@@ -18635,6 +18853,7 @@ export namespace Prisma {
     achievements?: AchievementUpdateManyWithoutUserNestedInput
     reports?: ReportUpdateManyWithoutUserNestedInput
     userFriends?: FriendFollowerUpdateManyWithoutUserNestedInput
+    library?: BookUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutExchangesInput = {
@@ -18646,7 +18865,6 @@ export namespace Prisma {
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    books?: BookUncheckedUpdateManyWithoutUserNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     reactions?: ReactionUncheckedUpdateManyWithoutUserNestedInput
@@ -18655,6 +18873,7 @@ export namespace Prisma {
     achievements?: AchievementUncheckedUpdateManyWithoutUserNestedInput
     reports?: ReportUncheckedUpdateManyWithoutUserNestedInput
     userFriends?: FriendFollowerUncheckedUpdateManyWithoutUserNestedInput
+    library?: BookUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type BookCreateWithoutReviewsInput = {
@@ -18662,13 +18881,17 @@ export namespace Prisma {
     title: string
     author: string
     isbn?: string | null
+    description?: string | null
+    published?: Date | string | null
+    publisher?: string | null
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
     status?: $Enums.ExchangeStatus
-    user: UserCreateNestedOneWithoutBooksInput
+    libraryId?: string | null
     exchanges?: ExchangeCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteCreateNestedManyWithoutBookInput
+    User?: UserCreateNestedOneWithoutLibraryInput
   }
 
   export type BookUncheckedCreateWithoutReviewsInput = {
@@ -18676,11 +18899,15 @@ export namespace Prisma {
     title: string
     author: string
     isbn?: string | null
+    description?: string | null
+    published?: Date | string | null
+    publisher?: string | null
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
-    user_id: string
     status?: $Enums.ExchangeStatus
+    libraryId?: string | null
+    userId?: string | null
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteUncheckedCreateNestedManyWithoutBookInput
   }
@@ -18699,7 +18926,6 @@ export namespace Prisma {
     profile_picture?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
-    books?: BookCreateNestedManyWithoutUserInput
     exchanges?: ExchangeCreateNestedManyWithoutRequesterInput
     comments?: CommentCreateNestedManyWithoutUserInput
     reactions?: ReactionCreateNestedManyWithoutUserInput
@@ -18708,6 +18934,7 @@ export namespace Prisma {
     achievements?: AchievementCreateNestedManyWithoutUserInput
     reports?: ReportCreateNestedManyWithoutUserInput
     userFriends?: FriendFollowerCreateNestedManyWithoutUserInput
+    library?: BookCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutReviewsInput = {
@@ -18719,7 +18946,6 @@ export namespace Prisma {
     profile_picture?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
-    books?: BookUncheckedCreateNestedManyWithoutUserInput
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutRequesterInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     reactions?: ReactionUncheckedCreateNestedManyWithoutUserInput
@@ -18728,6 +18954,7 @@ export namespace Prisma {
     achievements?: AchievementUncheckedCreateNestedManyWithoutUserInput
     reports?: ReportUncheckedCreateNestedManyWithoutUserInput
     userFriends?: FriendFollowerUncheckedCreateNestedManyWithoutUserInput
+    library?: BookUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutReviewsInput = {
@@ -18799,13 +19026,17 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
-    user?: UserUpdateOneRequiredWithoutBooksNestedInput
+    libraryId?: NullableStringFieldUpdateOperationsInput | string | null
     exchanges?: ExchangeUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUpdateManyWithoutBookNestedInput
+    User?: UserUpdateOneWithoutLibraryNestedInput
   }
 
   export type BookUncheckedUpdateWithoutReviewsInput = {
@@ -18813,11 +19044,15 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
-    user_id?: StringFieldUpdateOperationsInput | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
+    libraryId?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     exchanges?: ExchangeUncheckedUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUncheckedUpdateManyWithoutBookNestedInput
   }
@@ -18842,7 +19077,6 @@ export namespace Prisma {
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    books?: BookUpdateManyWithoutUserNestedInput
     exchanges?: ExchangeUpdateManyWithoutRequesterNestedInput
     comments?: CommentUpdateManyWithoutUserNestedInput
     reactions?: ReactionUpdateManyWithoutUserNestedInput
@@ -18851,6 +19085,7 @@ export namespace Prisma {
     achievements?: AchievementUpdateManyWithoutUserNestedInput
     reports?: ReportUpdateManyWithoutUserNestedInput
     userFriends?: FriendFollowerUpdateManyWithoutUserNestedInput
+    library?: BookUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutReviewsInput = {
@@ -18862,7 +19097,6 @@ export namespace Prisma {
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    books?: BookUncheckedUpdateManyWithoutUserNestedInput
     exchanges?: ExchangeUncheckedUpdateManyWithoutRequesterNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     reactions?: ReactionUncheckedUpdateManyWithoutUserNestedInput
@@ -18871,6 +19105,7 @@ export namespace Prisma {
     achievements?: AchievementUncheckedUpdateManyWithoutUserNestedInput
     reports?: ReportUncheckedUpdateManyWithoutUserNestedInput
     userFriends?: FriendFollowerUncheckedUpdateManyWithoutUserNestedInput
+    library?: BookUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CommentUpsertWithWhereUniqueWithoutReviewInput = {
@@ -18914,7 +19149,6 @@ export namespace Prisma {
     profile_picture?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
-    books?: BookCreateNestedManyWithoutUserInput
     exchanges?: ExchangeCreateNestedManyWithoutRequesterInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
     comments?: CommentCreateNestedManyWithoutUserInput
@@ -18923,6 +19157,7 @@ export namespace Prisma {
     achievements?: AchievementCreateNestedManyWithoutUserInput
     reports?: ReportCreateNestedManyWithoutUserInput
     userFriends?: FriendFollowerCreateNestedManyWithoutUserInput
+    library?: BookCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAudioNotesInput = {
@@ -18934,7 +19169,6 @@ export namespace Prisma {
     profile_picture?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
-    books?: BookUncheckedCreateNestedManyWithoutUserInput
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutRequesterInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
@@ -18943,6 +19177,7 @@ export namespace Prisma {
     achievements?: AchievementUncheckedCreateNestedManyWithoutUserInput
     reports?: ReportUncheckedCreateNestedManyWithoutUserInput
     userFriends?: FriendFollowerUncheckedCreateNestedManyWithoutUserInput
+    library?: BookUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAudioNotesInput = {
@@ -18955,13 +19190,17 @@ export namespace Prisma {
     title: string
     author: string
     isbn?: string | null
+    description?: string | null
+    published?: Date | string | null
+    publisher?: string | null
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
     status?: $Enums.ExchangeStatus
-    user: UserCreateNestedOneWithoutBooksInput
+    libraryId?: string | null
     exchanges?: ExchangeCreateNestedManyWithoutBookInput
     reviews?: ReviewCreateNestedManyWithoutBookInput
+    User?: UserCreateNestedOneWithoutLibraryInput
   }
 
   export type BookUncheckedCreateWithoutAudioNotesInput = {
@@ -18969,11 +19208,15 @@ export namespace Prisma {
     title: string
     author: string
     isbn?: string | null
+    description?: string | null
+    published?: Date | string | null
+    publisher?: string | null
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
-    user_id: string
     status?: $Enums.ExchangeStatus
+    libraryId?: string | null
+    userId?: string | null
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutBookInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutBookInput
   }
@@ -19003,7 +19246,6 @@ export namespace Prisma {
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    books?: BookUpdateManyWithoutUserNestedInput
     exchanges?: ExchangeUpdateManyWithoutRequesterNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     comments?: CommentUpdateManyWithoutUserNestedInput
@@ -19012,6 +19254,7 @@ export namespace Prisma {
     achievements?: AchievementUpdateManyWithoutUserNestedInput
     reports?: ReportUpdateManyWithoutUserNestedInput
     userFriends?: FriendFollowerUpdateManyWithoutUserNestedInput
+    library?: BookUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAudioNotesInput = {
@@ -19023,7 +19266,6 @@ export namespace Prisma {
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    books?: BookUncheckedUpdateManyWithoutUserNestedInput
     exchanges?: ExchangeUncheckedUpdateManyWithoutRequesterNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
@@ -19032,6 +19274,7 @@ export namespace Prisma {
     achievements?: AchievementUncheckedUpdateManyWithoutUserNestedInput
     reports?: ReportUncheckedUpdateManyWithoutUserNestedInput
     userFriends?: FriendFollowerUncheckedUpdateManyWithoutUserNestedInput
+    library?: BookUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type BookUpsertWithoutAudioNotesInput = {
@@ -19050,13 +19293,17 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
-    user?: UserUpdateOneRequiredWithoutBooksNestedInput
+    libraryId?: NullableStringFieldUpdateOperationsInput | string | null
     exchanges?: ExchangeUpdateManyWithoutBookNestedInput
     reviews?: ReviewUpdateManyWithoutBookNestedInput
+    User?: UserUpdateOneWithoutLibraryNestedInput
   }
 
   export type BookUncheckedUpdateWithoutAudioNotesInput = {
@@ -19064,11 +19311,15 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
     isbn?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
-    user_id?: StringFieldUpdateOperationsInput | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
+    libraryId?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     exchanges?: ExchangeUncheckedUpdateManyWithoutBookNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutBookNestedInput
   }
@@ -19107,7 +19358,6 @@ export namespace Prisma {
     profile_picture?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
-    books?: BookCreateNestedManyWithoutUserInput
     exchanges?: ExchangeCreateNestedManyWithoutRequesterInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
     reactions?: ReactionCreateNestedManyWithoutUserInput
@@ -19116,6 +19366,7 @@ export namespace Prisma {
     achievements?: AchievementCreateNestedManyWithoutUserInput
     reports?: ReportCreateNestedManyWithoutUserInput
     userFriends?: FriendFollowerCreateNestedManyWithoutUserInput
+    library?: BookCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCommentsInput = {
@@ -19127,7 +19378,6 @@ export namespace Prisma {
     profile_picture?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
-    books?: BookUncheckedCreateNestedManyWithoutUserInput
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutRequesterInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     reactions?: ReactionUncheckedCreateNestedManyWithoutUserInput
@@ -19136,6 +19386,7 @@ export namespace Prisma {
     achievements?: AchievementUncheckedCreateNestedManyWithoutUserInput
     reports?: ReportUncheckedCreateNestedManyWithoutUserInput
     userFriends?: FriendFollowerUncheckedCreateNestedManyWithoutUserInput
+    library?: BookUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCommentsInput = {
@@ -19194,7 +19445,6 @@ export namespace Prisma {
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    books?: BookUpdateManyWithoutUserNestedInput
     exchanges?: ExchangeUpdateManyWithoutRequesterNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     reactions?: ReactionUpdateManyWithoutUserNestedInput
@@ -19203,6 +19453,7 @@ export namespace Prisma {
     achievements?: AchievementUpdateManyWithoutUserNestedInput
     reports?: ReportUpdateManyWithoutUserNestedInput
     userFriends?: FriendFollowerUpdateManyWithoutUserNestedInput
+    library?: BookUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -19214,7 +19465,6 @@ export namespace Prisma {
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    books?: BookUncheckedUpdateManyWithoutUserNestedInput
     exchanges?: ExchangeUncheckedUpdateManyWithoutRequesterNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     reactions?: ReactionUncheckedUpdateManyWithoutUserNestedInput
@@ -19223,6 +19473,7 @@ export namespace Prisma {
     achievements?: AchievementUncheckedUpdateManyWithoutUserNestedInput
     reports?: ReportUncheckedUpdateManyWithoutUserNestedInput
     userFriends?: FriendFollowerUncheckedUpdateManyWithoutUserNestedInput
+    library?: BookUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ReviewCreateWithoutReactionsInput = {
@@ -19259,7 +19510,6 @@ export namespace Prisma {
     profile_picture?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
-    books?: BookCreateNestedManyWithoutUserInput
     exchanges?: ExchangeCreateNestedManyWithoutRequesterInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
     comments?: CommentCreateNestedManyWithoutUserInput
@@ -19268,6 +19518,7 @@ export namespace Prisma {
     achievements?: AchievementCreateNestedManyWithoutUserInput
     reports?: ReportCreateNestedManyWithoutUserInput
     userFriends?: FriendFollowerCreateNestedManyWithoutUserInput
+    library?: BookCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutReactionsInput = {
@@ -19279,7 +19530,6 @@ export namespace Prisma {
     profile_picture?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
-    books?: BookUncheckedCreateNestedManyWithoutUserInput
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutRequesterInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
@@ -19288,6 +19538,7 @@ export namespace Prisma {
     achievements?: AchievementUncheckedCreateNestedManyWithoutUserInput
     reports?: ReportUncheckedCreateNestedManyWithoutUserInput
     userFriends?: FriendFollowerUncheckedCreateNestedManyWithoutUserInput
+    library?: BookUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutReactionsInput = {
@@ -19346,7 +19597,6 @@ export namespace Prisma {
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    books?: BookUpdateManyWithoutUserNestedInput
     exchanges?: ExchangeUpdateManyWithoutRequesterNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     comments?: CommentUpdateManyWithoutUserNestedInput
@@ -19355,6 +19605,7 @@ export namespace Prisma {
     achievements?: AchievementUpdateManyWithoutUserNestedInput
     reports?: ReportUpdateManyWithoutUserNestedInput
     userFriends?: FriendFollowerUpdateManyWithoutUserNestedInput
+    library?: BookUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutReactionsInput = {
@@ -19366,7 +19617,6 @@ export namespace Prisma {
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    books?: BookUncheckedUpdateManyWithoutUserNestedInput
     exchanges?: ExchangeUncheckedUpdateManyWithoutRequesterNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
@@ -19375,6 +19625,7 @@ export namespace Prisma {
     achievements?: AchievementUncheckedUpdateManyWithoutUserNestedInput
     reports?: ReportUncheckedUpdateManyWithoutUserNestedInput
     userFriends?: FriendFollowerUncheckedUpdateManyWithoutUserNestedInput
+    library?: BookUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutUserFriendsInput = {
@@ -19386,7 +19637,6 @@ export namespace Prisma {
     profile_picture?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
-    books?: BookCreateNestedManyWithoutUserInput
     exchanges?: ExchangeCreateNestedManyWithoutRequesterInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
     comments?: CommentCreateNestedManyWithoutUserInput
@@ -19395,6 +19645,7 @@ export namespace Prisma {
     notifications?: NotificationCreateNestedManyWithoutUserInput
     achievements?: AchievementCreateNestedManyWithoutUserInput
     reports?: ReportCreateNestedManyWithoutUserInput
+    library?: BookCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutUserFriendsInput = {
@@ -19406,7 +19657,6 @@ export namespace Prisma {
     profile_picture?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
-    books?: BookUncheckedCreateNestedManyWithoutUserInput
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutRequesterInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
@@ -19415,6 +19665,7 @@ export namespace Prisma {
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     achievements?: AchievementUncheckedCreateNestedManyWithoutUserInput
     reports?: ReportUncheckedCreateNestedManyWithoutUserInput
+    library?: BookUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutUserFriendsInput = {
@@ -19442,7 +19693,6 @@ export namespace Prisma {
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    books?: BookUpdateManyWithoutUserNestedInput
     exchanges?: ExchangeUpdateManyWithoutRequesterNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     comments?: CommentUpdateManyWithoutUserNestedInput
@@ -19451,6 +19701,7 @@ export namespace Prisma {
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     achievements?: AchievementUpdateManyWithoutUserNestedInput
     reports?: ReportUpdateManyWithoutUserNestedInput
+    library?: BookUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutUserFriendsInput = {
@@ -19462,7 +19713,6 @@ export namespace Prisma {
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    books?: BookUncheckedUpdateManyWithoutUserNestedInput
     exchanges?: ExchangeUncheckedUpdateManyWithoutRequesterNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
@@ -19471,6 +19721,7 @@ export namespace Prisma {
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     achievements?: AchievementUncheckedUpdateManyWithoutUserNestedInput
     reports?: ReportUncheckedUpdateManyWithoutUserNestedInput
+    library?: BookUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutNotificationsInput = {
@@ -19482,7 +19733,6 @@ export namespace Prisma {
     profile_picture?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
-    books?: BookCreateNestedManyWithoutUserInput
     exchanges?: ExchangeCreateNestedManyWithoutRequesterInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
     comments?: CommentCreateNestedManyWithoutUserInput
@@ -19491,6 +19741,7 @@ export namespace Prisma {
     achievements?: AchievementCreateNestedManyWithoutUserInput
     reports?: ReportCreateNestedManyWithoutUserInput
     userFriends?: FriendFollowerCreateNestedManyWithoutUserInput
+    library?: BookCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -19502,7 +19753,6 @@ export namespace Prisma {
     profile_picture?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
-    books?: BookUncheckedCreateNestedManyWithoutUserInput
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutRequesterInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
@@ -19511,6 +19761,7 @@ export namespace Prisma {
     achievements?: AchievementUncheckedCreateNestedManyWithoutUserInput
     reports?: ReportUncheckedCreateNestedManyWithoutUserInput
     userFriends?: FriendFollowerUncheckedCreateNestedManyWithoutUserInput
+    library?: BookUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -19538,7 +19789,6 @@ export namespace Prisma {
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    books?: BookUpdateManyWithoutUserNestedInput
     exchanges?: ExchangeUpdateManyWithoutRequesterNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     comments?: CommentUpdateManyWithoutUserNestedInput
@@ -19547,6 +19797,7 @@ export namespace Prisma {
     achievements?: AchievementUpdateManyWithoutUserNestedInput
     reports?: ReportUpdateManyWithoutUserNestedInput
     userFriends?: FriendFollowerUpdateManyWithoutUserNestedInput
+    library?: BookUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -19558,7 +19809,6 @@ export namespace Prisma {
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    books?: BookUncheckedUpdateManyWithoutUserNestedInput
     exchanges?: ExchangeUncheckedUpdateManyWithoutRequesterNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
@@ -19567,6 +19817,7 @@ export namespace Prisma {
     achievements?: AchievementUncheckedUpdateManyWithoutUserNestedInput
     reports?: ReportUncheckedUpdateManyWithoutUserNestedInput
     userFriends?: FriendFollowerUncheckedUpdateManyWithoutUserNestedInput
+    library?: BookUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutAchievementsInput = {
@@ -19578,7 +19829,6 @@ export namespace Prisma {
     profile_picture?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
-    books?: BookCreateNestedManyWithoutUserInput
     exchanges?: ExchangeCreateNestedManyWithoutRequesterInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
     comments?: CommentCreateNestedManyWithoutUserInput
@@ -19587,6 +19837,7 @@ export namespace Prisma {
     notifications?: NotificationCreateNestedManyWithoutUserInput
     reports?: ReportCreateNestedManyWithoutUserInput
     userFriends?: FriendFollowerCreateNestedManyWithoutUserInput
+    library?: BookCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAchievementsInput = {
@@ -19598,7 +19849,6 @@ export namespace Prisma {
     profile_picture?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
-    books?: BookUncheckedCreateNestedManyWithoutUserInput
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutRequesterInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
@@ -19607,6 +19857,7 @@ export namespace Prisma {
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     reports?: ReportUncheckedCreateNestedManyWithoutUserInput
     userFriends?: FriendFollowerUncheckedCreateNestedManyWithoutUserInput
+    library?: BookUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAchievementsInput = {
@@ -19634,7 +19885,6 @@ export namespace Prisma {
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    books?: BookUpdateManyWithoutUserNestedInput
     exchanges?: ExchangeUpdateManyWithoutRequesterNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     comments?: CommentUpdateManyWithoutUserNestedInput
@@ -19643,6 +19893,7 @@ export namespace Prisma {
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     reports?: ReportUpdateManyWithoutUserNestedInput
     userFriends?: FriendFollowerUpdateManyWithoutUserNestedInput
+    library?: BookUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAchievementsInput = {
@@ -19654,7 +19905,6 @@ export namespace Prisma {
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    books?: BookUncheckedUpdateManyWithoutUserNestedInput
     exchanges?: ExchangeUncheckedUpdateManyWithoutRequesterNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
@@ -19663,6 +19913,7 @@ export namespace Prisma {
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     reports?: ReportUncheckedUpdateManyWithoutUserNestedInput
     userFriends?: FriendFollowerUncheckedUpdateManyWithoutUserNestedInput
+    library?: BookUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutReportsInput = {
@@ -19674,7 +19925,6 @@ export namespace Prisma {
     profile_picture?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
-    books?: BookCreateNestedManyWithoutUserInput
     exchanges?: ExchangeCreateNestedManyWithoutRequesterInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
     comments?: CommentCreateNestedManyWithoutUserInput
@@ -19683,6 +19933,7 @@ export namespace Prisma {
     notifications?: NotificationCreateNestedManyWithoutUserInput
     achievements?: AchievementCreateNestedManyWithoutUserInput
     userFriends?: FriendFollowerCreateNestedManyWithoutUserInput
+    library?: BookCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutReportsInput = {
@@ -19694,7 +19945,6 @@ export namespace Prisma {
     profile_picture?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
-    books?: BookUncheckedCreateNestedManyWithoutUserInput
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutRequesterInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
@@ -19703,6 +19953,7 @@ export namespace Prisma {
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     achievements?: AchievementUncheckedCreateNestedManyWithoutUserInput
     userFriends?: FriendFollowerUncheckedCreateNestedManyWithoutUserInput
+    library?: BookUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutReportsInput = {
@@ -19730,7 +19981,6 @@ export namespace Prisma {
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    books?: BookUpdateManyWithoutUserNestedInput
     exchanges?: ExchangeUpdateManyWithoutRequesterNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     comments?: CommentUpdateManyWithoutUserNestedInput
@@ -19739,6 +19989,7 @@ export namespace Prisma {
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     achievements?: AchievementUpdateManyWithoutUserNestedInput
     userFriends?: FriendFollowerUpdateManyWithoutUserNestedInput
+    library?: BookUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutReportsInput = {
@@ -19750,7 +20001,6 @@ export namespace Prisma {
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    books?: BookUncheckedUpdateManyWithoutUserNestedInput
     exchanges?: ExchangeUncheckedUpdateManyWithoutRequesterNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
@@ -19759,17 +20009,7 @@ export namespace Prisma {
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     achievements?: AchievementUncheckedUpdateManyWithoutUserNestedInput
     userFriends?: FriendFollowerUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type BookCreateManyUserInput = {
-    id?: string
-    title: string
-    author: string
-    isbn?: string | null
-    image?: string | null
-    genre?: string | null
-    exchange_available?: boolean
-    status?: $Enums.ExchangeStatus
+    library?: BookUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ExchangeCreateManyRequesterInput = {
@@ -19838,43 +20078,19 @@ export namespace Prisma {
     follow_date?: Date | string
   }
 
-  export type BookUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    author?: StringFieldUpdateOperationsInput | string
-    isbn?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    genre?: NullableStringFieldUpdateOperationsInput | string | null
-    exchange_available?: BoolFieldUpdateOperationsInput | boolean
-    status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
-    exchanges?: ExchangeUpdateManyWithoutBookNestedInput
-    reviews?: ReviewUpdateManyWithoutBookNestedInput
-    audioNotes?: AudioNoteUpdateManyWithoutBookNestedInput
-  }
-
-  export type BookUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    author?: StringFieldUpdateOperationsInput | string
-    isbn?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    genre?: NullableStringFieldUpdateOperationsInput | string | null
-    exchange_available?: BoolFieldUpdateOperationsInput | boolean
-    status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
-    exchanges?: ExchangeUncheckedUpdateManyWithoutBookNestedInput
-    reviews?: ReviewUncheckedUpdateManyWithoutBookNestedInput
-    audioNotes?: AudioNoteUncheckedUpdateManyWithoutBookNestedInput
-  }
-
-  export type BookUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    author?: StringFieldUpdateOperationsInput | string
-    isbn?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    genre?: NullableStringFieldUpdateOperationsInput | string | null
-    exchange_available?: BoolFieldUpdateOperationsInput | boolean
-    status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
+  export type BookCreateManyUserInput = {
+    id?: string
+    title: string
+    author: string
+    isbn?: string | null
+    description?: string | null
+    published?: Date | string | null
+    publisher?: string | null
+    image?: string | null
+    genre?: string | null
+    exchange_available?: boolean
+    status?: $Enums.ExchangeStatus
+    libraryId?: string | null
   }
 
   export type ExchangeUpdateWithoutRequesterInput = {
@@ -20077,6 +20293,57 @@ export namespace Prisma {
     user_id?: StringFieldUpdateOperationsInput | string
     friend_id?: StringFieldUpdateOperationsInput | string
     follow_date?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BookUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
+    isbn?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    publisher?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    genre?: NullableStringFieldUpdateOperationsInput | string | null
+    exchange_available?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
+    libraryId?: NullableStringFieldUpdateOperationsInput | string | null
+    exchanges?: ExchangeUpdateManyWithoutBookNestedInput
+    reviews?: ReviewUpdateManyWithoutBookNestedInput
+    audioNotes?: AudioNoteUpdateManyWithoutBookNestedInput
+  }
+
+  export type BookUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
+    isbn?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    publisher?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    genre?: NullableStringFieldUpdateOperationsInput | string | null
+    exchange_available?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
+    libraryId?: NullableStringFieldUpdateOperationsInput | string | null
+    exchanges?: ExchangeUncheckedUpdateManyWithoutBookNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutBookNestedInput
+    audioNotes?: AudioNoteUncheckedUpdateManyWithoutBookNestedInput
+  }
+
+  export type BookUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
+    isbn?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    publisher?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    genre?: NullableStringFieldUpdateOperationsInput | string | null
+    exchange_available?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
+    libraryId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ExchangeCreateManyBookInput = {
