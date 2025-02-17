@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Bswap - Inicio",
+  title: "Bswap",
   description: "Bswap es una aplicación web para intercambios de libros.",
 };
 
