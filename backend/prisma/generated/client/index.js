@@ -252,7 +252,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\ut601819\\Desktop\\Books-No-country\\equipo-s21-05-m-webapp\\backend\\prisma\\generated\\client",
+      "value": "C:\\Users\\curag\\OneDrive\\Desktop\\Programacion\\equipo-s21-05-m-webapp\\backend\\prisma\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -267,10 +267,18 @@ const config = {
       {
         "fromEnvVar": null,
         "value": "rhel-openssl-1.0.x"
+      },
+      {
+        "fromEnvVar": null,
+        "value": "debian-openssl-3.0.x"
+      },
+      {
+        "fromEnvVar": null,
+        "value": "windows"
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\ut601819\\Desktop\\Books-No-country\\equipo-s21-05-m-webapp\\backend\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\curag\\OneDrive\\Desktop\\Programacion\\equipo-s21-05-m-webapp\\backend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -284,7 +292,6 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -293,8 +300,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider      = \"prisma-client-js\"\n  output        = \"./generated/client\"\n  binaryTargets = [\"native\", \"rhel-openssl-1.0.x\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nenum ExchangeStatus {\n  pending\n  accepted\n  rejected\n}\n\nenum ReportStatus {\n  pending\n  reviewed\n}\n\nmodel User {\n  id                  String   @id @default(cuid())\n  email               String   @unique\n  password_hash       String\n  name                String?\n  biography           String?\n  profile_picture     String?\n  privacy_preferences Json?\n  registration_date   DateTime @default(now())\n\n  exchanges     Exchange[]\n  reviews       Review[]\n  comments      Comment[]\n  reactions     Reaction[]\n  audioNotes    AudioNote[]\n  notifications Notification[]\n  achievements  Achievement[]\n  reports       Report[]\n  userFriends   FriendFollower[] @relation(\"UserFriends\")\n  library       Book[]\n}\n\nmodel Book {\n  id                 String    @id @default(cuid())\n  title              String\n  author             String\n  isbn               String?   @unique\n  description        String?\n  published          DateTime?\n  publisher          String?\n  image              String?\n  genre              String?\n  exchange_available Boolean   @default(false)\n\n  exchanges  Exchange[]\n  reviews    Review[]\n  audioNotes AudioNote[]\n  status     ExchangeStatus @default(pending)\n  libraryId  String?\n  User       User?          @relation(fields: [userId], references: [id])\n  userId     String?\n}\n\nmodel Exchange {\n  id           String         @id @default(cuid())\n  book_id      String\n  requester_id String\n  status       ExchangeStatus @default(pending)\n  request_date DateTime       @default(now())\n\n  book      Book @relation(fields: [book_id], references: [id], onDelete: Cascade)\n  requester User @relation(fields: [requester_id], references: [id], onDelete: Cascade)\n}\n\nmodel Review {\n  id               String   @id @default(cuid())\n  book_id          String\n  user_id          String\n  content          String\n  rating           Int\n  publication_date DateTime @default(now())\n\n  book Book @relation(fields: [book_id], references: [id], onDelete: Cascade)\n  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)\n\n  comments  Comment[]\n  reactions Reaction[]\n}\n\nmodel AudioNote {\n  id             String   @id @default(cuid())\n  user_id        String\n  book_id        String\n  audio_url      String?\n  converted_text String?\n  creation_date  DateTime @default(now())\n\n  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)\n  book Book @relation(fields: [book_id], references: [id], onDelete: Cascade)\n}\n\nmodel Comment {\n  id           String   @id @default(cuid())\n  review_id    String\n  user_id      String\n  content      String\n  comment_date DateTime @default(now())\n\n  review Review @relation(fields: [review_id], references: [id], onDelete: Cascade)\n  user   User   @relation(fields: [user_id], references: [id], onDelete: Cascade)\n}\n\nmodel Reaction {\n  id            String   @id @default(cuid())\n  review_id     String\n  user_id       String\n  type          String\n  reaction_date DateTime @default(now())\n\n  review Review @relation(fields: [review_id], references: [id], onDelete: Cascade)\n  user   User   @relation(fields: [user_id], references: [id], onDelete: Cascade)\n}\n\nmodel FriendFollower {\n  id          String   @id @default(cuid())\n  user_id     String\n  friend_id   String\n  follow_date DateTime @default(now())\n\n  User   User?   @relation(fields: [userId], references: [id], name: \"UserFriends\", onDelete: Cascade)\n  userId String?\n}\n\nmodel Notification {\n  id                String   @id @default(cuid())\n  user_id           String\n  type              String\n  content           String\n  read              Boolean  @default(false)\n  notification_date DateTime @default(now())\n\n  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)\n}\n\nmodel Achievement {\n  id               String   @id @default(cuid())\n  user_id          String\n  description      String\n  achievement_date DateTime @default(now())\n\n  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)\n}\n\nmodel Report {\n  id               String       @id @default(cuid())\n  user_id          String\n  reported_content String\n  content_type     String\n  status           ReportStatus @default(pending)\n  report_date      DateTime     @default(now())\n\n  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)\n}\n",
-  "inlineSchemaHash": "53ddb2f17920ec145ffe773a859276f5d05186a082cef70429c0a05e7e35d035",
+  "inlineSchema": "generator client {\n  provider      = \"prisma-client-js\"\n  output        = \"./generated/client\"\n  binaryTargets = [\"native\", \"rhel-openssl-1.0.x\", \"debian-openssl-3.0.x\", \"windows\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nenum ExchangeStatus {\n  pending\n  accepted\n  rejected\n}\n\nenum ReportStatus {\n  pending\n  reviewed\n}\n\nmodel User {\n  id                  String   @id @default(cuid())\n  email               String   @unique\n  password_hash       String\n  name                String?\n  biography           String?\n  profile_picture     String?\n  privacy_preferences Json?\n  registration_date   DateTime @default(now())\n\n  exchanges     Exchange[]\n  reviews       Review[]\n  comments      Comment[]\n  reactions     Reaction[]\n  audioNotes    AudioNote[]\n  notifications Notification[]\n  achievements  Achievement[]\n  reports       Report[]\n  userFriends   FriendFollower[] @relation(\"UserFriends\")\n  library       Book[]\n}\n\nmodel Book {\n  id                 String    @id @default(cuid())\n  title              String\n  author             String\n  isbn               String?   @unique\n  description        String?\n  published          DateTime?\n  publisher          String?\n  image              String?\n  genre              String?\n  exchange_available Boolean   @default(false)\n\n  exchanges  Exchange[]\n  reviews    Review[]\n  audioNotes AudioNote[]\n  status     ExchangeStatus @default(pending)\n  libraryId  String?\n  User       User?          @relation(fields: [userId], references: [id])\n  userId     String?\n}\n\nmodel Exchange {\n  id           String         @id @default(cuid())\n  book_id      String\n  requester_id String\n  status       ExchangeStatus @default(pending)\n  request_date DateTime       @default(now())\n\n  book      Book @relation(fields: [book_id], references: [id], onDelete: Cascade)\n  requester User @relation(fields: [requester_id], references: [id], onDelete: Cascade)\n}\n\nmodel Review {\n  id               String   @id @default(cuid())\n  book_id          String\n  user_id          String\n  content          String\n  rating           Int\n  publication_date DateTime @default(now())\n\n  book Book @relation(fields: [book_id], references: [id], onDelete: Cascade)\n  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)\n\n  comments  Comment[]\n  reactions Reaction[]\n}\n\nmodel AudioNote {\n  id             String   @id @default(cuid())\n  user_id        String\n  book_id        String\n  audio_url      String?\n  converted_text String?\n  creation_date  DateTime @default(now())\n\n  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)\n  book Book @relation(fields: [book_id], references: [id], onDelete: Cascade)\n}\n\nmodel Comment {\n  id           String   @id @default(cuid())\n  review_id    String\n  user_id      String\n  content      String\n  comment_date DateTime @default(now())\n\n  review Review @relation(fields: [review_id], references: [id], onDelete: Cascade)\n  user   User   @relation(fields: [user_id], references: [id], onDelete: Cascade)\n}\n\nmodel Reaction {\n  id            String   @id @default(cuid())\n  review_id     String\n  user_id       String\n  type          String\n  reaction_date DateTime @default(now())\n\n  review Review @relation(fields: [review_id], references: [id], onDelete: Cascade)\n  user   User   @relation(fields: [user_id], references: [id], onDelete: Cascade)\n}\n\nmodel FriendFollower {\n  id          String   @id @default(cuid())\n  user_id     String\n  friend_id   String\n  follow_date DateTime @default(now())\n\n  User   User?   @relation(fields: [userId], references: [id], name: \"UserFriends\", onDelete: Cascade)\n  userId String?\n}\n\nmodel Notification {\n  id                String   @id @default(cuid())\n  user_id           String\n  type              String\n  content           String\n  read              Boolean  @default(false)\n  notification_date DateTime @default(now())\n\n  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)\n}\n\nmodel Achievement {\n  id               String   @id @default(cuid())\n  user_id          String\n  description      String\n  achievement_date DateTime @default(now())\n\n  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)\n}\n\nmodel Report {\n  id               String       @id @default(cuid())\n  user_id          String\n  reported_content String\n  content_type     String\n  status           ReportStatus @default(pending)\n  report_date      DateTime     @default(now())\n\n  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)\n}\n",
+  "inlineSchemaHash": "e0c1f83d629fb87c2f1a51fe700e94def1e712d3a40b73ea71f40d7da04f4535",
   "copyEngine": true
 }
 
@@ -339,6 +346,10 @@ path.join(process.cwd(), "prisma/generated/client/query_engine-windows.dll.node"
 // file annotations for bundling tools to include these files
 path.join(__dirname, "libquery_engine-rhel-openssl-1.0.x.so.node");
 path.join(process.cwd(), "prisma/generated/client/libquery_engine-rhel-openssl-1.0.x.so.node")
+
+// file annotations for bundling tools to include these files
+path.join(__dirname, "libquery_engine-debian-openssl-3.0.x.so.node");
+path.join(process.cwd(), "prisma/generated/client/libquery_engine-debian-openssl-3.0.x.so.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "prisma/generated/client/schema.prisma")
