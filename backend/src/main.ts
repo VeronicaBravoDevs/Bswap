@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
-
+import { SeedService } from './seed/seed.service';
 import { setupSwagger } from './config/swagger.config';
 
 async function bootstrap() {
@@ -33,5 +33,7 @@ async function bootstrap() {
     `Swagger documentation available at: http://localhost:${port}/api/docs`,
   );
 
+  const seedService = app.get(SeedService);
+  await seedService.seedDatabase();
 }
 bootstrap();

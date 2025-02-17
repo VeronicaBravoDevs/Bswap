@@ -7,7 +7,11 @@ export class MockController {
 
   
   @Get('data')
-  async getMockData() {
-    return this.mockService.getMockData();
+  async getMockBooks() {
+    return this.mockService.getMockBooks();
+  }
+  @Get('data')
+  async getMockUsers() {
+    return this.mockService.getMockUsers();
   }
 }

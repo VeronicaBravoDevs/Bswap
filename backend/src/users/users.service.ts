@@ -1,6 +1,5 @@
-import { Injectable, BadRequestException, HttpException, HttpServer, HttpStatus } from '@nestjs/common';
+import { Injectable, HttpException, HttpServer, HttpStatus } from '@nestjs/common';
 import * as bcrypt from 'bcryptjs';
-import { User } from 'prisma/generated/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -16,8 +15,6 @@ export class UsersService {
 
   constructor(
     private readonly prismaService: PrismaService,
-    private readonly bookService: BooksService,
-    private readonly mockService: MockService,
   ) { }
 
   async findByEmail(email: string) {
@@ -48,25 +45,10 @@ export class UsersService {
         },
       });
   
-      const mockBooks = await this.mockService.getMockData();
-      console.log(mockBooks)
-      const userBooks = mockBooks.data.slice(0, 3);
-      await Promise.all(
-        userBooks.map(async (book) => {
-          await this.prismaService.book.create({
-            data: {
-              title: book.title,
-              author: book.author,
-              userId: newUser.id,  // Asocia los libros al usuario recién creado
-            },
-          });
-        })
-      );
-  
       const userWithBooks = await this.prismaService.user.findUnique({
         where: { id: newUser.id },
         include: {
-          library: true,  // Incluye los libros en la respuesta
+          library: true,
         },
       });
   
@@ -95,6 +77,9 @@ export class UsersService {
     try {
       const user = await this.prismaService.user.findUnique({
         where: { id },
+        include:{
+          library: true
+        }
       })
 
       if (!user) {
@@ -116,8 +101,8 @@ export class UsersService {
           roundOfHashing,
         );
       }
-
       const {password, ...rest} = updateUserDto;
+
       const updateData: any = {
         ...rest,
         password_hash: password,
