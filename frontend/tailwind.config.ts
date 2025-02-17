@@ -10,8 +10,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: "var(--background)", //NextJs Example
+        // foreground: "var(--foreground)", NextJs EXAMPLE
       },
     },
   },
