@@ -7,7 +7,7 @@ export default function Header() {
         <h1 className="">Logo</h1>
       </Link>
       <nav>
-        <ul className="flex items-center gap-2">
+        <ul className="flex items-center gap-8">
           <li>
             <Link href="/reviews">Mi Biblioteca</Link>
           </li>
