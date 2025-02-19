@@ -11,7 +11,7 @@ export class BooksService {
 
   async create(createBookDto: CreateBookDto) {
     try {
-      const { title, author, description, genre, image, isbn, publisher } = createBookDto;
+      const { title, author, description, genre, image, isbn, publisher, } = createBookDto;
 
       const book = await this.prismaService.book.create({
         data: {
@@ -23,9 +23,12 @@ export class BooksService {
           isbn,
           publisher,
         },
+        include:{
+          reviews: true
+        }
       });
 
-      return book;
+      return {message: "new book created", data: book};
     } catch (error) {
       console.log(error)
       throw new HttpException(
@@ -39,7 +42,7 @@ export class BooksService {
     try {
       const books = await this.prismaService.book.findMany();
 
-      return books
+      return { message: "All books returned", data: books }
     } catch (error) {
       console.log(error)
       throw new HttpException(
@@ -52,13 +55,16 @@ export class BooksService {
   async findOne(id: string) {
     try {
       const bookById = await this.prismaService.book.findUnique({
-        where: { id }
+        where: { id },
+        include: {
+          reviews: true
+        }
       });
       if (!bookById) {
         throw new HttpException('User not found', HttpStatus.NOT_FOUND);
       }
 
-      return bookById
+      return { message: "Book found", data: bookById }
     } catch (error) {
       console.log(error)
       throw new HttpException(
@@ -79,7 +85,6 @@ export class BooksService {
         data: updateDataBook
       });
       return { message: "Update successfull", data: bookById };
-
     } catch (error) {
       console.log(error)
       throw new HttpException(
@@ -96,7 +101,6 @@ export class BooksService {
         where: { id }
       })
       return { message: "Book delete successfull", data: bookToDelete }
-
     } catch (error) {
       console.log(error)
       throw new HttpException(

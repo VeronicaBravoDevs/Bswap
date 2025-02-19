@@ -27,6 +27,9 @@ model User {
     name                String?
     biography           String?
     profile_picture     String?
+    country             String?
+    city                String?
+    phone               String?
     privacy_preferences Json?
     registration_date   DateTime @default(now())
 
