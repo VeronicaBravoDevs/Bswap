@@ -33,6 +33,10 @@ export class SeedService {
             name: `${mockUser.firstname} ${mockUser.lastname}`,
             email: mockUser.email.toLowerCase(),
             password_hash: hashedPassword,
+            phone: mockUser.phone,
+            city: mockUser.address.city,
+            country: mockUser.address.country
+             
           },
         });
 
