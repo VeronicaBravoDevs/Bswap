@@ -35,13 +35,14 @@ export class UsersService {
   
     try {
       const hashedPassword = await bcrypt.hash(createUserDto.password, roundOfHashing);
-      const { email, password, library, ...rest } = createUserDto;
+      const { email, password, library, phone, ...rest } = createUserDto;
   
       const newUser = await this.prismaService.user.create({
         data: {
           ...rest,
           email,
           password_hash: hashedPassword,
+          phone,
         },
       });
   
@@ -49,6 +50,7 @@ export class UsersService {
         where: { id: newUser.id },
         include: {
           library: true,
+          reviews: true,
         },
       });
   
@@ -78,7 +80,8 @@ export class UsersService {
       const user = await this.prismaService.user.findUnique({
         where: { id },
         include:{
-          library: true
+          library: true,
+          reviews: true,
         }
       })
 

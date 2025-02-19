@@ -56,4 +56,6 @@ export class CreateBookDto {
     @IsString()
     @IsOptional()
     published: string
+
+    
 }

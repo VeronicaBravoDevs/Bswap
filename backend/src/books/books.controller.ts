@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete,Query } from '@nestjs/common';
 import { BooksService } from './books.service';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { CreateBookDto } from './dto/create-book.dto';
@@ -15,8 +15,8 @@ export class BooksController {
   }
 
   @Get()
-  findAll() {
-    return this.booksService.findAll();
+  findAll(@Query('quantity') quantity: number) {
+    return this.booksService.findAll(quantity);
   }
 
   @Get(':id')
