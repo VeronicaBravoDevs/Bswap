@@ -11,34 +11,24 @@ type NavigationLinksProps = {
   variant: 'header' | 'footer';/* para reusar el menu en header y footer */
   className?: string;
   linkClassName?: string;
-  showIcons?: boolean;/* iconos solo en footer */
-  links?: NavLink[];
-};
-/* enlaces externos redes sociales */
-const isExternalLink = (href: string) => {
-  return href.startsWith('http') || href.includes('instagram.com') || href.includes('whatsapp.com') || href.includes('telegram.org');
+  links: NavLink[];
 };
 
 export const NavigationLinks = ({ 
   variant, 
   className, 
   linkClassName,
-  showIcons = variant === 'footer',
-  links = []
+  links
 }: NavigationLinksProps) => {
   return (
     <nav className={className}>
-      <ul className={variant === 'footer' ? 'grid grid-cols-2 gap-2' : ''}>
+      <ul className={variant === 'footer' ? 'grid grid-cols justify-items-center leading-none pb-6 gap-y-2' : 'flex gap-4'}>
         {links.map((link) => (
           <li key={link.href}>
             <a 
               href={link.href} 
-              className={`${linkClassName} ${showIcons && isExternalLink(link.href) ? 'flex items-center gap-2' : ''}`}
-              target={isExternalLink(link.href) ? "_blank" : "_self"}
-              rel={isExternalLink(link.href) ? "noopener noreferrer" : ""}
-            >
-              {link.icon && showIcons && isExternalLink(link.href) && <link.icon className="text-lg" />}
-              <span>{link.label}</span>
+              className={linkClassName} >
+             {link.label}
             </a>
           </li>
         ))}
