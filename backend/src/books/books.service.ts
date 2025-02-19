@@ -22,13 +22,14 @@ export class BooksService {
           image,
           isbn,
           publisher,
+          createdAt: new Date()
         },
-        include:{
+        include: {
           reviews: true
         }
       });
 
-      return {message: "new book created", data: book};
+      return { message: "new book created", data: book };
     } catch (error) {
       console.log(error)
       throw new HttpException(
@@ -38,11 +39,14 @@ export class BooksService {
     }
   }
 
-  async findAll() {
+  async findAll(quantity: number) {
     try {
-      const books = await this.prismaService.book.findMany();
-
-      return { message: "All books returned", data: books }
+      const parsedQuantity = parseInt(quantity.toString(), 10);
+      const books = await this.prismaService.book.findMany({
+        orderBy: { createdAt: 'desc' },
+        take: parsedQuantity
+      });
+      return { message: `${parsedQuantity} books returned"`, data: books }
     } catch (error) {
       console.log(error)
       throw new HttpException(

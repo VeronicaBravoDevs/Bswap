@@ -18,7 +18,6 @@ export class MockService {
   async getMockUsers(quantity: number = 10) {
     try {
       const response = await axios.get(`https://fakerapi.it/api/v2/persons?_quantity=${quantity}`);
-      console.log(response.data)
       return response.data;
     } catch (error) {
       throw new Error('Error fetching mock users from FakerAPI');
