@@ -2023,6 +2023,9 @@ export namespace Prisma {
     name: string | null
     biography: string | null
     profile_picture: string | null
+    country: string | null
+    city: string | null
+    phone: string | null
     registration_date: Date | null
   }
 
@@ -2033,6 +2036,9 @@ export namespace Prisma {
     name: string | null
     biography: string | null
     profile_picture: string | null
+    country: string | null
+    city: string | null
+    phone: string | null
     registration_date: Date | null
   }
 
@@ -2043,6 +2049,9 @@ export namespace Prisma {
     name: number
     biography: number
     profile_picture: number
+    country: number
+    city: number
+    phone: number
     privacy_preferences: number
     registration_date: number
     _all: number
@@ -2056,6 +2065,9 @@ export namespace Prisma {
     name?: true
     biography?: true
     profile_picture?: true
+    country?: true
+    city?: true
+    phone?: true
     registration_date?: true
   }
 
@@ -2066,6 +2078,9 @@ export namespace Prisma {
     name?: true
     biography?: true
     profile_picture?: true
+    country?: true
+    city?: true
+    phone?: true
     registration_date?: true
   }
 
@@ -2076,6 +2091,9 @@ export namespace Prisma {
     name?: true
     biography?: true
     profile_picture?: true
+    country?: true
+    city?: true
+    phone?: true
     privacy_preferences?: true
     registration_date?: true
     _all?: true
@@ -2160,6 +2178,9 @@ export namespace Prisma {
     name: string | null
     biography: string | null
     profile_picture: string | null
+    country: string | null
+    city: string | null
+    phone: string | null
     privacy_preferences: JsonValue | null
     registration_date: Date
     _count: UserCountAggregateOutputType | null
@@ -2188,6 +2209,9 @@ export namespace Prisma {
     name?: boolean
     biography?: boolean
     profile_picture?: boolean
+    country?: boolean
+    city?: boolean
+    phone?: boolean
     privacy_preferences?: boolean
     registration_date?: boolean
     exchanges?: boolean | User$exchangesArgs<ExtArgs>
@@ -2210,6 +2234,9 @@ export namespace Prisma {
     name?: boolean
     biography?: boolean
     profile_picture?: boolean
+    country?: boolean
+    city?: boolean
+    phone?: boolean
     privacy_preferences?: boolean
     registration_date?: boolean
   }, ExtArgs["result"]["user"]>
@@ -2221,6 +2248,9 @@ export namespace Prisma {
     name?: boolean
     biography?: boolean
     profile_picture?: boolean
+    country?: boolean
+    city?: boolean
+    phone?: boolean
     privacy_preferences?: boolean
     registration_date?: boolean
   }, ExtArgs["result"]["user"]>
@@ -2232,11 +2262,14 @@ export namespace Prisma {
     name?: boolean
     biography?: boolean
     profile_picture?: boolean
+    country?: boolean
+    city?: boolean
+    phone?: boolean
     privacy_preferences?: boolean
     registration_date?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password_hash" | "name" | "biography" | "profile_picture" | "privacy_preferences" | "registration_date", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password_hash" | "name" | "biography" | "profile_picture" | "country" | "city" | "phone" | "privacy_preferences" | "registration_date", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     exchanges?: boolean | User$exchangesArgs<ExtArgs>
     reviews?: boolean | User$reviewsArgs<ExtArgs>
@@ -2274,6 +2307,9 @@ export namespace Prisma {
       name: string | null
       biography: string | null
       profile_picture: string | null
+      country: string | null
+      city: string | null
+      phone: string | null
       privacy_preferences: Prisma.JsonValue | null
       registration_date: Date
     }, ExtArgs["result"]["user"]>
@@ -2715,6 +2751,9 @@ export namespace Prisma {
     readonly name: FieldRef<"User", 'String'>
     readonly biography: FieldRef<"User", 'String'>
     readonly profile_picture: FieldRef<"User", 'String'>
+    readonly country: FieldRef<"User", 'String'>
+    readonly city: FieldRef<"User", 'String'>
+    readonly phone: FieldRef<"User", 'String'>
     readonly privacy_preferences: FieldRef<"User", 'Json'>
     readonly registration_date: FieldRef<"User", 'DateTime'>
   }
@@ -3384,6 +3423,7 @@ export namespace Prisma {
     image: string | null
     genre: string | null
     exchange_available: boolean | null
+    createdAt: Date | null
     status: $Enums.ExchangeStatus | null
     libraryId: string | null
     userId: string | null
@@ -3400,6 +3440,7 @@ export namespace Prisma {
     image: string | null
     genre: string | null
     exchange_available: boolean | null
+    createdAt: Date | null
     status: $Enums.ExchangeStatus | null
     libraryId: string | null
     userId: string | null
@@ -3416,6 +3457,7 @@ export namespace Prisma {
     image: number
     genre: number
     exchange_available: number
+    createdAt: number
     status: number
     libraryId: number
     userId: number
@@ -3434,6 +3476,7 @@ export namespace Prisma {
     image?: true
     genre?: true
     exchange_available?: true
+    createdAt?: true
     status?: true
     libraryId?: true
     userId?: true
@@ -3450,6 +3493,7 @@ export namespace Prisma {
     image?: true
     genre?: true
     exchange_available?: true
+    createdAt?: true
     status?: true
     libraryId?: true
     userId?: true
@@ -3466,6 +3510,7 @@ export namespace Prisma {
     image?: true
     genre?: true
     exchange_available?: true
+    createdAt?: true
     status?: true
     libraryId?: true
     userId?: true
@@ -3555,6 +3600,7 @@ export namespace Prisma {
     image: string | null
     genre: string | null
     exchange_available: boolean
+    createdAt: Date
     status: $Enums.ExchangeStatus
     libraryId: string | null
     userId: string | null
@@ -3588,6 +3634,7 @@ export namespace Prisma {
     image?: boolean
     genre?: boolean
     exchange_available?: boolean
+    createdAt?: boolean
     status?: boolean
     libraryId?: boolean
     userId?: boolean
@@ -3609,6 +3656,7 @@ export namespace Prisma {
     image?: boolean
     genre?: boolean
     exchange_available?: boolean
+    createdAt?: boolean
     status?: boolean
     libraryId?: boolean
     userId?: boolean
@@ -3626,6 +3674,7 @@ export namespace Prisma {
     image?: boolean
     genre?: boolean
     exchange_available?: boolean
+    createdAt?: boolean
     status?: boolean
     libraryId?: boolean
     userId?: boolean
@@ -3643,12 +3692,13 @@ export namespace Prisma {
     image?: boolean
     genre?: boolean
     exchange_available?: boolean
+    createdAt?: boolean
     status?: boolean
     libraryId?: boolean
     userId?: boolean
   }
 
-  export type BookOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "author" | "isbn" | "description" | "published" | "publisher" | "image" | "genre" | "exchange_available" | "status" | "libraryId" | "userId", ExtArgs["result"]["book"]>
+  export type BookOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "author" | "isbn" | "description" | "published" | "publisher" | "image" | "genre" | "exchange_available" | "createdAt" | "status" | "libraryId" | "userId", ExtArgs["result"]["book"]>
   export type BookInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     exchanges?: boolean | Book$exchangesArgs<ExtArgs>
     reviews?: boolean | Book$reviewsArgs<ExtArgs>
@@ -3682,6 +3732,7 @@ export namespace Prisma {
       image: string | null
       genre: string | null
       exchange_available: boolean
+      createdAt: Date
       status: $Enums.ExchangeStatus
       libraryId: string | null
       userId: string | null
@@ -4122,6 +4173,7 @@ export namespace Prisma {
     readonly image: FieldRef<"Book", 'String'>
     readonly genre: FieldRef<"Book", 'String'>
     readonly exchange_available: FieldRef<"Book", 'Boolean'>
+    readonly createdAt: FieldRef<"Book", 'DateTime'>
     readonly status: FieldRef<"Book", 'ExchangeStatus'>
     readonly libraryId: FieldRef<"Book", 'String'>
     readonly userId: FieldRef<"Book", 'String'>
@@ -14363,6 +14415,9 @@ export namespace Prisma {
     name: 'name',
     biography: 'biography',
     profile_picture: 'profile_picture',
+    country: 'country',
+    city: 'city',
+    phone: 'phone',
     privacy_preferences: 'privacy_preferences',
     registration_date: 'registration_date'
   };
@@ -14381,6 +14436,7 @@ export namespace Prisma {
     image: 'image',
     genre: 'genre',
     exchange_available: 'exchange_available',
+    createdAt: 'createdAt',
     status: 'status',
     libraryId: 'libraryId',
     userId: 'userId'
@@ -14648,6 +14704,9 @@ export namespace Prisma {
     name?: StringNullableFilter<"User"> | string | null
     biography?: StringNullableFilter<"User"> | string | null
     profile_picture?: StringNullableFilter<"User"> | string | null
+    country?: StringNullableFilter<"User"> | string | null
+    city?: StringNullableFilter<"User"> | string | null
+    phone?: StringNullableFilter<"User"> | string | null
     privacy_preferences?: JsonNullableFilter<"User">
     registration_date?: DateTimeFilter<"User"> | Date | string
     exchanges?: ExchangeListRelationFilter
@@ -14669,6 +14728,9 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     biography?: SortOrderInput | SortOrder
     profile_picture?: SortOrderInput | SortOrder
+    country?: SortOrderInput | SortOrder
+    city?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
     privacy_preferences?: SortOrderInput | SortOrder
     registration_date?: SortOrder
     exchanges?: ExchangeOrderByRelationAggregateInput
@@ -14693,6 +14755,9 @@ export namespace Prisma {
     name?: StringNullableFilter<"User"> | string | null
     biography?: StringNullableFilter<"User"> | string | null
     profile_picture?: StringNullableFilter<"User"> | string | null
+    country?: StringNullableFilter<"User"> | string | null
+    city?: StringNullableFilter<"User"> | string | null
+    phone?: StringNullableFilter<"User"> | string | null
     privacy_preferences?: JsonNullableFilter<"User">
     registration_date?: DateTimeFilter<"User"> | Date | string
     exchanges?: ExchangeListRelationFilter
@@ -14714,6 +14779,9 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     biography?: SortOrderInput | SortOrder
     profile_picture?: SortOrderInput | SortOrder
+    country?: SortOrderInput | SortOrder
+    city?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
     privacy_preferences?: SortOrderInput | SortOrder
     registration_date?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -14731,6 +14799,9 @@ export namespace Prisma {
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
     biography?: StringNullableWithAggregatesFilter<"User"> | string | null
     profile_picture?: StringNullableWithAggregatesFilter<"User"> | string | null
+    country?: StringNullableWithAggregatesFilter<"User"> | string | null
+    city?: StringNullableWithAggregatesFilter<"User"> | string | null
+    phone?: StringNullableWithAggregatesFilter<"User"> | string | null
     privacy_preferences?: JsonNullableWithAggregatesFilter<"User">
     registration_date?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -14749,6 +14820,7 @@ export namespace Prisma {
     image?: StringNullableFilter<"Book"> | string | null
     genre?: StringNullableFilter<"Book"> | string | null
     exchange_available?: BoolFilter<"Book"> | boolean
+    createdAt?: DateTimeFilter<"Book"> | Date | string
     status?: EnumExchangeStatusFilter<"Book"> | $Enums.ExchangeStatus
     libraryId?: StringNullableFilter<"Book"> | string | null
     userId?: StringNullableFilter<"Book"> | string | null
@@ -14769,6 +14841,7 @@ export namespace Prisma {
     image?: SortOrderInput | SortOrder
     genre?: SortOrderInput | SortOrder
     exchange_available?: SortOrder
+    createdAt?: SortOrder
     status?: SortOrder
     libraryId?: SortOrderInput | SortOrder
     userId?: SortOrderInput | SortOrder
@@ -14792,6 +14865,7 @@ export namespace Prisma {
     image?: StringNullableFilter<"Book"> | string | null
     genre?: StringNullableFilter<"Book"> | string | null
     exchange_available?: BoolFilter<"Book"> | boolean
+    createdAt?: DateTimeFilter<"Book"> | Date | string
     status?: EnumExchangeStatusFilter<"Book"> | $Enums.ExchangeStatus
     libraryId?: StringNullableFilter<"Book"> | string | null
     userId?: StringNullableFilter<"Book"> | string | null
@@ -14812,6 +14886,7 @@ export namespace Prisma {
     image?: SortOrderInput | SortOrder
     genre?: SortOrderInput | SortOrder
     exchange_available?: SortOrder
+    createdAt?: SortOrder
     status?: SortOrder
     libraryId?: SortOrderInput | SortOrder
     userId?: SortOrderInput | SortOrder
@@ -14834,6 +14909,7 @@ export namespace Prisma {
     image?: StringNullableWithAggregatesFilter<"Book"> | string | null
     genre?: StringNullableWithAggregatesFilter<"Book"> | string | null
     exchange_available?: BoolWithAggregatesFilter<"Book"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Book"> | Date | string
     status?: EnumExchangeStatusWithAggregatesFilter<"Book"> | $Enums.ExchangeStatus
     libraryId?: StringNullableWithAggregatesFilter<"Book"> | string | null
     userId?: StringNullableWithAggregatesFilter<"Book"> | string | null
@@ -15379,6 +15455,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     exchanges?: ExchangeCreateNestedManyWithoutRequesterInput
@@ -15400,6 +15479,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutRequesterInput
@@ -15421,6 +15503,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     exchanges?: ExchangeUpdateManyWithoutRequesterNestedInput
@@ -15442,6 +15527,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     exchanges?: ExchangeUncheckedUpdateManyWithoutRequesterNestedInput
@@ -15463,6 +15551,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
   }
@@ -15474,6 +15565,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15485,6 +15579,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15500,6 +15597,7 @@ export namespace Prisma {
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
+    createdAt?: Date | string
     status?: $Enums.ExchangeStatus
     libraryId?: string | null
     exchanges?: ExchangeCreateNestedManyWithoutBookInput
@@ -15519,6 +15617,7 @@ export namespace Prisma {
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
+    createdAt?: Date | string
     status?: $Enums.ExchangeStatus
     libraryId?: string | null
     userId?: string | null
@@ -15538,6 +15637,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     libraryId?: NullableStringFieldUpdateOperationsInput | string | null
     exchanges?: ExchangeUpdateManyWithoutBookNestedInput
@@ -15557,6 +15657,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     libraryId?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15576,6 +15677,7 @@ export namespace Prisma {
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
+    createdAt?: Date | string
     status?: $Enums.ExchangeStatus
     libraryId?: string | null
     userId?: string | null
@@ -15592,6 +15694,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     libraryId?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -15607,6 +15710,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     libraryId?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16306,6 +16410,9 @@ export namespace Prisma {
     name?: SortOrder
     biography?: SortOrder
     profile_picture?: SortOrder
+    country?: SortOrder
+    city?: SortOrder
+    phone?: SortOrder
     privacy_preferences?: SortOrder
     registration_date?: SortOrder
   }
@@ -16317,6 +16424,9 @@ export namespace Prisma {
     name?: SortOrder
     biography?: SortOrder
     profile_picture?: SortOrder
+    country?: SortOrder
+    city?: SortOrder
+    phone?: SortOrder
     registration_date?: SortOrder
   }
 
@@ -16327,6 +16437,9 @@ export namespace Prisma {
     name?: SortOrder
     biography?: SortOrder
     profile_picture?: SortOrder
+    country?: SortOrder
+    city?: SortOrder
+    phone?: SortOrder
     registration_date?: SortOrder
   }
 
@@ -16444,6 +16557,7 @@ export namespace Prisma {
     image?: SortOrder
     genre?: SortOrder
     exchange_available?: SortOrder
+    createdAt?: SortOrder
     status?: SortOrder
     libraryId?: SortOrder
     userId?: SortOrder
@@ -16460,6 +16574,7 @@ export namespace Prisma {
     image?: SortOrder
     genre?: SortOrder
     exchange_available?: SortOrder
+    createdAt?: SortOrder
     status?: SortOrder
     libraryId?: SortOrder
     userId?: SortOrder
@@ -16476,6 +16591,7 @@ export namespace Prisma {
     image?: SortOrder
     genre?: SortOrder
     exchange_available?: SortOrder
+    createdAt?: SortOrder
     status?: SortOrder
     libraryId?: SortOrder
     userId?: SortOrder
@@ -18152,6 +18268,7 @@ export namespace Prisma {
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
+    createdAt?: Date | string
     status?: $Enums.ExchangeStatus
     libraryId?: string | null
     exchanges?: ExchangeCreateNestedManyWithoutBookInput
@@ -18170,6 +18287,7 @@ export namespace Prisma {
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
+    createdAt?: Date | string
     status?: $Enums.ExchangeStatus
     libraryId?: string | null
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutBookInput
@@ -18463,6 +18581,7 @@ export namespace Prisma {
     image?: StringNullableFilter<"Book"> | string | null
     genre?: StringNullableFilter<"Book"> | string | null
     exchange_available?: BoolFilter<"Book"> | boolean
+    createdAt?: DateTimeFilter<"Book"> | Date | string
     status?: EnumExchangeStatusFilter<"Book"> | $Enums.ExchangeStatus
     libraryId?: StringNullableFilter<"Book"> | string | null
     userId?: StringNullableFilter<"Book"> | string | null
@@ -18555,6 +18674,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     exchanges?: ExchangeCreateNestedManyWithoutRequesterInput
@@ -18575,6 +18697,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutRequesterInput
@@ -18659,6 +18784,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     exchanges?: ExchangeUpdateManyWithoutRequesterNestedInput
@@ -18679,6 +18807,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     exchanges?: ExchangeUncheckedUpdateManyWithoutRequesterNestedInput
@@ -18703,6 +18834,7 @@ export namespace Prisma {
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
+    createdAt?: Date | string
     status?: $Enums.ExchangeStatus
     libraryId?: string | null
     reviews?: ReviewCreateNestedManyWithoutBookInput
@@ -18721,6 +18853,7 @@ export namespace Prisma {
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
+    createdAt?: Date | string
     status?: $Enums.ExchangeStatus
     libraryId?: string | null
     userId?: string | null
@@ -18740,6 +18873,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     reviews?: ReviewCreateNestedManyWithoutUserInput
@@ -18760,6 +18896,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
@@ -18800,6 +18939,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     libraryId?: NullableStringFieldUpdateOperationsInput | string | null
     reviews?: ReviewUpdateManyWithoutBookNestedInput
@@ -18818,6 +18958,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     libraryId?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18843,6 +18984,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     reviews?: ReviewUpdateManyWithoutUserNestedInput
@@ -18863,6 +19007,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
@@ -18887,6 +19034,7 @@ export namespace Prisma {
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
+    createdAt?: Date | string
     status?: $Enums.ExchangeStatus
     libraryId?: string | null
     exchanges?: ExchangeCreateNestedManyWithoutBookInput
@@ -18905,6 +19053,7 @@ export namespace Prisma {
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
+    createdAt?: Date | string
     status?: $Enums.ExchangeStatus
     libraryId?: string | null
     userId?: string | null
@@ -18924,6 +19073,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     exchanges?: ExchangeCreateNestedManyWithoutRequesterInput
@@ -18944,6 +19096,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutRequesterInput
@@ -19032,6 +19187,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     libraryId?: NullableStringFieldUpdateOperationsInput | string | null
     exchanges?: ExchangeUpdateManyWithoutBookNestedInput
@@ -19050,6 +19206,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     libraryId?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19075,6 +19232,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     exchanges?: ExchangeUpdateManyWithoutRequesterNestedInput
@@ -19095,6 +19255,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     exchanges?: ExchangeUncheckedUpdateManyWithoutRequesterNestedInput
@@ -19147,6 +19310,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     exchanges?: ExchangeCreateNestedManyWithoutRequesterInput
@@ -19167,6 +19333,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutRequesterInput
@@ -19196,6 +19365,7 @@ export namespace Prisma {
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
+    createdAt?: Date | string
     status?: $Enums.ExchangeStatus
     libraryId?: string | null
     exchanges?: ExchangeCreateNestedManyWithoutBookInput
@@ -19214,6 +19384,7 @@ export namespace Prisma {
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
+    createdAt?: Date | string
     status?: $Enums.ExchangeStatus
     libraryId?: string | null
     userId?: string | null
@@ -19244,6 +19415,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     exchanges?: ExchangeUpdateManyWithoutRequesterNestedInput
@@ -19264,6 +19438,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     exchanges?: ExchangeUncheckedUpdateManyWithoutRequesterNestedInput
@@ -19299,6 +19476,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     libraryId?: NullableStringFieldUpdateOperationsInput | string | null
     exchanges?: ExchangeUpdateManyWithoutBookNestedInput
@@ -19317,6 +19495,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     libraryId?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19356,6 +19535,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     exchanges?: ExchangeCreateNestedManyWithoutRequesterInput
@@ -19376,6 +19558,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutRequesterInput
@@ -19443,6 +19628,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     exchanges?: ExchangeUpdateManyWithoutRequesterNestedInput
@@ -19463,6 +19651,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     exchanges?: ExchangeUncheckedUpdateManyWithoutRequesterNestedInput
@@ -19508,6 +19699,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     exchanges?: ExchangeCreateNestedManyWithoutRequesterInput
@@ -19528,6 +19722,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutRequesterInput
@@ -19595,6 +19792,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     exchanges?: ExchangeUpdateManyWithoutRequesterNestedInput
@@ -19615,6 +19815,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     exchanges?: ExchangeUncheckedUpdateManyWithoutRequesterNestedInput
@@ -19635,6 +19838,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     exchanges?: ExchangeCreateNestedManyWithoutRequesterInput
@@ -19655,6 +19861,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutRequesterInput
@@ -19691,6 +19900,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     exchanges?: ExchangeUpdateManyWithoutRequesterNestedInput
@@ -19711,6 +19923,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     exchanges?: ExchangeUncheckedUpdateManyWithoutRequesterNestedInput
@@ -19731,6 +19946,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     exchanges?: ExchangeCreateNestedManyWithoutRequesterInput
@@ -19751,6 +19969,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutRequesterInput
@@ -19787,6 +20008,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     exchanges?: ExchangeUpdateManyWithoutRequesterNestedInput
@@ -19807,6 +20031,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     exchanges?: ExchangeUncheckedUpdateManyWithoutRequesterNestedInput
@@ -19827,6 +20054,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     exchanges?: ExchangeCreateNestedManyWithoutRequesterInput
@@ -19847,6 +20077,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutRequesterInput
@@ -19883,6 +20116,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     exchanges?: ExchangeUpdateManyWithoutRequesterNestedInput
@@ -19903,6 +20139,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     exchanges?: ExchangeUncheckedUpdateManyWithoutRequesterNestedInput
@@ -19923,6 +20162,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     exchanges?: ExchangeCreateNestedManyWithoutRequesterInput
@@ -19943,6 +20185,9 @@ export namespace Prisma {
     name?: string | null
     biography?: string | null
     profile_picture?: string | null
+    country?: string | null
+    city?: string | null
+    phone?: string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: Date | string
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutRequesterInput
@@ -19979,6 +20224,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     exchanges?: ExchangeUpdateManyWithoutRequesterNestedInput
@@ -19999,6 +20247,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     biography?: NullableStringFieldUpdateOperationsInput | string | null
     profile_picture?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     privacy_preferences?: NullableJsonNullValueInput | InputJsonValue
     registration_date?: DateTimeFieldUpdateOperationsInput | Date | string
     exchanges?: ExchangeUncheckedUpdateManyWithoutRequesterNestedInput
@@ -20089,6 +20340,7 @@ export namespace Prisma {
     image?: string | null
     genre?: string | null
     exchange_available?: boolean
+    createdAt?: Date | string
     status?: $Enums.ExchangeStatus
     libraryId?: string | null
   }
@@ -20306,6 +20558,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     libraryId?: NullableStringFieldUpdateOperationsInput | string | null
     exchanges?: ExchangeUpdateManyWithoutBookNestedInput
@@ -20324,6 +20577,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     libraryId?: NullableStringFieldUpdateOperationsInput | string | null
     exchanges?: ExchangeUncheckedUpdateManyWithoutBookNestedInput
@@ -20342,6 +20596,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     libraryId?: NullableStringFieldUpdateOperationsInput | string | null
   }

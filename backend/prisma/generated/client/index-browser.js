@@ -124,6 +124,9 @@ exports.Prisma.UserScalarFieldEnum = {
   name: 'name',
   biography: 'biography',
   profile_picture: 'profile_picture',
+  country: 'country',
+  city: 'city',
+  phone: 'phone',
   privacy_preferences: 'privacy_preferences',
   registration_date: 'registration_date'
 };
@@ -139,6 +142,7 @@ exports.Prisma.BookScalarFieldEnum = {
   image: 'image',
   genre: 'genre',
   exchange_available: 'exchange_available',
+  createdAt: 'createdAt',
   status: 'status',
   libraryId: 'libraryId',
   userId: 'userId'
