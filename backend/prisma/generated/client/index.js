@@ -256,11 +256,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-<<<<<<< HEAD
       "value": "C:\\Users\\DELL\\Desktop\\Books-No-Country\\backend\\prisma\\generated\\client",
-=======
-      "value": "C:\\Users\\ut601819\\Desktop\\Books-No-country\\equipo-s21-05-m-webapp\\backend\\prisma\\generated\\client",
->>>>>>> ff2df4473d5c49b7a5c631471d4890615b14ad2d
       "fromEnvVar": null
     },
     "config": {
@@ -286,11 +282,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-<<<<<<< HEAD
     "sourceFilePath": "C:\\Users\\DELL\\Desktop\\Books-No-Country\\backend\\prisma\\schema.prisma",
-=======
-    "sourceFilePath": "C:\\Users\\ut601819\\Desktop\\Books-No-country\\equipo-s21-05-m-webapp\\backend\\prisma\\schema.prisma",
->>>>>>> ff2df4473d5c49b7a5c631471d4890615b14ad2d
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -304,7 +296,6 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {

@@ -38,13 +38,17 @@ export class BooksService {
       );
     }
   }
+  
 
-  async findAll(quantity: number) {
+  async findAll(quantity?: number) {
     try {
-      const parsedQuantity = parseInt(quantity.toString(), 10);
+      const parsedQuantity = quantity ? Math.max(parseInt(quantity.toString(), 10), 1) : undefined;
+
+
       const books = await this.prismaService.book.findMany({
         orderBy: { createdAt: 'desc' },
         take: parsedQuantity
+
       });
       return { message: `${parsedQuantity} books returned"`, data: books }
     } catch (error) {
