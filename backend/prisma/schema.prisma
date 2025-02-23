@@ -1,7 +1,7 @@
 generator client {
     provider      = "prisma-client-js"
     output        = "./generated/client"
-    binaryTargets = ["native", "rhel-openssl-1.0.x", "debian-openssl-3.0.x" , "windows"]
+    binaryTargets = ["native", "rhel-openssl-1.0.x", "debian-openssl-3.0.x", "windows"]
 }
 
 datasource db {
@@ -53,20 +53,26 @@ model Book {
     description        String?
     published          DateTime?
     publisher          String?
-    image              String?
     genre              String?
     cover              String?
     exchange_available Boolean   @default(false)
-    createdAt DateTime @default(now())
+    createdAt          DateTime  @default(now())
 
     exchanges  Exchange[]
     reviews    Review[]
     audioNotes AudioNote[]
+    Images     Images[]
     status     ExchangeStatus @default(pending)
     libraryId  String?
-    User       User?          @relation(fields: [userId], references: [id])
+    User       User?          @relation(fields: [userId], references: [id], onDelete: Cascade)
     userId     String?
-    
+}
+
+model Images {
+    id     String @id @default(cuid())
+    bookId String
+    file   String
+    book   Book   @relation(fields: [bookId], references: [id], onDelete: Cascade)
 }
 
 model Exchange {

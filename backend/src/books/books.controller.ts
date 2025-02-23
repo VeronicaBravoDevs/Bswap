@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete,Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Query,
+} from '@nestjs/common';
 import { BooksService } from './books.service';
 import { ApiBearerAuth, ApiTags, ApiQuery } from '@nestjs/swagger';
 import { CreateBookDto } from './dto/create-book.dto';
@@ -21,9 +30,8 @@ export class BooksController {
     type: Number,
     description: 'Número de libros a devolver (opcional)',
   })
-  
   findAll(@Query('quantity') quantity?: number) {
-  return this.booksService.findAll(quantity);
+    return this.booksService.findAll(quantity);
   }
 
   @Get(':id')
