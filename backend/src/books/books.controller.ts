@@ -21,6 +21,7 @@ export class BooksController {
     type: Number,
     description: 'Número de libros a devolver (opcional)',
   })
+  
   findAll(@Query('quantity') quantity?: number) {
   return this.booksService.findAll(quantity);
   }

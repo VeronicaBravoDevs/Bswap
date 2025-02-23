@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { CacheModule } from '@nestjs/cache-manager';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PrismaModule } from './prisma/prisma.module';
@@ -12,8 +13,9 @@ import { ExchangeModule } from './exchange/exchange.module';
 import { ReviewsModule } from './reviews/reviews.module';
 
 
+
 @Module({
-  imports: [PrismaModule, UsersModule, BooksModule, MockModule, SeedModule, ExchangeModule, ReviewsModule],
+  imports: [PrismaModule, UsersModule, BooksModule, MockModule, SeedModule, ExchangeModule, ReviewsModule,],
   controllers: [AppController, MockController],
   providers: [AppService, MockService],
 })
