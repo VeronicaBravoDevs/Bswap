@@ -20,16 +20,8 @@ export class BooksService {
 
   async create(createBookDto: CreateBookDto) {
     try {
-      const {
-        title,
-        author,
-        description,
-        genre,
-        image,
-        isbn,
-        publisher,
-        cover,
-      } = createBookDto;
+      const { title, author, description, genre, isbn, publisher, cover } =
+        createBookDto;
 
       const book = await this.prismaService.book.create({
         data: {
@@ -37,7 +29,6 @@ export class BooksService {
           author,
           description,
           genre,
-          image,
           isbn,
           publisher,
           cover,
@@ -45,6 +36,7 @@ export class BooksService {
         },
         include: {
           reviews: true,
+          Images: true,
         },
       });
 
@@ -67,7 +59,7 @@ export class BooksService {
 
     if (cachedBooks && cachedQuantity) {
       return cachedBooks;
-    };
+    }
 
     const parsedQuantity = quantity
       ? Math.max(parseInt(quantity.toString(), 10), 1)
@@ -75,9 +67,10 @@ export class BooksService {
     const books = await this.prismaService.book.findMany({
       orderBy: { createdAt: 'desc' },
       take: parsedQuantity,
-      include:{
+      include: {
         reviews: true,
-      }
+        Images: true,
+      },
     });
 
     await this.cacheManager.set(cacheKey, books, 36000);
@@ -91,6 +84,13 @@ export class BooksService {
         where: { id },
         include: {
           reviews: true,
+          Images: {
+            select: {
+              id: true,
+              file: true,
+              bookId: true,
+            },
+          },
         },
       });
       if (!bookById) {
