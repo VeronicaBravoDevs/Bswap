@@ -55,6 +55,7 @@ model Book {
     publisher          String?
     image              String?
     genre              String?
+    cover              String?
     exchange_available Boolean   @default(false)
     createdAt DateTime @default(now())
 

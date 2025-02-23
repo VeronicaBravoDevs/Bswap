@@ -3422,6 +3422,7 @@ export namespace Prisma {
     publisher: string | null
     image: string | null
     genre: string | null
+    cover: string | null
     exchange_available: boolean | null
     createdAt: Date | null
     status: $Enums.ExchangeStatus | null
@@ -3439,6 +3440,7 @@ export namespace Prisma {
     publisher: string | null
     image: string | null
     genre: string | null
+    cover: string | null
     exchange_available: boolean | null
     createdAt: Date | null
     status: $Enums.ExchangeStatus | null
@@ -3456,6 +3458,7 @@ export namespace Prisma {
     publisher: number
     image: number
     genre: number
+    cover: number
     exchange_available: number
     createdAt: number
     status: number
@@ -3475,6 +3478,7 @@ export namespace Prisma {
     publisher?: true
     image?: true
     genre?: true
+    cover?: true
     exchange_available?: true
     createdAt?: true
     status?: true
@@ -3492,6 +3496,7 @@ export namespace Prisma {
     publisher?: true
     image?: true
     genre?: true
+    cover?: true
     exchange_available?: true
     createdAt?: true
     status?: true
@@ -3509,6 +3514,7 @@ export namespace Prisma {
     publisher?: true
     image?: true
     genre?: true
+    cover?: true
     exchange_available?: true
     createdAt?: true
     status?: true
@@ -3599,6 +3605,7 @@ export namespace Prisma {
     publisher: string | null
     image: string | null
     genre: string | null
+    cover: string | null
     exchange_available: boolean
     createdAt: Date
     status: $Enums.ExchangeStatus
@@ -3633,6 +3640,7 @@ export namespace Prisma {
     publisher?: boolean
     image?: boolean
     genre?: boolean
+    cover?: boolean
     exchange_available?: boolean
     createdAt?: boolean
     status?: boolean
@@ -3655,6 +3663,7 @@ export namespace Prisma {
     publisher?: boolean
     image?: boolean
     genre?: boolean
+    cover?: boolean
     exchange_available?: boolean
     createdAt?: boolean
     status?: boolean
@@ -3673,6 +3682,7 @@ export namespace Prisma {
     publisher?: boolean
     image?: boolean
     genre?: boolean
+    cover?: boolean
     exchange_available?: boolean
     createdAt?: boolean
     status?: boolean
@@ -3691,6 +3701,7 @@ export namespace Prisma {
     publisher?: boolean
     image?: boolean
     genre?: boolean
+    cover?: boolean
     exchange_available?: boolean
     createdAt?: boolean
     status?: boolean
@@ -3698,7 +3709,7 @@ export namespace Prisma {
     userId?: boolean
   }
 
-  export type BookOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "author" | "isbn" | "description" | "published" | "publisher" | "image" | "genre" | "exchange_available" | "createdAt" | "status" | "libraryId" | "userId", ExtArgs["result"]["book"]>
+  export type BookOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "author" | "isbn" | "description" | "published" | "publisher" | "image" | "genre" | "cover" | "exchange_available" | "createdAt" | "status" | "libraryId" | "userId", ExtArgs["result"]["book"]>
   export type BookInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     exchanges?: boolean | Book$exchangesArgs<ExtArgs>
     reviews?: boolean | Book$reviewsArgs<ExtArgs>
@@ -3731,6 +3742,7 @@ export namespace Prisma {
       publisher: string | null
       image: string | null
       genre: string | null
+      cover: string | null
       exchange_available: boolean
       createdAt: Date
       status: $Enums.ExchangeStatus
@@ -4172,6 +4184,7 @@ export namespace Prisma {
     readonly publisher: FieldRef<"Book", 'String'>
     readonly image: FieldRef<"Book", 'String'>
     readonly genre: FieldRef<"Book", 'String'>
+    readonly cover: FieldRef<"Book", 'String'>
     readonly exchange_available: FieldRef<"Book", 'Boolean'>
     readonly createdAt: FieldRef<"Book", 'DateTime'>
     readonly status: FieldRef<"Book", 'ExchangeStatus'>
@@ -14435,6 +14448,7 @@ export namespace Prisma {
     publisher: 'publisher',
     image: 'image',
     genre: 'genre',
+    cover: 'cover',
     exchange_available: 'exchange_available',
     createdAt: 'createdAt',
     status: 'status',
@@ -14819,6 +14833,7 @@ export namespace Prisma {
     publisher?: StringNullableFilter<"Book"> | string | null
     image?: StringNullableFilter<"Book"> | string | null
     genre?: StringNullableFilter<"Book"> | string | null
+    cover?: StringNullableFilter<"Book"> | string | null
     exchange_available?: BoolFilter<"Book"> | boolean
     createdAt?: DateTimeFilter<"Book"> | Date | string
     status?: EnumExchangeStatusFilter<"Book"> | $Enums.ExchangeStatus
@@ -14840,6 +14855,7 @@ export namespace Prisma {
     publisher?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
     genre?: SortOrderInput | SortOrder
+    cover?: SortOrderInput | SortOrder
     exchange_available?: SortOrder
     createdAt?: SortOrder
     status?: SortOrder
@@ -14864,6 +14880,7 @@ export namespace Prisma {
     publisher?: StringNullableFilter<"Book"> | string | null
     image?: StringNullableFilter<"Book"> | string | null
     genre?: StringNullableFilter<"Book"> | string | null
+    cover?: StringNullableFilter<"Book"> | string | null
     exchange_available?: BoolFilter<"Book"> | boolean
     createdAt?: DateTimeFilter<"Book"> | Date | string
     status?: EnumExchangeStatusFilter<"Book"> | $Enums.ExchangeStatus
@@ -14885,6 +14902,7 @@ export namespace Prisma {
     publisher?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
     genre?: SortOrderInput | SortOrder
+    cover?: SortOrderInput | SortOrder
     exchange_available?: SortOrder
     createdAt?: SortOrder
     status?: SortOrder
@@ -14908,6 +14926,7 @@ export namespace Prisma {
     publisher?: StringNullableWithAggregatesFilter<"Book"> | string | null
     image?: StringNullableWithAggregatesFilter<"Book"> | string | null
     genre?: StringNullableWithAggregatesFilter<"Book"> | string | null
+    cover?: StringNullableWithAggregatesFilter<"Book"> | string | null
     exchange_available?: BoolWithAggregatesFilter<"Book"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Book"> | Date | string
     status?: EnumExchangeStatusWithAggregatesFilter<"Book"> | $Enums.ExchangeStatus
@@ -15596,6 +15615,7 @@ export namespace Prisma {
     publisher?: string | null
     image?: string | null
     genre?: string | null
+    cover?: string | null
     exchange_available?: boolean
     createdAt?: Date | string
     status?: $Enums.ExchangeStatus
@@ -15616,6 +15636,7 @@ export namespace Prisma {
     publisher?: string | null
     image?: string | null
     genre?: string | null
+    cover?: string | null
     exchange_available?: boolean
     createdAt?: Date | string
     status?: $Enums.ExchangeStatus
@@ -15636,6 +15657,7 @@ export namespace Prisma {
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
+    cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
@@ -15656,6 +15678,7 @@ export namespace Prisma {
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
+    cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
@@ -15676,6 +15699,7 @@ export namespace Prisma {
     publisher?: string | null
     image?: string | null
     genre?: string | null
+    cover?: string | null
     exchange_available?: boolean
     createdAt?: Date | string
     status?: $Enums.ExchangeStatus
@@ -15693,6 +15717,7 @@ export namespace Prisma {
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
+    cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
@@ -15709,6 +15734,7 @@ export namespace Prisma {
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
+    cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
@@ -16556,6 +16582,7 @@ export namespace Prisma {
     publisher?: SortOrder
     image?: SortOrder
     genre?: SortOrder
+    cover?: SortOrder
     exchange_available?: SortOrder
     createdAt?: SortOrder
     status?: SortOrder
@@ -16573,6 +16600,7 @@ export namespace Prisma {
     publisher?: SortOrder
     image?: SortOrder
     genre?: SortOrder
+    cover?: SortOrder
     exchange_available?: SortOrder
     createdAt?: SortOrder
     status?: SortOrder
@@ -16590,6 +16618,7 @@ export namespace Prisma {
     publisher?: SortOrder
     image?: SortOrder
     genre?: SortOrder
+    cover?: SortOrder
     exchange_available?: SortOrder
     createdAt?: SortOrder
     status?: SortOrder
@@ -18267,6 +18296,7 @@ export namespace Prisma {
     publisher?: string | null
     image?: string | null
     genre?: string | null
+    cover?: string | null
     exchange_available?: boolean
     createdAt?: Date | string
     status?: $Enums.ExchangeStatus
@@ -18286,6 +18316,7 @@ export namespace Prisma {
     publisher?: string | null
     image?: string | null
     genre?: string | null
+    cover?: string | null
     exchange_available?: boolean
     createdAt?: Date | string
     status?: $Enums.ExchangeStatus
@@ -18580,6 +18611,7 @@ export namespace Prisma {
     publisher?: StringNullableFilter<"Book"> | string | null
     image?: StringNullableFilter<"Book"> | string | null
     genre?: StringNullableFilter<"Book"> | string | null
+    cover?: StringNullableFilter<"Book"> | string | null
     exchange_available?: BoolFilter<"Book"> | boolean
     createdAt?: DateTimeFilter<"Book"> | Date | string
     status?: EnumExchangeStatusFilter<"Book"> | $Enums.ExchangeStatus
@@ -18833,6 +18865,7 @@ export namespace Prisma {
     publisher?: string | null
     image?: string | null
     genre?: string | null
+    cover?: string | null
     exchange_available?: boolean
     createdAt?: Date | string
     status?: $Enums.ExchangeStatus
@@ -18852,6 +18885,7 @@ export namespace Prisma {
     publisher?: string | null
     image?: string | null
     genre?: string | null
+    cover?: string | null
     exchange_available?: boolean
     createdAt?: Date | string
     status?: $Enums.ExchangeStatus
@@ -18938,6 +18972,7 @@ export namespace Prisma {
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
+    cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
@@ -18957,6 +18992,7 @@ export namespace Prisma {
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
+    cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
@@ -19033,6 +19069,7 @@ export namespace Prisma {
     publisher?: string | null
     image?: string | null
     genre?: string | null
+    cover?: string | null
     exchange_available?: boolean
     createdAt?: Date | string
     status?: $Enums.ExchangeStatus
@@ -19052,6 +19089,7 @@ export namespace Prisma {
     publisher?: string | null
     image?: string | null
     genre?: string | null
+    cover?: string | null
     exchange_available?: boolean
     createdAt?: Date | string
     status?: $Enums.ExchangeStatus
@@ -19186,6 +19224,7 @@ export namespace Prisma {
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
+    cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
@@ -19205,6 +19244,7 @@ export namespace Prisma {
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
+    cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
@@ -19364,6 +19404,7 @@ export namespace Prisma {
     publisher?: string | null
     image?: string | null
     genre?: string | null
+    cover?: string | null
     exchange_available?: boolean
     createdAt?: Date | string
     status?: $Enums.ExchangeStatus
@@ -19383,6 +19424,7 @@ export namespace Prisma {
     publisher?: string | null
     image?: string | null
     genre?: string | null
+    cover?: string | null
     exchange_available?: boolean
     createdAt?: Date | string
     status?: $Enums.ExchangeStatus
@@ -19475,6 +19517,7 @@ export namespace Prisma {
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
+    cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
@@ -19494,6 +19537,7 @@ export namespace Prisma {
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
+    cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
@@ -20339,6 +20383,7 @@ export namespace Prisma {
     publisher?: string | null
     image?: string | null
     genre?: string | null
+    cover?: string | null
     exchange_available?: boolean
     createdAt?: Date | string
     status?: $Enums.ExchangeStatus
@@ -20557,6 +20602,7 @@ export namespace Prisma {
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
+    cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
@@ -20576,6 +20622,7 @@ export namespace Prisma {
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
+    cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
@@ -20595,6 +20642,7 @@ export namespace Prisma {
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
+    cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
