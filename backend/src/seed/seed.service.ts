@@ -50,7 +50,6 @@ export class SeedService {
               author: book.author,
               description: book.description,
               genre:book.genre,
-              image: book.image,
               published: new Date(book.published),
               publisher: book.publisher, 
               userId: createdUser.id, 

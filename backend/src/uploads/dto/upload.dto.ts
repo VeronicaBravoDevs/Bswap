@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator';
 
-export class FileUploadDto {
+export class CreateFileUploadDto {
   @ApiProperty({
     type: 'string',
     format: 'binary',
@@ -9,4 +9,8 @@ export class FileUploadDto {
   })
   @IsNotEmpty()
   file: any;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  bookId: string;
 }

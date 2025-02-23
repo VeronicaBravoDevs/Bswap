@@ -24,6 +24,11 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  */
 export type Book = $Result.DefaultSelection<Prisma.$BookPayload>
 /**
+ * Model Images
+ * 
+ */
+export type Images = $Result.DefaultSelection<Prisma.$ImagesPayload>
+/**
  * Model Exchange
  * 
  */
@@ -243,6 +248,16 @@ export class PrismaClient<
     * ```
     */
   get book(): Prisma.BookDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.images`: Exposes CRUD operations for the **Images** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Images
+    * const images = await prisma.images.findMany()
+    * ```
+    */
+  get images(): Prisma.ImagesDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.exchange`: Exposes CRUD operations for the **Exchange** model.
@@ -775,6 +790,7 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     Book: 'Book',
+    Images: 'Images',
     Exchange: 'Exchange',
     Review: 'Review',
     AudioNote: 'AudioNote',
@@ -799,7 +815,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "book" | "exchange" | "review" | "audioNote" | "comment" | "reaction" | "friendFollower" | "notification" | "achievement" | "report"
+      modelProps: "user" | "book" | "images" | "exchange" | "review" | "audioNote" | "comment" | "reaction" | "friendFollower" | "notification" | "achievement" | "report"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -948,6 +964,80 @@ export namespace Prisma {
           count: {
             args: Prisma.BookCountArgs<ExtArgs>
             result: $Utils.Optional<BookCountAggregateOutputType> | number
+          }
+        }
+      }
+      Images: {
+        payload: Prisma.$ImagesPayload<ExtArgs>
+        fields: Prisma.ImagesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ImagesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ImagesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagesPayload>
+          }
+          findFirst: {
+            args: Prisma.ImagesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ImagesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagesPayload>
+          }
+          findMany: {
+            args: Prisma.ImagesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagesPayload>[]
+          }
+          create: {
+            args: Prisma.ImagesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagesPayload>
+          }
+          createMany: {
+            args: Prisma.ImagesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ImagesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagesPayload>[]
+          }
+          delete: {
+            args: Prisma.ImagesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagesPayload>
+          }
+          update: {
+            args: Prisma.ImagesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagesPayload>
+          }
+          deleteMany: {
+            args: Prisma.ImagesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ImagesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ImagesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagesPayload>[]
+          }
+          upsert: {
+            args: Prisma.ImagesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagesPayload>
+          }
+          aggregate: {
+            args: Prisma.ImagesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateImages>
+          }
+          groupBy: {
+            args: Prisma.ImagesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ImagesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ImagesCountArgs<ExtArgs>
+            result: $Utils.Optional<ImagesCountAggregateOutputType> | number
           }
         }
       }
@@ -1703,6 +1793,7 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     user?: UserOmit
     book?: BookOmit
+    images?: ImagesOmit
     exchange?: ExchangeOmit
     review?: ReviewOmit
     audioNote?: AudioNoteOmit
@@ -1921,12 +2012,14 @@ export namespace Prisma {
     exchanges: number
     reviews: number
     audioNotes: number
+    Images: number
   }
 
   export type BookCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     exchanges?: boolean | BookCountOutputTypeCountExchangesArgs
     reviews?: boolean | BookCountOutputTypeCountReviewsArgs
     audioNotes?: boolean | BookCountOutputTypeCountAudioNotesArgs
+    Images?: boolean | BookCountOutputTypeCountImagesArgs
   }
 
   // Custom InputTypes
@@ -1959,6 +2052,13 @@ export namespace Prisma {
    */
   export type BookCountOutputTypeCountAudioNotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AudioNoteWhereInput
+  }
+
+  /**
+   * BookCountOutputType without action
+   */
+  export type BookCountOutputTypeCountImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ImagesWhereInput
   }
 
 
@@ -3420,7 +3520,6 @@ export namespace Prisma {
     description: string | null
     published: Date | null
     publisher: string | null
-    image: string | null
     genre: string | null
     cover: string | null
     exchange_available: boolean | null
@@ -3438,7 +3537,6 @@ export namespace Prisma {
     description: string | null
     published: Date | null
     publisher: string | null
-    image: string | null
     genre: string | null
     cover: string | null
     exchange_available: boolean | null
@@ -3456,7 +3554,6 @@ export namespace Prisma {
     description: number
     published: number
     publisher: number
-    image: number
     genre: number
     cover: number
     exchange_available: number
@@ -3476,7 +3573,6 @@ export namespace Prisma {
     description?: true
     published?: true
     publisher?: true
-    image?: true
     genre?: true
     cover?: true
     exchange_available?: true
@@ -3494,7 +3590,6 @@ export namespace Prisma {
     description?: true
     published?: true
     publisher?: true
-    image?: true
     genre?: true
     cover?: true
     exchange_available?: true
@@ -3512,7 +3607,6 @@ export namespace Prisma {
     description?: true
     published?: true
     publisher?: true
-    image?: true
     genre?: true
     cover?: true
     exchange_available?: true
@@ -3603,7 +3697,6 @@ export namespace Prisma {
     description: string | null
     published: Date | null
     publisher: string | null
-    image: string | null
     genre: string | null
     cover: string | null
     exchange_available: boolean
@@ -3638,7 +3731,6 @@ export namespace Prisma {
     description?: boolean
     published?: boolean
     publisher?: boolean
-    image?: boolean
     genre?: boolean
     cover?: boolean
     exchange_available?: boolean
@@ -3649,6 +3741,7 @@ export namespace Prisma {
     exchanges?: boolean | Book$exchangesArgs<ExtArgs>
     reviews?: boolean | Book$reviewsArgs<ExtArgs>
     audioNotes?: boolean | Book$audioNotesArgs<ExtArgs>
+    Images?: boolean | Book$ImagesArgs<ExtArgs>
     User?: boolean | Book$UserArgs<ExtArgs>
     _count?: boolean | BookCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["book"]>
@@ -3661,7 +3754,6 @@ export namespace Prisma {
     description?: boolean
     published?: boolean
     publisher?: boolean
-    image?: boolean
     genre?: boolean
     cover?: boolean
     exchange_available?: boolean
@@ -3680,7 +3772,6 @@ export namespace Prisma {
     description?: boolean
     published?: boolean
     publisher?: boolean
-    image?: boolean
     genre?: boolean
     cover?: boolean
     exchange_available?: boolean
@@ -3699,7 +3790,6 @@ export namespace Prisma {
     description?: boolean
     published?: boolean
     publisher?: boolean
-    image?: boolean
     genre?: boolean
     cover?: boolean
     exchange_available?: boolean
@@ -3709,11 +3799,12 @@ export namespace Prisma {
     userId?: boolean
   }
 
-  export type BookOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "author" | "isbn" | "description" | "published" | "publisher" | "image" | "genre" | "cover" | "exchange_available" | "createdAt" | "status" | "libraryId" | "userId", ExtArgs["result"]["book"]>
+  export type BookOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "author" | "isbn" | "description" | "published" | "publisher" | "genre" | "cover" | "exchange_available" | "createdAt" | "status" | "libraryId" | "userId", ExtArgs["result"]["book"]>
   export type BookInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     exchanges?: boolean | Book$exchangesArgs<ExtArgs>
     reviews?: boolean | Book$reviewsArgs<ExtArgs>
     audioNotes?: boolean | Book$audioNotesArgs<ExtArgs>
+    Images?: boolean | Book$ImagesArgs<ExtArgs>
     User?: boolean | Book$UserArgs<ExtArgs>
     _count?: boolean | BookCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -3730,6 +3821,7 @@ export namespace Prisma {
       exchanges: Prisma.$ExchangePayload<ExtArgs>[]
       reviews: Prisma.$ReviewPayload<ExtArgs>[]
       audioNotes: Prisma.$AudioNotePayload<ExtArgs>[]
+      Images: Prisma.$ImagesPayload<ExtArgs>[]
       User: Prisma.$UserPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -3740,7 +3832,6 @@ export namespace Prisma {
       description: string | null
       published: Date | null
       publisher: string | null
-      image: string | null
       genre: string | null
       cover: string | null
       exchange_available: boolean
@@ -4145,6 +4236,7 @@ export namespace Prisma {
     exchanges<T extends Book$exchangesArgs<ExtArgs> = {}>(args?: Subset<T, Book$exchangesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExchangePayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     reviews<T extends Book$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, Book$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     audioNotes<T extends Book$audioNotesArgs<ExtArgs> = {}>(args?: Subset<T, Book$audioNotesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AudioNotePayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    Images<T extends Book$ImagesArgs<ExtArgs> = {}>(args?: Subset<T, Book$ImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagesPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     User<T extends Book$UserArgs<ExtArgs> = {}>(args?: Subset<T, Book$UserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4182,7 +4274,6 @@ export namespace Prisma {
     readonly description: FieldRef<"Book", 'String'>
     readonly published: FieldRef<"Book", 'DateTime'>
     readonly publisher: FieldRef<"Book", 'String'>
-    readonly image: FieldRef<"Book", 'String'>
     readonly genre: FieldRef<"Book", 'String'>
     readonly cover: FieldRef<"Book", 'String'>
     readonly exchange_available: FieldRef<"Book", 'Boolean'>
@@ -4658,6 +4749,30 @@ export namespace Prisma {
   }
 
   /**
+   * Book.Images
+   */
+  export type Book$ImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Images
+     */
+    select?: ImagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Images
+     */
+    omit?: ImagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagesInclude<ExtArgs> | null
+    where?: ImagesWhereInput
+    orderBy?: ImagesOrderByWithRelationInput | ImagesOrderByWithRelationInput[]
+    cursor?: ImagesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ImagesScalarFieldEnum | ImagesScalarFieldEnum[]
+  }
+
+  /**
    * Book.User
    */
   export type Book$UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4692,6 +4807,1038 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: BookInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Images
+   */
+
+  export type AggregateImages = {
+    _count: ImagesCountAggregateOutputType | null
+    _min: ImagesMinAggregateOutputType | null
+    _max: ImagesMaxAggregateOutputType | null
+  }
+
+  export type ImagesMinAggregateOutputType = {
+    id: string | null
+    bookId: string | null
+    file: string | null
+  }
+
+  export type ImagesMaxAggregateOutputType = {
+    id: string | null
+    bookId: string | null
+    file: string | null
+  }
+
+  export type ImagesCountAggregateOutputType = {
+    id: number
+    bookId: number
+    file: number
+    _all: number
+  }
+
+
+  export type ImagesMinAggregateInputType = {
+    id?: true
+    bookId?: true
+    file?: true
+  }
+
+  export type ImagesMaxAggregateInputType = {
+    id?: true
+    bookId?: true
+    file?: true
+  }
+
+  export type ImagesCountAggregateInputType = {
+    id?: true
+    bookId?: true
+    file?: true
+    _all?: true
+  }
+
+  export type ImagesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Images to aggregate.
+     */
+    where?: ImagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Images to fetch.
+     */
+    orderBy?: ImagesOrderByWithRelationInput | ImagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ImagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Images
+    **/
+    _count?: true | ImagesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ImagesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ImagesMaxAggregateInputType
+  }
+
+  export type GetImagesAggregateType<T extends ImagesAggregateArgs> = {
+        [P in keyof T & keyof AggregateImages]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateImages[P]>
+      : GetScalarType<T[P], AggregateImages[P]>
+  }
+
+
+
+
+  export type ImagesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ImagesWhereInput
+    orderBy?: ImagesOrderByWithAggregationInput | ImagesOrderByWithAggregationInput[]
+    by: ImagesScalarFieldEnum[] | ImagesScalarFieldEnum
+    having?: ImagesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ImagesCountAggregateInputType | true
+    _min?: ImagesMinAggregateInputType
+    _max?: ImagesMaxAggregateInputType
+  }
+
+  export type ImagesGroupByOutputType = {
+    id: string
+    bookId: string
+    file: string
+    _count: ImagesCountAggregateOutputType | null
+    _min: ImagesMinAggregateOutputType | null
+    _max: ImagesMaxAggregateOutputType | null
+  }
+
+  type GetImagesGroupByPayload<T extends ImagesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ImagesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ImagesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ImagesGroupByOutputType[P]>
+            : GetScalarType<T[P], ImagesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ImagesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    bookId?: boolean
+    file?: boolean
+    book?: boolean | BookDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["images"]>
+
+  export type ImagesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    bookId?: boolean
+    file?: boolean
+    book?: boolean | BookDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["images"]>
+
+  export type ImagesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    bookId?: boolean
+    file?: boolean
+    book?: boolean | BookDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["images"]>
+
+  export type ImagesSelectScalar = {
+    id?: boolean
+    bookId?: boolean
+    file?: boolean
+  }
+
+  export type ImagesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "bookId" | "file", ExtArgs["result"]["images"]>
+  export type ImagesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    book?: boolean | BookDefaultArgs<ExtArgs>
+  }
+  export type ImagesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    book?: boolean | BookDefaultArgs<ExtArgs>
+  }
+  export type ImagesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    book?: boolean | BookDefaultArgs<ExtArgs>
+  }
+
+  export type $ImagesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Images"
+    objects: {
+      book: Prisma.$BookPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      bookId: string
+      file: string
+    }, ExtArgs["result"]["images"]>
+    composites: {}
+  }
+
+  type ImagesGetPayload<S extends boolean | null | undefined | ImagesDefaultArgs> = $Result.GetResult<Prisma.$ImagesPayload, S>
+
+  type ImagesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ImagesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ImagesCountAggregateInputType | true
+    }
+
+  export interface ImagesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Images'], meta: { name: 'Images' } }
+    /**
+     * Find zero or one Images that matches the filter.
+     * @param {ImagesFindUniqueArgs} args - Arguments to find a Images
+     * @example
+     * // Get one Images
+     * const images = await prisma.images.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ImagesFindUniqueArgs>(args: SelectSubset<T, ImagesFindUniqueArgs<ExtArgs>>): Prisma__ImagesClient<$Result.GetResult<Prisma.$ImagesPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one Images that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ImagesFindUniqueOrThrowArgs} args - Arguments to find a Images
+     * @example
+     * // Get one Images
+     * const images = await prisma.images.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ImagesFindUniqueOrThrowArgs>(args: SelectSubset<T, ImagesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ImagesClient<$Result.GetResult<Prisma.$ImagesPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Images that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImagesFindFirstArgs} args - Arguments to find a Images
+     * @example
+     * // Get one Images
+     * const images = await prisma.images.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ImagesFindFirstArgs>(args?: SelectSubset<T, ImagesFindFirstArgs<ExtArgs>>): Prisma__ImagesClient<$Result.GetResult<Prisma.$ImagesPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Images that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImagesFindFirstOrThrowArgs} args - Arguments to find a Images
+     * @example
+     * // Get one Images
+     * const images = await prisma.images.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ImagesFindFirstOrThrowArgs>(args?: SelectSubset<T, ImagesFindFirstOrThrowArgs<ExtArgs>>): Prisma__ImagesClient<$Result.GetResult<Prisma.$ImagesPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more Images that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImagesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Images
+     * const images = await prisma.images.findMany()
+     * 
+     * // Get first 10 Images
+     * const images = await prisma.images.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const imagesWithIdOnly = await prisma.images.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ImagesFindManyArgs>(args?: SelectSubset<T, ImagesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagesPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a Images.
+     * @param {ImagesCreateArgs} args - Arguments to create a Images.
+     * @example
+     * // Create one Images
+     * const Images = await prisma.images.create({
+     *   data: {
+     *     // ... data to create a Images
+     *   }
+     * })
+     * 
+     */
+    create<T extends ImagesCreateArgs>(args: SelectSubset<T, ImagesCreateArgs<ExtArgs>>): Prisma__ImagesClient<$Result.GetResult<Prisma.$ImagesPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many Images.
+     * @param {ImagesCreateManyArgs} args - Arguments to create many Images.
+     * @example
+     * // Create many Images
+     * const images = await prisma.images.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ImagesCreateManyArgs>(args?: SelectSubset<T, ImagesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Images and returns the data saved in the database.
+     * @param {ImagesCreateManyAndReturnArgs} args - Arguments to create many Images.
+     * @example
+     * // Create many Images
+     * const images = await prisma.images.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Images and only return the `id`
+     * const imagesWithIdOnly = await prisma.images.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ImagesCreateManyAndReturnArgs>(args?: SelectSubset<T, ImagesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagesPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a Images.
+     * @param {ImagesDeleteArgs} args - Arguments to delete one Images.
+     * @example
+     * // Delete one Images
+     * const Images = await prisma.images.delete({
+     *   where: {
+     *     // ... filter to delete one Images
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ImagesDeleteArgs>(args: SelectSubset<T, ImagesDeleteArgs<ExtArgs>>): Prisma__ImagesClient<$Result.GetResult<Prisma.$ImagesPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one Images.
+     * @param {ImagesUpdateArgs} args - Arguments to update one Images.
+     * @example
+     * // Update one Images
+     * const images = await prisma.images.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ImagesUpdateArgs>(args: SelectSubset<T, ImagesUpdateArgs<ExtArgs>>): Prisma__ImagesClient<$Result.GetResult<Prisma.$ImagesPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more Images.
+     * @param {ImagesDeleteManyArgs} args - Arguments to filter Images to delete.
+     * @example
+     * // Delete a few Images
+     * const { count } = await prisma.images.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ImagesDeleteManyArgs>(args?: SelectSubset<T, ImagesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImagesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Images
+     * const images = await prisma.images.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ImagesUpdateManyArgs>(args: SelectSubset<T, ImagesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Images and returns the data updated in the database.
+     * @param {ImagesUpdateManyAndReturnArgs} args - Arguments to update many Images.
+     * @example
+     * // Update many Images
+     * const images = await prisma.images.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Images and only return the `id`
+     * const imagesWithIdOnly = await prisma.images.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ImagesUpdateManyAndReturnArgs>(args: SelectSubset<T, ImagesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagesPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one Images.
+     * @param {ImagesUpsertArgs} args - Arguments to update or create a Images.
+     * @example
+     * // Update or create a Images
+     * const images = await prisma.images.upsert({
+     *   create: {
+     *     // ... data to create a Images
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Images we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ImagesUpsertArgs>(args: SelectSubset<T, ImagesUpsertArgs<ExtArgs>>): Prisma__ImagesClient<$Result.GetResult<Prisma.$ImagesPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of Images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImagesCountArgs} args - Arguments to filter Images to count.
+     * @example
+     * // Count the number of Images
+     * const count = await prisma.images.count({
+     *   where: {
+     *     // ... the filter for the Images we want to count
+     *   }
+     * })
+    **/
+    count<T extends ImagesCountArgs>(
+      args?: Subset<T, ImagesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ImagesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImagesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ImagesAggregateArgs>(args: Subset<T, ImagesAggregateArgs>): Prisma.PrismaPromise<GetImagesAggregateType<T>>
+
+    /**
+     * Group by Images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImagesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ImagesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ImagesGroupByArgs['orderBy'] }
+        : { orderBy?: ImagesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ImagesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetImagesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Images model
+   */
+  readonly fields: ImagesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Images.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ImagesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    book<T extends BookDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BookDefaultArgs<ExtArgs>>): Prisma__BookClient<$Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Images model
+   */ 
+  interface ImagesFieldRefs {
+    readonly id: FieldRef<"Images", 'String'>
+    readonly bookId: FieldRef<"Images", 'String'>
+    readonly file: FieldRef<"Images", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Images findUnique
+   */
+  export type ImagesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Images
+     */
+    select?: ImagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Images
+     */
+    omit?: ImagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagesInclude<ExtArgs> | null
+    /**
+     * Filter, which Images to fetch.
+     */
+    where: ImagesWhereUniqueInput
+  }
+
+  /**
+   * Images findUniqueOrThrow
+   */
+  export type ImagesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Images
+     */
+    select?: ImagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Images
+     */
+    omit?: ImagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagesInclude<ExtArgs> | null
+    /**
+     * Filter, which Images to fetch.
+     */
+    where: ImagesWhereUniqueInput
+  }
+
+  /**
+   * Images findFirst
+   */
+  export type ImagesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Images
+     */
+    select?: ImagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Images
+     */
+    omit?: ImagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagesInclude<ExtArgs> | null
+    /**
+     * Filter, which Images to fetch.
+     */
+    where?: ImagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Images to fetch.
+     */
+    orderBy?: ImagesOrderByWithRelationInput | ImagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Images.
+     */
+    cursor?: ImagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Images.
+     */
+    distinct?: ImagesScalarFieldEnum | ImagesScalarFieldEnum[]
+  }
+
+  /**
+   * Images findFirstOrThrow
+   */
+  export type ImagesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Images
+     */
+    select?: ImagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Images
+     */
+    omit?: ImagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagesInclude<ExtArgs> | null
+    /**
+     * Filter, which Images to fetch.
+     */
+    where?: ImagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Images to fetch.
+     */
+    orderBy?: ImagesOrderByWithRelationInput | ImagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Images.
+     */
+    cursor?: ImagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Images.
+     */
+    distinct?: ImagesScalarFieldEnum | ImagesScalarFieldEnum[]
+  }
+
+  /**
+   * Images findMany
+   */
+  export type ImagesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Images
+     */
+    select?: ImagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Images
+     */
+    omit?: ImagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagesInclude<ExtArgs> | null
+    /**
+     * Filter, which Images to fetch.
+     */
+    where?: ImagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Images to fetch.
+     */
+    orderBy?: ImagesOrderByWithRelationInput | ImagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Images.
+     */
+    cursor?: ImagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Images.
+     */
+    skip?: number
+    distinct?: ImagesScalarFieldEnum | ImagesScalarFieldEnum[]
+  }
+
+  /**
+   * Images create
+   */
+  export type ImagesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Images
+     */
+    select?: ImagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Images
+     */
+    omit?: ImagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagesInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Images.
+     */
+    data: XOR<ImagesCreateInput, ImagesUncheckedCreateInput>
+  }
+
+  /**
+   * Images createMany
+   */
+  export type ImagesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Images.
+     */
+    data: ImagesCreateManyInput | ImagesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Images createManyAndReturn
+   */
+  export type ImagesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Images
+     */
+    select?: ImagesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Images
+     */
+    omit?: ImagesOmit<ExtArgs> | null
+    /**
+     * The data used to create many Images.
+     */
+    data: ImagesCreateManyInput | ImagesCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagesIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Images update
+   */
+  export type ImagesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Images
+     */
+    select?: ImagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Images
+     */
+    omit?: ImagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagesInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Images.
+     */
+    data: XOR<ImagesUpdateInput, ImagesUncheckedUpdateInput>
+    /**
+     * Choose, which Images to update.
+     */
+    where: ImagesWhereUniqueInput
+  }
+
+  /**
+   * Images updateMany
+   */
+  export type ImagesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Images.
+     */
+    data: XOR<ImagesUpdateManyMutationInput, ImagesUncheckedUpdateManyInput>
+    /**
+     * Filter which Images to update
+     */
+    where?: ImagesWhereInput
+    /**
+     * Limit how many Images to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Images updateManyAndReturn
+   */
+  export type ImagesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Images
+     */
+    select?: ImagesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Images
+     */
+    omit?: ImagesOmit<ExtArgs> | null
+    /**
+     * The data used to update Images.
+     */
+    data: XOR<ImagesUpdateManyMutationInput, ImagesUncheckedUpdateManyInput>
+    /**
+     * Filter which Images to update
+     */
+    where?: ImagesWhereInput
+    /**
+     * Limit how many Images to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagesIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Images upsert
+   */
+  export type ImagesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Images
+     */
+    select?: ImagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Images
+     */
+    omit?: ImagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagesInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Images to update in case it exists.
+     */
+    where: ImagesWhereUniqueInput
+    /**
+     * In case the Images found by the `where` argument doesn't exist, create a new Images with this data.
+     */
+    create: XOR<ImagesCreateInput, ImagesUncheckedCreateInput>
+    /**
+     * In case the Images was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ImagesUpdateInput, ImagesUncheckedUpdateInput>
+  }
+
+  /**
+   * Images delete
+   */
+  export type ImagesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Images
+     */
+    select?: ImagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Images
+     */
+    omit?: ImagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagesInclude<ExtArgs> | null
+    /**
+     * Filter which Images to delete.
+     */
+    where: ImagesWhereUniqueInput
+  }
+
+  /**
+   * Images deleteMany
+   */
+  export type ImagesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Images to delete
+     */
+    where?: ImagesWhereInput
+    /**
+     * Limit how many Images to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Images without action
+   */
+  export type ImagesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Images
+     */
+    select?: ImagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Images
+     */
+    omit?: ImagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImagesInclude<ExtArgs> | null
   }
 
 
@@ -14446,7 +15593,6 @@ export namespace Prisma {
     description: 'description',
     published: 'published',
     publisher: 'publisher',
-    image: 'image',
     genre: 'genre',
     cover: 'cover',
     exchange_available: 'exchange_available',
@@ -14457,6 +15603,15 @@ export namespace Prisma {
   };
 
   export type BookScalarFieldEnum = (typeof BookScalarFieldEnum)[keyof typeof BookScalarFieldEnum]
+
+
+  export const ImagesScalarFieldEnum: {
+    id: 'id',
+    bookId: 'bookId',
+    file: 'file'
+  };
+
+  export type ImagesScalarFieldEnum = (typeof ImagesScalarFieldEnum)[keyof typeof ImagesScalarFieldEnum]
 
 
   export const ExchangeScalarFieldEnum: {
@@ -14831,7 +15986,6 @@ export namespace Prisma {
     description?: StringNullableFilter<"Book"> | string | null
     published?: DateTimeNullableFilter<"Book"> | Date | string | null
     publisher?: StringNullableFilter<"Book"> | string | null
-    image?: StringNullableFilter<"Book"> | string | null
     genre?: StringNullableFilter<"Book"> | string | null
     cover?: StringNullableFilter<"Book"> | string | null
     exchange_available?: BoolFilter<"Book"> | boolean
@@ -14842,6 +15996,7 @@ export namespace Prisma {
     exchanges?: ExchangeListRelationFilter
     reviews?: ReviewListRelationFilter
     audioNotes?: AudioNoteListRelationFilter
+    Images?: ImagesListRelationFilter
     User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
 
@@ -14853,7 +16008,6 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     published?: SortOrderInput | SortOrder
     publisher?: SortOrderInput | SortOrder
-    image?: SortOrderInput | SortOrder
     genre?: SortOrderInput | SortOrder
     cover?: SortOrderInput | SortOrder
     exchange_available?: SortOrder
@@ -14864,6 +16018,7 @@ export namespace Prisma {
     exchanges?: ExchangeOrderByRelationAggregateInput
     reviews?: ReviewOrderByRelationAggregateInput
     audioNotes?: AudioNoteOrderByRelationAggregateInput
+    Images?: ImagesOrderByRelationAggregateInput
     User?: UserOrderByWithRelationInput
   }
 
@@ -14878,7 +16033,6 @@ export namespace Prisma {
     description?: StringNullableFilter<"Book"> | string | null
     published?: DateTimeNullableFilter<"Book"> | Date | string | null
     publisher?: StringNullableFilter<"Book"> | string | null
-    image?: StringNullableFilter<"Book"> | string | null
     genre?: StringNullableFilter<"Book"> | string | null
     cover?: StringNullableFilter<"Book"> | string | null
     exchange_available?: BoolFilter<"Book"> | boolean
@@ -14889,6 +16043,7 @@ export namespace Prisma {
     exchanges?: ExchangeListRelationFilter
     reviews?: ReviewListRelationFilter
     audioNotes?: AudioNoteListRelationFilter
+    Images?: ImagesListRelationFilter
     User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id" | "isbn">
 
@@ -14900,7 +16055,6 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     published?: SortOrderInput | SortOrder
     publisher?: SortOrderInput | SortOrder
-    image?: SortOrderInput | SortOrder
     genre?: SortOrderInput | SortOrder
     cover?: SortOrderInput | SortOrder
     exchange_available?: SortOrder
@@ -14924,7 +16078,6 @@ export namespace Prisma {
     description?: StringNullableWithAggregatesFilter<"Book"> | string | null
     published?: DateTimeNullableWithAggregatesFilter<"Book"> | Date | string | null
     publisher?: StringNullableWithAggregatesFilter<"Book"> | string | null
-    image?: StringNullableWithAggregatesFilter<"Book"> | string | null
     genre?: StringNullableWithAggregatesFilter<"Book"> | string | null
     cover?: StringNullableWithAggregatesFilter<"Book"> | string | null
     exchange_available?: BoolWithAggregatesFilter<"Book"> | boolean
@@ -14932,6 +16085,51 @@ export namespace Prisma {
     status?: EnumExchangeStatusWithAggregatesFilter<"Book"> | $Enums.ExchangeStatus
     libraryId?: StringNullableWithAggregatesFilter<"Book"> | string | null
     userId?: StringNullableWithAggregatesFilter<"Book"> | string | null
+  }
+
+  export type ImagesWhereInput = {
+    AND?: ImagesWhereInput | ImagesWhereInput[]
+    OR?: ImagesWhereInput[]
+    NOT?: ImagesWhereInput | ImagesWhereInput[]
+    id?: StringFilter<"Images"> | string
+    bookId?: StringFilter<"Images"> | string
+    file?: StringFilter<"Images"> | string
+    book?: XOR<BookScalarRelationFilter, BookWhereInput>
+  }
+
+  export type ImagesOrderByWithRelationInput = {
+    id?: SortOrder
+    bookId?: SortOrder
+    file?: SortOrder
+    book?: BookOrderByWithRelationInput
+  }
+
+  export type ImagesWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ImagesWhereInput | ImagesWhereInput[]
+    OR?: ImagesWhereInput[]
+    NOT?: ImagesWhereInput | ImagesWhereInput[]
+    bookId?: StringFilter<"Images"> | string
+    file?: StringFilter<"Images"> | string
+    book?: XOR<BookScalarRelationFilter, BookWhereInput>
+  }, "id">
+
+  export type ImagesOrderByWithAggregationInput = {
+    id?: SortOrder
+    bookId?: SortOrder
+    file?: SortOrder
+    _count?: ImagesCountOrderByAggregateInput
+    _max?: ImagesMaxOrderByAggregateInput
+    _min?: ImagesMinOrderByAggregateInput
+  }
+
+  export type ImagesScalarWhereWithAggregatesInput = {
+    AND?: ImagesScalarWhereWithAggregatesInput | ImagesScalarWhereWithAggregatesInput[]
+    OR?: ImagesScalarWhereWithAggregatesInput[]
+    NOT?: ImagesScalarWhereWithAggregatesInput | ImagesScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Images"> | string
+    bookId?: StringWithAggregatesFilter<"Images"> | string
+    file?: StringWithAggregatesFilter<"Images"> | string
   }
 
   export type ExchangeWhereInput = {
@@ -15613,7 +16811,6 @@ export namespace Prisma {
     description?: string | null
     published?: Date | string | null
     publisher?: string | null
-    image?: string | null
     genre?: string | null
     cover?: string | null
     exchange_available?: boolean
@@ -15623,6 +16820,7 @@ export namespace Prisma {
     exchanges?: ExchangeCreateNestedManyWithoutBookInput
     reviews?: ReviewCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteCreateNestedManyWithoutBookInput
+    Images?: ImagesCreateNestedManyWithoutBookInput
     User?: UserCreateNestedOneWithoutLibraryInput
   }
 
@@ -15634,7 +16832,6 @@ export namespace Prisma {
     description?: string | null
     published?: Date | string | null
     publisher?: string | null
-    image?: string | null
     genre?: string | null
     cover?: string | null
     exchange_available?: boolean
@@ -15645,6 +16842,7 @@ export namespace Prisma {
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutBookInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteUncheckedCreateNestedManyWithoutBookInput
+    Images?: ImagesUncheckedCreateNestedManyWithoutBookInput
   }
 
   export type BookUpdateInput = {
@@ -15655,7 +16853,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
@@ -15665,6 +16862,7 @@ export namespace Prisma {
     exchanges?: ExchangeUpdateManyWithoutBookNestedInput
     reviews?: ReviewUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUpdateManyWithoutBookNestedInput
+    Images?: ImagesUpdateManyWithoutBookNestedInput
     User?: UserUpdateOneWithoutLibraryNestedInput
   }
 
@@ -15676,7 +16874,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
@@ -15687,6 +16884,7 @@ export namespace Prisma {
     exchanges?: ExchangeUncheckedUpdateManyWithoutBookNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUncheckedUpdateManyWithoutBookNestedInput
+    Images?: ImagesUncheckedUpdateManyWithoutBookNestedInput
   }
 
   export type BookCreateManyInput = {
@@ -15697,7 +16895,6 @@ export namespace Prisma {
     description?: string | null
     published?: Date | string | null
     publisher?: string | null
-    image?: string | null
     genre?: string | null
     cover?: string | null
     exchange_available?: boolean
@@ -15715,7 +16912,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
@@ -15732,7 +16928,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
@@ -15740,6 +16935,47 @@ export namespace Prisma {
     status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
     libraryId?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ImagesCreateInput = {
+    id?: string
+    file: string
+    book: BookCreateNestedOneWithoutImagesInput
+  }
+
+  export type ImagesUncheckedCreateInput = {
+    id?: string
+    bookId: string
+    file: string
+  }
+
+  export type ImagesUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    file?: StringFieldUpdateOperationsInput | string
+    book?: BookUpdateOneRequiredWithoutImagesNestedInput
+  }
+
+  export type ImagesUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookId?: StringFieldUpdateOperationsInput | string
+    file?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ImagesCreateManyInput = {
+    id?: string
+    bookId: string
+    file: string
+  }
+
+  export type ImagesUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    file?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ImagesUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookId?: StringFieldUpdateOperationsInput | string
+    file?: StringFieldUpdateOperationsInput | string
   }
 
   export type ExchangeCreateInput = {
@@ -16567,9 +17803,19 @@ export namespace Prisma {
     not?: NestedEnumExchangeStatusFilter<$PrismaModel> | $Enums.ExchangeStatus
   }
 
+  export type ImagesListRelationFilter = {
+    every?: ImagesWhereInput
+    some?: ImagesWhereInput
+    none?: ImagesWhereInput
+  }
+
   export type UserNullableScalarRelationFilter = {
     is?: UserWhereInput | null
     isNot?: UserWhereInput | null
+  }
+
+  export type ImagesOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type BookCountOrderByAggregateInput = {
@@ -16580,7 +17826,6 @@ export namespace Prisma {
     description?: SortOrder
     published?: SortOrder
     publisher?: SortOrder
-    image?: SortOrder
     genre?: SortOrder
     cover?: SortOrder
     exchange_available?: SortOrder
@@ -16598,7 +17843,6 @@ export namespace Prisma {
     description?: SortOrder
     published?: SortOrder
     publisher?: SortOrder
-    image?: SortOrder
     genre?: SortOrder
     cover?: SortOrder
     exchange_available?: SortOrder
@@ -16616,7 +17860,6 @@ export namespace Prisma {
     description?: SortOrder
     published?: SortOrder
     publisher?: SortOrder
-    image?: SortOrder
     genre?: SortOrder
     cover?: SortOrder
     exchange_available?: SortOrder
@@ -16661,6 +17904,24 @@ export namespace Prisma {
   export type BookScalarRelationFilter = {
     is?: BookWhereInput
     isNot?: BookWhereInput
+  }
+
+  export type ImagesCountOrderByAggregateInput = {
+    id?: SortOrder
+    bookId?: SortOrder
+    file?: SortOrder
+  }
+
+  export type ImagesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    bookId?: SortOrder
+    file?: SortOrder
+  }
+
+  export type ImagesMinOrderByAggregateInput = {
+    id?: SortOrder
+    bookId?: SortOrder
+    file?: SortOrder
   }
 
   export type UserScalarRelationFilter = {
@@ -17403,6 +18664,13 @@ export namespace Prisma {
     connect?: AudioNoteWhereUniqueInput | AudioNoteWhereUniqueInput[]
   }
 
+  export type ImagesCreateNestedManyWithoutBookInput = {
+    create?: XOR<ImagesCreateWithoutBookInput, ImagesUncheckedCreateWithoutBookInput> | ImagesCreateWithoutBookInput[] | ImagesUncheckedCreateWithoutBookInput[]
+    connectOrCreate?: ImagesCreateOrConnectWithoutBookInput | ImagesCreateOrConnectWithoutBookInput[]
+    createMany?: ImagesCreateManyBookInputEnvelope
+    connect?: ImagesWhereUniqueInput | ImagesWhereUniqueInput[]
+  }
+
   export type UserCreateNestedOneWithoutLibraryInput = {
     create?: XOR<UserCreateWithoutLibraryInput, UserUncheckedCreateWithoutLibraryInput>
     connectOrCreate?: UserCreateOrConnectWithoutLibraryInput
@@ -17428,6 +18696,13 @@ export namespace Prisma {
     connectOrCreate?: AudioNoteCreateOrConnectWithoutBookInput | AudioNoteCreateOrConnectWithoutBookInput[]
     createMany?: AudioNoteCreateManyBookInputEnvelope
     connect?: AudioNoteWhereUniqueInput | AudioNoteWhereUniqueInput[]
+  }
+
+  export type ImagesUncheckedCreateNestedManyWithoutBookInput = {
+    create?: XOR<ImagesCreateWithoutBookInput, ImagesUncheckedCreateWithoutBookInput> | ImagesCreateWithoutBookInput[] | ImagesUncheckedCreateWithoutBookInput[]
+    connectOrCreate?: ImagesCreateOrConnectWithoutBookInput | ImagesCreateOrConnectWithoutBookInput[]
+    createMany?: ImagesCreateManyBookInputEnvelope
+    connect?: ImagesWhereUniqueInput | ImagesWhereUniqueInput[]
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
@@ -17484,6 +18759,20 @@ export namespace Prisma {
     deleteMany?: AudioNoteScalarWhereInput | AudioNoteScalarWhereInput[]
   }
 
+  export type ImagesUpdateManyWithoutBookNestedInput = {
+    create?: XOR<ImagesCreateWithoutBookInput, ImagesUncheckedCreateWithoutBookInput> | ImagesCreateWithoutBookInput[] | ImagesUncheckedCreateWithoutBookInput[]
+    connectOrCreate?: ImagesCreateOrConnectWithoutBookInput | ImagesCreateOrConnectWithoutBookInput[]
+    upsert?: ImagesUpsertWithWhereUniqueWithoutBookInput | ImagesUpsertWithWhereUniqueWithoutBookInput[]
+    createMany?: ImagesCreateManyBookInputEnvelope
+    set?: ImagesWhereUniqueInput | ImagesWhereUniqueInput[]
+    disconnect?: ImagesWhereUniqueInput | ImagesWhereUniqueInput[]
+    delete?: ImagesWhereUniqueInput | ImagesWhereUniqueInput[]
+    connect?: ImagesWhereUniqueInput | ImagesWhereUniqueInput[]
+    update?: ImagesUpdateWithWhereUniqueWithoutBookInput | ImagesUpdateWithWhereUniqueWithoutBookInput[]
+    updateMany?: ImagesUpdateManyWithWhereWithoutBookInput | ImagesUpdateManyWithWhereWithoutBookInput[]
+    deleteMany?: ImagesScalarWhereInput | ImagesScalarWhereInput[]
+  }
+
   export type UserUpdateOneWithoutLibraryNestedInput = {
     create?: XOR<UserCreateWithoutLibraryInput, UserUncheckedCreateWithoutLibraryInput>
     connectOrCreate?: UserCreateOrConnectWithoutLibraryInput
@@ -17534,6 +18823,34 @@ export namespace Prisma {
     update?: AudioNoteUpdateWithWhereUniqueWithoutBookInput | AudioNoteUpdateWithWhereUniqueWithoutBookInput[]
     updateMany?: AudioNoteUpdateManyWithWhereWithoutBookInput | AudioNoteUpdateManyWithWhereWithoutBookInput[]
     deleteMany?: AudioNoteScalarWhereInput | AudioNoteScalarWhereInput[]
+  }
+
+  export type ImagesUncheckedUpdateManyWithoutBookNestedInput = {
+    create?: XOR<ImagesCreateWithoutBookInput, ImagesUncheckedCreateWithoutBookInput> | ImagesCreateWithoutBookInput[] | ImagesUncheckedCreateWithoutBookInput[]
+    connectOrCreate?: ImagesCreateOrConnectWithoutBookInput | ImagesCreateOrConnectWithoutBookInput[]
+    upsert?: ImagesUpsertWithWhereUniqueWithoutBookInput | ImagesUpsertWithWhereUniqueWithoutBookInput[]
+    createMany?: ImagesCreateManyBookInputEnvelope
+    set?: ImagesWhereUniqueInput | ImagesWhereUniqueInput[]
+    disconnect?: ImagesWhereUniqueInput | ImagesWhereUniqueInput[]
+    delete?: ImagesWhereUniqueInput | ImagesWhereUniqueInput[]
+    connect?: ImagesWhereUniqueInput | ImagesWhereUniqueInput[]
+    update?: ImagesUpdateWithWhereUniqueWithoutBookInput | ImagesUpdateWithWhereUniqueWithoutBookInput[]
+    updateMany?: ImagesUpdateManyWithWhereWithoutBookInput | ImagesUpdateManyWithWhereWithoutBookInput[]
+    deleteMany?: ImagesScalarWhereInput | ImagesScalarWhereInput[]
+  }
+
+  export type BookCreateNestedOneWithoutImagesInput = {
+    create?: XOR<BookCreateWithoutImagesInput, BookUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: BookCreateOrConnectWithoutImagesInput
+    connect?: BookWhereUniqueInput
+  }
+
+  export type BookUpdateOneRequiredWithoutImagesNestedInput = {
+    create?: XOR<BookCreateWithoutImagesInput, BookUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: BookCreateOrConnectWithoutImagesInput
+    upsert?: BookUpsertWithoutImagesInput
+    connect?: BookWhereUniqueInput
+    update?: XOR<XOR<BookUpdateToOneWithWhereWithoutImagesInput, BookUpdateWithoutImagesInput>, BookUncheckedUpdateWithoutImagesInput>
   }
 
   export type BookCreateNestedOneWithoutExchangesInput = {
@@ -18294,7 +19611,6 @@ export namespace Prisma {
     description?: string | null
     published?: Date | string | null
     publisher?: string | null
-    image?: string | null
     genre?: string | null
     cover?: string | null
     exchange_available?: boolean
@@ -18304,6 +19620,7 @@ export namespace Prisma {
     exchanges?: ExchangeCreateNestedManyWithoutBookInput
     reviews?: ReviewCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteCreateNestedManyWithoutBookInput
+    Images?: ImagesCreateNestedManyWithoutBookInput
   }
 
   export type BookUncheckedCreateWithoutUserInput = {
@@ -18314,7 +19631,6 @@ export namespace Prisma {
     description?: string | null
     published?: Date | string | null
     publisher?: string | null
-    image?: string | null
     genre?: string | null
     cover?: string | null
     exchange_available?: boolean
@@ -18324,6 +19640,7 @@ export namespace Prisma {
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutBookInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteUncheckedCreateNestedManyWithoutBookInput
+    Images?: ImagesUncheckedCreateNestedManyWithoutBookInput
   }
 
   export type BookCreateOrConnectWithoutUserInput = {
@@ -18609,7 +19926,6 @@ export namespace Prisma {
     description?: StringNullableFilter<"Book"> | string | null
     published?: DateTimeNullableFilter<"Book"> | Date | string | null
     publisher?: StringNullableFilter<"Book"> | string | null
-    image?: StringNullableFilter<"Book"> | string | null
     genre?: StringNullableFilter<"Book"> | string | null
     cover?: StringNullableFilter<"Book"> | string | null
     exchange_available?: BoolFilter<"Book"> | boolean
@@ -18696,6 +20012,26 @@ export namespace Prisma {
 
   export type AudioNoteCreateManyBookInputEnvelope = {
     data: AudioNoteCreateManyBookInput | AudioNoteCreateManyBookInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ImagesCreateWithoutBookInput = {
+    id?: string
+    file: string
+  }
+
+  export type ImagesUncheckedCreateWithoutBookInput = {
+    id?: string
+    file: string
+  }
+
+  export type ImagesCreateOrConnectWithoutBookInput = {
+    where: ImagesWhereUniqueInput
+    create: XOR<ImagesCreateWithoutBookInput, ImagesUncheckedCreateWithoutBookInput>
+  }
+
+  export type ImagesCreateManyBookInputEnvelope = {
+    data: ImagesCreateManyBookInput | ImagesCreateManyBookInput[]
     skipDuplicates?: boolean
   }
 
@@ -18798,6 +20134,31 @@ export namespace Prisma {
     data: XOR<AudioNoteUpdateManyMutationInput, AudioNoteUncheckedUpdateManyWithoutBookInput>
   }
 
+  export type ImagesUpsertWithWhereUniqueWithoutBookInput = {
+    where: ImagesWhereUniqueInput
+    update: XOR<ImagesUpdateWithoutBookInput, ImagesUncheckedUpdateWithoutBookInput>
+    create: XOR<ImagesCreateWithoutBookInput, ImagesUncheckedCreateWithoutBookInput>
+  }
+
+  export type ImagesUpdateWithWhereUniqueWithoutBookInput = {
+    where: ImagesWhereUniqueInput
+    data: XOR<ImagesUpdateWithoutBookInput, ImagesUncheckedUpdateWithoutBookInput>
+  }
+
+  export type ImagesUpdateManyWithWhereWithoutBookInput = {
+    where: ImagesScalarWhereInput
+    data: XOR<ImagesUpdateManyMutationInput, ImagesUncheckedUpdateManyWithoutBookInput>
+  }
+
+  export type ImagesScalarWhereInput = {
+    AND?: ImagesScalarWhereInput | ImagesScalarWhereInput[]
+    OR?: ImagesScalarWhereInput[]
+    NOT?: ImagesScalarWhereInput | ImagesScalarWhereInput[]
+    id?: StringFilter<"Images"> | string
+    bookId?: StringFilter<"Images"> | string
+    file?: StringFilter<"Images"> | string
+  }
+
   export type UserUpsertWithoutLibraryInput = {
     update: XOR<UserUpdateWithoutLibraryInput, UserUncheckedUpdateWithoutLibraryInput>
     create: XOR<UserCreateWithoutLibraryInput, UserUncheckedCreateWithoutLibraryInput>
@@ -18855,6 +20216,102 @@ export namespace Prisma {
     userFriends?: FriendFollowerUncheckedUpdateManyWithoutUserNestedInput
   }
 
+  export type BookCreateWithoutImagesInput = {
+    id?: string
+    title: string
+    author: string
+    isbn?: string | null
+    description?: string | null
+    published?: Date | string | null
+    publisher?: string | null
+    genre?: string | null
+    cover?: string | null
+    exchange_available?: boolean
+    createdAt?: Date | string
+    status?: $Enums.ExchangeStatus
+    libraryId?: string | null
+    exchanges?: ExchangeCreateNestedManyWithoutBookInput
+    reviews?: ReviewCreateNestedManyWithoutBookInput
+    audioNotes?: AudioNoteCreateNestedManyWithoutBookInput
+    User?: UserCreateNestedOneWithoutLibraryInput
+  }
+
+  export type BookUncheckedCreateWithoutImagesInput = {
+    id?: string
+    title: string
+    author: string
+    isbn?: string | null
+    description?: string | null
+    published?: Date | string | null
+    publisher?: string | null
+    genre?: string | null
+    cover?: string | null
+    exchange_available?: boolean
+    createdAt?: Date | string
+    status?: $Enums.ExchangeStatus
+    libraryId?: string | null
+    userId?: string | null
+    exchanges?: ExchangeUncheckedCreateNestedManyWithoutBookInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutBookInput
+    audioNotes?: AudioNoteUncheckedCreateNestedManyWithoutBookInput
+  }
+
+  export type BookCreateOrConnectWithoutImagesInput = {
+    where: BookWhereUniqueInput
+    create: XOR<BookCreateWithoutImagesInput, BookUncheckedCreateWithoutImagesInput>
+  }
+
+  export type BookUpsertWithoutImagesInput = {
+    update: XOR<BookUpdateWithoutImagesInput, BookUncheckedUpdateWithoutImagesInput>
+    create: XOR<BookCreateWithoutImagesInput, BookUncheckedCreateWithoutImagesInput>
+    where?: BookWhereInput
+  }
+
+  export type BookUpdateToOneWithWhereWithoutImagesInput = {
+    where?: BookWhereInput
+    data: XOR<BookUpdateWithoutImagesInput, BookUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type BookUpdateWithoutImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
+    isbn?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    publisher?: NullableStringFieldUpdateOperationsInput | string | null
+    genre?: NullableStringFieldUpdateOperationsInput | string | null
+    cover?: NullableStringFieldUpdateOperationsInput | string | null
+    exchange_available?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
+    libraryId?: NullableStringFieldUpdateOperationsInput | string | null
+    exchanges?: ExchangeUpdateManyWithoutBookNestedInput
+    reviews?: ReviewUpdateManyWithoutBookNestedInput
+    audioNotes?: AudioNoteUpdateManyWithoutBookNestedInput
+    User?: UserUpdateOneWithoutLibraryNestedInput
+  }
+
+  export type BookUncheckedUpdateWithoutImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
+    isbn?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    publisher?: NullableStringFieldUpdateOperationsInput | string | null
+    genre?: NullableStringFieldUpdateOperationsInput | string | null
+    cover?: NullableStringFieldUpdateOperationsInput | string | null
+    exchange_available?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumExchangeStatusFieldUpdateOperationsInput | $Enums.ExchangeStatus
+    libraryId?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    exchanges?: ExchangeUncheckedUpdateManyWithoutBookNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutBookNestedInput
+    audioNotes?: AudioNoteUncheckedUpdateManyWithoutBookNestedInput
+  }
+
   export type BookCreateWithoutExchangesInput = {
     id?: string
     title: string
@@ -18863,7 +20320,6 @@ export namespace Prisma {
     description?: string | null
     published?: Date | string | null
     publisher?: string | null
-    image?: string | null
     genre?: string | null
     cover?: string | null
     exchange_available?: boolean
@@ -18872,6 +20328,7 @@ export namespace Prisma {
     libraryId?: string | null
     reviews?: ReviewCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteCreateNestedManyWithoutBookInput
+    Images?: ImagesCreateNestedManyWithoutBookInput
     User?: UserCreateNestedOneWithoutLibraryInput
   }
 
@@ -18883,7 +20340,6 @@ export namespace Prisma {
     description?: string | null
     published?: Date | string | null
     publisher?: string | null
-    image?: string | null
     genre?: string | null
     cover?: string | null
     exchange_available?: boolean
@@ -18893,6 +20349,7 @@ export namespace Prisma {
     userId?: string | null
     reviews?: ReviewUncheckedCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteUncheckedCreateNestedManyWithoutBookInput
+    Images?: ImagesUncheckedCreateNestedManyWithoutBookInput
   }
 
   export type BookCreateOrConnectWithoutExchangesInput = {
@@ -18970,7 +20427,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
@@ -18979,6 +20435,7 @@ export namespace Prisma {
     libraryId?: NullableStringFieldUpdateOperationsInput | string | null
     reviews?: ReviewUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUpdateManyWithoutBookNestedInput
+    Images?: ImagesUpdateManyWithoutBookNestedInput
     User?: UserUpdateOneWithoutLibraryNestedInput
   }
 
@@ -18990,7 +20447,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
@@ -19000,6 +20456,7 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     reviews?: ReviewUncheckedUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUncheckedUpdateManyWithoutBookNestedInput
+    Images?: ImagesUncheckedUpdateManyWithoutBookNestedInput
   }
 
   export type UserUpsertWithoutExchangesInput = {
@@ -19067,7 +20524,6 @@ export namespace Prisma {
     description?: string | null
     published?: Date | string | null
     publisher?: string | null
-    image?: string | null
     genre?: string | null
     cover?: string | null
     exchange_available?: boolean
@@ -19076,6 +20532,7 @@ export namespace Prisma {
     libraryId?: string | null
     exchanges?: ExchangeCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteCreateNestedManyWithoutBookInput
+    Images?: ImagesCreateNestedManyWithoutBookInput
     User?: UserCreateNestedOneWithoutLibraryInput
   }
 
@@ -19087,7 +20544,6 @@ export namespace Prisma {
     description?: string | null
     published?: Date | string | null
     publisher?: string | null
-    image?: string | null
     genre?: string | null
     cover?: string | null
     exchange_available?: boolean
@@ -19097,6 +20553,7 @@ export namespace Prisma {
     userId?: string | null
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteUncheckedCreateNestedManyWithoutBookInput
+    Images?: ImagesUncheckedCreateNestedManyWithoutBookInput
   }
 
   export type BookCreateOrConnectWithoutReviewsInput = {
@@ -19222,7 +20679,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
@@ -19231,6 +20687,7 @@ export namespace Prisma {
     libraryId?: NullableStringFieldUpdateOperationsInput | string | null
     exchanges?: ExchangeUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUpdateManyWithoutBookNestedInput
+    Images?: ImagesUpdateManyWithoutBookNestedInput
     User?: UserUpdateOneWithoutLibraryNestedInput
   }
 
@@ -19242,7 +20699,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
@@ -19252,6 +20708,7 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     exchanges?: ExchangeUncheckedUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUncheckedUpdateManyWithoutBookNestedInput
+    Images?: ImagesUncheckedUpdateManyWithoutBookNestedInput
   }
 
   export type UserUpsertWithoutReviewsInput = {
@@ -19402,7 +20859,6 @@ export namespace Prisma {
     description?: string | null
     published?: Date | string | null
     publisher?: string | null
-    image?: string | null
     genre?: string | null
     cover?: string | null
     exchange_available?: boolean
@@ -19411,6 +20867,7 @@ export namespace Prisma {
     libraryId?: string | null
     exchanges?: ExchangeCreateNestedManyWithoutBookInput
     reviews?: ReviewCreateNestedManyWithoutBookInput
+    Images?: ImagesCreateNestedManyWithoutBookInput
     User?: UserCreateNestedOneWithoutLibraryInput
   }
 
@@ -19422,7 +20879,6 @@ export namespace Prisma {
     description?: string | null
     published?: Date | string | null
     publisher?: string | null
-    image?: string | null
     genre?: string | null
     cover?: string | null
     exchange_available?: boolean
@@ -19432,6 +20888,7 @@ export namespace Prisma {
     userId?: string | null
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutBookInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutBookInput
+    Images?: ImagesUncheckedCreateNestedManyWithoutBookInput
   }
 
   export type BookCreateOrConnectWithoutAudioNotesInput = {
@@ -19515,7 +20972,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
@@ -19524,6 +20980,7 @@ export namespace Prisma {
     libraryId?: NullableStringFieldUpdateOperationsInput | string | null
     exchanges?: ExchangeUpdateManyWithoutBookNestedInput
     reviews?: ReviewUpdateManyWithoutBookNestedInput
+    Images?: ImagesUpdateManyWithoutBookNestedInput
     User?: UserUpdateOneWithoutLibraryNestedInput
   }
 
@@ -19535,7 +20992,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
@@ -19545,6 +21001,7 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     exchanges?: ExchangeUncheckedUpdateManyWithoutBookNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutBookNestedInput
+    Images?: ImagesUncheckedUpdateManyWithoutBookNestedInput
   }
 
   export type ReviewCreateWithoutCommentsInput = {
@@ -20381,7 +21838,6 @@ export namespace Prisma {
     description?: string | null
     published?: Date | string | null
     publisher?: string | null
-    image?: string | null
     genre?: string | null
     cover?: string | null
     exchange_available?: boolean
@@ -20600,7 +22056,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
@@ -20610,6 +22065,7 @@ export namespace Prisma {
     exchanges?: ExchangeUpdateManyWithoutBookNestedInput
     reviews?: ReviewUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUpdateManyWithoutBookNestedInput
+    Images?: ImagesUpdateManyWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateWithoutUserInput = {
@@ -20620,7 +22076,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
@@ -20630,6 +22085,7 @@ export namespace Prisma {
     exchanges?: ExchangeUncheckedUpdateManyWithoutBookNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUncheckedUpdateManyWithoutBookNestedInput
+    Images?: ImagesUncheckedUpdateManyWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateManyWithoutUserInput = {
@@ -20640,7 +22096,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publisher?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     genre?: NullableStringFieldUpdateOperationsInput | string | null
     cover?: NullableStringFieldUpdateOperationsInput | string | null
     exchange_available?: BoolFieldUpdateOperationsInput | boolean
@@ -20670,6 +22125,11 @@ export namespace Prisma {
     audio_url?: string | null
     converted_text?: string | null
     creation_date?: Date | string
+  }
+
+  export type ImagesCreateManyBookInput = {
+    id?: string
+    file: string
   }
 
   export type ExchangeUpdateWithoutBookInput = {
@@ -20743,6 +22203,21 @@ export namespace Prisma {
     audio_url?: NullableStringFieldUpdateOperationsInput | string | null
     converted_text?: NullableStringFieldUpdateOperationsInput | string | null
     creation_date?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ImagesUpdateWithoutBookInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    file?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ImagesUncheckedUpdateWithoutBookInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    file?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ImagesUncheckedUpdateManyWithoutBookInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    file?: StringFieldUpdateOperationsInput | string
   }
 
   export type CommentCreateManyReviewInput = {

@@ -1,10 +1,19 @@
-import { Controller, Post, Req, Res, UseInterceptors,  UploadedFile } from '@nestjs/common';
-import { ApiOperation, ApiResponse, ApiConsumes, ApiBody } from '@nestjs/swagger';
+import {
+  Controller,
+  Post,
+  Body,
+  UseInterceptors,
+  UploadedFile,
+} from '@nestjs/common';
+import {
+  ApiOperation,
+  ApiResponse,
+  ApiConsumes,
+  ApiBody,
+} from '@nestjs/swagger';
 import { UploadsService } from './uploads.service';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { Request, Response } from 'express';
-import { FileUploadDto } from './dto/upload.dto';
-
+import { CreateFileUploadDto } from './dto/upload.dto';
 
 @Controller('uploads')
 export class UploadsController {
@@ -14,13 +23,20 @@ export class UploadsController {
   @ApiConsumes('multipart/form-data')
   @ApiOperation({ summary: 'Subir un archivo' })
   @ApiBody({
-    description: 'Sube un archivo',
-    type: FileUploadDto,  
+    description: 'Sube un archivo y asócialo a un libro',
+    type: CreateFileUploadDto,
   })
   @ApiResponse({ status: 200, description: 'Archivo subido con éxito.' })
   @UseInterceptors(FileInterceptor('file'))
-  async uploadFile(@UploadedFile() file: Express.Multer.File) {
-    const fileUrl = this.uploadsService.uploadFile(file);
-    return { fileUrl };
+  async uploadFile(
+    @UploadedFile() file: Express.Multer.File,
+    @Body('bookId') bookId: string,
+  ) {
+    if (!bookId) {
+      return { message: 'bookId es obligatorio' };
+    }
+
+    const createdFile = await this.uploadsService.create(bookId, file);
+    return { message: 'Archivo subido con éxito', data: createdFile };
   }
 }

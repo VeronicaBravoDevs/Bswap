@@ -31,11 +31,6 @@ export class CreateBookDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  image: string;
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
   isbn: string;
 
   @ApiProperty()

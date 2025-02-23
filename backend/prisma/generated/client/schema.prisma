@@ -53,7 +53,6 @@ model Book {
   description        String?
   published          DateTime?
   publisher          String?
-  image              String?
   genre              String?
   cover              String?
   exchange_available Boolean   @default(false)
@@ -62,10 +61,18 @@ model Book {
   exchanges  Exchange[]
   reviews    Review[]
   audioNotes AudioNote[]
+  Images     Images[]
   status     ExchangeStatus @default(pending)
   libraryId  String?
-  User       User?          @relation(fields: [userId], references: [id])
+  User       User?          @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId     String?
+}
+
+model Images {
+  id     String @id @default(cuid())
+  bookId String
+  file   String
+  book   Book   @relation(fields: [bookId], references: [id], onDelete: Cascade)
 }
 
 model Exchange {
