@@ -11,11 +11,23 @@ import { MockModule } from './mock/mock.module';
 import { SeedModule } from './seed/seed.module';
 import { ExchangeModule } from './exchange/exchange.module';
 import { ReviewsModule } from './reviews/reviews.module';
-
-
+import { UploadsModule } from './uploads/uploads.module';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
-  imports: [PrismaModule, UsersModule, BooksModule, MockModule, SeedModule, ExchangeModule, ReviewsModule,],
+  imports: [
+    PrismaModule,
+    UsersModule,
+    BooksModule,
+    MockModule,
+    SeedModule,
+    ExchangeModule,
+    ReviewsModule,
+    UploadsModule,
+    MulterModule.register({
+      dest: '../uploads',
+    }),
+  ],
   controllers: [AppController, MockController],
   providers: [AppService, MockService],
 })
