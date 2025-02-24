@@ -1,6 +1,6 @@
 [
     {
-      "id": "1",
+      "id": "cm79c72k2000nfh3jjg1koxjo",
       "title": "Mil y una noche",
       "author": "Pablo Neruda",
       "isbn": "978-3-16-148410-0",
@@ -12,7 +12,7 @@
       "exchange_available": true,
       "status": "approved",
       "libraryId": null,
-      "userId": "usuario1",
+      "userId": "Pablo Guzman",
       "reviews": [
         {
           "id": "101",
@@ -39,7 +39,7 @@
       "exchange_available": true,
       "status": "approved",
       "libraryId": null,
-      "userId": "usuario2",
+      "userId": "Alejandra Montaner",
       "reviews": [
         {
           "id": "102",
@@ -61,7 +61,7 @@
       "exchange_available": true,
       "status": "approved",
       "libraryId": null,
-      "userId": "usuario3",
+      "userId": "Alejandra Montaner",
       "reviews": [
         {
           "id": "103",
