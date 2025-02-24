@@ -44,7 +44,7 @@ export default function Footer() {
             </div>
             <div className='mt-4'>
            
-              <p className="font-['Roboto_Serif'] text-sm leading-[20px] tracking-[-1px] text-white pt-4 pl-8">
+              <p className="font-['Roboto_Serif'] text-sm leading-[20px]  text-white pt-4 pl-8">
                 ¿Tienes dudas o necesitas ayuda? Escríbenos y te responderemos lo antes posible.
               </p>
             </div>
