@@ -11,5 +11,12 @@ export interface Book {
   exchange_available: boolean;
   status: "pending" | "approved" | "rejected";
   libraryId: string | null;
-  userId: string;
+  userId: string; 
+  reviews: Review[];
+}
+
+export interface Review{
+  id: string;
+  user: string;
+  comment: string;
 }

@@ -13,7 +13,8 @@ export function useBooks() {
     const loadBooks = async () => {
       try {
         const result = await getBooks();
-        setBooks(result);
+        const filteredBooks = result.filter( (book: Book)=> book.exchange_available );
+        setBooks(filteredBooks);
       } catch (error) {
         setError(error instanceof Error ? error.message : "Unknown error");
       } finally {
