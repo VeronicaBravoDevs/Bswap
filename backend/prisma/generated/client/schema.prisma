@@ -58,14 +58,15 @@ model Book {
   exchange_available Boolean   @default(false)
   createdAt          DateTime  @default(now())
 
-  exchanges  Exchange[]
-  reviews    Review[]
-  audioNotes AudioNote[]
-  Images     Images[]
-  status     ExchangeStatus @default(pending)
-  libraryId  String?
-  User       User?          @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId     String?
+  exchanges     Exchange[]
+  reviews       Review[]
+  audioNotes    AudioNote[]
+  Images        Images[]
+  status        ExchangeStatus @default(pending)
+  libraryId     String?
+  User          User?          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        String?
+  categoryBooks categoryBooks?
 }
 
 model Images {
@@ -73,6 +74,14 @@ model Images {
   bookId String
   file   String
   book   Book   @relation(fields: [bookId], references: [id], onDelete: Cascade)
+}
+
+model categoryBooks {
+  id       String @id @default(cuid())
+  category String
+  bookId   String @unique
+
+  book Book @relation(fields: [bookId], references: [id], onDelete: Cascade)
 }
 
 model Exchange {

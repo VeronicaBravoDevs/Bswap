@@ -13,6 +13,7 @@ import { ExchangeModule } from './exchange/exchange.module';
 import { ReviewsModule } from './reviews/reviews.module';
 import { UploadsModule } from './uploads/uploads.module';
 import { MulterModule } from '@nestjs/platform-express';
+import { CategoryBooksModule } from './category-books/category-books.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { MulterModule } from '@nestjs/platform-express';
     MulterModule.register({
       dest: '../uploads',
     }),
+    CategoryBooksModule,
   ],
   controllers: [AppController, MockController],
   providers: [AppService, MockService],
