@@ -2,9 +2,7 @@ import { Book } from "@/app/interface/book";
 import { notFound } from "next/navigation";
 
 async function getBookById(id: string) {
-  const res = await fetch("https://equipo-s21-05-m-webapp.onrender.com/books", {
-    cache: "force-cache",
-  });
+  const res = await fetch("https://equipo-s21-05-m-webapp.onrender.com/books");
 
   if (!res.ok) {
     throw new Error("Error fetching books");
