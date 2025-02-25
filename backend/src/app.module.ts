@@ -9,10 +9,11 @@ import { BooksModule } from './books/books.module';
 import { MockModule } from './mock/mock.module';
 import { SeedModule } from './seed/seed.module';
 import { ExchangeModule } from './exchange/exchange.module';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
-  imports: [PrismaModule, UsersModule, BooksModule, MockModule, SeedModule, ExchangeModule],
+  imports: [PrismaModule, UsersModule, BooksModule, MockModule, SeedModule, ExchangeModule, AuthModule],
   controllers: [AppController, MockController],
   providers: [AppService, MockService],
 })

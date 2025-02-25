@@ -12,7 +12,6 @@ export const roundOfHashing = 10;
 
 @Injectable()
 export class UsersService {
-
   constructor(
     private readonly prismaService: PrismaService,
   ) { }
