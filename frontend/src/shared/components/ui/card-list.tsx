@@ -18,8 +18,12 @@ export default function CardList() {
     );
 
   return (
-      <div className="flex flex-wrap justify-around gap-8 my-16">
-        {books?.length === 0 ? <div>Aún no hay libros cargados</div> : books?.map((book) => <CardBook key={book.id} book={book} />)}
-      </div>
+    <div className="flex flex-wrap justify-around gap-8 my-16">
+      {Array.isArray(books) && books.length === 0 ? (
+        <div>Aún no hay libros cargados</div>
+      ) : (
+        Array.isArray(books) && books.map((book) => <CardBook key={book.id} book={book} />)
+      )}
+    </div>
   );
 }
