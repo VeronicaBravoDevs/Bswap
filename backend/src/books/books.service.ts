@@ -37,6 +37,7 @@ export class BooksService {
         include: {
           reviews: true,
           Images: true,
+          categoryBooks: true,
         },
       });
 
@@ -70,6 +71,7 @@ export class BooksService {
       include: {
         reviews: true,
         Images: true,
+        categoryBooks: true,
       },
     });
 
@@ -91,6 +93,7 @@ export class BooksService {
               bookId: true,
             },
           },
+          categoryBooks: true,
         },
       });
       if (!bookById) {
