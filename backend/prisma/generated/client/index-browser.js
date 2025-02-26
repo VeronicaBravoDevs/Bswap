@@ -275,7 +275,7 @@ exports.Prisma.ModelName = {
   User: 'User',
   Book: 'Book',
   Images: 'Images',
-  categoryBooks: 'categoryBooks',
+  CategoryBooks: 'CategoryBooks',
   Exchange: 'Exchange',
   Review: 'Review',
   AudioNote: 'AudioNote',

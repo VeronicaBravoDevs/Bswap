@@ -19,16 +19,16 @@ export class CategoryBooksController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.categoryBooksService.findOne(+id);
+    return this.categoryBooksService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCategoryBookDto: UpdateCategoryBookDto) {
-    return this.categoryBooksService.update(+id, updateCategoryBookDto);
+    return this.categoryBooksService.update(id, updateCategoryBookDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.categoryBooksService.remove(+id);
+    return this.categoryBooksService.remove(id);
   }
 }

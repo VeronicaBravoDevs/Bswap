@@ -29,10 +29,10 @@ export type Book = $Result.DefaultSelection<Prisma.$BookPayload>
  */
 export type Images = $Result.DefaultSelection<Prisma.$ImagesPayload>
 /**
- * Model categoryBooks
+ * Model CategoryBooks
  * 
  */
-export type categoryBooks = $Result.DefaultSelection<Prisma.$categoryBooksPayload>
+export type CategoryBooks = $Result.DefaultSelection<Prisma.$CategoryBooksPayload>
 /**
  * Model Exchange
  * 
@@ -265,14 +265,14 @@ export class PrismaClient<
   get images(): Prisma.ImagesDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.categoryBooks`: Exposes CRUD operations for the **categoryBooks** model.
+   * `prisma.categoryBooks`: Exposes CRUD operations for the **CategoryBooks** model.
     * Example usage:
     * ```ts
     * // Fetch zero or more CategoryBooks
     * const categoryBooks = await prisma.categoryBooks.findMany()
     * ```
     */
-  get categoryBooks(): Prisma.categoryBooksDelegate<ExtArgs, ClientOptions>;
+  get categoryBooks(): Prisma.CategoryBooksDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.exchange`: Exposes CRUD operations for the **Exchange** model.
@@ -806,7 +806,7 @@ export namespace Prisma {
     User: 'User',
     Book: 'Book',
     Images: 'Images',
-    categoryBooks: 'categoryBooks',
+    CategoryBooks: 'CategoryBooks',
     Exchange: 'Exchange',
     Review: 'Review',
     AudioNote: 'AudioNote',
@@ -1057,76 +1057,76 @@ export namespace Prisma {
           }
         }
       }
-      categoryBooks: {
-        payload: Prisma.$categoryBooksPayload<ExtArgs>
-        fields: Prisma.categoryBooksFieldRefs
+      CategoryBooks: {
+        payload: Prisma.$CategoryBooksPayload<ExtArgs>
+        fields: Prisma.CategoryBooksFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.categoryBooksFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$categoryBooksPayload> | null
+            args: Prisma.CategoryBooksFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryBooksPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.categoryBooksFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$categoryBooksPayload>
+            args: Prisma.CategoryBooksFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryBooksPayload>
           }
           findFirst: {
-            args: Prisma.categoryBooksFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$categoryBooksPayload> | null
+            args: Prisma.CategoryBooksFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryBooksPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.categoryBooksFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$categoryBooksPayload>
+            args: Prisma.CategoryBooksFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryBooksPayload>
           }
           findMany: {
-            args: Prisma.categoryBooksFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$categoryBooksPayload>[]
+            args: Prisma.CategoryBooksFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryBooksPayload>[]
           }
           create: {
-            args: Prisma.categoryBooksCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$categoryBooksPayload>
+            args: Prisma.CategoryBooksCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryBooksPayload>
           }
           createMany: {
-            args: Prisma.categoryBooksCreateManyArgs<ExtArgs>
+            args: Prisma.CategoryBooksCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.categoryBooksCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$categoryBooksPayload>[]
+            args: Prisma.CategoryBooksCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryBooksPayload>[]
           }
           delete: {
-            args: Prisma.categoryBooksDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$categoryBooksPayload>
+            args: Prisma.CategoryBooksDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryBooksPayload>
           }
           update: {
-            args: Prisma.categoryBooksUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$categoryBooksPayload>
+            args: Prisma.CategoryBooksUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryBooksPayload>
           }
           deleteMany: {
-            args: Prisma.categoryBooksDeleteManyArgs<ExtArgs>
+            args: Prisma.CategoryBooksDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.categoryBooksUpdateManyArgs<ExtArgs>
+            args: Prisma.CategoryBooksUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.categoryBooksUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$categoryBooksPayload>[]
+            args: Prisma.CategoryBooksUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryBooksPayload>[]
           }
           upsert: {
-            args: Prisma.categoryBooksUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$categoryBooksPayload>
+            args: Prisma.CategoryBooksUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryBooksPayload>
           }
           aggregate: {
             args: Prisma.CategoryBooksAggregateArgs<ExtArgs>
             result: $Utils.Optional<AggregateCategoryBooks>
           }
           groupBy: {
-            args: Prisma.categoryBooksGroupByArgs<ExtArgs>
+            args: Prisma.CategoryBooksGroupByArgs<ExtArgs>
             result: $Utils.Optional<CategoryBooksGroupByOutputType>[]
           }
           count: {
-            args: Prisma.categoryBooksCountArgs<ExtArgs>
+            args: Prisma.CategoryBooksCountArgs<ExtArgs>
             result: $Utils.Optional<CategoryBooksCountAggregateOutputType> | number
           }
         }
@@ -1884,7 +1884,7 @@ export namespace Prisma {
     user?: UserOmit
     book?: BookOmit
     images?: ImagesOmit
-    categoryBooks?: categoryBooksOmit
+    categoryBooks?: CategoryBooksOmit
     exchange?: ExchangeOmit
     review?: ReviewOmit
     audioNote?: AudioNoteOmit
@@ -3916,7 +3916,7 @@ export namespace Prisma {
       audioNotes: Prisma.$AudioNotePayload<ExtArgs>[]
       Images: Prisma.$ImagesPayload<ExtArgs>[]
       User: Prisma.$UserPayload<ExtArgs> | null
-      categoryBooks: Prisma.$categoryBooksPayload<ExtArgs> | null
+      categoryBooks: Prisma.$CategoryBooksPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4332,7 +4332,7 @@ export namespace Prisma {
     audioNotes<T extends Book$audioNotesArgs<ExtArgs> = {}>(args?: Subset<T, Book$audioNotesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AudioNotePayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     Images<T extends Book$ImagesArgs<ExtArgs> = {}>(args?: Subset<T, Book$ImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagesPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     User<T extends Book$UserArgs<ExtArgs> = {}>(args?: Subset<T, Book$UserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
-    categoryBooks<T extends Book$categoryBooksArgs<ExtArgs> = {}>(args?: Subset<T, Book$categoryBooksArgs<ExtArgs>>): Prisma__categoryBooksClient<$Result.GetResult<Prisma.$categoryBooksPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
+    categoryBooks<T extends Book$categoryBooksArgs<ExtArgs> = {}>(args?: Subset<T, Book$categoryBooksArgs<ExtArgs>>): Prisma__CategoryBooksClient<$Result.GetResult<Prisma.$CategoryBooksPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4891,18 +4891,18 @@ export namespace Prisma {
    */
   export type Book$categoryBooksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the categoryBooks
+     * Select specific fields to fetch from the CategoryBooks
      */
-    select?: categoryBooksSelect<ExtArgs> | null
+    select?: CategoryBooksSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the categoryBooks
+     * Omit specific fields from the CategoryBooks
      */
-    omit?: categoryBooksOmit<ExtArgs> | null
+    omit?: CategoryBooksOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: categoryBooksInclude<ExtArgs> | null
-    where?: categoryBooksWhereInput
+    include?: CategoryBooksInclude<ExtArgs> | null
+    where?: CategoryBooksWhereInput
   }
 
   /**
@@ -5957,7 +5957,7 @@ export namespace Prisma {
 
 
   /**
-   * Model categoryBooks
+   * Model CategoryBooks
    */
 
   export type AggregateCategoryBooks = {
@@ -6007,37 +6007,37 @@ export namespace Prisma {
 
   export type CategoryBooksAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which categoryBooks to aggregate.
+     * Filter which CategoryBooks to aggregate.
      */
-    where?: categoryBooksWhereInput
+    where?: CategoryBooksWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of categoryBooks to fetch.
+     * Determine the order of CategoryBooks to fetch.
      */
-    orderBy?: categoryBooksOrderByWithRelationInput | categoryBooksOrderByWithRelationInput[]
+    orderBy?: CategoryBooksOrderByWithRelationInput | CategoryBooksOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: categoryBooksWhereUniqueInput
+    cursor?: CategoryBooksWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` categoryBooks from the position of the cursor.
+     * Take `±n` CategoryBooks from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` categoryBooks.
+     * Skip the first `n` CategoryBooks.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned categoryBooks
+     * Count returned CategoryBooks
     **/
     _count?: true | CategoryBooksCountAggregateInputType
     /**
@@ -6065,11 +6065,11 @@ export namespace Prisma {
 
 
 
-  export type categoryBooksGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: categoryBooksWhereInput
-    orderBy?: categoryBooksOrderByWithAggregationInput | categoryBooksOrderByWithAggregationInput[]
+  export type CategoryBooksGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoryBooksWhereInput
+    orderBy?: CategoryBooksOrderByWithAggregationInput | CategoryBooksOrderByWithAggregationInput[]
     by: CategoryBooksScalarFieldEnum[] | CategoryBooksScalarFieldEnum
-    having?: categoryBooksScalarWhereWithAggregatesInput
+    having?: CategoryBooksScalarWhereWithAggregatesInput
     take?: number
     skip?: number
     _count?: CategoryBooksCountAggregateInputType | true
@@ -6086,7 +6086,7 @@ export namespace Prisma {
     _max: CategoryBooksMaxAggregateOutputType | null
   }
 
-  type GetCategoryBooksGroupByPayload<T extends categoryBooksGroupByArgs> = Prisma.PrismaPromise<
+  type GetCategoryBooksGroupByPayload<T extends CategoryBooksGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<CategoryBooksGroupByOutputType, T['by']> &
         {
@@ -6100,46 +6100,46 @@ export namespace Prisma {
     >
 
 
-  export type categoryBooksSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CategoryBooksSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     category?: boolean
     bookId?: boolean
     book?: boolean | BookDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["categoryBooks"]>
 
-  export type categoryBooksSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CategoryBooksSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     category?: boolean
     bookId?: boolean
     book?: boolean | BookDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["categoryBooks"]>
 
-  export type categoryBooksSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CategoryBooksSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     category?: boolean
     bookId?: boolean
     book?: boolean | BookDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["categoryBooks"]>
 
-  export type categoryBooksSelectScalar = {
+  export type CategoryBooksSelectScalar = {
     id?: boolean
     category?: boolean
     bookId?: boolean
   }
 
-  export type categoryBooksOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "category" | "bookId", ExtArgs["result"]["categoryBooks"]>
-  export type categoryBooksInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoryBooksOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "category" | "bookId", ExtArgs["result"]["categoryBooks"]>
+  export type CategoryBooksInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     book?: boolean | BookDefaultArgs<ExtArgs>
   }
-  export type categoryBooksIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoryBooksIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     book?: boolean | BookDefaultArgs<ExtArgs>
   }
-  export type categoryBooksIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoryBooksIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     book?: boolean | BookDefaultArgs<ExtArgs>
   }
 
-  export type $categoryBooksPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "categoryBooks"
+  export type $CategoryBooksPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CategoryBooks"
     objects: {
       book: Prisma.$BookPayload<ExtArgs>
     }
@@ -6151,18 +6151,18 @@ export namespace Prisma {
     composites: {}
   }
 
-  type categoryBooksGetPayload<S extends boolean | null | undefined | categoryBooksDefaultArgs> = $Result.GetResult<Prisma.$categoryBooksPayload, S>
+  type CategoryBooksGetPayload<S extends boolean | null | undefined | CategoryBooksDefaultArgs> = $Result.GetResult<Prisma.$CategoryBooksPayload, S>
 
-  type categoryBooksCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<categoryBooksFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type CategoryBooksCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CategoryBooksFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
       select?: CategoryBooksCountAggregateInputType | true
     }
 
-  export interface categoryBooksDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['categoryBooks'], meta: { name: 'categoryBooks' } }
+  export interface CategoryBooksDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CategoryBooks'], meta: { name: 'CategoryBooks' } }
     /**
      * Find zero or one CategoryBooks that matches the filter.
-     * @param {categoryBooksFindUniqueArgs} args - Arguments to find a CategoryBooks
+     * @param {CategoryBooksFindUniqueArgs} args - Arguments to find a CategoryBooks
      * @example
      * // Get one CategoryBooks
      * const categoryBooks = await prisma.categoryBooks.findUnique({
@@ -6171,12 +6171,12 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends categoryBooksFindUniqueArgs>(args: SelectSubset<T, categoryBooksFindUniqueArgs<ExtArgs>>): Prisma__categoryBooksClient<$Result.GetResult<Prisma.$categoryBooksPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+    findUnique<T extends CategoryBooksFindUniqueArgs>(args: SelectSubset<T, CategoryBooksFindUniqueArgs<ExtArgs>>): Prisma__CategoryBooksClient<$Result.GetResult<Prisma.$CategoryBooksPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
 
     /**
      * Find one CategoryBooks that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {categoryBooksFindUniqueOrThrowArgs} args - Arguments to find a CategoryBooks
+     * @param {CategoryBooksFindUniqueOrThrowArgs} args - Arguments to find a CategoryBooks
      * @example
      * // Get one CategoryBooks
      * const categoryBooks = await prisma.categoryBooks.findUniqueOrThrow({
@@ -6185,13 +6185,13 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends categoryBooksFindUniqueOrThrowArgs>(args: SelectSubset<T, categoryBooksFindUniqueOrThrowArgs<ExtArgs>>): Prisma__categoryBooksClient<$Result.GetResult<Prisma.$categoryBooksPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+    findUniqueOrThrow<T extends CategoryBooksFindUniqueOrThrowArgs>(args: SelectSubset<T, CategoryBooksFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CategoryBooksClient<$Result.GetResult<Prisma.$CategoryBooksPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
 
     /**
      * Find the first CategoryBooks that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {categoryBooksFindFirstArgs} args - Arguments to find a CategoryBooks
+     * @param {CategoryBooksFindFirstArgs} args - Arguments to find a CategoryBooks
      * @example
      * // Get one CategoryBooks
      * const categoryBooks = await prisma.categoryBooks.findFirst({
@@ -6200,14 +6200,14 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends categoryBooksFindFirstArgs>(args?: SelectSubset<T, categoryBooksFindFirstArgs<ExtArgs>>): Prisma__categoryBooksClient<$Result.GetResult<Prisma.$categoryBooksPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+    findFirst<T extends CategoryBooksFindFirstArgs>(args?: SelectSubset<T, CategoryBooksFindFirstArgs<ExtArgs>>): Prisma__CategoryBooksClient<$Result.GetResult<Prisma.$CategoryBooksPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
 
     /**
      * Find the first CategoryBooks that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {categoryBooksFindFirstOrThrowArgs} args - Arguments to find a CategoryBooks
+     * @param {CategoryBooksFindFirstOrThrowArgs} args - Arguments to find a CategoryBooks
      * @example
      * // Get one CategoryBooks
      * const categoryBooks = await prisma.categoryBooks.findFirstOrThrow({
@@ -6216,13 +6216,13 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends categoryBooksFindFirstOrThrowArgs>(args?: SelectSubset<T, categoryBooksFindFirstOrThrowArgs<ExtArgs>>): Prisma__categoryBooksClient<$Result.GetResult<Prisma.$categoryBooksPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+    findFirstOrThrow<T extends CategoryBooksFindFirstOrThrowArgs>(args?: SelectSubset<T, CategoryBooksFindFirstOrThrowArgs<ExtArgs>>): Prisma__CategoryBooksClient<$Result.GetResult<Prisma.$CategoryBooksPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
 
     /**
      * Find zero or more CategoryBooks that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {categoryBooksFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {CategoryBooksFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all CategoryBooks
      * const categoryBooks = await prisma.categoryBooks.findMany()
@@ -6234,11 +6234,11 @@ export namespace Prisma {
      * const categoryBooksWithIdOnly = await prisma.categoryBooks.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends categoryBooksFindManyArgs>(args?: SelectSubset<T, categoryBooksFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$categoryBooksPayload<ExtArgs>, T, "findMany", ClientOptions>>
+    findMany<T extends CategoryBooksFindManyArgs>(args?: SelectSubset<T, CategoryBooksFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryBooksPayload<ExtArgs>, T, "findMany", ClientOptions>>
 
     /**
      * Create a CategoryBooks.
-     * @param {categoryBooksCreateArgs} args - Arguments to create a CategoryBooks.
+     * @param {CategoryBooksCreateArgs} args - Arguments to create a CategoryBooks.
      * @example
      * // Create one CategoryBooks
      * const CategoryBooks = await prisma.categoryBooks.create({
@@ -6248,11 +6248,11 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends categoryBooksCreateArgs>(args: SelectSubset<T, categoryBooksCreateArgs<ExtArgs>>): Prisma__categoryBooksClient<$Result.GetResult<Prisma.$categoryBooksPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+    create<T extends CategoryBooksCreateArgs>(args: SelectSubset<T, CategoryBooksCreateArgs<ExtArgs>>): Prisma__CategoryBooksClient<$Result.GetResult<Prisma.$CategoryBooksPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
 
     /**
      * Create many CategoryBooks.
-     * @param {categoryBooksCreateManyArgs} args - Arguments to create many CategoryBooks.
+     * @param {CategoryBooksCreateManyArgs} args - Arguments to create many CategoryBooks.
      * @example
      * // Create many CategoryBooks
      * const categoryBooks = await prisma.categoryBooks.createMany({
@@ -6262,11 +6262,11 @@ export namespace Prisma {
      * })
      *     
      */
-    createMany<T extends categoryBooksCreateManyArgs>(args?: SelectSubset<T, categoryBooksCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends CategoryBooksCreateManyArgs>(args?: SelectSubset<T, CategoryBooksCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create many CategoryBooks and returns the data saved in the database.
-     * @param {categoryBooksCreateManyAndReturnArgs} args - Arguments to create many CategoryBooks.
+     * @param {CategoryBooksCreateManyAndReturnArgs} args - Arguments to create many CategoryBooks.
      * @example
      * // Create many CategoryBooks
      * const categoryBooks = await prisma.categoryBooks.createManyAndReturn({
@@ -6286,11 +6286,11 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends categoryBooksCreateManyAndReturnArgs>(args?: SelectSubset<T, categoryBooksCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$categoryBooksPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+    createManyAndReturn<T extends CategoryBooksCreateManyAndReturnArgs>(args?: SelectSubset<T, CategoryBooksCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryBooksPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
 
     /**
      * Delete a CategoryBooks.
-     * @param {categoryBooksDeleteArgs} args - Arguments to delete one CategoryBooks.
+     * @param {CategoryBooksDeleteArgs} args - Arguments to delete one CategoryBooks.
      * @example
      * // Delete one CategoryBooks
      * const CategoryBooks = await prisma.categoryBooks.delete({
@@ -6300,11 +6300,11 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends categoryBooksDeleteArgs>(args: SelectSubset<T, categoryBooksDeleteArgs<ExtArgs>>): Prisma__categoryBooksClient<$Result.GetResult<Prisma.$categoryBooksPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+    delete<T extends CategoryBooksDeleteArgs>(args: SelectSubset<T, CategoryBooksDeleteArgs<ExtArgs>>): Prisma__CategoryBooksClient<$Result.GetResult<Prisma.$CategoryBooksPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
 
     /**
      * Update one CategoryBooks.
-     * @param {categoryBooksUpdateArgs} args - Arguments to update one CategoryBooks.
+     * @param {CategoryBooksUpdateArgs} args - Arguments to update one CategoryBooks.
      * @example
      * // Update one CategoryBooks
      * const categoryBooks = await prisma.categoryBooks.update({
@@ -6317,11 +6317,11 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends categoryBooksUpdateArgs>(args: SelectSubset<T, categoryBooksUpdateArgs<ExtArgs>>): Prisma__categoryBooksClient<$Result.GetResult<Prisma.$categoryBooksPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+    update<T extends CategoryBooksUpdateArgs>(args: SelectSubset<T, CategoryBooksUpdateArgs<ExtArgs>>): Prisma__CategoryBooksClient<$Result.GetResult<Prisma.$CategoryBooksPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
 
     /**
      * Delete zero or more CategoryBooks.
-     * @param {categoryBooksDeleteManyArgs} args - Arguments to filter CategoryBooks to delete.
+     * @param {CategoryBooksDeleteManyArgs} args - Arguments to filter CategoryBooks to delete.
      * @example
      * // Delete a few CategoryBooks
      * const { count } = await prisma.categoryBooks.deleteMany({
@@ -6331,13 +6331,13 @@ export namespace Prisma {
      * })
      * 
      */
-    deleteMany<T extends categoryBooksDeleteManyArgs>(args?: SelectSubset<T, categoryBooksDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends CategoryBooksDeleteManyArgs>(args?: SelectSubset<T, CategoryBooksDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more CategoryBooks.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {categoryBooksUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {CategoryBooksUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
      * // Update many CategoryBooks
      * const categoryBooks = await prisma.categoryBooks.updateMany({
@@ -6350,11 +6350,11 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends categoryBooksUpdateManyArgs>(args: SelectSubset<T, categoryBooksUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends CategoryBooksUpdateManyArgs>(args: SelectSubset<T, CategoryBooksUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more CategoryBooks and returns the data updated in the database.
-     * @param {categoryBooksUpdateManyAndReturnArgs} args - Arguments to update many CategoryBooks.
+     * @param {CategoryBooksUpdateManyAndReturnArgs} args - Arguments to update many CategoryBooks.
      * @example
      * // Update many CategoryBooks
      * const categoryBooks = await prisma.categoryBooks.updateManyAndReturn({
@@ -6380,11 +6380,11 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends categoryBooksUpdateManyAndReturnArgs>(args: SelectSubset<T, categoryBooksUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$categoryBooksPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+    updateManyAndReturn<T extends CategoryBooksUpdateManyAndReturnArgs>(args: SelectSubset<T, CategoryBooksUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryBooksPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
 
     /**
      * Create or update one CategoryBooks.
-     * @param {categoryBooksUpsertArgs} args - Arguments to update or create a CategoryBooks.
+     * @param {CategoryBooksUpsertArgs} args - Arguments to update or create a CategoryBooks.
      * @example
      * // Update or create a CategoryBooks
      * const categoryBooks = await prisma.categoryBooks.upsert({
@@ -6399,14 +6399,14 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends categoryBooksUpsertArgs>(args: SelectSubset<T, categoryBooksUpsertArgs<ExtArgs>>): Prisma__categoryBooksClient<$Result.GetResult<Prisma.$categoryBooksPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+    upsert<T extends CategoryBooksUpsertArgs>(args: SelectSubset<T, CategoryBooksUpsertArgs<ExtArgs>>): Prisma__CategoryBooksClient<$Result.GetResult<Prisma.$CategoryBooksPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
 
 
     /**
      * Count the number of CategoryBooks.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {categoryBooksCountArgs} args - Arguments to filter CategoryBooks to count.
+     * @param {CategoryBooksCountArgs} args - Arguments to filter CategoryBooks to count.
      * @example
      * // Count the number of CategoryBooks
      * const count = await prisma.categoryBooks.count({
@@ -6415,8 +6415,8 @@ export namespace Prisma {
      *   }
      * })
     **/
-    count<T extends categoryBooksCountArgs>(
-      args?: Subset<T, categoryBooksCountArgs>,
+    count<T extends CategoryBooksCountArgs>(
+      args?: Subset<T, CategoryBooksCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
@@ -6455,7 +6455,7 @@ export namespace Prisma {
      * Group by CategoryBooks.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {categoryBooksGroupByArgs} args - Group by arguments.
+     * @param {CategoryBooksGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -6470,14 +6470,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends categoryBooksGroupByArgs,
+      T extends CategoryBooksGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: categoryBooksGroupByArgs['orderBy'] }
-        : { orderBy?: categoryBooksGroupByArgs['orderBy'] },
+        ? { orderBy: CategoryBooksGroupByArgs['orderBy'] }
+        : { orderBy?: CategoryBooksGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -6526,20 +6526,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, categoryBooksGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCategoryBooksGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, CategoryBooksGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCategoryBooksGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the categoryBooks model
+   * Fields of the CategoryBooks model
    */
-  readonly fields: categoryBooksFieldRefs;
+  readonly fields: CategoryBooksFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for categoryBooks.
+   * The delegate class that acts as a "Promise-like" for CategoryBooks.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__categoryBooksClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__CategoryBooksClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     book<T extends BookDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BookDefaultArgs<ExtArgs>>): Prisma__BookClient<$Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
     /**
@@ -6568,423 +6568,423 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the categoryBooks model
+   * Fields of the CategoryBooks model
    */ 
-  interface categoryBooksFieldRefs {
-    readonly id: FieldRef<"categoryBooks", 'String'>
-    readonly category: FieldRef<"categoryBooks", 'String'>
-    readonly bookId: FieldRef<"categoryBooks", 'String'>
+  interface CategoryBooksFieldRefs {
+    readonly id: FieldRef<"CategoryBooks", 'String'>
+    readonly category: FieldRef<"CategoryBooks", 'String'>
+    readonly bookId: FieldRef<"CategoryBooks", 'String'>
   }
     
 
   // Custom InputTypes
   /**
-   * categoryBooks findUnique
+   * CategoryBooks findUnique
    */
-  export type categoryBooksFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoryBooksFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the categoryBooks
+     * Select specific fields to fetch from the CategoryBooks
      */
-    select?: categoryBooksSelect<ExtArgs> | null
+    select?: CategoryBooksSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the categoryBooks
+     * Omit specific fields from the CategoryBooks
      */
-    omit?: categoryBooksOmit<ExtArgs> | null
+    omit?: CategoryBooksOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: categoryBooksInclude<ExtArgs> | null
+    include?: CategoryBooksInclude<ExtArgs> | null
     /**
-     * Filter, which categoryBooks to fetch.
+     * Filter, which CategoryBooks to fetch.
      */
-    where: categoryBooksWhereUniqueInput
+    where: CategoryBooksWhereUniqueInput
   }
 
   /**
-   * categoryBooks findUniqueOrThrow
+   * CategoryBooks findUniqueOrThrow
    */
-  export type categoryBooksFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoryBooksFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the categoryBooks
+     * Select specific fields to fetch from the CategoryBooks
      */
-    select?: categoryBooksSelect<ExtArgs> | null
+    select?: CategoryBooksSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the categoryBooks
+     * Omit specific fields from the CategoryBooks
      */
-    omit?: categoryBooksOmit<ExtArgs> | null
+    omit?: CategoryBooksOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: categoryBooksInclude<ExtArgs> | null
+    include?: CategoryBooksInclude<ExtArgs> | null
     /**
-     * Filter, which categoryBooks to fetch.
+     * Filter, which CategoryBooks to fetch.
      */
-    where: categoryBooksWhereUniqueInput
+    where: CategoryBooksWhereUniqueInput
   }
 
   /**
-   * categoryBooks findFirst
+   * CategoryBooks findFirst
    */
-  export type categoryBooksFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoryBooksFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the categoryBooks
+     * Select specific fields to fetch from the CategoryBooks
      */
-    select?: categoryBooksSelect<ExtArgs> | null
+    select?: CategoryBooksSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the categoryBooks
+     * Omit specific fields from the CategoryBooks
      */
-    omit?: categoryBooksOmit<ExtArgs> | null
+    omit?: CategoryBooksOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: categoryBooksInclude<ExtArgs> | null
+    include?: CategoryBooksInclude<ExtArgs> | null
     /**
-     * Filter, which categoryBooks to fetch.
+     * Filter, which CategoryBooks to fetch.
      */
-    where?: categoryBooksWhereInput
+    where?: CategoryBooksWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of categoryBooks to fetch.
+     * Determine the order of CategoryBooks to fetch.
      */
-    orderBy?: categoryBooksOrderByWithRelationInput | categoryBooksOrderByWithRelationInput[]
+    orderBy?: CategoryBooksOrderByWithRelationInput | CategoryBooksOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for categoryBooks.
+     * Sets the position for searching for CategoryBooks.
      */
-    cursor?: categoryBooksWhereUniqueInput
+    cursor?: CategoryBooksWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` categoryBooks from the position of the cursor.
+     * Take `±n` CategoryBooks from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` categoryBooks.
+     * Skip the first `n` CategoryBooks.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of categoryBooks.
+     * Filter by unique combinations of CategoryBooks.
      */
     distinct?: CategoryBooksScalarFieldEnum | CategoryBooksScalarFieldEnum[]
   }
 
   /**
-   * categoryBooks findFirstOrThrow
+   * CategoryBooks findFirstOrThrow
    */
-  export type categoryBooksFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoryBooksFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the categoryBooks
+     * Select specific fields to fetch from the CategoryBooks
      */
-    select?: categoryBooksSelect<ExtArgs> | null
+    select?: CategoryBooksSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the categoryBooks
+     * Omit specific fields from the CategoryBooks
      */
-    omit?: categoryBooksOmit<ExtArgs> | null
+    omit?: CategoryBooksOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: categoryBooksInclude<ExtArgs> | null
+    include?: CategoryBooksInclude<ExtArgs> | null
     /**
-     * Filter, which categoryBooks to fetch.
+     * Filter, which CategoryBooks to fetch.
      */
-    where?: categoryBooksWhereInput
+    where?: CategoryBooksWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of categoryBooks to fetch.
+     * Determine the order of CategoryBooks to fetch.
      */
-    orderBy?: categoryBooksOrderByWithRelationInput | categoryBooksOrderByWithRelationInput[]
+    orderBy?: CategoryBooksOrderByWithRelationInput | CategoryBooksOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for categoryBooks.
+     * Sets the position for searching for CategoryBooks.
      */
-    cursor?: categoryBooksWhereUniqueInput
+    cursor?: CategoryBooksWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` categoryBooks from the position of the cursor.
+     * Take `±n` CategoryBooks from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` categoryBooks.
+     * Skip the first `n` CategoryBooks.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of categoryBooks.
+     * Filter by unique combinations of CategoryBooks.
      */
     distinct?: CategoryBooksScalarFieldEnum | CategoryBooksScalarFieldEnum[]
   }
 
   /**
-   * categoryBooks findMany
+   * CategoryBooks findMany
    */
-  export type categoryBooksFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoryBooksFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the categoryBooks
+     * Select specific fields to fetch from the CategoryBooks
      */
-    select?: categoryBooksSelect<ExtArgs> | null
+    select?: CategoryBooksSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the categoryBooks
+     * Omit specific fields from the CategoryBooks
      */
-    omit?: categoryBooksOmit<ExtArgs> | null
+    omit?: CategoryBooksOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: categoryBooksInclude<ExtArgs> | null
+    include?: CategoryBooksInclude<ExtArgs> | null
     /**
-     * Filter, which categoryBooks to fetch.
+     * Filter, which CategoryBooks to fetch.
      */
-    where?: categoryBooksWhereInput
+    where?: CategoryBooksWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of categoryBooks to fetch.
+     * Determine the order of CategoryBooks to fetch.
      */
-    orderBy?: categoryBooksOrderByWithRelationInput | categoryBooksOrderByWithRelationInput[]
+    orderBy?: CategoryBooksOrderByWithRelationInput | CategoryBooksOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing categoryBooks.
+     * Sets the position for listing CategoryBooks.
      */
-    cursor?: categoryBooksWhereUniqueInput
+    cursor?: CategoryBooksWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` categoryBooks from the position of the cursor.
+     * Take `±n` CategoryBooks from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` categoryBooks.
+     * Skip the first `n` CategoryBooks.
      */
     skip?: number
     distinct?: CategoryBooksScalarFieldEnum | CategoryBooksScalarFieldEnum[]
   }
 
   /**
-   * categoryBooks create
+   * CategoryBooks create
    */
-  export type categoryBooksCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoryBooksCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the categoryBooks
+     * Select specific fields to fetch from the CategoryBooks
      */
-    select?: categoryBooksSelect<ExtArgs> | null
+    select?: CategoryBooksSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the categoryBooks
+     * Omit specific fields from the CategoryBooks
      */
-    omit?: categoryBooksOmit<ExtArgs> | null
+    omit?: CategoryBooksOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: categoryBooksInclude<ExtArgs> | null
+    include?: CategoryBooksInclude<ExtArgs> | null
     /**
-     * The data needed to create a categoryBooks.
+     * The data needed to create a CategoryBooks.
      */
-    data: XOR<categoryBooksCreateInput, categoryBooksUncheckedCreateInput>
+    data: XOR<CategoryBooksCreateInput, CategoryBooksUncheckedCreateInput>
   }
 
   /**
-   * categoryBooks createMany
+   * CategoryBooks createMany
    */
-  export type categoryBooksCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoryBooksCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many categoryBooks.
+     * The data used to create many CategoryBooks.
      */
-    data: categoryBooksCreateManyInput | categoryBooksCreateManyInput[]
+    data: CategoryBooksCreateManyInput | CategoryBooksCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * categoryBooks createManyAndReturn
+   * CategoryBooks createManyAndReturn
    */
-  export type categoryBooksCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoryBooksCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the categoryBooks
+     * Select specific fields to fetch from the CategoryBooks
      */
-    select?: categoryBooksSelectCreateManyAndReturn<ExtArgs> | null
+    select?: CategoryBooksSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the categoryBooks
+     * Omit specific fields from the CategoryBooks
      */
-    omit?: categoryBooksOmit<ExtArgs> | null
+    omit?: CategoryBooksOmit<ExtArgs> | null
     /**
-     * The data used to create many categoryBooks.
+     * The data used to create many CategoryBooks.
      */
-    data: categoryBooksCreateManyInput | categoryBooksCreateManyInput[]
+    data: CategoryBooksCreateManyInput | CategoryBooksCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: categoryBooksIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: CategoryBooksIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * categoryBooks update
+   * CategoryBooks update
    */
-  export type categoryBooksUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoryBooksUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the categoryBooks
+     * Select specific fields to fetch from the CategoryBooks
      */
-    select?: categoryBooksSelect<ExtArgs> | null
+    select?: CategoryBooksSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the categoryBooks
+     * Omit specific fields from the CategoryBooks
      */
-    omit?: categoryBooksOmit<ExtArgs> | null
+    omit?: CategoryBooksOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: categoryBooksInclude<ExtArgs> | null
+    include?: CategoryBooksInclude<ExtArgs> | null
     /**
-     * The data needed to update a categoryBooks.
+     * The data needed to update a CategoryBooks.
      */
-    data: XOR<categoryBooksUpdateInput, categoryBooksUncheckedUpdateInput>
+    data: XOR<CategoryBooksUpdateInput, CategoryBooksUncheckedUpdateInput>
     /**
-     * Choose, which categoryBooks to update.
+     * Choose, which CategoryBooks to update.
      */
-    where: categoryBooksWhereUniqueInput
+    where: CategoryBooksWhereUniqueInput
   }
 
   /**
-   * categoryBooks updateMany
+   * CategoryBooks updateMany
    */
-  export type categoryBooksUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoryBooksUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update categoryBooks.
+     * The data used to update CategoryBooks.
      */
-    data: XOR<categoryBooksUpdateManyMutationInput, categoryBooksUncheckedUpdateManyInput>
+    data: XOR<CategoryBooksUpdateManyMutationInput, CategoryBooksUncheckedUpdateManyInput>
     /**
-     * Filter which categoryBooks to update
+     * Filter which CategoryBooks to update
      */
-    where?: categoryBooksWhereInput
+    where?: CategoryBooksWhereInput
     /**
-     * Limit how many categoryBooks to update.
+     * Limit how many CategoryBooks to update.
      */
     limit?: number
   }
 
   /**
-   * categoryBooks updateManyAndReturn
+   * CategoryBooks updateManyAndReturn
    */
-  export type categoryBooksUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoryBooksUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the categoryBooks
+     * Select specific fields to fetch from the CategoryBooks
      */
-    select?: categoryBooksSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: CategoryBooksSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the categoryBooks
+     * Omit specific fields from the CategoryBooks
      */
-    omit?: categoryBooksOmit<ExtArgs> | null
+    omit?: CategoryBooksOmit<ExtArgs> | null
     /**
-     * The data used to update categoryBooks.
+     * The data used to update CategoryBooks.
      */
-    data: XOR<categoryBooksUpdateManyMutationInput, categoryBooksUncheckedUpdateManyInput>
+    data: XOR<CategoryBooksUpdateManyMutationInput, CategoryBooksUncheckedUpdateManyInput>
     /**
-     * Filter which categoryBooks to update
+     * Filter which CategoryBooks to update
      */
-    where?: categoryBooksWhereInput
+    where?: CategoryBooksWhereInput
     /**
-     * Limit how many categoryBooks to update.
+     * Limit how many CategoryBooks to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: categoryBooksIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: CategoryBooksIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * categoryBooks upsert
+   * CategoryBooks upsert
    */
-  export type categoryBooksUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoryBooksUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the categoryBooks
+     * Select specific fields to fetch from the CategoryBooks
      */
-    select?: categoryBooksSelect<ExtArgs> | null
+    select?: CategoryBooksSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the categoryBooks
+     * Omit specific fields from the CategoryBooks
      */
-    omit?: categoryBooksOmit<ExtArgs> | null
+    omit?: CategoryBooksOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: categoryBooksInclude<ExtArgs> | null
+    include?: CategoryBooksInclude<ExtArgs> | null
     /**
-     * The filter to search for the categoryBooks to update in case it exists.
+     * The filter to search for the CategoryBooks to update in case it exists.
      */
-    where: categoryBooksWhereUniqueInput
+    where: CategoryBooksWhereUniqueInput
     /**
-     * In case the categoryBooks found by the `where` argument doesn't exist, create a new categoryBooks with this data.
+     * In case the CategoryBooks found by the `where` argument doesn't exist, create a new CategoryBooks with this data.
      */
-    create: XOR<categoryBooksCreateInput, categoryBooksUncheckedCreateInput>
+    create: XOR<CategoryBooksCreateInput, CategoryBooksUncheckedCreateInput>
     /**
-     * In case the categoryBooks was found with the provided `where` argument, update it with this data.
+     * In case the CategoryBooks was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<categoryBooksUpdateInput, categoryBooksUncheckedUpdateInput>
+    update: XOR<CategoryBooksUpdateInput, CategoryBooksUncheckedUpdateInput>
   }
 
   /**
-   * categoryBooks delete
+   * CategoryBooks delete
    */
-  export type categoryBooksDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoryBooksDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the categoryBooks
+     * Select specific fields to fetch from the CategoryBooks
      */
-    select?: categoryBooksSelect<ExtArgs> | null
+    select?: CategoryBooksSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the categoryBooks
+     * Omit specific fields from the CategoryBooks
      */
-    omit?: categoryBooksOmit<ExtArgs> | null
+    omit?: CategoryBooksOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: categoryBooksInclude<ExtArgs> | null
+    include?: CategoryBooksInclude<ExtArgs> | null
     /**
-     * Filter which categoryBooks to delete.
+     * Filter which CategoryBooks to delete.
      */
-    where: categoryBooksWhereUniqueInput
+    where: CategoryBooksWhereUniqueInput
   }
 
   /**
-   * categoryBooks deleteMany
+   * CategoryBooks deleteMany
    */
-  export type categoryBooksDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoryBooksDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which categoryBooks to delete
+     * Filter which CategoryBooks to delete
      */
-    where?: categoryBooksWhereInput
+    where?: CategoryBooksWhereInput
     /**
-     * Limit how many categoryBooks to delete.
+     * Limit how many CategoryBooks to delete.
      */
     limit?: number
   }
 
   /**
-   * categoryBooks without action
+   * CategoryBooks without action
    */
-  export type categoryBooksDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CategoryBooksDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the categoryBooks
+     * Select specific fields to fetch from the CategoryBooks
      */
-    select?: categoryBooksSelect<ExtArgs> | null
+    select?: CategoryBooksSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the categoryBooks
+     * Omit specific fields from the CategoryBooks
      */
-    omit?: categoryBooksOmit<ExtArgs> | null
+    omit?: CategoryBooksOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: categoryBooksInclude<ExtArgs> | null
+    include?: CategoryBooksInclude<ExtArgs> | null
   }
 
 
@@ -17153,7 +17153,7 @@ export namespace Prisma {
     audioNotes?: AudioNoteListRelationFilter
     Images?: ImagesListRelationFilter
     User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    categoryBooks?: XOR<CategoryBooksNullableScalarRelationFilter, categoryBooksWhereInput> | null
+    categoryBooks?: XOR<CategoryBooksNullableScalarRelationFilter, CategoryBooksWhereInput> | null
   }
 
   export type BookOrderByWithRelationInput = {
@@ -17176,7 +17176,7 @@ export namespace Prisma {
     audioNotes?: AudioNoteOrderByRelationAggregateInput
     Images?: ImagesOrderByRelationAggregateInput
     User?: UserOrderByWithRelationInput
-    categoryBooks?: categoryBooksOrderByWithRelationInput
+    categoryBooks?: CategoryBooksOrderByWithRelationInput
   }
 
   export type BookWhereUniqueInput = Prisma.AtLeast<{
@@ -17202,7 +17202,7 @@ export namespace Prisma {
     audioNotes?: AudioNoteListRelationFilter
     Images?: ImagesListRelationFilter
     User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    categoryBooks?: XOR<CategoryBooksNullableScalarRelationFilter, categoryBooksWhereInput> | null
+    categoryBooks?: XOR<CategoryBooksNullableScalarRelationFilter, CategoryBooksWhereInput> | null
   }, "id" | "isbn">
 
   export type BookOrderByWithAggregationInput = {
@@ -17290,49 +17290,49 @@ export namespace Prisma {
     file?: StringWithAggregatesFilter<"Images"> | string
   }
 
-  export type categoryBooksWhereInput = {
-    AND?: categoryBooksWhereInput | categoryBooksWhereInput[]
-    OR?: categoryBooksWhereInput[]
-    NOT?: categoryBooksWhereInput | categoryBooksWhereInput[]
-    id?: StringFilter<"categoryBooks"> | string
-    category?: StringFilter<"categoryBooks"> | string
-    bookId?: StringFilter<"categoryBooks"> | string
+  export type CategoryBooksWhereInput = {
+    AND?: CategoryBooksWhereInput | CategoryBooksWhereInput[]
+    OR?: CategoryBooksWhereInput[]
+    NOT?: CategoryBooksWhereInput | CategoryBooksWhereInput[]
+    id?: StringFilter<"CategoryBooks"> | string
+    category?: StringFilter<"CategoryBooks"> | string
+    bookId?: StringFilter<"CategoryBooks"> | string
     book?: XOR<BookScalarRelationFilter, BookWhereInput>
   }
 
-  export type categoryBooksOrderByWithRelationInput = {
+  export type CategoryBooksOrderByWithRelationInput = {
     id?: SortOrder
     category?: SortOrder
     bookId?: SortOrder
     book?: BookOrderByWithRelationInput
   }
 
-  export type categoryBooksWhereUniqueInput = Prisma.AtLeast<{
+  export type CategoryBooksWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     bookId?: string
-    AND?: categoryBooksWhereInput | categoryBooksWhereInput[]
-    OR?: categoryBooksWhereInput[]
-    NOT?: categoryBooksWhereInput | categoryBooksWhereInput[]
-    category?: StringFilter<"categoryBooks"> | string
+    AND?: CategoryBooksWhereInput | CategoryBooksWhereInput[]
+    OR?: CategoryBooksWhereInput[]
+    NOT?: CategoryBooksWhereInput | CategoryBooksWhereInput[]
+    category?: StringFilter<"CategoryBooks"> | string
     book?: XOR<BookScalarRelationFilter, BookWhereInput>
   }, "id" | "bookId">
 
-  export type categoryBooksOrderByWithAggregationInput = {
+  export type CategoryBooksOrderByWithAggregationInput = {
     id?: SortOrder
     category?: SortOrder
     bookId?: SortOrder
-    _count?: categoryBooksCountOrderByAggregateInput
-    _max?: categoryBooksMaxOrderByAggregateInput
-    _min?: categoryBooksMinOrderByAggregateInput
+    _count?: CategoryBooksCountOrderByAggregateInput
+    _max?: CategoryBooksMaxOrderByAggregateInput
+    _min?: CategoryBooksMinOrderByAggregateInput
   }
 
-  export type categoryBooksScalarWhereWithAggregatesInput = {
-    AND?: categoryBooksScalarWhereWithAggregatesInput | categoryBooksScalarWhereWithAggregatesInput[]
-    OR?: categoryBooksScalarWhereWithAggregatesInput[]
-    NOT?: categoryBooksScalarWhereWithAggregatesInput | categoryBooksScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"categoryBooks"> | string
-    category?: StringWithAggregatesFilter<"categoryBooks"> | string
-    bookId?: StringWithAggregatesFilter<"categoryBooks"> | string
+  export type CategoryBooksScalarWhereWithAggregatesInput = {
+    AND?: CategoryBooksScalarWhereWithAggregatesInput | CategoryBooksScalarWhereWithAggregatesInput[]
+    OR?: CategoryBooksScalarWhereWithAggregatesInput[]
+    NOT?: CategoryBooksScalarWhereWithAggregatesInput | CategoryBooksScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CategoryBooks"> | string
+    category?: StringWithAggregatesFilter<"CategoryBooks"> | string
+    bookId?: StringWithAggregatesFilter<"CategoryBooks"> | string
   }
 
   export type ExchangeWhereInput = {
@@ -18025,7 +18025,7 @@ export namespace Prisma {
     audioNotes?: AudioNoteCreateNestedManyWithoutBookInput
     Images?: ImagesCreateNestedManyWithoutBookInput
     User?: UserCreateNestedOneWithoutLibraryInput
-    categoryBooks?: categoryBooksCreateNestedOneWithoutBookInput
+    categoryBooks?: CategoryBooksCreateNestedOneWithoutBookInput
   }
 
   export type BookUncheckedCreateInput = {
@@ -18047,7 +18047,7 @@ export namespace Prisma {
     reviews?: ReviewUncheckedCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteUncheckedCreateNestedManyWithoutBookInput
     Images?: ImagesUncheckedCreateNestedManyWithoutBookInput
-    categoryBooks?: categoryBooksUncheckedCreateNestedOneWithoutBookInput
+    categoryBooks?: CategoryBooksUncheckedCreateNestedOneWithoutBookInput
   }
 
   export type BookUpdateInput = {
@@ -18069,7 +18069,7 @@ export namespace Prisma {
     audioNotes?: AudioNoteUpdateManyWithoutBookNestedInput
     Images?: ImagesUpdateManyWithoutBookNestedInput
     User?: UserUpdateOneWithoutLibraryNestedInput
-    categoryBooks?: categoryBooksUpdateOneWithoutBookNestedInput
+    categoryBooks?: CategoryBooksUpdateOneWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateInput = {
@@ -18091,7 +18091,7 @@ export namespace Prisma {
     reviews?: ReviewUncheckedUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUncheckedUpdateManyWithoutBookNestedInput
     Images?: ImagesUncheckedUpdateManyWithoutBookNestedInput
-    categoryBooks?: categoryBooksUncheckedUpdateOneWithoutBookNestedInput
+    categoryBooks?: CategoryBooksUncheckedUpdateOneWithoutBookNestedInput
   }
 
   export type BookCreateManyInput = {
@@ -18185,42 +18185,42 @@ export namespace Prisma {
     file?: StringFieldUpdateOperationsInput | string
   }
 
-  export type categoryBooksCreateInput = {
+  export type CategoryBooksCreateInput = {
     id?: string
     category: string
     book: BookCreateNestedOneWithoutCategoryBooksInput
   }
 
-  export type categoryBooksUncheckedCreateInput = {
+  export type CategoryBooksUncheckedCreateInput = {
     id?: string
     category: string
     bookId: string
   }
 
-  export type categoryBooksUpdateInput = {
+  export type CategoryBooksUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     book?: BookUpdateOneRequiredWithoutCategoryBooksNestedInput
   }
 
-  export type categoryBooksUncheckedUpdateInput = {
+  export type CategoryBooksUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     bookId?: StringFieldUpdateOperationsInput | string
   }
 
-  export type categoryBooksCreateManyInput = {
+  export type CategoryBooksCreateManyInput = {
     id?: string
     category: string
     bookId: string
   }
 
-  export type categoryBooksUpdateManyMutationInput = {
+  export type CategoryBooksUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
   }
 
-  export type categoryBooksUncheckedUpdateManyInput = {
+  export type CategoryBooksUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     bookId?: StringFieldUpdateOperationsInput | string
@@ -19063,8 +19063,8 @@ export namespace Prisma {
   }
 
   export type CategoryBooksNullableScalarRelationFilter = {
-    is?: categoryBooksWhereInput | null
-    isNot?: categoryBooksWhereInput | null
+    is?: CategoryBooksWhereInput | null
+    isNot?: CategoryBooksWhereInput | null
   }
 
   export type ImagesOrderByRelationAggregateInput = {
@@ -19177,19 +19177,19 @@ export namespace Prisma {
     file?: SortOrder
   }
 
-  export type categoryBooksCountOrderByAggregateInput = {
+  export type CategoryBooksCountOrderByAggregateInput = {
     id?: SortOrder
     category?: SortOrder
     bookId?: SortOrder
   }
 
-  export type categoryBooksMaxOrderByAggregateInput = {
+  export type CategoryBooksMaxOrderByAggregateInput = {
     id?: SortOrder
     category?: SortOrder
     bookId?: SortOrder
   }
 
-  export type categoryBooksMinOrderByAggregateInput = {
+  export type CategoryBooksMinOrderByAggregateInput = {
     id?: SortOrder
     category?: SortOrder
     bookId?: SortOrder
@@ -19948,10 +19948,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type categoryBooksCreateNestedOneWithoutBookInput = {
-    create?: XOR<categoryBooksCreateWithoutBookInput, categoryBooksUncheckedCreateWithoutBookInput>
-    connectOrCreate?: categoryBooksCreateOrConnectWithoutBookInput
-    connect?: categoryBooksWhereUniqueInput
+  export type CategoryBooksCreateNestedOneWithoutBookInput = {
+    create?: XOR<CategoryBooksCreateWithoutBookInput, CategoryBooksUncheckedCreateWithoutBookInput>
+    connectOrCreate?: CategoryBooksCreateOrConnectWithoutBookInput
+    connect?: CategoryBooksWhereUniqueInput
   }
 
   export type ExchangeUncheckedCreateNestedManyWithoutBookInput = {
@@ -19982,10 +19982,10 @@ export namespace Prisma {
     connect?: ImagesWhereUniqueInput | ImagesWhereUniqueInput[]
   }
 
-  export type categoryBooksUncheckedCreateNestedOneWithoutBookInput = {
-    create?: XOR<categoryBooksCreateWithoutBookInput, categoryBooksUncheckedCreateWithoutBookInput>
-    connectOrCreate?: categoryBooksCreateOrConnectWithoutBookInput
-    connect?: categoryBooksWhereUniqueInput
+  export type CategoryBooksUncheckedCreateNestedOneWithoutBookInput = {
+    create?: XOR<CategoryBooksCreateWithoutBookInput, CategoryBooksUncheckedCreateWithoutBookInput>
+    connectOrCreate?: CategoryBooksCreateOrConnectWithoutBookInput
+    connect?: CategoryBooksWhereUniqueInput
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
@@ -20066,14 +20066,14 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutLibraryInput, UserUpdateWithoutLibraryInput>, UserUncheckedUpdateWithoutLibraryInput>
   }
 
-  export type categoryBooksUpdateOneWithoutBookNestedInput = {
-    create?: XOR<categoryBooksCreateWithoutBookInput, categoryBooksUncheckedCreateWithoutBookInput>
-    connectOrCreate?: categoryBooksCreateOrConnectWithoutBookInput
-    upsert?: categoryBooksUpsertWithoutBookInput
-    disconnect?: categoryBooksWhereInput | boolean
-    delete?: categoryBooksWhereInput | boolean
-    connect?: categoryBooksWhereUniqueInput
-    update?: XOR<XOR<categoryBooksUpdateToOneWithWhereWithoutBookInput, categoryBooksUpdateWithoutBookInput>, categoryBooksUncheckedUpdateWithoutBookInput>
+  export type CategoryBooksUpdateOneWithoutBookNestedInput = {
+    create?: XOR<CategoryBooksCreateWithoutBookInput, CategoryBooksUncheckedCreateWithoutBookInput>
+    connectOrCreate?: CategoryBooksCreateOrConnectWithoutBookInput
+    upsert?: CategoryBooksUpsertWithoutBookInput
+    disconnect?: CategoryBooksWhereInput | boolean
+    delete?: CategoryBooksWhereInput | boolean
+    connect?: CategoryBooksWhereUniqueInput
+    update?: XOR<XOR<CategoryBooksUpdateToOneWithWhereWithoutBookInput, CategoryBooksUpdateWithoutBookInput>, CategoryBooksUncheckedUpdateWithoutBookInput>
   }
 
   export type ExchangeUncheckedUpdateManyWithoutBookNestedInput = {
@@ -20132,14 +20132,14 @@ export namespace Prisma {
     deleteMany?: ImagesScalarWhereInput | ImagesScalarWhereInput[]
   }
 
-  export type categoryBooksUncheckedUpdateOneWithoutBookNestedInput = {
-    create?: XOR<categoryBooksCreateWithoutBookInput, categoryBooksUncheckedCreateWithoutBookInput>
-    connectOrCreate?: categoryBooksCreateOrConnectWithoutBookInput
-    upsert?: categoryBooksUpsertWithoutBookInput
-    disconnect?: categoryBooksWhereInput | boolean
-    delete?: categoryBooksWhereInput | boolean
-    connect?: categoryBooksWhereUniqueInput
-    update?: XOR<XOR<categoryBooksUpdateToOneWithWhereWithoutBookInput, categoryBooksUpdateWithoutBookInput>, categoryBooksUncheckedUpdateWithoutBookInput>
+  export type CategoryBooksUncheckedUpdateOneWithoutBookNestedInput = {
+    create?: XOR<CategoryBooksCreateWithoutBookInput, CategoryBooksUncheckedCreateWithoutBookInput>
+    connectOrCreate?: CategoryBooksCreateOrConnectWithoutBookInput
+    upsert?: CategoryBooksUpsertWithoutBookInput
+    disconnect?: CategoryBooksWhereInput | boolean
+    delete?: CategoryBooksWhereInput | boolean
+    connect?: CategoryBooksWhereUniqueInput
+    update?: XOR<XOR<CategoryBooksUpdateToOneWithWhereWithoutBookInput, CategoryBooksUpdateWithoutBookInput>, CategoryBooksUncheckedUpdateWithoutBookInput>
   }
 
   export type BookCreateNestedOneWithoutImagesInput = {
@@ -20938,7 +20938,7 @@ export namespace Prisma {
     reviews?: ReviewCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteCreateNestedManyWithoutBookInput
     Images?: ImagesCreateNestedManyWithoutBookInput
-    categoryBooks?: categoryBooksCreateNestedOneWithoutBookInput
+    categoryBooks?: CategoryBooksCreateNestedOneWithoutBookInput
   }
 
   export type BookUncheckedCreateWithoutUserInput = {
@@ -20959,7 +20959,7 @@ export namespace Prisma {
     reviews?: ReviewUncheckedCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteUncheckedCreateNestedManyWithoutBookInput
     Images?: ImagesUncheckedCreateNestedManyWithoutBookInput
-    categoryBooks?: categoryBooksUncheckedCreateNestedOneWithoutBookInput
+    categoryBooks?: CategoryBooksUncheckedCreateNestedOneWithoutBookInput
   }
 
   export type BookCreateOrConnectWithoutUserInput = {
@@ -21405,19 +21405,19 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutLibraryInput, UserUncheckedCreateWithoutLibraryInput>
   }
 
-  export type categoryBooksCreateWithoutBookInput = {
+  export type CategoryBooksCreateWithoutBookInput = {
     id?: string
     category: string
   }
 
-  export type categoryBooksUncheckedCreateWithoutBookInput = {
+  export type CategoryBooksUncheckedCreateWithoutBookInput = {
     id?: string
     category: string
   }
 
-  export type categoryBooksCreateOrConnectWithoutBookInput = {
-    where: categoryBooksWhereUniqueInput
-    create: XOR<categoryBooksCreateWithoutBookInput, categoryBooksUncheckedCreateWithoutBookInput>
+  export type CategoryBooksCreateOrConnectWithoutBookInput = {
+    where: CategoryBooksWhereUniqueInput
+    create: XOR<CategoryBooksCreateWithoutBookInput, CategoryBooksUncheckedCreateWithoutBookInput>
   }
 
   export type ExchangeUpsertWithWhereUniqueWithoutBookInput = {
@@ -21550,23 +21550,23 @@ export namespace Prisma {
     userFriends?: FriendFollowerUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type categoryBooksUpsertWithoutBookInput = {
-    update: XOR<categoryBooksUpdateWithoutBookInput, categoryBooksUncheckedUpdateWithoutBookInput>
-    create: XOR<categoryBooksCreateWithoutBookInput, categoryBooksUncheckedCreateWithoutBookInput>
-    where?: categoryBooksWhereInput
+  export type CategoryBooksUpsertWithoutBookInput = {
+    update: XOR<CategoryBooksUpdateWithoutBookInput, CategoryBooksUncheckedUpdateWithoutBookInput>
+    create: XOR<CategoryBooksCreateWithoutBookInput, CategoryBooksUncheckedCreateWithoutBookInput>
+    where?: CategoryBooksWhereInput
   }
 
-  export type categoryBooksUpdateToOneWithWhereWithoutBookInput = {
-    where?: categoryBooksWhereInput
-    data: XOR<categoryBooksUpdateWithoutBookInput, categoryBooksUncheckedUpdateWithoutBookInput>
+  export type CategoryBooksUpdateToOneWithWhereWithoutBookInput = {
+    where?: CategoryBooksWhereInput
+    data: XOR<CategoryBooksUpdateWithoutBookInput, CategoryBooksUncheckedUpdateWithoutBookInput>
   }
 
-  export type categoryBooksUpdateWithoutBookInput = {
+  export type CategoryBooksUpdateWithoutBookInput = {
     id?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
   }
 
-  export type categoryBooksUncheckedUpdateWithoutBookInput = {
+  export type CategoryBooksUncheckedUpdateWithoutBookInput = {
     id?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
   }
@@ -21589,7 +21589,7 @@ export namespace Prisma {
     reviews?: ReviewCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteCreateNestedManyWithoutBookInput
     User?: UserCreateNestedOneWithoutLibraryInput
-    categoryBooks?: categoryBooksCreateNestedOneWithoutBookInput
+    categoryBooks?: CategoryBooksCreateNestedOneWithoutBookInput
   }
 
   export type BookUncheckedCreateWithoutImagesInput = {
@@ -21610,7 +21610,7 @@ export namespace Prisma {
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutBookInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteUncheckedCreateNestedManyWithoutBookInput
-    categoryBooks?: categoryBooksUncheckedCreateNestedOneWithoutBookInput
+    categoryBooks?: CategoryBooksUncheckedCreateNestedOneWithoutBookInput
   }
 
   export type BookCreateOrConnectWithoutImagesInput = {
@@ -21647,7 +21647,7 @@ export namespace Prisma {
     reviews?: ReviewUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUpdateManyWithoutBookNestedInput
     User?: UserUpdateOneWithoutLibraryNestedInput
-    categoryBooks?: categoryBooksUpdateOneWithoutBookNestedInput
+    categoryBooks?: CategoryBooksUpdateOneWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateWithoutImagesInput = {
@@ -21668,7 +21668,7 @@ export namespace Prisma {
     exchanges?: ExchangeUncheckedUpdateManyWithoutBookNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUncheckedUpdateManyWithoutBookNestedInput
-    categoryBooks?: categoryBooksUncheckedUpdateOneWithoutBookNestedInput
+    categoryBooks?: CategoryBooksUncheckedUpdateOneWithoutBookNestedInput
   }
 
   export type BookCreateWithoutCategoryBooksInput = {
@@ -21789,7 +21789,7 @@ export namespace Prisma {
     audioNotes?: AudioNoteCreateNestedManyWithoutBookInput
     Images?: ImagesCreateNestedManyWithoutBookInput
     User?: UserCreateNestedOneWithoutLibraryInput
-    categoryBooks?: categoryBooksCreateNestedOneWithoutBookInput
+    categoryBooks?: CategoryBooksCreateNestedOneWithoutBookInput
   }
 
   export type BookUncheckedCreateWithoutExchangesInput = {
@@ -21810,7 +21810,7 @@ export namespace Prisma {
     reviews?: ReviewUncheckedCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteUncheckedCreateNestedManyWithoutBookInput
     Images?: ImagesUncheckedCreateNestedManyWithoutBookInput
-    categoryBooks?: categoryBooksUncheckedCreateNestedOneWithoutBookInput
+    categoryBooks?: CategoryBooksUncheckedCreateNestedOneWithoutBookInput
   }
 
   export type BookCreateOrConnectWithoutExchangesInput = {
@@ -21898,7 +21898,7 @@ export namespace Prisma {
     audioNotes?: AudioNoteUpdateManyWithoutBookNestedInput
     Images?: ImagesUpdateManyWithoutBookNestedInput
     User?: UserUpdateOneWithoutLibraryNestedInput
-    categoryBooks?: categoryBooksUpdateOneWithoutBookNestedInput
+    categoryBooks?: CategoryBooksUpdateOneWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateWithoutExchangesInput = {
@@ -21919,7 +21919,7 @@ export namespace Prisma {
     reviews?: ReviewUncheckedUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUncheckedUpdateManyWithoutBookNestedInput
     Images?: ImagesUncheckedUpdateManyWithoutBookNestedInput
-    categoryBooks?: categoryBooksUncheckedUpdateOneWithoutBookNestedInput
+    categoryBooks?: CategoryBooksUncheckedUpdateOneWithoutBookNestedInput
   }
 
   export type UserUpsertWithoutExchangesInput = {
@@ -21997,7 +21997,7 @@ export namespace Prisma {
     audioNotes?: AudioNoteCreateNestedManyWithoutBookInput
     Images?: ImagesCreateNestedManyWithoutBookInput
     User?: UserCreateNestedOneWithoutLibraryInput
-    categoryBooks?: categoryBooksCreateNestedOneWithoutBookInput
+    categoryBooks?: CategoryBooksCreateNestedOneWithoutBookInput
   }
 
   export type BookUncheckedCreateWithoutReviewsInput = {
@@ -22018,7 +22018,7 @@ export namespace Prisma {
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutBookInput
     audioNotes?: AudioNoteUncheckedCreateNestedManyWithoutBookInput
     Images?: ImagesUncheckedCreateNestedManyWithoutBookInput
-    categoryBooks?: categoryBooksUncheckedCreateNestedOneWithoutBookInput
+    categoryBooks?: CategoryBooksUncheckedCreateNestedOneWithoutBookInput
   }
 
   export type BookCreateOrConnectWithoutReviewsInput = {
@@ -22154,7 +22154,7 @@ export namespace Prisma {
     audioNotes?: AudioNoteUpdateManyWithoutBookNestedInput
     Images?: ImagesUpdateManyWithoutBookNestedInput
     User?: UserUpdateOneWithoutLibraryNestedInput
-    categoryBooks?: categoryBooksUpdateOneWithoutBookNestedInput
+    categoryBooks?: CategoryBooksUpdateOneWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateWithoutReviewsInput = {
@@ -22175,7 +22175,7 @@ export namespace Prisma {
     exchanges?: ExchangeUncheckedUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUncheckedUpdateManyWithoutBookNestedInput
     Images?: ImagesUncheckedUpdateManyWithoutBookNestedInput
-    categoryBooks?: categoryBooksUncheckedUpdateOneWithoutBookNestedInput
+    categoryBooks?: CategoryBooksUncheckedUpdateOneWithoutBookNestedInput
   }
 
   export type UserUpsertWithoutReviewsInput = {
@@ -22336,7 +22336,7 @@ export namespace Prisma {
     reviews?: ReviewCreateNestedManyWithoutBookInput
     Images?: ImagesCreateNestedManyWithoutBookInput
     User?: UserCreateNestedOneWithoutLibraryInput
-    categoryBooks?: categoryBooksCreateNestedOneWithoutBookInput
+    categoryBooks?: CategoryBooksCreateNestedOneWithoutBookInput
   }
 
   export type BookUncheckedCreateWithoutAudioNotesInput = {
@@ -22357,7 +22357,7 @@ export namespace Prisma {
     exchanges?: ExchangeUncheckedCreateNestedManyWithoutBookInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutBookInput
     Images?: ImagesUncheckedCreateNestedManyWithoutBookInput
-    categoryBooks?: categoryBooksUncheckedCreateNestedOneWithoutBookInput
+    categoryBooks?: CategoryBooksUncheckedCreateNestedOneWithoutBookInput
   }
 
   export type BookCreateOrConnectWithoutAudioNotesInput = {
@@ -22451,7 +22451,7 @@ export namespace Prisma {
     reviews?: ReviewUpdateManyWithoutBookNestedInput
     Images?: ImagesUpdateManyWithoutBookNestedInput
     User?: UserUpdateOneWithoutLibraryNestedInput
-    categoryBooks?: categoryBooksUpdateOneWithoutBookNestedInput
+    categoryBooks?: CategoryBooksUpdateOneWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateWithoutAudioNotesInput = {
@@ -22472,7 +22472,7 @@ export namespace Prisma {
     exchanges?: ExchangeUncheckedUpdateManyWithoutBookNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutBookNestedInput
     Images?: ImagesUncheckedUpdateManyWithoutBookNestedInput
-    categoryBooks?: categoryBooksUncheckedUpdateOneWithoutBookNestedInput
+    categoryBooks?: CategoryBooksUncheckedUpdateOneWithoutBookNestedInput
   }
 
   export type ReviewCreateWithoutCommentsInput = {
@@ -23537,7 +23537,7 @@ export namespace Prisma {
     reviews?: ReviewUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUpdateManyWithoutBookNestedInput
     Images?: ImagesUpdateManyWithoutBookNestedInput
-    categoryBooks?: categoryBooksUpdateOneWithoutBookNestedInput
+    categoryBooks?: CategoryBooksUpdateOneWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateWithoutUserInput = {
@@ -23558,7 +23558,7 @@ export namespace Prisma {
     reviews?: ReviewUncheckedUpdateManyWithoutBookNestedInput
     audioNotes?: AudioNoteUncheckedUpdateManyWithoutBookNestedInput
     Images?: ImagesUncheckedUpdateManyWithoutBookNestedInput
-    categoryBooks?: categoryBooksUncheckedUpdateOneWithoutBookNestedInput
+    categoryBooks?: CategoryBooksUncheckedUpdateOneWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateManyWithoutUserInput = {
