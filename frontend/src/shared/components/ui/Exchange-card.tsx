@@ -10,16 +10,16 @@ interface ExchangeCardProps{
     book : Book;
 }
 
-export default function ExchangeCard ( {book}  : ExchangeCardProps ) {
+const ExchangeCard : React.FC<ExchangeCardProps> = ({book}) => {
   
-    const [isModalOpen, setModalOpen] = useState(false);
+    const [isModalOpen, setModalOpen] = useState<boolean>(false);
     const router = useRouter();
 
     return (
       <div className="flex flex-col md:flex-row border rounded-lg overflow-hidden shadow-md">
         <div className="relative w-full md:w-3/10 h-[300px] md:h-auto flex justify-center items-center">
           <Image
-            src={book.cover && book.cover.trim() !== "" ? book.cover : "/imagenprueba.png"}
+            src={book.cover ? book.cover : "/imagenprueba.png"}
             alt={`Portada del libro ${book.title}`}
             width={200}
             height={300}
@@ -64,3 +64,5 @@ export default function ExchangeCard ( {book}  : ExchangeCardProps ) {
       </div>
     );
 }
+
+export default ExchangeCard;

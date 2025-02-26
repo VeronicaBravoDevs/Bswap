@@ -5,7 +5,7 @@ import CardBook from "../common/card-book";
 import Error from "../common/Error";
 import Loading from "../common/Loading";
 
-export default function CardList() {
+const CardList: React.FC = () => {
   const { data: books, loading, error } = useBooks();
 
   if (loading) return <Loading />;
@@ -13,17 +13,19 @@ export default function CardList() {
     return (
       <>
         <Error />
-        <p>{error}</p>
+        <p>{ error }</p>
       </>
     );
 
   return (
     <div className="flex flex-wrap justify-around gap-8 my-16">
-      {Array.isArray(books) && books.length === 0 ? (
+      { books.length === 0 ? (
         <div>Aún no hay libros cargados</div>
       ) : (
-        Array.isArray(books) && books.map((book) => <CardBook key={book.id} book={book} />)
-      )}
+        books.map((book) => <CardBook key={ book.id } book={ book } />)
+      ) }
     </div>
   );
 }
+
+export default CardList;
