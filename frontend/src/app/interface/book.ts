@@ -6,6 +6,7 @@ export interface Book {
   description: string;
   published: Date;
   publisher: string;
+  cover: string;
   image: string;
   genre: string;
   exchange_available: boolean;

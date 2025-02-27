@@ -1,18 +1,18 @@
 [
     {
-      "id": "1",
-      "title": "Mil y una noche",
+      "id": "cm7jjf1xg0000i14e6nhzkbvc",
+      "title": "Las Mil y una noche",
       "author": "Pablo Neruda",
       "isbn": "978-3-16-148410-0",
       "description": "(sacar)",
       "published": "1967-05-30T00:00:00.000Z",
       "publisher": "Sudamericana",
-      "image": "https://res.cloudinary.com/duyahznm2/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1740141480/bswap/milyunanoches-PNeruda_jxkyns.png",
+      "image": "https://res.cloudinary.com/duyahznm2/image/upload/v1740141480/bswap/milyunanoches-PNeruda_jxkyns.png",
       "genre": "Realismo mágico",
       "exchange_available": true,
       "status": "approved",
       "libraryId": null,
-      "userId": "usuario1",
+      "userId": "Pablo Guzman",
       "reviews": [
         {
           "id": "101",
@@ -27,7 +27,7 @@
       ]
     },
     {
-      "id": "2",
+      "id": "cm7jjhqtm0001i14envniqchh",
       "title": "The Garden of Secrets",
       "author": "Phil Collins",
       "isbn": "978-0-452-28423-4",
@@ -39,7 +39,7 @@
       "exchange_available": true,
       "status": "approved",
       "libraryId": null,
-      "userId": "usuario2",
+      "userId": "Alejandra Montaner",
       "reviews": [
         {
           "id": "102",
@@ -47,5 +47,60 @@
           "comment": "Una novela aterradoramente realista."
         }
       ]
+    },
+    {
+      "id": "cm7jvsro70005gn4esj54x87a",
+      "title": "Rimas y Leyenda",
+      "author": "Gustavo Adolfo Becquer",
+      "isbn": "978-3-16-148410-0",
+      "description": "(sacar)",
+      "published": "1990-04-30T00:00:00.000Z",
+      "publisher": "Editorial La Rosa",
+      "image": "https://res.cloudinary.com/duyahznm2/image/upload/v1740400714/bswap/rimasYleyendas_fwz8jj.png",
+      "genre": "Poesia",
+      "exchange_available": true,
+      "status": "approved",
+      "libraryId": null,
+      "userId": "Alejandra Montaner",
+      "reviews": [
+        {
+          "id": "103",
+          "user": "Sofia M",
+          "comment": "Inspirador y revelador, sin duda lo volveré a leer"
+        },
+        {
+          "id": "104",
+          "user": "Laura M",
+          "comment": "No podía dejar de leer, una historia maravillosa."
+        }
+      ]
+    },
+    {
+      "id": "cm7jvl2250003gn4ec81k0wy0",
+      "title": "Cuentos para el alma",
+      "author": "Jorge Bucay",
+      "isbn": "978-3-16-148410-0",
+      "description": "(sacar)",
+      "published": "2000-04-30T00:00:00.000Z",
+      "publisher": "Sudamericana",
+      "image": "https://res.cloudinary.com/duyahznm2/image/upload/v1740400707/bswap/cuentosparaelalma_os1gsl.webp",
+      "genre": "Autoayuda",
+      "exchange_available": true,
+      "status": "approved",
+      "libraryId": null,
+      "userId": "usuario4",
+      "reviews": [
+        {
+          "id": "105",
+          "user": "Adriana S",
+          "comment": "Me ayudó en un momento difícil, realmente inspirador."
+        },
+        {
+          "id": "104",
+          "user": "Laura M",
+          "comment": "Lo releo cada tanto y siempre encuentro algo nuevo"
+        }
+      ]
     }
+
   ]
