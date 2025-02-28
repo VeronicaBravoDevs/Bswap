@@ -1,3 +1,13 @@
+export interface Image {
+  id: string;
+  url: string;
+}
+
+export interface Audio {
+  id: string;
+  url: string;
+}
+
 export interface Book {
   id: string;
   title: string;
@@ -6,18 +16,19 @@ export interface Book {
   description: string;
   published: Date;
   publisher: string;
-  cover: string;
-  image: string;
+  cover: Image;
+  images: Image;
   genre: string;
   exchange_available: boolean;
   status: "pending" | "approved" | "rejected";
   libraryId: string | null;
-  userId: string; 
+  userId: string;
   reviews: Review[];
 }
 
 export interface Review{
   id: string;
-  user: string;
-  comment: string;
+  userId: string;
+  comment?: string;
+  audio?: Audio;
 }
