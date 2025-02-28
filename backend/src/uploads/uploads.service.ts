@@ -6,30 +6,29 @@ import { PrismaService } from 'src/prisma/prisma.service';
 @Injectable()
 export class UploadsService {
   private uploadDir: string;
-  
-  constructor( private readonly prismaService: PrismaService ) {
+
+  constructor(private readonly prismaService: PrismaService) {
     this.uploadDir = path.resolve(process.cwd(), 'uploads');
     if (!fs.existsSync(this.uploadDir)) {
       fs.mkdirSync(this.uploadDir, { recursive: true });
     }
   }
 
-  async create ( bookId: string, file: Express.Multer.File ){
-  
+  async create(bookId: string, file: Express.Multer.File) {
     const filePath = path.join(this.uploadDir, file.originalname);
-  
+
     fs.writeFileSync(filePath, file.buffer);
-  
+
     const fileUrl = `${process.env.BACKEND_URL}/uploads/${file.originalname}`;
 
     const createdFile = await this.prismaService.images.create({
       data: {
         file: fileUrl,
         book: {
-          connect:{id:bookId},
+          connect: { id: bookId },
         },
-      }
+      },
     });
-    return createdFile
+    return createdFile;
   }
 }
