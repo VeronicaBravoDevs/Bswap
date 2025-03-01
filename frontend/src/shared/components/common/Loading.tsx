@@ -1,7 +1,12 @@
-export default function Loading() {
+import React from 'react';
+
+const Loading = () => {
   return (
-    <>
-      <p>Loading...</p>
-    </>
+    <div className='flex justify-center items-center'>
+      <p className='text-gray-50'> Cargando ....</p>
+    </div>
   );
 }
+
+export default Loading
+

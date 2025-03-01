@@ -11,23 +11,18 @@ export function useBooks(): { data: Book[], loading: boolean, error: string | nu
   const [ loading, setLoading ] = useState<boolean>(true);
 
   useEffect(() => {
-    const loadBooks = () => {
-   
-      getBooks().then((result) => {
-        // const filteredBooks = result.filter( (book: Book)=> book.exchange_available );
-        setBooks(result);
-      }
-      ).catch((error) => {
-        setError(error instanceof Error ? error.message : "Unknown error");
-      }
-      ).finally(() => {
-        setLoading(false);
-      }
-      );
-    };
+    const loadBooks = async  () => {   
+   try{ const result = await  getBooks();
+       // const filteredBooks = result.filter( (book: Book)=> book.exchange_available );
+    setBooks(result);
+   } catch(error) {
+    setError(error instanceof Error ? error.message : "Unknown error");
+   }finally  {
+      setLoading(false);
+    } }; 
 
     loadBooks();
-  }, []);
+  }, [getBooks]);
 
   return { data: books, loading, error };
 }
