@@ -9,13 +9,7 @@ const CardList: React.FC = () => {
   const { data: books, loading, error } = useBooks();
 
   if (loading) return <Loading />;
-  if (error)
-    return (
-      <>
-        <Error />
-        <p>{ error }</p>
-      </>
-    );
+  if(error) return <Error message={error}/>;
 
   return (
     <div className="flex flex-wrap justify-around gap-8 my-16">
