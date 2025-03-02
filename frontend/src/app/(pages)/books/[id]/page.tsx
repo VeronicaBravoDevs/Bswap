@@ -1,9 +1,11 @@
-/* import { Book } from "@/app/interface/book"; */
+
 import { notFound } from "next/navigation";
 import {BookImageModal} from "@/shared/components/ui/BookImageModal";
 import { bootServices } from "@/shared/services/books/booksService";
 import { Book } from "@/app/interface/book";
 import Image from "next/image";
+import { userServices } from "@/shared/services/users/usersService";
+import { User } from "@/app/interface/user";
 
 /* 
 //usar directamente de bookService bootService
@@ -29,9 +31,11 @@ try {
 
   if (!book) return notFound();  
 
+  const user = await userServices.getUsersById(book.userId) as User;
+
   //imagenes extra??
   const extraImages = [
-    book.image || "/imagenprueba.png", "/imagenprueba.png", "/imagenprueba.png" ].filter(Boolean).slice(0,3);
+    book.image || "/imagenprueba.png", "/imagenprueba.png", "/imagenprueba.png" ].filter(Boolean).slice(0,3) as string [];
 
   return (
     <div className="container mx-auto p-6">
@@ -80,8 +84,12 @@ try {
                   
           <div>
             <h2 className="text-2xl font-bold mb-4">Datos de contacto</h2>
-            <h3 className="font-semibold">Subido por {book.userId}</h3>
-            <h3 className="font-semibold mt-2">Ubicación: <span className="font-normal">Bahia Blanca - Buenos Aires</span></h3>
+            <h3 className="font-semibold">Subido por {user?.name || "Usuario desconocido"}</h3>
+            <h3 className="font-semibold mt-2">Ubicación: 
+              <span className="font-normal">
+              {user?.city || "No especificada"} - {user?.country || "Argentina - Colombia - Uruguay"}
+              
+              </span></h3>
             
             <button className="mt-4 bg-cyan-600 text-white px-4 py-2 rounded hover:bg-zinc-50 hover:text-black">
               Solicitar intercambio
@@ -100,7 +108,7 @@ try {
               className="object-cover"
             />
           </div>
-          <h2 className="text-xl font-bold">{book.userId}</h2>
+          <h2 className="text-xl font-bold">{user?.name || 'Usuario fantasma'}</h2>
         </div>
         
         <div className="mb-4">
@@ -118,7 +126,7 @@ try {
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
-            <h3 className="font-semibold">Libros que {book.userId} desea conseguir</h3>
+            <h3 className="font-semibold">Libros que {user?.name || "el usuario"} desea conseguir</h3>
           </div>
           
           <ol className="list-decimal pl-8 mt-2">

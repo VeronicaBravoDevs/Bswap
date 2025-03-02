@@ -1,3 +1,4 @@
+
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -6,5 +7,9 @@ export const metadata: Metadata = {
 };
 
 export default function Login() {
-  return <h2>Login</h2>;
+  return (
+    <>
+  <h1>LOGIN</h1>
+    </>
+  )
 }

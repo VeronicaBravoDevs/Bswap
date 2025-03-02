@@ -3,7 +3,7 @@
 import { useBooks } from "@/shared/hooks/useBooks";
 import CardBook from "../common/card-book";
 import Error from "../common/Error";
-import Loading from "../common/Loading";
+import Loading from "@/shared/components/common/Loading";
 
 const CardList: React.FC = () => {
   const { data: books, loading, error } = useBooks();

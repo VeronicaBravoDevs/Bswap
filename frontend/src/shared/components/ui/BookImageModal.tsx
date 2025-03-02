@@ -3,13 +3,14 @@
 import {useState} from "react";
 import Image from "next/image";
 
-interface BookImageModalProps {
-    images: string[]
+export interface BookImageModalProps {
+    images: string[];
 }
 
 
-export function BookImageModal({images}: BookImageModalProps) {
+export const BookImageModal = ({images}: BookImageModalProps)=>{
    const [isModalOpen, setIsModalOpen] = useState(false);
+
 
    const openModal = () => setIsModalOpen(true);
    const closeModal = () => setIsModalOpen(false);
