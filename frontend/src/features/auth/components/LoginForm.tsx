@@ -30,7 +30,7 @@ const handleFacebookLogin = () => {console.log("Inicio sesion con Facebook")};
     <div className="w-full mb-6">
       <Button variant="email"
       onClick={handleEmailLogin} 
-      className="w-full p-6">
+      className="w-full p-2">
         Continuar con correo electronico
       </Button>
     </div>
@@ -40,12 +40,12 @@ const handleFacebookLogin = () => {console.log("Inicio sesion con Facebook")};
     <div className="w-full mb-16 ">
       <Button variant="secondary"
       onClick={handleGoogleLogin}  
-      className="w-full text-center p-4 mb-6 flex items-center justify-center gap-4 border border-gray-400 text-slate-300">        
+      className="w-full text-center p-2 mb-6 flex items-center justify-center gap-4 border border-gray-400 text-slate-300">        
         <span> <FcGoogle/>  </span>Continuar con google
       </Button>
       <Button variant="secondary" 
       onClick={handleFacebookLogin} 
-      className="w-full  text-center p-4 flex items-center justify-center gap-4 border border-gray-400">    
+      className="w-full  text-center p-2 flex items-center justify-center gap-4 border border-gray-400">    
         <span className=" text-blue-800"> <FaFacebook/> </span> Continuar con Facebook
       </Button>
     </div>
