@@ -16,8 +16,9 @@ export interface Book {
   description: string;
   published: Date;
   publisher: string;
-  cover: Image;
-  images: Image;
+  cover?: string; //Image [0]
+  image: Image [];
+  audio: Audio[];
   genre: string;
   exchange_available: boolean;
   status: "pending" | "approved" | "rejected";

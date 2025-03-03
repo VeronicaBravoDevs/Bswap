@@ -124,6 +124,9 @@ exports.Prisma.UserScalarFieldEnum = {
   name: 'name',
   biography: 'biography',
   profile_picture: 'profile_picture',
+  country: 'country',
+  city: 'city',
+  phone: 'phone',
   privacy_preferences: 'privacy_preferences',
   registration_date: 'registration_date'
 };
@@ -136,12 +139,25 @@ exports.Prisma.BookScalarFieldEnum = {
   description: 'description',
   published: 'published',
   publisher: 'publisher',
-  image: 'image',
   genre: 'genre',
+  cover: 'cover',
   exchange_available: 'exchange_available',
+  createdAt: 'createdAt',
   status: 'status',
   libraryId: 'libraryId',
   userId: 'userId'
+};
+
+exports.Prisma.ImagesScalarFieldEnum = {
+  id: 'id',
+  bookId: 'bookId',
+  file: 'file'
+};
+
+exports.Prisma.CategoryBooksScalarFieldEnum = {
+  id: 'id',
+  category: 'category',
+  bookId: 'bookId'
 };
 
 exports.Prisma.ExchangeScalarFieldEnum = {
@@ -258,6 +274,8 @@ exports.ReportStatus = exports.$Enums.ReportStatus = {
 exports.Prisma.ModelName = {
   User: 'User',
   Book: 'Book',
+  Images: 'Images',
+  CategoryBooks: 'CategoryBooks',
   Exchange: 'Exchange',
   Review: 'Review',
   AudioNote: 'AudioNote',

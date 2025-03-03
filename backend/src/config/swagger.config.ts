@@ -3,7 +3,7 @@ import { INestApplication } from '@nestjs/common';
 
 export function setupSwagger(app: INestApplication): void {
   const swaggerConfig = new DocumentBuilder()
-    .setTitle('API de IUPI')
+    .setTitle('API de Books')
     .setDescription(
       `
 ### Tecnologías Utilizadas
@@ -23,7 +23,7 @@ export function setupSwagger(app: INestApplication): void {
   
   ### Recursos
   - [Documentación oficial de NestJS](https://docs.nestjs.com)
-  - [Repositorio en GitHub](https://github.com/tu-usuario/tu-repositorio)
+  - [Repositorio en GitHub](https://github.com/No-Country-simulation/equipo-s21-05-m-webapp)
   `,
     )
     .setVersion('1.0')

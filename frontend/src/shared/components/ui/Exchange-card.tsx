@@ -5,6 +5,7 @@ import ExchangeModal from "./ExchangeModal";
 import ReviewList from "./review-list";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { Button } from "../common/Button";
 
 interface ExchangeCardProps{
     book : Book;
@@ -36,7 +37,7 @@ const ExchangeCard : React.FC<ExchangeCardProps> = ({book}) => {
               <strong>Autor: </strong> {book.author}
             </p>
             <p className="text-gray-700 mb-4">
-              {" "}
+             
               <strong>Subido : </strong> {book.userId}{" "}
             </p>
           </div>
@@ -46,12 +47,13 @@ const ExchangeCard : React.FC<ExchangeCardProps> = ({book}) => {
               Solicitar Intercambio
             </button>
 
-            <button
+          {/*   <button
               onClick={() => router.push(`/books/${book.id}`)}
               className="w-1/2 bg-slate-300 hover:bg-sky-700 text-blue-950 hover:text-zinc-400 py-2 px-4 rounded transition-colors"
             >
               Más Información
-            </button>
+            </button> */}
+            <Button onClick={() => router.push(`/books/${book.id}`)} variant="secondary">Mas Información</Button>
           </div>
 
           <div className="mt-4">

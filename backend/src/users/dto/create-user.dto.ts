@@ -10,6 +10,7 @@ import {
     MinLength,
     ValidateNested,
     IsArray,
+    IsInt,
 } from 'class-validator';
 
 
@@ -31,6 +32,18 @@ export class CreateUserDto {
     @IsString()
     @IsOptional()
     lastName?: string
+    @IsString()
+    @IsOptional()
+    country?: string
+
+    @IsString()
+    @IsOptional()
+    city?: string
+
+    @IsString()
+    @IsOptional()
+    phone?: string
+
 
     @IsString()
     @IsOptional()
@@ -48,6 +61,4 @@ export class CreateUserDto {
     @ApiProperty()
     @IsArray()
     library?: string
-  
-
 }

@@ -33,6 +33,10 @@ export class SeedService {
             name: `${mockUser.firstname} ${mockUser.lastname}`,
             email: mockUser.email.toLowerCase(),
             password_hash: hashedPassword,
+            phone: mockUser.phone,
+            city: mockUser.address.city,
+            country: mockUser.address.country
+             
           },
         });
 
@@ -46,7 +50,6 @@ export class SeedService {
               author: book.author,
               description: book.description,
               genre:book.genre,
-              image: book.image,
               published: new Date(book.published),
               publisher: book.publisher, 
               userId: createdUser.id, 
