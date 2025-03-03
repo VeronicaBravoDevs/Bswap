@@ -1,6 +1,8 @@
 import { Button } from "@/shared/components/ui/Button";
 import { Metadata } from "next";
 import Link from "next/link";
+import { FaFacebook } from "react-icons/fa6";
+import { FcGoogle } from "react-icons/fc";
 
 export const metadata: Metadata = {
   title: "Bswap - Logearse",
@@ -15,7 +17,7 @@ export default function Login() {
     <div>
       <h1 className="font-bold text-center">Iniciar sesion en Bswap</h1>
       <h2 className="text-center leading-7">
-        Comparte libros, <br /> descubre nuevas historias{" "}
+        Comparte libros, <br/> descubre nuevas historias 
       </h2>
     </div>
     <div>
@@ -25,10 +27,10 @@ export default function Login() {
     <p> - o - </p>
     <div>
       <Button className="font-bold text-center p-9">        
-        <span>🟢</span>Continuar con google
+        <span> <FcGoogle/>  </span>Continuar con google
       </Button>
       <Button className="font-bold text-center p-9">    
-        <span>🟢</span> Continuar con Facebook
+        <span> <FaFacebook/> </span> Continuar con Facebook
       </Button>
     </div>
     <div>
@@ -39,7 +41,7 @@ export default function Login() {
 
     <div>
       <p>
-        Al continuar acepta nuestros <Link>Terminos de servicio</Link> y{" "}
+        Al continuar acepta nuestros <Link>Terminos de servicio</Link> y 
         <Link>Politica de privacidad</Link>
       </p>
     </div>

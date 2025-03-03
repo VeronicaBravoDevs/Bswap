@@ -1,9 +1,9 @@
 "use client";
 
 import { useBooks } from "@/shared/hooks/useBooks";
-import CardBook from "../common/card-book";
-import Error from "../common/Error";
-import Loading from "../common/Loading";
+import CardBook from "@/shared/components/common/card-book";
+import Loading from "@/shared/components/common/Loading";
+import Error from "@/shared/components/common/Error";
 
 const CardList: React.FC = () => {
   const { data: books, loading, error } = useBooks();

@@ -1,4 +1,4 @@
-/* import { Book } from "@/app/interface/book"; */
+
 import { notFound } from "next/navigation";
 import {BookImageModal} from "@/shared/components/ui/BookImageModal";
 import { bootServices } from "@/shared/services/books/booksService";
