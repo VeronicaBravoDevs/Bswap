@@ -11,12 +11,12 @@ interface Props {
 export const Button =(
   {children, onClick, className= '', variant = 'primary'} : Props ) => {
 
-    const baseButton = "bg-blue-500 text-white px-4 py-2 rounded hover:bg-slate-50 "
+    const baseButton = "bg-blue-500 text-white p-2 rounded hover:bg-slate-50 "
 
     const variantButton = {
       primary: "bg-blue-600 text-white",
-      secondary: "w-1/2 bg-slate-300 hover:bg-sky-700 text-blue-950 hover:text-zinc-400 py-2 px-4 rounded transition-colors",
-      email: "bg-blue-800 text-white",
+      secondary: "w-full bg-gray-400 text-black border-0 hover:border hover:border-gray-400 hover:text-zinc-400 rounded transition-colors",
+      email: "bg-blue-800 text-white border-0 hover:text-black hover:border hover:border-gray-400",
       follow: "bg-blue-400 text-white",
       login: "bg-slate-400 text-black"
     };
