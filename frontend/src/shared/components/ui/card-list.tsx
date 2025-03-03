@@ -1,9 +1,15 @@
 "use client";
 
 import { useBooks } from "@/shared/hooks/useBooks";
+<<<<<<< HEAD
 import CardBook from "../common/card-book";
 import Error from "../common/Error";
 import Loading from "@/shared/components/common/Loading";
+=======
+import CardBook from "@/shared/components/common/card-book";
+import Loading from "@/shared/components/common/Loading";
+import Error from "@/shared/components/common/Error";
+>>>>>>> frontend-develop-veronica_loginAndRegister
 
 const CardList: React.FC = () => {
   const { data: books, loading, error } = useBooks();
