@@ -13,7 +13,7 @@ export default function Header() {
   const menuRef = useRef<HTMLLIElement>(null);
 
 
-  // Cerrar el menú cuando se hace clic fuera de él
+  // ojo cierra el menu cuando se hace click fuera de el
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -21,13 +21,11 @@ export default function Header() {
       }
     }
 
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
 
   const handleLogout = () => {
     logout();
@@ -64,7 +62,7 @@ export default function Header() {
                 className="flex items-center"
                 aria-label="Menú de usuario"
               >
-                <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-blue-500">
+                <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white">
                   {user.profile_picture ? (
                     <Image
                       src={user.profile_picture}
@@ -74,7 +72,7 @@ export default function Header() {
                       className="object-cover w-full h-full"
                     />
                   ) : (
-                    <div className="w-full h-full bg-blue-500 flex items-center justify-center text-white font-bold">
+                    <div className="w-full h-full bg-slate-600 flex items-center justify-center text-white font-bold">
                       {user.name.charAt(0)}
                     </div>
                   )}

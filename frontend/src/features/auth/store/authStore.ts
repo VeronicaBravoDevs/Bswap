@@ -30,7 +30,7 @@ export const useAuthStore = create<AuthState & AuthActions>()(
           const user = await loginUser(credentials);
           set({ user, isAuthenticated: true, isLoading: false });
         } catch (error) {
-          set({ error: "Error al iniciar sesión", isLoading: false });
+          set({ error: "Error cuando se inicia sesion", isLoading: false });
         }
       },
       

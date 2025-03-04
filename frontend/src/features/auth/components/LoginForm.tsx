@@ -33,14 +33,14 @@ export default function LoginForm() {
     }
   });
 
-  // Redirigir si ya está autenticado
+
   useEffect(() => {
     if (isAuthenticated) {
       router.push("/");
     }
   }, [isAuthenticated, router]);
 
-  // Comprobar si hay credenciales guardadas en localStorage
+
   useEffect(() => {
     const savedEmail = localStorage.getItem("userEmail");
     if (savedEmail) {
@@ -54,12 +54,12 @@ export default function LoginForm() {
 
   const handleGoogleLogin = () => {
     console.log("Inicio sesion con Google");
-    // Implementación real de login con Google
+   
   };
 
   const handleFacebookLogin = () => {
     console.log("Inicio sesion con Facebook");
-    // Implementación real de login con Facebook
+   
   };
 
   const onSubmit = async (data: LoginCredentials) => {
@@ -67,10 +67,9 @@ export default function LoginForm() {
       clearError();
       await login(data);
       
-      // Guardar el email en localStorage para autocompletar en futuras visitas
-      localStorage.setItem("userEmail", data.email);
+      // Guardar el email en localStorage 
+      localStorage.setItem("userEmail", data.email);      
       
-      // La redirección se maneja en el useEffect
     } catch (e) {
       console.error("Error en el formulario de login:", e);
     }
@@ -82,7 +81,7 @@ export default function LoginForm() {
         <div className="w-full mb-4">
           <h1 className="font-bold text-center mb-2 text-3xl">Iniciar sesión</h1>
           <h2 className="text-center leading-7 text-2xl">
-            Ingresa tus credenciales
+            Ingresa tus datos
           </h2>
         </div>
         
@@ -96,7 +95,7 @@ export default function LoginForm() {
               {...register("email")}
               className="w-full p-2 border border-gray-300 rounded"
               type="email"
-              placeholder="tu@email.com"
+              placeholder="email@email.com"
             />
             {errors.email && (
               <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>

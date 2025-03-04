@@ -3,6 +3,7 @@ import { LoginCredentials, User } from "../types/auth.types";
 export const loginUser = async (credentials: LoginCredentials): Promise<User> => {
   try {
     const response = await fetch("/mock/mockDataUser.json");
+    //URL_API
     if (!response.ok) throw new Error("Error al obtener datos del mock");
     
     const users = await response.json();
