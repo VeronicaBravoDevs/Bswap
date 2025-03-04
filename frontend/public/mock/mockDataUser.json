@@ -1,7 +1,7 @@
 [
     {
       "id": "cm79c6yl20000fh3jrmgy3ktm",
-      "email": "Julieta_munioz@gmail.com",
+      "email": "usuario1@example.com",
       "password_hash": "$2a$10$1KnT6iHtet/Dqxtor9QIYuCXBp8yc/7xOXlU/otmLPEPmB22ghS96",
       "name": "Julieta Muñoz",
       "biography": "La paz del espacio de lectura",
@@ -14,7 +14,7 @@
     },
     {
       "id": "cm79c6yl20001fh3jrmgy3kt2",
-      "email": "alvaro_diaz@gmail.com",
+      "email": "usuario2@example.com",
       "password_hash": "$2a$10$1KnT6iHtet/Dqxtor9QIYuCXBp8yc/7xOXlU/otmLPEPmB22ghS96",
       "name": "Alvaro Diaz",
       "biography": "Amante de los libros",
