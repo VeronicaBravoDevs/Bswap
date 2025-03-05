@@ -14,7 +14,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import formidable from 'formidable';
 import { IncomingMessage } from 'http';
-import { File } from 'src/uploads/interface/files';
+//import { File } from 'src/uploads/interface/files';
 
 @Injectable()
 export class BooksService {
@@ -39,6 +39,7 @@ export class BooksService {
       keepExtensions: true,
       multiples: true,
     });
+
     try {
       // const { title, author, description, genre, isbn, publisher, cover } =
       //   createBookDto;
@@ -56,7 +57,6 @@ export class BooksService {
         );
 
       const { fields, files } = await parseForm();
-
 
       // const book = await this.prismaService.book.create({
       //   data: {
