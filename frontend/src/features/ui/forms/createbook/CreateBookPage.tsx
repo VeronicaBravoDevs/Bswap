@@ -15,12 +15,27 @@ const CreateBookForm: React.FC = () => {
     console.log("Fecha actual:", fecha);
 
     try {
-  
+
       const bodyFetch = new FormData(event.target as HTMLFormElement);
 
-      const bookResponse = await fetch("https://equipo-s21-05-m-webapp.onrender.com/books", {
+      const image1 = bodyFetch.get("image1");
+      const image2 = bodyFetch.get("image2");
+      const image3 = bodyFetch.get("image3");
+
+      if (image1 instanceof File && (image1.size === 0)) {
+        bodyFetch.delete("image1");
+      }
+      if (image2 instanceof File && (image2.size === 0)) {
+        bodyFetch.delete("image2");
+      }
+      if (image3 instanceof File && (image3.size === 0)) {
+        bodyFetch.delete("image3");
+      }
+
+      //const bookResponse = await fetch("https://equipo-s21-05-m-webapp.onrender.com/books", {
+      const bookResponse = await fetch("http://localhost:3001/books", {
         method: "POST",
-        headers: { "Content-Type": "multipart/form-data" },
+        //headers: { "Content-Type": "multipart/form-data" },
         body: bodyFetch,
       });
 
