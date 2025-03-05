@@ -9,8 +9,6 @@ class BootServices {
 
       const { data } = res as { data: Book[] };
 
-      console.log("✅ ~ getBooks ~ data:", data);
-
       return data ?? [];
     }
     ).catch((error) => {
@@ -31,8 +29,6 @@ class BootServices {
       }
 
       const { data } = await res.json();
-
-      console.log("✅ ~ getBookById ~ data:", data);
 
       return data ?? {};
     } catch (error) {
