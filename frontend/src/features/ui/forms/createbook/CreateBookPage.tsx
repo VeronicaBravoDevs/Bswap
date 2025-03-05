@@ -33,7 +33,7 @@ const CreateBookForm: React.FC = () => {
       }
 
       //const bookResponse = await fetch("https://equipo-s21-05-m-webapp.onrender.com/books", {
-      const bookResponse = await fetch("http://localhost:3001/books", {
+      const bookResponse = await fetch("https://equipo-s21-05-m-webapp.onrender.com/books", {
         method: "POST",
         //headers: { "Content-Type": "multipart/form-data" },
         body: bodyFetch,
