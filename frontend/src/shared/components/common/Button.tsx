@@ -1,6 +1,6 @@
 import React, { ButtonHTMLAttributes } from "react";
 
-type ButtonVariant = "primary" | "secondary" | "email" | "danger" | "success";
+type ButtonVariant = "primary" | "secondary" | "email" | "danger" ;
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
@@ -21,7 +21,7 @@ export const Button: React.FC<ButtonProps> = ({
     secondary: "bg-white hover:bg-gray-100 text-gray-800 border border-gray-300",
     email: "bg-blue-600 hover:bg-blue-700 text-white",
     danger: "bg-red-600 hover:bg-red-700 text-white",
-    success: "bg-green-600 hover:bg-green-700 text-white"
+    
   };
   
   const disabledClasses = props.disabled
