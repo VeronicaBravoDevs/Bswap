@@ -5,7 +5,8 @@ export interface CreateBookRequest {
   isbn: string;
   genre: string;
   publisher: string;
-  published: Date | null;
+  published: Date | string;
+  
   // cover?: Image;
   // images?: Image[];
   // exchange_available: boolean;
