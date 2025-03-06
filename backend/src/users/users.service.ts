@@ -34,12 +34,9 @@ export class UsersService {
     }
 
     try {
-      const hashedPassword = await bcrypt.hash(
-        createUserDto.password,
-        roundOfHashing,
-      );
-      const { email, password, library, phone,  ...rest } = createUserDto;
-
+      const hashedPassword = await bcrypt.hash(createUserDto.password, roundOfHashing);
+      const { email, password, library, phone, ...rest } = createUserDto;
+  
       const newUser = await this.prismaService.user.create({
         data: {
           ...rest,
