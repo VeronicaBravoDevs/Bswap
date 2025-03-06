@@ -36,12 +36,10 @@ export class CreateReviewDto {
 
     @ApiProperty()
     @IsArray()
-    @IsNotEmpty()
-    contents: string;
+    comments?: string;
 
     @ApiProperty()
     @IsArray()
-    @IsNotEmpty()
-    reactions: string;
+    reactions?: string;
 
 }

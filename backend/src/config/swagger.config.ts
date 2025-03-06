@@ -24,12 +24,12 @@ export function setupSwagger(app: INestApplication): void {
   ### Recursos
   - [Documentación oficial de NestJS](https://docs.nestjs.com)
   - [Repositorio en GitHub](https://github.com/No-Country-simulation/equipo-s21-05-m-webapp)
-  `,
+  `
     )
     .setVersion('1.0')
     .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);
-  SwaggerModule.setup('api/docs', app, document);
+  SwaggerModule.setup('/', app, document);
 }
