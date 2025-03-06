@@ -34,18 +34,9 @@ export class UsersService {
     }
 
     try {
-<<<<<<< HEAD
-      const hashedPassword = await bcrypt.hash(
-        createUserDto.password,
-        roundOfHashing,
-      );
-      const { email, password, library, ...rest } = createUserDto;
-
-=======
       const hashedPassword = await bcrypt.hash(createUserDto.password, roundOfHashing);
       const { email, password, library, phone, ...rest } = createUserDto;
   
->>>>>>> a9d5c2517c64c1cf29ccd4675d3f0bad63ac0278
       const newUser = await this.prismaService.user.create({
         data: {
           ...rest,
@@ -89,18 +80,11 @@ export class UsersService {
     try {
       const user = await this.prismaService.user.findUnique({
         where: { id },
-<<<<<<< HEAD
-        include: {
-          library: true,
-        },
-      });
-=======
         include:{
           library: true,
           reviews: true,
         }
       })
->>>>>>> a9d5c2517c64c1cf29ccd4675d3f0bad63ac0278
 
       if (!user) {
         throw new HttpException('User not found', HttpStatus.NOT_FOUND);
