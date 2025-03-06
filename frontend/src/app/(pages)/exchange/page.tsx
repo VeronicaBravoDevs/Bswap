@@ -1,16 +1,15 @@
-//exchange/page
-
 "use client"
 
 import ExchangeCard from "@/shared/components/ui/Exchange-card";
 import { useBooks } from "@/shared/hooks/useBooks";
-
+import Loading from "@/shared/components/common/Loading";
+import Error from "@/shared/components/common/Error";
 
 export default function ExchangePage() {
   const {data: books, loading, error} = useBooks();
 
-  if(loading) return <p>Cargando libros</p>;
-  if(error) return <p>Error al cargar libros: {error}</p>
+  if(loading) return <Loading/>;
+  if(error) return <Error message={error}/>;
 
    return (
     <div className="max-w-7xl mx-auto py-8 px-4">

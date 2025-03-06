@@ -14,7 +14,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import formidable from 'formidable';
 import { IncomingMessage } from 'http';
-import { File } from 'src/uploads/interface/files';
+//import { File } from 'src/uploads/interface/files';
 
 @Injectable()
 export class BooksService {
@@ -39,7 +39,9 @@ export class BooksService {
       keepExtensions: true,
       multiples: true,
     });
+
     try {
+      const fileUrl = `${process.env.BACKEND_URL}/uploads/`;
       // const { title, author, description, genre, isbn, publisher, cover } =
       //   createBookDto;
 
@@ -48,7 +50,9 @@ export class BooksService {
           (resolve, reject) => {
             form.parse(req, (err, fields, files) => {
               if (err) {
-                reject(new BadRequestException('Error parsing form data'));
+                reject(
+                  new BadRequestException('Error parsing form data:' + err),
+                );
               }
               resolve({ fields, files });
             });
@@ -57,27 +61,41 @@ export class BooksService {
 
       const { fields, files } = await parseForm();
 
+      //console.log('files', files);
 
-      // const book = await this.prismaService.book.create({
-      //   data: {
-      //     title,
-      //     author,
-      //     description,
-      //     genre,
-      //     isbn,
-      //     publisher,
-      //     cover,
-      //     createdAt: new Date(),
-      //   },
-      //   include: {
-      //     reviews: true,
-      //     Images: true,
-      //     categoryBooks: true,
-      //   },
-      // });
+      const book = await this.prismaService.book.create({
+        data: {
+          title: Array.isArray(fields.title)
+            ? fields.title[0]
+            : fields.title || '',
+          author: Array.isArray(fields.author)
+            ? fields.author[0]
+            : fields.author || '',
+          description: Array.isArray(fields.description)
+            ? fields.description[0]
+            : fields.description || '',
+          genre: Array.isArray(fields.genre)
+            ? fields.genre[0]
+            : fields.genre || '',
+          isbn: Array.isArray(fields.isbn) ? fields.isbn[0] : fields.isbn || '',
+          publisher: Array.isArray(fields.publisher)
+            ? fields.publisher[0]
+            : fields.publisher || '',
+          cover:
+            files.image1 && files.image1[0]
+              ? fileUrl + files.image1[0].newFilename
+              : '',
+          createdAt: new Date(),
+        },
+        include: {
+          reviews: true,
+          Images: true,
+          categoryBooks: true,
+        },
+      });
 
-      //return { message: 'new book created', data: book };
-      return { fields, files };
+      return { message: 'new book created', data: book };
+      //return { fields, files };
     } catch (error) {
       console.log(error);
       throw new HttpException(
