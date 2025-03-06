@@ -17,12 +17,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.3.1
- * Query Engine version: acc0b9dd43eb689cbd20c9470515d719db10d0b0
+ * Prisma Client JS version: 6.4.1
+ * Query Engine version: a9055b89e58b4b5bfb59600785423b1db3d0e75d
  */
 Prisma.prismaVersion = {
-  client: "6.3.1",
-  engine: "acc0b9dd43eb689cbd20c9470515d719db10d0b0"
+  client: "6.4.1",
+  engine: "a9055b89e58b4b5bfb59600785423b1db3d0e75d"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -124,6 +124,9 @@ exports.Prisma.UserScalarFieldEnum = {
   name: 'name',
   biography: 'biography',
   profile_picture: 'profile_picture',
+  country: 'country',
+  city: 'city',
+  phone: 'phone',
   privacy_preferences: 'privacy_preferences',
   registration_date: 'registration_date'
 };
@@ -136,12 +139,25 @@ exports.Prisma.BookScalarFieldEnum = {
   description: 'description',
   published: 'published',
   publisher: 'publisher',
-  image: 'image',
   genre: 'genre',
+  cover: 'cover',
   exchange_available: 'exchange_available',
+  createdAt: 'createdAt',
   status: 'status',
   libraryId: 'libraryId',
   userId: 'userId'
+};
+
+exports.Prisma.ImagesScalarFieldEnum = {
+  id: 'id',
+  bookId: 'bookId',
+  file: 'file'
+};
+
+exports.Prisma.CategoryBooksScalarFieldEnum = {
+  id: 'id',
+  category: 'category',
+  bookId: 'bookId'
 };
 
 exports.Prisma.ExchangeScalarFieldEnum = {
@@ -258,6 +274,8 @@ exports.ReportStatus = exports.$Enums.ReportStatus = {
 exports.Prisma.ModelName = {
   User: 'User',
   Book: 'Book',
+  Images: 'Images',
+  CategoryBooks: 'CategoryBooks',
   Exchange: 'Exchange',
   Review: 'Review',
   AudioNote: 'AudioNote',

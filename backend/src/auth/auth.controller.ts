@@ -24,9 +24,9 @@ export class AuthController {
     return this.authService.register(createUserDto);
   }
 
-  @Get('profile')
+  @Get('me')
   @UseGuards(AuthGuard)
-  profile(@Request() req) {
-    return req.user;
+  getMe(@Request() req) {
+    return this.authService.getUserProfile(req.user.sub);
   }
 }

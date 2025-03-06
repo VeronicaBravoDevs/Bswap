@@ -17,12 +17,11 @@ export class AuthService {
   ) {}
 
   async register(createUserDto: CreateUserDto) {
-    // Verificamos si el usuario ya existe
     const user = await this.usersService.findByEmail(createUserDto.email);
     if (user) {
       throw new BadRequestException('User already exists');
     }
-    
+
     try {
       const newUser = await this.usersService.create(createUserDto);
       if (!newUser) {
@@ -63,8 +62,26 @@ export class AuthService {
     const token = await this.jwtService.signAsync(payload);
 
     return {
-      token,
+      id: user.id,
       email: user.email,
+      name: user.name,
+      token,
+    };
+  }
+
+
+  async getUserProfile(userId: string) {
+    const user = await this.usersService.findOne(userId);
+    if (!user) {
+      throw new UnauthorizedException('User not found');
+    }
+
+    
+    return {
+      id: user.id,
+      email: user.email,
+      name: user.name,
+      profile_picture: user.profile_picture,
     };
   }
 }
