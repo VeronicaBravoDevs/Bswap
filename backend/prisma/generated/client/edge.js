@@ -32,12 +32,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.3.1
- * Query Engine version: acc0b9dd43eb689cbd20c9470515d719db10d0b0
+ * Prisma Client JS version: 6.4.1
+ * Query Engine version: a9055b89e58b4b5bfb59600785423b1db3d0e75d
  */
 Prisma.prismaVersion = {
-  client: "6.3.1",
-  engine: "acc0b9dd43eb689cbd20c9470515d719db10d0b0"
+  client: "6.4.1",
+  engine: "a9055b89e58b4b5bfb59600785423b1db3d0e75d"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -269,7 +269,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\ut601819\\Desktop\\Books-No-country\\equipo-s21-05-m-webapp\\backend\\prisma\\generated\\client",
+      "value": "/home/mario/Documentos/Desarrollo/nocountry/Proyectos/s21-05-m-webapp/equipo-s21-05-m-webapp/backend/prisma/generated/client",
       "fromEnvVar": null
     },
     "config": {
@@ -278,7 +278,7 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "debian-openssl-3.0.x",
         "native": true
       },
       {
@@ -295,7 +295,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\ut601819\\Desktop\\Books-No-country\\equipo-s21-05-m-webapp\\backend\\prisma\\schema.prisma",
+    "sourceFilePath": "/home/mario/Documentos/Desarrollo/nocountry/Proyectos/s21-05-m-webapp/equipo-s21-05-m-webapp/backend/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -303,8 +303,8 @@ const config = {
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../..",
-  "clientVersion": "6.3.1",
-  "engineVersion": "acc0b9dd43eb689cbd20c9470515d719db10d0b0",
+  "clientVersion": "6.4.1",
+  "engineVersion": "a9055b89e58b4b5bfb59600785423b1db3d0e75d",
   "datasourceNames": [
     "db"
   ],

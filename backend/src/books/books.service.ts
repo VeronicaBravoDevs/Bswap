@@ -2,7 +2,7 @@ import {
   Injectable,
   BadRequestException,
   HttpException,
-  HttpServer,
+  //HttpServer,
   HttpStatus,
 } from '@nestjs/common';
 import { Cache } from 'cache-manager';
@@ -10,28 +10,81 @@ import { Inject } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
+import * as fs from 'fs';
+import * as path from 'path';
+import formidable from 'formidable';
+import { IncomingMessage } from 'http';
+//import { File } from 'src/uploads/interface/files';
 
 @Injectable()
 export class BooksService {
+  private uploadDir: string;
+
   constructor(
     private readonly prismaService: PrismaService,
     @Inject('CACHE_MANAGER') private cacheManager: Cache,
-  ) {}
+  ) {
+    this.uploadDir = path.resolve(process.cwd(), 'uploads');
+    if (!fs.existsSync(this.uploadDir)) {
+      fs.mkdirSync(this.uploadDir, { recursive: true });
+    }
+  }
 
-  async create(createBookDto: CreateBookDto) {
+  async create(
+    createBookDto: CreateBookDto,
+    req: IncomingMessage,
+  ): Promise<any> {
+    const form = formidable({
+      uploadDir: this.uploadDir,
+      keepExtensions: true,
+      multiples: true,
+    });
+
     try {
-      const { title, author, description, genre, isbn, publisher, cover } =
-        createBookDto;
+      const fileUrl = `${process.env.BACKEND_URL}/uploads/`;
+      // const { title, author, description, genre, isbn, publisher, cover } =
+      //   createBookDto;
+
+      const parseForm = () =>
+        new Promise<{ fields: formidable.Fields; files: formidable.Files }>(
+          (resolve, reject) => {
+            form.parse(req, (err, fields, files) => {
+              if (err) {
+                reject(
+                  new BadRequestException('Error parsing form data:' + err),
+                );
+              }
+              resolve({ fields, files });
+            });
+          },
+        );
+
+      const { fields, files } = await parseForm();
+
+      //console.log('files', files);
 
       const book = await this.prismaService.book.create({
         data: {
-          title,
-          author,
-          description,
-          genre,
-          isbn,
-          publisher,
-          cover,
+          title: Array.isArray(fields.title)
+            ? fields.title[0]
+            : fields.title || '',
+          author: Array.isArray(fields.author)
+            ? fields.author[0]
+            : fields.author || '',
+          description: Array.isArray(fields.description)
+            ? fields.description[0]
+            : fields.description || '',
+          genre: Array.isArray(fields.genre)
+            ? fields.genre[0]
+            : fields.genre || '',
+          isbn: Array.isArray(fields.isbn) ? fields.isbn[0] : fields.isbn || '',
+          publisher: Array.isArray(fields.publisher)
+            ? fields.publisher[0]
+            : fields.publisher || '',
+          cover:
+            files.image1 && files.image1[0]
+              ? fileUrl + files.image1[0].newFilename
+              : '',
           createdAt: new Date(),
         },
         include: {
@@ -42,6 +95,7 @@ export class BooksService {
       });
 
       return { message: 'new book created', data: book };
+      //return { fields, files };
     } catch (error) {
       console.log(error);
       throw new HttpException(

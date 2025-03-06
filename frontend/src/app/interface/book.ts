@@ -1,24 +1,31 @@
-export interface Image {
+interface Image {
   id: string;
   url: string;
 }
 
-export interface Audio {
+interface Audio {
   id: string;
   url: string;
+}
+
+interface Review {
+  id: string;
+  userId: string;
+  comment?: string;
+  audio?: Audio;
 }
 
 export interface Book {
-  id: string;
+  id?: string;
   title: string;
   author: string;
   isbn: string;
   description: string;
-  published: Date;
-  publisher: string;
+  published?: Date;
+  publisher?: string;
   cover?: string; //Image [0]
   image: Image [];
-  audio: Audio[];
+  audio?: Audio[];
   genre: string;
   exchange_available: boolean;
   status: "pending" | "approved" | "rejected";
@@ -27,9 +34,4 @@ export interface Book {
   reviews: Review[];
 }
 
-export interface Review{
-  id: string;
-  userId: string;
-  comment?: string;
-  audio?: Audio;
-}
+
