@@ -56,5 +56,6 @@ export class CreateUserDto {
 
     @ApiProperty()
     @IsArray()
+    @IsOptional()
     library?: string
 }
