@@ -12,7 +12,7 @@ export class ReviewsService {
 
   async create(createReviewDto: CreateReviewDto) {
     try {
-      const { bookId, userId, publication_date, rating, reactions, contents, ...rest } = createReviewDto;
+      const { bookId, userId, publication_date, rating,content, reactions, comments, ...rest } = createReviewDto;
 
       const newRview = await this.prismaService.review.create({
         data: {
@@ -21,6 +21,7 @@ export class ReviewsService {
           user_id: userId,
           publication_date: publication_date,
           rating: rating,
+          content: content,
         }
       });
 
@@ -50,7 +51,13 @@ export class ReviewsService {
   async findOne(id: string) {
     try {
       const findReviewById = await this.prismaService.review.findUnique({
-        where: { id: id }
+        where: { id: id },
+        include: {
+          book: true,
+          user: true,
+          reactions: true,
+          comments: true
+        }
       });
 
       if (!findReviewById) {
