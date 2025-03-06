@@ -154,6 +154,12 @@ exports.Prisma.ImagesScalarFieldEnum = {
   file: 'file'
 };
 
+exports.Prisma.CategoryBooksScalarFieldEnum = {
+  id: 'id',
+  category: 'category',
+  bookId: 'bookId'
+};
+
 exports.Prisma.ExchangeScalarFieldEnum = {
   id: 'id',
   book_id: 'book_id',
@@ -269,6 +275,7 @@ exports.Prisma.ModelName = {
   User: 'User',
   Book: 'Book',
   Images: 'Images',
+  CategoryBooks: 'CategoryBooks',
   Exchange: 'Exchange',
   Review: 'Review',
   AudioNote: 'AudioNote',

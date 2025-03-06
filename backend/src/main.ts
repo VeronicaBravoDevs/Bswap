@@ -16,7 +16,7 @@ async function bootstrap() {
   });
 
   app.enableCors({
-    origin: process.env.FRONTEND_URL,
+    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
     credentials: true,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     allowedHeaders: [
@@ -34,7 +34,7 @@ async function bootstrap() {
   await app.listen(port);
   logger.log(`🚀 Server is running on: http://localhost:${port}`);
   logger.log(
-    `Swagger documentation available at: http://localhost:${port}/api/docs`,
+    `Swagger documentation available at: http://localhost:${port}`,
   );
 
   const seedService = app.get(SeedService);

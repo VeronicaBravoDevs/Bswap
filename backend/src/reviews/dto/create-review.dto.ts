@@ -1,16 +1,8 @@
 import { ApiProperty, OmitType } from '@nestjs/swagger';
-
-
 import {
-    IsEmail,
     IsNotEmpty,
     IsString,
-    IsOptional,
-    MaxLength,
-    MinLength,
-    ValidateNested,
     IsArray,
-    IsEnum,
     IsDate,
     IsNumber,
 } from 'class-validator';
@@ -44,12 +36,10 @@ export class CreateReviewDto {
 
     @ApiProperty()
     @IsArray()
-    @IsNotEmpty()
-    contents: string;
+    comments?: string;
 
     @ApiProperty()
     @IsArray()
-    @IsNotEmpty()
-    reactions: string;
+    reactions?: string;
 
 }
