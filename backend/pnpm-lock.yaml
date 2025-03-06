@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '-':
-        specifier: ^0.0.1
-        version: 0.0.1
       '@nestjs/cache-manager':
         specifier: ^3.0.0
         version: 3.0.0(@nestjs/common@11.0.9(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@11.0.9)(cache-manager@6.4.0)(rxjs@7.8.1)
@@ -27,7 +24,7 @@ importers:
         specifier: ^11.0.5
         version: 11.0.5(@nestjs/common@11.0.9(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(passport@0.7.0)
       '@nestjs/platform-express':
-        specifier: ^11.0.9
+        specifier: ^11.0.1
         version: 11.0.9(@nestjs/common@11.0.9(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@11.0.9)
       '@nestjs/swagger':
         specifier: ^11.0.3
@@ -77,18 +74,12 @@ importers:
       passport:
         specifier: ^0.7.0
         version: 0.7.0
-<<<<<<< HEAD
       passport-jwt:
         specifier: ^4.0.1
         version: 4.0.1
       passport-local:
         specifier: ^1.0.0
         version: 1.0.0
-=======
-      redis:
-        specifier: ^4.7.0
-        version: 4.7.0
->>>>>>> a9d5c2517c64c1cf29ccd4675d3f0bad63ac0278
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
@@ -194,9 +185,6 @@ importers:
         version: 8.24.0(eslint@9.20.1)(typescript@5.7.3)
 
 packages:
-
-  '-@0.0.1':
-    resolution: {integrity: sha512-3HfneK3DGAm05fpyj20sT3apkNcvPpCuccOThOPdzz8sY7GgQGe0l93XH9bt+YzibcTIgUAIMoyVJI740RtgyQ==}
 
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
@@ -2293,16 +2281,14 @@ packages:
   function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
 
-<<<<<<< HEAD
   gauge@3.0.2:
     resolution: {integrity: sha512-+5J6MS/5XksCuXq++uFRsnUd7Ovu1XenbeuIuNRJxYWjgQbPuFhT14lAvsWfqfAmnwluf1OwMjz39HjfLPci0Q==}
     engines: {node: '>=10'}
     deprecated: This package is no longer supported.
-=======
+
   generic-pool@3.9.0:
     resolution: {integrity: sha512-hymDOu5B53XvN4QT9dBmZxPX4CWhBPPLguTZ9MMFeFa/Kg0xWVfylOVNlJji/E7yTZWFd/q9GO5TxDLq156D7g==}
     engines: {node: '>= 4'}
->>>>>>> a9d5c2517c64c1cf29ccd4675d3f0bad63ac0278
 
   gensync@1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
@@ -2997,19 +2983,16 @@ packages:
   node-abort-controller@3.1.1:
     resolution: {integrity: sha512-AGK2yQKIjRuqnc6VkX2Xj5d+QW8xZ87pa1UK6yA6ouUyuxfHuMP6umE5QK7UmTeOAymo+Zx1Fxiuw9rVx8taHQ==}
 
-<<<<<<< HEAD
   node-addon-api@5.1.0:
     resolution: {integrity: sha512-eh0GgfEkpnoWDq+VY8OyvYhFEzBk6jIYbRKdIlyTiAXIVJ8PyBaKb0rp7oDtoddbdoHWhq8wwr+XZ81F1rpNdA==}
-=======
+
   node-domexception@1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
->>>>>>> a9d5c2517c64c1cf29ccd4675d3f0bad63ac0278
 
   node-emoji@1.11.0:
     resolution: {integrity: sha512-wo2DpQkQp7Sjm2A0cq+sN7EHKO6Sl0ctXeBdFZrL9T9+UywORbufTcTZxom8YqpLQt/FqNMUkOpkZrJVYSKD3A==}
 
-<<<<<<< HEAD
   node-fetch@2.7.0:
     resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
     engines: {node: 4.x || >=6.0.0}
@@ -3018,11 +3001,10 @@ packages:
     peerDependenciesMeta:
       encoding:
         optional: true
-=======
+
   node-fetch@3.3.2:
     resolution: {integrity: sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
->>>>>>> a9d5c2517c64c1cf29ccd4675d3f0bad63ac0278
 
   node-int64@0.4.0:
     resolution: {integrity: sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw==}
@@ -3810,14 +3792,12 @@ packages:
   wcwidth@1.0.1:
     resolution: {integrity: sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==}
 
-<<<<<<< HEAD
-  webidl-conversions@3.0.1:
-    resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
-=======
   web-streams-polyfill@3.3.3:
     resolution: {integrity: sha512-d2JWLCivmZYTSIoge9MsgFCZrt571BikcWGYkjC1khllbTeDlGqZ2D8vD8E/lJa8WGWbb7Plm8/XJYV7IJHZZw==}
     engines: {node: '>= 8'}
->>>>>>> a9d5c2517c64c1cf29ccd4675d3f0bad63ac0278
+
+  webidl-conversions@3.0.1:
+    resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
 
   webpack-node-externals@3.0.0:
     resolution: {integrity: sha512-LnL6Z3GGDPht/AigwRh2dvL9PQPFQ8skEpVrWZXLWBYmqcaojHNN0onvHzie6rq7EWKrrBfPYqNEzTJgiwEQDQ==}
@@ -3910,8 +3890,6 @@ packages:
     engines: {node: '>=18'}
 
 snapshots:
-
-  '-@0.0.1': {}
 
   '@ampproject/remapping@2.3.0':
     dependencies:
@@ -6273,7 +6251,6 @@ snapshots:
 
   function-bind@1.1.2: {}
 
-<<<<<<< HEAD
   gauge@3.0.2:
     dependencies:
       aproba: 2.0.0
@@ -6285,9 +6262,8 @@ snapshots:
       string-width: 4.2.3
       strip-ansi: 6.0.1
       wide-align: 1.1.5
-=======
+
   generic-pool@3.9.0: {}
->>>>>>> a9d5c2517c64c1cf29ccd4675d3f0bad63ac0278
 
   gensync@1.0.0-beta.2: {}
 
@@ -7113,27 +7089,23 @@ snapshots:
 
   node-abort-controller@3.1.1: {}
 
-<<<<<<< HEAD
   node-addon-api@5.1.0: {}
-=======
+
   node-domexception@1.0.0: {}
->>>>>>> a9d5c2517c64c1cf29ccd4675d3f0bad63ac0278
 
   node-emoji@1.11.0:
     dependencies:
       lodash: 4.17.21
 
-<<<<<<< HEAD
   node-fetch@2.7.0:
     dependencies:
       whatwg-url: 5.0.0
-=======
+
   node-fetch@3.3.2:
     dependencies:
       data-uri-to-buffer: 4.0.1
       fetch-blob: 3.2.0
       formdata-polyfill: 4.0.10
->>>>>>> a9d5c2517c64c1cf29ccd4675d3f0bad63ac0278
 
   node-int64@0.4.0: {}
 
@@ -7917,11 +7889,9 @@ snapshots:
     dependencies:
       defaults: 1.0.4
 
-<<<<<<< HEAD
-  webidl-conversions@3.0.1: {}
-=======
   web-streams-polyfill@3.3.3: {}
->>>>>>> a9d5c2517c64c1cf29ccd4675d3f0bad63ac0278
+
+  webidl-conversions@3.0.1: {}
 
   webpack-node-externals@3.0.0: {}
 

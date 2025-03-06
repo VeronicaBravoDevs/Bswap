@@ -38,7 +38,7 @@ export class UsersService {
         createUserDto.password,
         roundOfHashing,
       );
-      const { email, password, library, ...rest } = createUserDto;
+      const { email, password, library, phone,  ...rest } = createUserDto;
 
       const newUser = await this.prismaService.user.create({
         data: {
