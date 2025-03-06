@@ -269,7 +269,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\ut601819\\Desktop\\Books-No-country\\equipo-s21-05-m-webapp\\backend\\prisma\\generated\\client",
+      "value": "C:\\Users\\DELL\\Desktop\\no-country\\no contry\\Books-No-Country\\backend\\prisma\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -295,7 +295,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\ut601819\\Desktop\\Books-No-country\\equipo-s21-05-m-webapp\\backend\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\DELL\\Desktop\\no-country\\no contry\\Books-No-Country\\backend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

@@ -7,11 +7,13 @@ import {
   Param,
   Delete,
   Query,
+  Req,
 } from '@nestjs/common';
 import { BooksService } from './books.service';
 import { ApiBearerAuth, ApiTags, ApiQuery } from '@nestjs/swagger';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
+import { IncomingMessage } from 'http';
 
 @Controller('books')
 @ApiTags('Books')
@@ -19,8 +21,9 @@ export class BooksController {
   constructor(private readonly booksService: BooksService) {}
 
   @Post()
-  create(@Body() createBookDto: CreateBookDto) {
-    return this.booksService.create(createBookDto);
+  create(@Req() req: IncomingMessage, @Body() createBookDto: CreateBookDto) {
+    //create(@Body() createBookDto: CreateBookDto) {
+    return this.booksService.create(createBookDto, req);
   }
 
   @Get()

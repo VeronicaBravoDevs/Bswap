@@ -34,7 +34,7 @@ async function bootstrap() {
   await app.listen(port);
   logger.log(`🚀 Server is running on: http://localhost:${port}`);
   logger.log(
-    `Swagger documentation available at: http://localhost:${port}/api/docs`,
+    `Swagger documentation available at: http://localhost:${port}`,
   );
 
   const seedService = app.get(SeedService);
