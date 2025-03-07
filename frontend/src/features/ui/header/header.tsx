@@ -27,6 +27,11 @@ export default function Header() {
     };
   }, []);
 
+ 
+useEffect(() => {
+  console.log("Estado de autenticacion cambiado:", isAuthenticated, user);
+}, [isAuthenticated, user]);
+  
   const handleLogout = () => {
     logout();
     setShowMenu(false);
@@ -73,8 +78,8 @@ export default function Header() {
                     />
                   ) : (
                     <div className="w-full h-full bg-slate-600 flex items-center justify-center text-white font-bold">
-                      {user.name.charAt(0)}
-                    </div>
+                    {user && user.name ? user.name.charAt(0) : '?'}
+                  </div>
                   )}
                 </div>
               </button>

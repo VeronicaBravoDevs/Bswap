@@ -13,7 +13,7 @@ const ReviewsComponent: React.FC = () => {
             ...review,
             bookTitle: book.title,
             bookAuthor: book.author,
-            bookCover: book.cover
+            /* bookCover: book.cover */
         }))
     );
 
