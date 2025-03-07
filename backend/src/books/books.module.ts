@@ -3,6 +3,7 @@ import { BooksService } from './books.service';
 import { BooksController } from './books.controller';
 import { PrismaModule } from 'src/prisma/prisma.module';
 import { CacheModule } from '@nestjs/cache-manager';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Module({
   imports: [
@@ -10,7 +11,7 @@ import { CacheModule } from '@nestjs/cache-manager';
     CacheModule.register(),
   ],
   controllers: [BooksController],
-  providers: [BooksService],
+  providers: [BooksService, PrismaService],
   exports: [BooksService],
 })
 export class BooksModule {}

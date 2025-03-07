@@ -61,7 +61,6 @@ export class BooksService {
 
       const { fields, files } = await parseForm();
 
-      //console.log('files', files);
 
       const book = await this.prismaService.book.create({
         data: {
@@ -86,6 +85,7 @@ export class BooksService {
               ? fileUrl + files.image1[0].newFilename
               : '',
           createdAt: new Date(),
+        
         },
         include: {
           reviews: true,
@@ -93,6 +93,17 @@ export class BooksService {
           categoryBooks: true,
         },
       });
+      
+      if (files.images && Array.isArray(files.images)) {
+        for (const image of files.images) {
+          await this.prismaService.images.create({
+            data: {
+              file: fileUrl + image.newFilename, // URL de la imagen
+              bookId: book.id, // Asociar la imagen al libro recién creado
+            },
+          });
+        }
+      }
 
       return { message: 'new book created', data: book };
       //return { fields, files };
