@@ -1,4 +1,6 @@
+import { RegisterForm } from '@/features/auth/components/RegisterForm';
 import { Metadata } from 'next';
+
 
 export const metadata: Metadata = {
   title: 'Bswap - Registro',
@@ -7,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function Register() {
   return (
-    <>
-      <h2 className='font-semibold text-2xl border border-cyan-600 p-8 m-8 text-center'> FORMULARIO DE REGISTRO </h2>
-    </>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+  <RegisterForm/>
+  </div>
   );
 }

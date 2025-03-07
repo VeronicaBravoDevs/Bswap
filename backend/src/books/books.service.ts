@@ -14,6 +14,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import formidable from 'formidable';
 import { IncomingMessage } from 'http';
+import { connect } from 'http2';
 //import { File } from 'src/uploads/interface/files';
 
 @Injectable()

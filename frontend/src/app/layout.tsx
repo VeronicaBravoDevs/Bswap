@@ -32,7 +32,7 @@ export default function RootLayout({
     <html lang="es">
       <body className={`${roboto.variable} ${robotoSerif.variable} antialiased container mx-auto`}>
         <Header />
-        <main>{children}</main>
+        <main className="my-4">{children}</main>
         <Footer/>
       </body>
     </html>
