@@ -23,7 +23,7 @@ async function getBookById(id: string) {
 } */
 
 export default async function BookPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+  const { id } = await params;
 //agrego bootService para getBookById
 
 try {

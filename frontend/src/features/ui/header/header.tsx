@@ -43,10 +43,10 @@ export default function Header() {
       <nav>
         <ul className="flex items-center gap-8">
           <li>
-            <Link href="/mylibrary">Mi Biblioteca</Link>
+            <Link href="/exchange">Intercambios</Link>
           </li>
           <li>
-            <Link href="/exchange">Intercambios</Link>
+            <Link href="/mylibrary">Mi Biblioteca</Link>
           </li>
           <li>
             <Link href="/reviews">Reseñas</Link>
