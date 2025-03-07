@@ -1,12 +1,15 @@
 import { Book } from "@/app/interface/book";
 
+
+const BASE_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}`;
+  
 class BootServices {
   Books: Book[] = [];
 
   getBooks = async (quantity?: number): Promise<Book[]> => {
     const url = quantity
-      ? `https://equipo-s21-05-m-webapp.onrender.com/books?quantity=${quantity}`
-      : "https://equipo-s21-05-m-webapp.onrender.com/books";
+      ? `${BASE_URL}/books?quantity=${quantity}`
+      : `${BASE_URL}/books`;
 
     const response = await fetch(url)
       .then((res) => res.json())
@@ -25,7 +28,7 @@ class BootServices {
   getBookById = async (bookId: string) => {
     try {
       const res = await fetch(
-        `https://equipo-s21-05-m-webapp.onrender.com/books/${bookId}`
+        `${BASE_URL}/books/${bookId}`
       );
 
       if (!res.ok) {
@@ -42,7 +45,7 @@ class BootServices {
   };
 
   setBook = (book: Book) => {
-    fetch("https://equipo-s21-05-m-webapp.onrender.com/books", {
+    fetch("${BASE_URL}/books", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -61,7 +64,7 @@ class BootServices {
   };
 
   deleteBook = (bookId: string) => {
-    fetch(`https://equipo-s21-05-m-webapp.onrender.com/books/${bookId}`, {
+    fetch(`${BASE_URL}/books/${bookId}`, {
       method: "DELETE",
     })
       .then((res) => {
@@ -76,7 +79,7 @@ class BootServices {
   };
 
   updateBook = (book: Book) => {
-    fetch(`https://equipo-s21-05-m-webapp.onrender.com/books/${book.id}`, {
+    fetch(`${BASE_URL}/books/${book.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
