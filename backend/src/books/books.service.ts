@@ -85,15 +85,14 @@ export class BooksService {
         },
       });
   
-      console.log(files.images);
       if (files.images) {
         const images = Array.isArray(files.images) ? files.images : [files.images];
   
         for (const image of images) {
           await this.prismaService.images.create({
             data: {
-              file: fileUrl + image.newFilename, // URL de la imagen
-              bookId: book.id, // Asociar la imagen al libro recién creado
+              file: fileUrl + image.newFilename,
+              bookId: book.id, 
             },
           });
         }
