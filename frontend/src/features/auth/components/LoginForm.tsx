@@ -68,7 +68,14 @@ export default function LoginForm() {
       await login(data);
       
       // Guardar el email en localStorage 
-      localStorage.setItem("userEmail", data.email);      
+      localStorage.setItem("userEmail", data.email); 
+      
+      if (isAuthenticated) {
+        router.push("/");
+        
+        setTimeout(() => {
+          window.location.reload();  
+        }, 100); }
       
     } catch (e) {
       console.error("Error en el formulario de login:", e);
@@ -145,11 +152,6 @@ export default function LoginForm() {
     );
   }
 
-
-
-
-
-
   return(
  
   <div className="flex flex-col items-center justify-center w-full max-w-md mx-auto border-2 border-gray-500 p-8 my-16">
@@ -184,7 +186,9 @@ export default function LoginForm() {
     </div>
     <div>
       <p>
-        No tenes cuenta en Bswap? <Link href="/register" className="text-blue-600 hover:underline font-semibold">Registrate</Link>
+        No tenes cuenta en Bswap? <Link href="/register" className="text-blue-600 hover:underline font-semibold" onClick={(e) => {
+          e.preventDefault(); router.push("/register");
+        }}>Registrate</Link>
       </p>
     </div>
 

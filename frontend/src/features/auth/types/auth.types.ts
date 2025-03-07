@@ -17,10 +17,28 @@ export const userSchema = z.object({
 export type LoginCredentials = z.infer<typeof loginSchema>;
 export type User = z.infer<typeof userSchema>;
 
-/* export interface AuthState {
+export interface AuthState {
     user: User | null;
     isAuthenticated: boolean;
     isLoading: boolean;
     error: string | null;
+}
+
+
+/* export interface LoginCredentials {
+  email: string;
+  password: string;
+} */
+
+export interface RegisterData {
+  email: string;
+  password: string;
+}
+
+/* export interface User {
+  id: string;
+  name: string;
+  email: string;
+  avatar?: string;
 }
  */
