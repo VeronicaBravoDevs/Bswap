@@ -15,7 +15,7 @@ export class ReviewsService {
         where: { id: bookId },
       });
 
-      if (!bookId || typeof bookId !== 'string') {
+      if (!findBook || typeof bookId !== 'string') {
         throw new HttpException('Invalid book ID', HttpStatus.BAD_REQUEST);
       }
 
@@ -23,7 +23,7 @@ export class ReviewsService {
         where: { id: userId },
       });
 
-      if (!userId || typeof userId !== 'string') {
+      if (!findUser || typeof userId !== 'string') {
         throw new HttpException('Invalid user ID', HttpStatus.BAD_REQUEST);
       }
 

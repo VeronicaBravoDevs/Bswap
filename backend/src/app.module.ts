@@ -14,6 +14,8 @@ import { UploadsModule } from './uploads/uploads.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { CategoryBooksModule } from './category-books/category-books.module';
 import { AuthModule } from './auth/auth.module';
+import { CommentModule } from './comment/comment.module';
+import { ReactionModule } from './reaction/reaction.module';
 
 @Module({
   imports: [
@@ -30,6 +32,8 @@ import { AuthModule } from './auth/auth.module';
       dest: '../uploads',
     }),
     CategoryBooksModule,
+    CommentModule,
+    ReactionModule,
   ],
   controllers: [AppController, MockController],
   providers: [AppService, MockService],
