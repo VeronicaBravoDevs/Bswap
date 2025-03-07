@@ -12,8 +12,6 @@ interface CardListProps {
 const CardList: React.FC<CardListProps> = ({ quantity }) => {
   const { data: books, loading, error } = useBooks(quantity);
 
-  console.log(books);
-
   if (loading) return <Loading />;
   if (error) return <Error message={error} />;
 

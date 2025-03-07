@@ -17,12 +17,8 @@ export function useBooks(quantity?: number): {
   useEffect(() => {
     const loadBooks = async () => {
       try {
-        const result = await getBooks();
-
-        // Si quantity está definido, limitamos la cantidad de libros
-        const filteredBooks = quantity ? result.slice(0, quantity) : result;
-
-        setBooks(filteredBooks);
+        const result = await getBooks(quantity);
+        setBooks(result);
       } catch (error) {
         setError(error instanceof Error ? error.message : "Unknown error");
       } finally {
@@ -31,7 +27,7 @@ export function useBooks(quantity?: number): {
     };
 
     loadBooks();
-  }, [getBooks, quantity]); // Dependemos de quantity también para recargar si cambia
+  }, [getBooks, quantity]);
 
   return { data: books, loading, error };
 }
