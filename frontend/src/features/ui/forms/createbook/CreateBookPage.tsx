@@ -32,7 +32,7 @@ const CreateBookForm: React.FC = () => {
       }
 
       const bookResponse = await fetch(
-        "https://equipo-s21-05-m-webapp.onrender.com/books",
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/books`,
         {
           method: "POST",
           //headers: { "Content-Type": "multipart/form-data" },

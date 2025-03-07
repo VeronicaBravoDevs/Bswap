@@ -1,6 +1,6 @@
 import { Book } from "@/app/interface/book";
 
-export const getReviews = (bookId: string) => {
+export const getReviews = async (bookId: string) => {
   // try {
   //   const res =  fetch("https://equipo-s21-05-m-webapp.onrender.com/books");
 
@@ -26,7 +26,7 @@ export const getReviews = (bookId: string) => {
   //   console.error("❌ No pudimos obtener recomendaciones:", error);
   //   return [];
   // }
-  fetch("https://equipo-s21-05-m-webapp.onrender.com/books").then((res) => {
+  fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/books`).then((res) => {
        return res.json();
   }
   ).then((response) => {
