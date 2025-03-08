@@ -30,6 +30,10 @@ export class CreateExchangeDto {
     @IsString()
     requesterId: string
 
+    @ApiProperty()
+    @IsString()
+    ownerId: string
+
     @ApiProperty({
         description: 'Status of the book exchange',
         enum: ExchangeStatus,

@@ -19,8 +19,9 @@ export class ExchangeService {
 
   async create(createExchangeDto: CreateExchangeDto) {
     try {
-      const { bookId, requesterId, status, ...rest } = createExchangeDto;
+      const { bookId, requesterId,ownerId, status, ...rest } = createExchangeDto;
 
+      
       const bookExist = await this.prismaService.book.findUnique({
         where: { id: bookId },
       });
@@ -41,6 +42,7 @@ export class ExchangeService {
         data: {
           requester_id: requesterId,
           book_id: bookId,
+          owner_id: ownerId,
           ...rest,
         },
       });
@@ -68,8 +70,8 @@ export class ExchangeService {
         'Bienvenido',
         'welcome',
         {
-          bookTitle: bookExist.title,  // Valor predeterminado
-          requesterName: dataUserBook.name || 'Solicitante', // Valor predeterminado
+          bookTitle: bookExist.title,  
+          requesterName: dataUserBook.name || 'Solicitante',
         },
       );
 

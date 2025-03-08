@@ -33,16 +33,18 @@ model User {
   privacy_preferences Json?
   registration_date   DateTime @default(now())
 
-  exchanges     Exchange[]
-  reviews       Review[]
-  comments      Comment[]
-  reactions     Reaction[]
-  audioNotes    AudioNote[]
-  notifications Notification[]
-  achievements  Achievement[]
-  reports       Report[]
-  userFriends   FriendFollower[] @relation("UserFriends")
-  library       Book[]
+  reviews             Review[]
+  comments            Comment[]
+  reactions           Reaction[]
+  audioNotes          AudioNote[]
+  notifications       Notification[]
+  achievements        Achievement[]
+  reports             Report[]
+  userFriends         FriendFollower[] @relation("UserFriends")
+  library             Book[]
+  Exchange            Exchange[]
+  exchanges_owned     Exchange[]       @relation("OwnerExchange")
+  exchanges_requested Exchange[]       @relation("RequesterExchange")
 }
 
 model Book {
@@ -88,11 +90,15 @@ model Exchange {
   id           String         @id @default(cuid())
   book_id      String
   requester_id String
+  owner_id     String?
   status       ExchangeStatus @default(pending)
   request_date DateTime       @default(now())
 
-  book      Book @relation(fields: [book_id], references: [id], onDelete: Cascade)
-  requester User @relation(fields: [requester_id], references: [id], onDelete: Cascade)
+  owner     User?   @relation("OwnerExchange", fields: [owner_id], references: [id], onDelete: Cascade)
+  book      Book    @relation(fields: [book_id], references: [id], onDelete: Cascade)
+  requester User    @relation("RequesterExchange", fields: [requester_id], references: [id], onDelete: Cascade)
+  User      User?   @relation(fields: [userId], references: [id])
+  userId    String?
 }
 
 model Review {
