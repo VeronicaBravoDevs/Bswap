@@ -16,6 +16,7 @@ import { CategoryBooksModule } from './category-books/category-books.module';
 import { AuthModule } from './auth/auth.module';
 import { CommentModule } from './comment/comment.module';
 import { ReactionModule } from './reaction/reaction.module';
+import { MailerModuleEmail } from './nodemailer/nodemailer.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { ReactionModule } from './reaction/reaction.module';
     CategoryBooksModule,
     CommentModule,
     ReactionModule,
+    MailerModuleEmail
   ],
   controllers: [AppController, MockController],
   providers: [AppService, MockService],
