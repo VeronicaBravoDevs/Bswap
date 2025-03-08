@@ -164,8 +164,10 @@ exports.Prisma.ExchangeScalarFieldEnum = {
   id: 'id',
   book_id: 'book_id',
   requester_id: 'requester_id',
+  owner_id: 'owner_id',
   status: 'status',
-  request_date: 'request_date'
+  request_date: 'request_date',
+  userId: 'userId'
 };
 
 exports.Prisma.ReviewScalarFieldEnum = {
