@@ -17,12 +17,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.4.1
- * Query Engine version: a9055b89e58b4b5bfb59600785423b1db3d0e75d
+ * Prisma Client JS version: 6.3.1
+ * Query Engine version: acc0b9dd43eb689cbd20c9470515d719db10d0b0
  */
 Prisma.prismaVersion = {
-  client: "6.4.1",
-  engine: "a9055b89e58b4b5bfb59600785423b1db3d0e75d"
+  client: "6.3.1",
+  engine: "acc0b9dd43eb689cbd20c9470515d719db10d0b0"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -164,8 +164,10 @@ exports.Prisma.ExchangeScalarFieldEnum = {
   id: 'id',
   book_id: 'book_id',
   requester_id: 'requester_id',
+  owner_id: 'owner_id',
   status: 'status',
-  request_date: 'request_date'
+  request_date: 'request_date',
+  userId: 'userId'
 };
 
 exports.Prisma.ReviewScalarFieldEnum = {

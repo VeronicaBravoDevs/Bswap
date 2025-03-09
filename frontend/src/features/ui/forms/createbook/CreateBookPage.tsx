@@ -32,7 +32,7 @@ const CreateBookForm: React.FC = () => {
       }
 
       const bookResponse = await fetch(
-        "https://equipo-s21-05-m-webapp.onrender.com/books",
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/books`,
         {
           method: "POST",
           //headers: { "Content-Type": "multipart/form-data" },
@@ -141,15 +141,15 @@ const CreateBookForm: React.FC = () => {
       {/* Imágenes */}
       <div>
         <label htmlFor="image1">Imagen 1:</label>
-        <input type="file" id="image1" name="image1" accept="image/*" />
+        <input type="file" id="image1" name="images" accept="image/*" />
       </div>
       <div>
         <label htmlFor="image2">Imagen 2:</label>
-        <input type="file" id="image2" name="image2" accept="image/*" />
+        <input type="file" id="image2" name="images" accept="image/*" />
       </div>
       <div>
         <label htmlFor="image3">Imagen 3:</label>
-        <input type="file" id="image3" name="image3" accept="image/*" />
+        <input type="file" id="image3" name="images" accept="image/*" />
       </div>
         <button
           type="submit"

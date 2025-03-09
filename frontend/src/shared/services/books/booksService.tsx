@@ -2,13 +2,13 @@ import { Book } from "@/app/interface/book";
 
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}`;
-  
+
 class BootServices {
   Books: Book[] = [];
-
+  
   getBooks = async (quantity?: number): Promise<Book[]> => {
     const url = quantity
-      ? `${BASE_URL}/books?quantity=${quantity}`
+    ? `${BASE_URL}/books?quantity=${quantity}`
       : `${BASE_URL}/books`;
 
     const response = await fetch(url)
@@ -45,7 +45,8 @@ class BootServices {
   };
 
   setBook = (book: Book) => {
-    fetch("${BASE_URL}/books", {
+    console.log("first")
+    fetch(`${BASE_URL}/books`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

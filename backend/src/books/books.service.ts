@@ -14,6 +14,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import formidable from 'formidable';
 import { IncomingMessage } from 'http';
+import { connect } from 'http2';
 //import { File } from 'src/uploads/interface/files';
 
 @Injectable()
@@ -38,45 +39,35 @@ export class BooksService {
       uploadDir: this.uploadDir,
       keepExtensions: true,
       multiples: true,
+      allowEmptyFiles: true,
     });
-
+  
     try {
       const fileUrl = `${process.env.BACKEND_URL}/uploads/`;
-      // const { title, author, description, genre, isbn, publisher, cover } =
-      //   createBookDto;
-
+  
       const parseForm = () =>
         new Promise<{ fields: formidable.Fields; files: formidable.Files }>(
           (resolve, reject) => {
-            form.parse(req, (err, fields, files) => {
-              if (err) {
-                reject(
-                  new BadRequestException('Error parsing form data:' + err),
-                );
-              }
-              resolve({ fields, files });
-            });
-          },
-        );
-
+          form.parse(req, (err, fields, files) => {
+            if (err) {
+              reject(new BadRequestException('Error parsing form data:' + err));
+            }
+            resolve({ fields, files });
+          });
+        },
+      );
+  
       const { fields, files } = await parseForm();
-
-      //console.log('files', files);
-
+  
+      // Crear el libro
       const book = await this.prismaService.book.create({
         data: {
-          title: Array.isArray(fields.title)
-            ? fields.title[0]
-            : fields.title || '',
-          author: Array.isArray(fields.author)
-            ? fields.author[0]
-            : fields.author || '',
+          title: Array.isArray(fields.title) ? fields.title[0] : fields.title || '',
+          author: Array.isArray(fields.author) ? fields.author[0] : fields.author || '',
           description: Array.isArray(fields.description)
             ? fields.description[0]
             : fields.description || '',
-          genre: Array.isArray(fields.genre)
-            ? fields.genre[0]
-            : fields.genre || '',
+          genre: Array.isArray(fields.genre) ? fields.genre[0] : fields.genre || '',
           isbn: Array.isArray(fields.isbn) ? fields.isbn[0] : fields.isbn || '',
           publisher: Array.isArray(fields.publisher)
             ? fields.publisher[0]
@@ -93,11 +84,23 @@ export class BooksService {
           categoryBooks: true,
         },
       });
-
-      return { message: 'new book created', data: book };
-      //return { fields, files };
+  
+      if (files.images) {
+        const images = Array.isArray(files.images) ? files.images : [files.images];
+  
+        for (const image of images) {
+          await this.prismaService.images.create({
+            data: {
+              file: fileUrl + image.newFilename,
+              bookId: book.id, 
+            },
+          });
+        }
+      }
+  
+      return { message: 'New book created', data: book };
     } catch (error) {
-      console.log(error);
+      console.error('Error creating book:', error);
       throw new HttpException(
         'Internal server error',
         HttpStatus.INTERNAL_SERVER_ERROR,

@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { CacheModule } from '@nestjs/cache-manager';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PrismaModule } from './prisma/prisma.module';
@@ -14,6 +13,10 @@ import { ReviewsModule } from './reviews/reviews.module';
 import { UploadsModule } from './uploads/uploads.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { CategoryBooksModule } from './category-books/category-books.module';
+import { AuthModule } from './auth/auth.module';
+import { CommentModule } from './comment/comment.module';
+import { ReactionModule } from './reaction/reaction.module';
+import { MailerModuleEmail } from './nodemailer/nodemailer.module';
 
 @Module({
   imports: [
@@ -25,10 +28,14 @@ import { CategoryBooksModule } from './category-books/category-books.module';
     ExchangeModule,
     ReviewsModule,
     UploadsModule,
+    AuthModule,
     MulterModule.register({
       dest: '../uploads',
     }),
     CategoryBooksModule,
+    CommentModule,
+    ReactionModule,
+    MailerModuleEmail
   ],
   controllers: [AppController, MockController],
   providers: [AppService, MockService],

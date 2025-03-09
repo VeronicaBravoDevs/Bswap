@@ -1,5 +1,4 @@
-import { ApiProperty, OmitType } from '@nestjs/swagger';
-import { Type } from 'class-transformer';
+import { ApiProperty } from '@nestjs/swagger';
 
 import {
     IsEmail,
@@ -13,21 +12,18 @@ import {
     IsInt,
 } from 'class-validator';
 
-
-
 export class CreateUserDto {
+  @ApiProperty()
+  @IsNotEmpty({
+    message: 'Debe introducir un valor',
+  })
+  @IsString({ message: 'El correo electronico debe ser texto' })
+  @IsEmail({}, { message: 'Debe proporcionar un correo valido' })
+  email: string;
 
-    @ApiProperty()
-    @IsNotEmpty({
-        message: 'Debe introducir un valor'
-    })
-    @IsString({ message: 'El correo electronico debe ser texto' })
-    @IsEmail({}, { message: 'Debe proporcionar un correo valido' })
-    email: string
-
-    @IsString()
-    @IsOptional()
-    firstName?: string;
+  @IsString()
+  @IsOptional()
+  firstName?: string;
 
     @IsString()
     @IsOptional()
@@ -60,5 +56,6 @@ export class CreateUserDto {
 
     @ApiProperty()
     @IsArray()
+    @IsOptional()
     library?: string
 }

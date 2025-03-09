@@ -1,4 +1,9 @@
-import { Injectable, HttpException, HttpServer, HttpStatus } from '@nestjs/common';
+import {
+  Injectable,
+  HttpException,
+  HttpServer,
+  HttpStatus,
+} from '@nestjs/common';
 import * as bcrypt from 'bcryptjs';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -6,16 +11,11 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { BooksService } from 'src/books/books.service';
 import { MockService } from 'src/mock/mock.service';
 
-
-
 export const roundOfHashing = 10;
 
 @Injectable()
 export class UsersService {
-
-  constructor(
-    private readonly prismaService: PrismaService,
-  ) { }
+  constructor(private readonly prismaService: PrismaService) {}
 
   async findByEmail(email: string) {
     const user = await this.prismaService.user.findFirst({
@@ -26,13 +26,13 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDto) {
     createUserDto.email.toLocaleLowerCase();
-  
+
     const user = await this.findByEmail(createUserDto.email);
-  
+
     if (user) {
       throw new HttpException('User Already Exist', HttpStatus.CONFLICT);
     }
-  
+
     try {
       const hashedPassword = await bcrypt.hash(createUserDto.password, roundOfHashing);
       const { email, password, library, phone, ...rest } = createUserDto;
@@ -45,7 +45,7 @@ export class UsersService {
           phone,
         },
       });
-  
+
       const userWithBooks = await this.prismaService.user.findUnique({
         where: { id: newUser.id },
         include: {
@@ -53,21 +53,22 @@ export class UsersService {
           reviews: true,
         },
       });
-  
+
       return userWithBooks;
     } catch (error) {
       console.error(error);
-      throw new HttpException('Internal server error', HttpStatus.INTERNAL_SERVER_ERROR);
+      throw new HttpException(
+        'Internal server error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
   }
-  
 
   async findAll() {
-
-    try{
-      const users = await this.prismaService.user.findMany()
+    try {
+      const users = await this.prismaService.user.findMany();
       return users;
-    }catch(error) {
+    } catch (error) {
       throw new HttpException(
         'Internal server error',
         HttpStatus.INTERNAL_SERVER_ERROR,
@@ -95,27 +96,25 @@ export class UsersService {
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
-
     const user = await this.findOne(id);
     try {
-      if(updateUserDto.password){
+      if (updateUserDto.password) {
         updateUserDto.password = await bcrypt.hash(
           updateUserDto.password,
           roundOfHashing,
         );
       }
-      const {password, ...rest} = updateUserDto;
+      const { password, ...rest } = updateUserDto;
 
       const updateData: any = {
         ...rest,
         password_hash: password,
       };
 
-
       const update = await this.prismaService.user.update({
         where: { id },
         data: updateData,
-      })
+      });
       return {
         message: 'User updated successfully',
         data: update,

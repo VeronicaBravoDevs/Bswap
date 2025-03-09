@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import * as fs from 'fs';
 import * as path from 'path';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { Express } from 'express';
+import { Multer } from 'multer';
 
 @Injectable()
 export class UploadsService {
