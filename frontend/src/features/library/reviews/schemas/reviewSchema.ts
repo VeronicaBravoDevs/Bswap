@@ -3,7 +3,7 @@ import { z } from 'zod';
 // Esquema para el formulario de reseña
 export const reviewFormSchema = z.object({
   bookId: z.string().optional(),
-  title: z.string().min(1, "El título es obligatorio").optional(),
+  title: z.string().min(1, "El titulo es obligatorio").optional(),
   author: z.string().min(1, "El autor es obligatorio").optional(),
   content: z.string().min(10, "La reseña debe tener al menos 10 caracteres"),
   rating: z.number().min(1, "Debes seleccionar al menos 1 estrella").max(5),
@@ -28,7 +28,7 @@ export const validateReviewForm = (data: ReviewFormData): { success: boolean; er
       }
     }
  
-    if (!data.content || data.content.length < 5) {
+    if (!data.content || data.content.length < 10) {
       return {
         success: false,
         errors: {
@@ -62,7 +62,7 @@ export const validateReviewForm = (data: ReviewFormData): { success: boolean; er
     
     return {
       success: false,
-      errors: { form: "Error de validación" }
+      errors: { form: "Error de validacion" }
     };
   }
 };

@@ -59,7 +59,7 @@ export const useReviews = (bookId?: string): UseReviewsReturn => {
           
           setData(enhancedReviews);
         } else {
-          // Si no hay reseñas reales, usamos los datos de ejemplo
+          // Si no hay reseñas reales usa mock
           const mockReviews = mockData.books.flatMap(book =>
             book.reviews.map(review => ({
               ...review,
