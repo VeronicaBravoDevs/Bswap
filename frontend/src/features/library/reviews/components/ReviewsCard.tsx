@@ -38,13 +38,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review, bookTitle, bookAuthor }
       <hr className="my-3" />
       
       <div className="flex flex-row">
-        <div className="w-2/3 pr-4">
-          <div className="border-2 border-gray-300 p-3 rounded-md h-full">
-            <p>{reviewContent}</p>
-          </div>
-        </div>
-        
-        <div className="w-1/3 flex flex-col items-center">
+      <div className="w-1/3 flex flex-col items-center">
           <div className="w-16 h-16 rounded-full overflow-hidden mb-2 relative">
             <Image
               src={userImage}
@@ -65,6 +59,13 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review, bookTitle, bookAuthor }
             ))}
           </div>
         </div>
+        <div className="w-2/3 pr-4">
+          <div className="border-2 border-gray-300 p-3 rounded-md h-full">
+            <p>{reviewContent}</p>
+          </div>
+        </div>
+        
+      
       </div>
     </div>
   );

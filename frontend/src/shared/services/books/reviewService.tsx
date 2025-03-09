@@ -10,11 +10,10 @@ class ReviewService {
       }
      
       const data = await response.json();
-      console.log("✅ Reseñas obtenidas:", data);
       
-      // Asegurarse de que los datos tengan el formato correcto
+      // Verifica que el formato sea correcto
       const reviews = Array.isArray(data) ? data : (data.data || []);
-      
+     
       return reviews;
     } catch (error) {
       console.error("❌ Error al obtener reseñas:", error);
@@ -50,8 +49,44 @@ class ReviewService {
     }
   }
 
-  createReview = async (review: Omit<Review, 'id'>): Promise<Review | null> => {
+  // Valida el ID del libro
+  validateBookId = async (bookId: string): Promise<boolean> => {
+    if (!bookId || bookId === 'temp-book-id' || bookId === 'new-book') {
+      return false;
+    }
+    
     try {
+      // El libro existe?
+      const res = await fetch(`https://equipo-s21-05-m-webapp.onrender.com/books/${bookId}`);
+      return res.ok;
+    } catch {
+      return false;
+    }
+  }
+
+  createReview = async (reviewData: Omit<Review, 'id'>): Promise<Review | null> => {
+    try {
+     // Valida el ID del libro
+      const isValidBookId = await this.validateBookId(reviewData.bookId);
+      if (!isValidBookId) {
+        console.error("❌ ID de libro inválido:", reviewData.bookId);
+        throw new Error("ID de libro inválido");
+      }
+      
+      // Verifica que los campos de api esten completos
+      const review = {
+        bookId: reviewData.bookId,
+        userId: reviewData.userId || "",
+        rating: reviewData.rating || 0,
+        content: reviewData.content || "",
+        publication_date: new Date().toISOString(),
+        // Para verificar que comments y reaction son string json validos
+        comments: reviewData.comments || "[]",
+        reactions: reviewData.reactions || "[]"
+      };
+
+      console.log("Enviando reseña:", JSON.stringify(review, null, 2));
+      
       const response = await fetch("https://equipo-s21-05-m-webapp.onrender.com/reviews", {
         method: "POST",
         headers: {
@@ -59,11 +94,15 @@ class ReviewService {
         },
         body: JSON.stringify(review),
       });
-      
+     
       if (!response.ok) {
+        const errorBody = await response.text();
+        console.error("❌ Respuesta del servidor:", errorBody);
+        console.error("❌ Código de estado:", response.status);
+        console.error("❌ Cabeceras:", JSON.stringify(Object.fromEntries([...response.headers]), null, 2));
         throw new Error(`Error al crear reseña: ${response.status} ${response.statusText}`);
       }
-      
+     
       const data = await response.json();
       console.log("✅ Reseña creada:", data);
       return data;
