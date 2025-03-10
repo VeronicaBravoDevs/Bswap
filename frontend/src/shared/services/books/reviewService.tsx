@@ -1,9 +1,11 @@
 import { Review } from "@/app/interface/book";
 
+const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "https://equipo-s21-05-m-webapp.onrender.com";
+
 class ReviewService {
   getReviews = async (): Promise<Review[]> => {
     try {
-      const response = await fetch("https://equipo-s21-05-m-webapp.onrender.com/reviews");
+      const response = await fetch(`${API_URL}/reviews`);
      
       if (!response.ok) {
         throw new Error(`Error al obtener reseñas: ${response.status} ${response.statusText}`);
@@ -23,7 +25,7 @@ class ReviewService {
 
   getReviewById = async (reviewId: string): Promise<Review | null> => {
     try {
-      const res = await fetch(`https://equipo-s21-05-m-webapp.onrender.com/reviews/${reviewId}`);
+      const res = await fetch(`${API_URL}/reviews/${reviewId}`);
       if (!res.ok) {
         throw new Error(`Error al obtener reseña: ${res.status} ${res.statusText}`);
       }
@@ -37,7 +39,7 @@ class ReviewService {
 
   getReviewsByBookId = async (bookId: string): Promise<Review[]> => {
     try {
-      const res = await fetch(`https://equipo-s21-05-m-webapp.onrender.com/reviews?bookId=${bookId}`);
+      const res = await fetch(`${API_URL}/reviews?bookId=${bookId}`);
       if (!res.ok) {
         throw new Error(`Error al obtener reseñas por libro: ${res.status} ${res.statusText}`);
       }
@@ -51,20 +53,28 @@ class ReviewService {
 
   // Valida el ID del libro
   validateBookId = async (bookId: string): Promise<boolean> => {
-    if (!bookId || bookId === 'temp-book-id' || bookId === 'new-book') {
+    if (!bookId || bookId === "temp-book-id" || bookId === "new-book") {
       return false;
     }
-    
+  
     try {
-      // El libro existe?
-      const res = await fetch(`https://equipo-s21-05-m-webapp.onrender.com/books/${bookId}`);
-      return res.ok;
-    } catch {
+      const res = await fetch(`${API_URL}/books/${bookId}`);
+  
+      if (!res.ok) {
+        console.error(`❌ Libro no encontrado: ${bookId}`);
+        return false;
+      }
+  
+      return true;
+    } catch (error) {
+      console.error("❌ Error al validar el ID del libro:", error);
       return false;
     }
-  }
+  };
+  
 
   createReview = async (reviewData: Omit<Review, 'id'>): Promise<Review | null> => {
+    console.log(" userId en createReview:", reviewData.userId);
     try {
      // Valida el ID del libro
       const isValidBookId = await this.validateBookId(reviewData.bookId);
@@ -72,7 +82,12 @@ class ReviewService {
         console.error("❌ ID de libro inválido:", reviewData.bookId);
         throw new Error("ID de libro inválido");
       }
-      
+      //valida usuario
+      if (!reviewData.userId) {
+        console.error("❌ ID de usuario inválido:", reviewData.userId);
+        throw new Error("ID de usuario inválido");
+      }
+
       // Verifica que los campos de api esten completos
       const review = {
         bookId: reviewData.bookId,

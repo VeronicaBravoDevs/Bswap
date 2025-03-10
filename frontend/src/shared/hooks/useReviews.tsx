@@ -1,18 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Review } from '@/app/interface/book';
 import { reviewService } from '@/shared/services/books/reviewService';
-import { bootServices } from '../services/books/booksService';
-import mockData from '../../../public/mock/mockDataReviews.json';
 
 interface UseReviewsReturn {
-  data: any[];
+  data: Review[];
   loading: boolean;
   error: Error | null;
   refetch: () => Promise<void>;
 }
 
 export const useReviews = (bookId?: string): UseReviewsReturn => {
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<Review[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
@@ -22,73 +20,56 @@ export const useReviews = (bookId?: string): UseReviewsReturn => {
       let reviewsData: Review[] = [];
 
       if (bookId) {
-        // Si tenemos ID de libro, buscamos las reseñas de ese libro
+        // Obtener reseñas por ID de libro
         reviewsData = await reviewService.getReviewsByBookId(bookId);
-        
-        // Si el libro existe, obtenemos sus detalles
-        const bookDetails = await bootServices.getBookById(bookId);
-        
-        if (bookDetails && reviewsData.length > 0) {
-          // Enriquecemos las reseñas con información del libro
-          const enhancedReviews = reviewsData.map(review => ({
-            ...review,
-            bookTitle: bookDetails.title,
-            bookAuthor: bookDetails.author
-          }));
-          
-          setData(enhancedReviews);
-        } else {
-          setData([]);
-        }
       } else {
-        // Si no hay ID, traemos todas las reseñas
+        // Obtener todas las reseñas
         reviewsData = await reviewService.getReviews();
-        
-        if (reviewsData.length > 0) {
-          // Para cada reseña, necesitamos obtener los detalles del libro
-          const enhancedReviews = await Promise.all(
-            reviewsData.map(async (review) => {
-              const bookDetails = await bootServices.getBookById(review.bookId);
-              return {
-                ...review,
-                bookTitle: bookDetails?.title || "Título desconocido",
-                bookAuthor: bookDetails?.author || "Autor desconocido"
-              };
-            })
-          );
-          
-          setData(enhancedReviews);
-        } else {
-          // Si no hay reseñas reales usa mock
-          const mockReviews = mockData.books.flatMap(book =>
-            book.reviews.map(review => ({
-              ...review,
-              bookId: book.id,
-              bookTitle: book.title,
-              bookAuthor: book.author,
-              content: review.comment,
-            }))
-          );
-          setData(mockReviews);
-        }
       }
-      
-      setLoading(false);
+
+      // Si no hay reseñas reales, usamos datos simulados solo para desarrollo
+      if (!reviewsData || reviewsData.length === 0) {
+        setData([
+          {
+            id: "mock-1",
+            userId: "user1",
+            bookId: bookId || "book1",
+            rating: 4,
+            content: "Excelente libro, muy recomendado",
+            publication_date: new Date().toISOString(),
+            user: {
+              id: "user1",
+              name: "Usuario Demo",
+              profile_picture: "/imagenprueba.png",
+              country: "Argentina",
+              city: "Buenos Aires"
+            }
+          },
+          {
+            id: "mock-2",
+            userId: "user2",
+            bookId: bookId || "book1",
+            rating: 5,
+            content: "Una historia fascinante que no pude dejar de leer",
+            publication_date: new Date().toISOString(),
+            user: {
+              id: "user2",
+              name: "Usuario Test",
+              profile_picture: "/imagenprueba.png",
+              country: "México",
+              city: "CDMX"
+            }
+          }
+        ]);
+      } else {
+        setData(reviewsData);
+      }
+
+      setError(null);
     } catch (err) {
-      console.error("Error fetching reviews:", err);
+      console.error("Error obteniendo reseñas:", err);
       setError(err instanceof Error ? err : new Error('Error desconocido al obtener reseñas'));
-      
-      // Fallback a datos mock en caso de error
-      const mockReviews = mockData.books.flatMap(book =>
-        book.reviews.map(review => ({
-          ...review,
-          bookId: book.id,
-          bookTitle: book.title,
-          bookAuthor: book.author,
-          content: review.comment,
-        }))
-      );
-      setData(mockReviews);
+    } finally {
       setLoading(false);
     }
   };

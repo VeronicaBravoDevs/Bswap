@@ -200,6 +200,7 @@ export const useReviewStore = create<ReviewState>((set, get) => ({
   },
  
   addReview: async (reviewData: Omit<Review, 'id'>, title?: string, author?: string) => {
+    console.log(" userId en addReview:", reviewData.userId);
     set({ error: null });
     try {
       // No permitir 'temp-book-id' o 'new-book' como ID de libro

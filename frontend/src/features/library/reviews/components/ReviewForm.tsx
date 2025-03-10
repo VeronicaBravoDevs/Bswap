@@ -78,6 +78,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ userId }) => {
  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("userId en ReviewForm antes de enviar la reseña:", formData.userId);
     setSubmitSuccess(false);
    
     // Verifica que bookId no sea undefined o vacio
@@ -85,6 +86,13 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ userId }) => {
       setFormErrors(prev => ({ ...prev, bookId: "Debes seleccionar un libro" }));
       return;
     }
+
+
+  // Verifica si `userId` está vacío o undefined
+  if (!formData.userId) {
+    console.error("❌ ERROR: userId no está definido en el formulario.");
+    return;
+  }
    
     const validation = validateReviewForm(formData);
    
