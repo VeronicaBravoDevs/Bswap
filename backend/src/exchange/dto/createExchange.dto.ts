@@ -38,7 +38,7 @@ export class CreateExchangeDto {
         description: 'Status of the book exchange',
         enum: ExchangeStatus,
     })
-    @IsEnum(ExchangeStatus, { message: 'Status must be one of: pending, canceled, acepted' })
+    @IsEnum(ExchangeStatus, { message: 'Status must be one of: pending, canceled, completed' })
     status: ExchangeStatus;
 
     @ApiProperty()
