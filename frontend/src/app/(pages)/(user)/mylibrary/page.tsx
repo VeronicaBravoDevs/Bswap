@@ -22,7 +22,7 @@ export default function MyLibrary() {
           </ul>
 
           <div>
-            <div className="flex items-center border border-blue-400 p-2">
+            <div className="flex gap-2 items-center border border-blue-400 p-2">
               <Image
                 src="/booksEmoji.png"
                 alt="emoji de libros"
@@ -34,7 +34,7 @@ export default function MyLibrary() {
             <p className="py-4">¡Tu Biblioteca esta vacia!</p>
           </div>
           <div>
-            <div className="flex items-center border border-blue-400 p-2">
+            <div className="flex gap-2  items-center border border-blue-400 p-2">
               <Image
                 src="/orangeBookEmoji.png"
                 alt="emoji de libros"
@@ -46,7 +46,7 @@ export default function MyLibrary() {
             <p className="py-4">¡Tu Biblioteca esta vacia!</p>
           </div>
           <div>
-            <div className="flex items-center border border-blue-400 p-2">
+            <div className="flex gap-2  items-center border border-blue-400 p-2">
               <Image
                 src="/bookStarEmoji.png"
                 alt="emoji de libros"
@@ -58,7 +58,7 @@ export default function MyLibrary() {
             <p className="py-4">¡Tu Biblioteca esta vacia!</p>
           </div>
           <div>
-            <div className="flex items-center border border-blue-400 p-2">
+            <div className="flex gap-2  items-center border border-blue-400 p-2">
               <Image
                 src="/uploadImageButton.png"
                 alt="emoji de libros"
