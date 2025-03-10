@@ -16,7 +16,7 @@ const CardList: React.FC<CardListProps> = ({ quantity }) => {
   if (error) return <Error message={error} />;
 
   return (
-    <div className="flex flex-wrap justify-around gap-8 my-16">
+    <div className="flex flex-wrap justify-around gap-2 my-8">
       {books.length === 0 ? (
         <div>Aún no hay libros cargados</div>
       ) : (

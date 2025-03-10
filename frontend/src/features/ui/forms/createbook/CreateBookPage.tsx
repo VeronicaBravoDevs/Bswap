@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import ImagesUploader from "./ImagesUploader";
 
 const CreateBookForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -43,7 +44,6 @@ const CreateBookForm: React.FC = () => {
       if (!bookResponse.ok) throw new Error("Error al crear el libro");
       const book = await bookResponse.json();
       console.log("Libro creado:", book);
-
     } catch (error) {
       console.error("❌ Error:", error);
     } finally {
@@ -134,37 +134,40 @@ const CreateBookForm: React.FC = () => {
           type="date"
           id="published"
           name="published"
+          required
           className="border-4 border-gray-200 px-2"
         />
       </div>
 
-      {/* Imágenes */}
+      <ImagesUploader />
+
       <div>
-        <label htmlFor="image1">Imagen 1:</label>
-        <input type="file" id="image1" name="images" accept="image/*" />
+        <p className="text-blue-700 text-xl font-bold">TOMA EN CUENTA</p>
+        <p>
+          En Bsswap, puedes subir novelas, cuentos, ensayos, poesía y libros de
+          no ficción, siempre que respeten nuestras normas. No se permite
+          contenido con desnudez o escenas sexuales específicas, violencia
+          extrema, discurso de odio o apología de actividades ilegales. Además,
+          las obras deben ser originales o contar con los derechos de
+          publicación. Cualquier incumplimiento resultará en la eliminación del
+          contenido y posibles sanciones. Queremos una comunidad creativa y
+          respetuosa para escritores y lectores.
+        </p>
       </div>
-      <div>
-        <label htmlFor="image2">Imagen 2:</label>
-        <input type="file" id="image2" name="images" accept="image/*" />
-      </div>
-      <div>
-        <label htmlFor="image3">Imagen 3:</label>
-        <input type="file" id="image3" name="images" accept="image/*" />
-      </div>
-        <button
-          type="submit"
-          disabled={loading}
-          className="bg-blue-600 text-white py-2 px-4 rounded-lg w-28 mr-4"
-        >
-          {loading ? "Subiendo..." : "Agregar"}
-        </button>
-        <button
-          type="submit"
-          disabled={loading}
-          className="bg-gray-400 text-white py-2 px-4 rounded-lg w-28"
-        >
-          {loading ? "Subiendo..." : "Cancelar"}
-        </button>
+      <button
+        type="submit"
+        disabled={loading}
+        className="bg-blue-600 text-white py-2 px-4 rounded-lg w-28 mr-4"
+      >
+        {loading ? "Subiendo..." : "Agregar"}
+      </button>
+      <button
+        type="submit"
+        disabled={loading}
+        className="bg-gray-400 text-white py-2 px-4 rounded-lg w-28"
+      >
+        {loading ? "Subiendo..." : "Cancelar"}
+      </button>
     </form>
   );
 };

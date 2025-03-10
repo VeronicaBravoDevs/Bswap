@@ -8,13 +8,30 @@ interface Audio {
   url: string;
 }
 
-interface Review {
+/* interface Review { //agregue export
   id: string;
   userId: string;
   comment?: string;
-  audio?: Audio;
-}
-
+  audio?: Audio;   
+} */
+  export interface Review {
+    id: string;
+    userId: string;
+    bookId: string;
+    rating: number;
+    content: string;
+    publication_date: string;
+    comments?: string;
+    reactions?: string;
+    exchange_status?: string;
+    user?: {
+      id: string;
+      name: string;
+      profile_picture: string;
+      country: string;
+      city: string;
+    };
+  }
 export interface Book {
   id?: string;
   title: string;
