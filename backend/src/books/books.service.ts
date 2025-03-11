@@ -58,8 +58,7 @@ export class BooksService {
       );
   
       const { fields, files } = await parseForm();
-  
-      // Crear el libro
+ 
       const book = await this.prismaService.book.create({
         data: {
           title: Array.isArray(fields.title) ? fields.title[0] : fields.title || '',
@@ -84,8 +83,7 @@ export class BooksService {
           categoryBooks: true,
         },
       });
-  
-      console.log(files.images);
+  console.log(files)
       if (files.images) {
         const images = Array.isArray(files.images) ? files.images : [files.images];
   
