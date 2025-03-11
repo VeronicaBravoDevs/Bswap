@@ -41,11 +41,4 @@ export class UploadsController {
     const createdFile = await this.uploadsService.create(bookId, file);
     return { message: 'Archivo subido con éxito', data: createdFile };
   }
-  @Get(':id')
-  @ApiOperation({ summary: 'Obtener un archivo por id' })
-  @ApiResponse({ status: 200, description: 'Archivo encontrado.' })
-  async getFile(@Param('id') id: string) {
-    const file = await this.uploadsService.findOne(id);
-    return { message: 'Archivo encontrado', data: file };
-  }
 }
