@@ -4,9 +4,9 @@ import {
   HttpException,
   //HttpServer,
   HttpStatus,
+  Inject
 } from '@nestjs/common';
 import { Cache } from 'cache-manager';
-import { Inject } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
@@ -83,7 +83,6 @@ export class BooksService {
           categoryBooks: true,
         },
       });
-  console.log(files)
       if (files.images) {
         const images = Array.isArray(files.images) ? files.images : [files.images];
   
