@@ -165,11 +165,7 @@ export const useReviewStore = create<ReviewState>((set, get) => ({
  
   fetchBooks: async () => {
     try {
-<<<<<<< HEAD
-      const booksData = await bootServices.getBooks();
-=======
       const booksData = await bookServices.getBooks();
->>>>>>> 09cf035cc837e2ed461c7062e7b08e96daa9d274
       set({ books: booksData });
     } catch (error) {
       console.error("Error al obtener libros:", error);

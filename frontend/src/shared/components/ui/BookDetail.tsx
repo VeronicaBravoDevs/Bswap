@@ -40,11 +40,7 @@ export default function BookDetailPage({ params }: BookDetailPageProps) {
       try {
         setLoading(true);
         // Obtener detalles del libro
-<<<<<<< HEAD
-        const bookData = await bootServices.getBookById(params.id);
-=======
         const bookData = await bookServices.getBookById(params.id);
->>>>>>> 09cf035cc837e2ed461c7062e7b08e96daa9d274
         
         if (!bookData || !bookData.id) {
           setError("No se pudo obtener la información del libro");
