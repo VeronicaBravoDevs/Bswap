@@ -1,7 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import useAuth from "@/shared/hooks/useAuth";
 
 export default function MyLibrary() {
+  const { isAuthenticated } = useAuth();
+
   return (
     <>
       <h2 className="text-center  text-4xl font-bold my-8">Mi Biblioteca</h2>
@@ -59,15 +64,21 @@ export default function MyLibrary() {
           </div>
           <div>
             <div className="flex gap-2  items-center border border-blue-400 p-2">
-              <Image
-                src="/uploadImageButton.png"
-                alt="emoji de libros"
-                width={30}
-                height={30}
-              />
-              <Link href="/books/createbook" className="font-bold text-xl">
-                Cargar Libro
-              </Link>
+              {isAuthenticated ? (
+                <>
+                  <Image
+                    src="/uploadImageButton.png"
+                    alt="emoji de libros"
+                    width={30}
+                    height={30}
+                  />
+                  <Link href="/books/createbook" className="font-bold text-xl">
+                    Cargar Libro
+                  </Link>
+                </>
+              ) : (
+                <Link href="/login">Login</Link>
+              )}
             </div>
           </div>
         </nav>

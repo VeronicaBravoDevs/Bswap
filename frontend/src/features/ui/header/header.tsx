@@ -1,17 +1,14 @@
-"use client"
-
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
-import useAuth  from "@/shared/hooks/useAuth";
-
+import useAuth from "@/shared/hooks/useAuth";
 
 export default function Header() {
   const { user, isAuthenticated, logout } = useAuth();
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef<HTMLLIElement>(null);
-
 
   // ojo cierra el menu cuando se hace click fuera de el
   useEffect(() => {
@@ -27,22 +24,25 @@ export default function Header() {
     };
   }, []);
 
- 
-useEffect(() => {
-  console.log("Estado de autenticacion cambiado:", isAuthenticated, user);
-}, [isAuthenticated, user]);
-  
+  useEffect(() => {
+    console.log("Estado de autenticacion cambiado:", isAuthenticated, user);
+  }, [isAuthenticated, user]);
+
   const handleLogout = () => {
     logout();
     setShowMenu(false);
   };
 
-
   return (
     <header className="flex px-8 justify-between items-center  text-black py-2">
       <Link href="/">
         <h1 className="">
-          <Image src="/logoSinFondo.png" alt="BSwap Logo" width={80} height={80} />
+          <Image
+            src="/logoSinFondo.png"
+            alt="BSwap Logo"
+            width={80}
+            height={80}
+          />
         </h1>
       </Link>
       <nav>
@@ -50,16 +50,18 @@ useEffect(() => {
           <li>
             <Link href="/exchange">Intercambios</Link>
           </li>
-          <li>
-            <Link href="/mylibrary">Mi Biblioteca</Link>
-          </li>
+          {isAuthenticated && (
+            <li>
+              <Link href="/mylibrary">Mi Biblioteca</Link>
+            </li>
+          )}
           <li>
             <Link href="/reviews">Reseñas</Link>
           </li>
           <li>
             <Link href="/community">Comunidad</Link>
           </li>
-         
+
           {isAuthenticated && user ? (
             <li className="relative" ref={menuRef}>
               <button
@@ -78,17 +80,19 @@ useEffect(() => {
                     />
                   ) : (
                     <div className="w-full h-full bg-slate-600 flex items-center justify-center text-white font-bold">
-                    {user && user.name ? user.name.charAt(0) : '?'}
-                  </div>
+                      {user && user.name ? user.name.charAt(0) : "?"}
+                    </div>
                   )}
                 </div>
               </button>
-             
+
               {showMenu && (
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 py-2">
                   <div className="px-4 py-2 border-b border-gray-100">
                     <p className="text-sm font-medium">{user.name}</p>
-                    <p className="text-xs text-gray-500 truncate">{user.email}</p>
+                    <p className="text-xs text-gray-500 truncate">
+                      {user.email}
+                    </p>
                   </div>
                   <Link
                     href="/profile"
