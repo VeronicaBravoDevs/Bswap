@@ -2,11 +2,10 @@ import {
   Injectable,
   BadRequestException,
   HttpException,
-  //HttpServer,
   HttpStatus,
+  Inject
 } from '@nestjs/common';
 import { Cache } from 'cache-manager';
-import { Inject } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
@@ -16,7 +15,7 @@ import formidable from 'formidable';
 import { IncomingMessage } from 'http';
 import { connect } from 'http2';
 import { Request } from 'express';
-//import { File } from 'src/uploads/interface/files';
+
 
 @Injectable()
 export class BooksService {
@@ -43,6 +42,7 @@ export class BooksService {
       keepExtensions: true,
       multiples: true,
       allowEmptyFiles: true,
+      minFileSize: 0,
     });
 
     try {
@@ -63,8 +63,7 @@ export class BooksService {
         );
 
       const { fields, files } = await parseForm();
-
-      // Crear el libro
+ 
       const book = await this.prismaService.book.create({
         data: {
           title: Array.isArray(fields.title)
@@ -84,8 +83,8 @@ export class BooksService {
             ? fields.publisher[0]
             : fields.publisher || '',
           cover:
-            files.image1 && files.image1[0]
-              ? fileUrl + files.image1[0].newFilename
+            files.images && files.images[0]
+              ? fileUrl + files.images[0].newFilename
               : '',
           createdAt: new Date(),
           userId: user.sub,
@@ -96,7 +95,6 @@ export class BooksService {
           categoryBooks: true,
         },
       });
-
       if (files.images) {
         const images = Array.isArray(files.images)
           ? files.images
@@ -111,8 +109,8 @@ export class BooksService {
           });
         }
       }
-
       return { message: 'New book created', data: book };
+
     } catch (error) {
       console.error('Error creating book:', error);
       throw new HttpException(

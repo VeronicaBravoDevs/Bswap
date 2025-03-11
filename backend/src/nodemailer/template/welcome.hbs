@@ -1,6 +1,27 @@
-<h1>¡Hola!</h1>
-<p>El usuario <strong>{{requesterName}}</strong> ha solicitado un intercambio por tu libro <strong>{{bookTitle}}</strong>.</p>
-<p>Por favor, revisa la solicitud en el siguiente enlace:</p>
-<p><a href="{{link}}">Revisar solicitud</a></p>
-<p>Gracias,</p>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+  * {
+    font-family: Roboto, system-ui;
+    padding: 0px;
+    margin: 0px;
+  }
+</style>
+
+<h1>Bswap</h1>
+<h2>Solicitud de intecambio de libro</h2>
+
+<p>Hola {{name}}</p>
+<p>Mi nombre es {{requesterName}}</p>
+<p>Me interesa el intecambio de tu libro {{bookTitle}}</p>
+
+<p>Si te interesa el intercambio, podemos coordinar un punto de encuentro</p>
+
+<a
+  class='btn mt-3'
+  href='{{link}}'
+  style='margin-top: 30px;border: none;padding: 15px 25px;border-radius: 5px;color: white;display: inline-block;background-color: #3877ab; text-decoration: none;'
+>Continue with the profile</a>
+
+<p>Saludos</p>
+<p>{{name}}</p>
 <p>El equipo de BookSwap</p>

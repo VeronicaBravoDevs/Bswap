@@ -1,9 +1,11 @@
 import {
   Controller,
   Post,
+  Param,
   Body,
   UseInterceptors,
   UploadedFile,
+  Get,
 } from '@nestjs/common';
 import {
   ApiOperation,

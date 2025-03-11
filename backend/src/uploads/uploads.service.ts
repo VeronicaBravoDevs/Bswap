@@ -33,4 +33,11 @@ export class UploadsService {
     });
     return createdFile;
   }
+
+  async findOne(id: string) {
+    return this.prismaService.images.findUnique({
+      where: { id },
+    });
+  }
+  
 }
