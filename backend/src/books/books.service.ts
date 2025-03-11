@@ -37,6 +37,7 @@ export class BooksService {
       keepExtensions: true,
       multiples: true,
       allowEmptyFiles: true,
+      minFileSize: 0,
     });
   
     try {
@@ -56,7 +57,7 @@ export class BooksService {
   
       const { fields, files } = await parseForm();
  
-
+console.log(files)
       const book = await this.prismaService.book.create({
         data: {
           title: Array.isArray(fields.title) ? fields.title[0] : fields.title || '',
@@ -70,8 +71,8 @@ export class BooksService {
             ? fields.publisher[0]
             : fields.publisher || '',
           cover:
-            files.image1 && files.image1[0]
-              ? fileUrl + files.image1[0].newFilename
+            files.images && files.images[0]
+              ? fileUrl + files.images[0].newFilename
               : '',
           createdAt: new Date(),
         },
@@ -87,16 +88,15 @@ export class BooksService {
         for (const image of images) {
           await this.prismaService.images.create({
             data: {
-              file: fileUrl + image.newFilename, // URL de la imagen
-              bookId: book.id, // Asociar la imagen al libro recién creado
+              file: fileUrl + image.newFilename, 
+              bookId: book.id,
             },
           });
         }
       }
-  
+  console.log(book)
       return { message: 'New book created', data: book };
 
-      return { message: 'new book created', data: book };
     } catch (error) {
       console.error('Error creating book:', error);
       throw new HttpException(
