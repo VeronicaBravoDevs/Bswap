@@ -4,11 +4,11 @@ import ImagesUploader from "./ImagesUploader";
 
 const CreateBookForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
-
+  const [error, setError] = useState<string | null>(null)
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setLoading(true);
-
+    const token = localStorage.getItem("authToken");
     const fechaActual = new Date();
     const dia = fechaActual.getDate().toString().padStart(2, "0");
     const mes = (fechaActual.getMonth() + 1).toString().padStart(2, "0");
@@ -32,11 +32,14 @@ const CreateBookForm: React.FC = () => {
         bodyFetch.delete("image3");
       }
 
+      
       const bookResponse = await fetch(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/books`,
         {
           method: "POST",
-          //headers: { "Content-Type": "multipart/form-data" },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
           body: bodyFetch,
         }
       );
@@ -45,7 +48,7 @@ const CreateBookForm: React.FC = () => {
       const book = await bookResponse.json();
       console.log("Libro creado:", book);
     } catch (error) {
-      console.error("❌ Error:", error);
+      setError(error instanceof Error ? error.message : String(error))
     } finally {
       setLoading(false);
     }
@@ -154,6 +157,7 @@ const CreateBookForm: React.FC = () => {
           respetuosa para escritores y lectores.
         </p>
       </div>
+      {error && <p className="text-red-500">{error}</p>}
       <button
         type="submit"
         disabled={loading}

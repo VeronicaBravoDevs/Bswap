@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Book } from "@/app/interface/book";
-import { useAuth } from "@/shared/hooks/useAuth";
+import useAuth  from "@/shared/hooks/useAuth";
 
 interface ExchangeModalProps {
   book: Book;
@@ -21,7 +21,7 @@ export default function ExchangeModal({ book, onClose }: ExchangeModalProps) {
           const userData = await response.json();
 
           if (userData && userData.library) {
-            const foundBook = userData.library.find((b: any) => b.id === book.id);
+            const foundBook = userData.library.find((b: Book) => b.id === book.id);
             if (foundBook) {
               setOwnerId(userData.id);
             }

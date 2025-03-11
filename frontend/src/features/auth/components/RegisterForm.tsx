@@ -1,7 +1,7 @@
-"use client"
+"use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/shared/hooks/useAuth";
+import useAuth from "@/shared/hooks/useAuth";
 import { Button } from "@/shared/components/common/Button";
 
 export const RegisterForm = () => {
@@ -24,24 +24,23 @@ export const RegisterForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
 
     if (!formData.email || !formData.password) {
       setFormError("Todos los campos son obligatorios");
       return;
     }
-    
+
     if (formData.password !== formData.confirmPassword) {
       setFormError("Las contraseñas no coinciden");
       return;
     }
-    
+
     try {
-      await register({      
+      await register({
         email: formData.email,
         password: formData.password,
       });
-      
+
       // redirige si se registra ok
       router.push("/");
     } catch (err) {
@@ -50,23 +49,15 @@ export const RegisterForm = () => {
   };
 
   return (
-    <div >
-      <h2 >Registro</h2>
-      
+    <div>
+      <h2>Registro</h2>
+
       <form onSubmit={handleSubmit}>
-        {formError && (
-          <div>
-            {formError}
-          </div>
-        )}
-        
-        {error && (
-          <div>
-            {error}
-          </div>
-        )}
-        
-     {/*    <div >
+        {formError && <div>{formError}</div>}
+
+        {error && <div>{error}</div>}
+
+        {/*    <div >
           <label htmlFor="name">
             Nombre
           </label>
@@ -79,11 +70,9 @@ export const RegisterForm = () => {
             placeholder="Nombre"
           />
         </div> */}
-        
+
         <div>
-          <label htmlFor="email">
-            Email
-          </label>
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             id="email"
@@ -92,25 +81,21 @@ export const RegisterForm = () => {
             placeholder="email@email.com"
           />
         </div>
-        
+
         <div>
-          <label htmlFor="password">
-            Contraseña
-          </label>
+          <label htmlFor="password">Contraseña</label>
           <input
             type="password"
             id="password"
             name="password"
             value={formData.password}
-            onChange={handleChange}         
+            onChange={handleChange}
             placeholder="(minimo 6 caracteres)"
           />
         </div>
-        
+
         <div>
-          <label htmlFor="confirmPassword">
-            Confirmar Contraseña
-          </label>
+          <label htmlFor="confirmPassword">Confirmar Contraseña</label>
           <input
             type="password"
             id="confirmPassword"
@@ -120,7 +105,7 @@ export const RegisterForm = () => {
             placeholder="********"
           />
         </div>
-        
+
         <Button
           type="submit"
           disabled={isLoading}
@@ -129,8 +114,8 @@ export const RegisterForm = () => {
         >
           {isLoading ? "Registrando..." : "Registrarse"}
         </Button>
-        
-        <div >
+
+        <div>
           <p>
             ¿Ya tienes una cuenta?{" "}
             <a

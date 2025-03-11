@@ -1,6 +1,7 @@
 interface Image {
   id: string;
   url: string;
+  file?: string
 }
 
 interface Audio {
@@ -41,7 +42,7 @@ export interface Book {
   published?: Date;
   publisher?: string;
   cover?: string; //Image [0]
-  image: Image [];
+  Images: Image [];
   audio?: Audio[];
   genre: string;
   exchange_available: boolean;
