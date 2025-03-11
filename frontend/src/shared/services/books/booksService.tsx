@@ -41,8 +41,14 @@ class BookServices {
 
   createBook = async (bookData: FormData): Promise<Book> => {
     try {
+      const token = localStorage.getItem("authToken");
+
+      console.log(token)
       const response = await fetch(`${BASE_URL}/books`, {
         method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         body: bookData,
       });
 
@@ -126,4 +132,4 @@ class BookServices {
   };
 }
 
-export const bootServices = new BookServices();
+export const bookServices = new BookServices();

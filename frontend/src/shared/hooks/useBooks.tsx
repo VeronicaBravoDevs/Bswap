@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { bootServices } from "../services/books/booksService";
+import { bookServices } from "../services/books/booksService";
 import { Book } from "@/app/interface/book";
 
 export function useBooks(quantity?: number): {
@@ -17,7 +17,7 @@ export function useBooks(quantity?: number): {
   const fetchBooks = useCallback(async () => {
     setLoading(true);
     try {
-      const result = await bootServices.getBooks(quantity);
+      const result = await bookServices.getBooks(quantity);
       setBooks(result);
       setError(null);
     } catch (error) {

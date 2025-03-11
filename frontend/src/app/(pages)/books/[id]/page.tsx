@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { notFound, useParams } from "next/navigation";
 import { BookImageModal } from "@/shared/components/ui/BookImageModal";
-import { bootServices } from "@/shared/services/books/booksService";
+import { bookServices } from "@/shared/services/books/booksService";
 import { Book } from "@/app/interface/book";
 import Image from "next/image";
 import { userServices } from "@/shared/services/users/usersService";
@@ -22,7 +22,7 @@ export default function BookPage() {
       try {
         if (!id || Array.isArray(id)) return;
 
-        const bookData = await bootServices.getBookById(id);
+        const bookData = await bookServices.getBookById(id);
         if (!bookData) {
           setLoading(false);
           return;
