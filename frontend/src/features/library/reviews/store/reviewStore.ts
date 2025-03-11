@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { Review, Book } from '@/app/interface/book';
 import { reviewService } from '@/shared/services/books/reviewService';
-import { bootServices } from '@/shared/services/books/booksService';
+import { bookServices } from '@/shared/services/books/booksService';
 import { userServices } from '@/shared/services/users/usersService';
 import { User as ImportedUser } from '@/app/interface/user';
 
@@ -165,7 +165,11 @@ export const useReviewStore = create<ReviewState>((set, get) => ({
  
   fetchBooks: async () => {
     try {
+<<<<<<< HEAD
       const booksData = await bootServices.getBooks();
+=======
+      const booksData = await bookServices.getBooks();
+>>>>>>> 09cf035cc837e2ed461c7062e7b08e96daa9d274
       set({ books: booksData });
     } catch (error) {
       console.error("Error al obtener libros:", error);

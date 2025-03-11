@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useAuthStore } from "@/features/auth/store/authStore";
 
-export const useAuth = () => {
+export default function useAuth  () {
   const { user, isAuthenticated, isLoading, error, login, register, logout, loadUser, clearError } = useAuthStore();
 
   useEffect(() => {

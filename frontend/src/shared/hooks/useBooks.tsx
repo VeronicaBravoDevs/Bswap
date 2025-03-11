@@ -1,33 +1,36 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { bootServices } from "../services/books/booksService";
+import { useEffect, useState, useCallback } from "react";
+import { bookServices } from "../services/books/booksService";
 import { Book } from "@/app/interface/book";
 
 export function useBooks(quantity?: number): {
   data: Book[];
   loading: boolean;
   error: string | null;
+  refetch: () => Promise<void>;
 } {
-  const { getBooks } = bootServices;
   const [books, setBooks] = useState<Book[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
+  const fetchBooks = useCallback(async () => {
+    setLoading(true);
+    try {
+      const result = await bookServices.getBooks(quantity);
+      setBooks(result);
+      setError(null);
+    } catch (error) {
+      console.error("Error al obtener libros:", error);
+      setError(error instanceof Error ? error.message : "Error desconocido");
+    } finally {
+      setLoading(false);
+    }
+  }, [quantity]); // <- Agregar "quantity" como dependencia
+
   useEffect(() => {
-    const loadBooks = async () => {
-      try {
-        const result = await getBooks(quantity);
-        setBooks(result);
-      } catch (error) {
-        setError(error instanceof Error ? error.message : "Unknown error");
-      } finally {
-        setLoading(false);
-      }
-    };
+    fetchBooks();
+  }, [fetchBooks]); // <- Cambiar las dependencias para usar "fetchBooks"
 
-    loadBooks();
-  }, [getBooks, quantity]);
-
-  return { data: books, loading, error };
+  return { data: books, loading, error, refetch: fetchBooks };
 }

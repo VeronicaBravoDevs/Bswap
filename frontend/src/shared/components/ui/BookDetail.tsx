@@ -4,7 +4,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { bootServices } from "@/shared/services/books/booksService";
+import { bookServices } from "@/shared/services/books/booksService";
 import Loading from "@/shared/components/common/Loading";
 import Error from "@/shared/components/common/Error";
 import { Book } from "@/app/interface/book";
@@ -40,7 +40,11 @@ export default function BookDetailPage({ params }: BookDetailPageProps) {
       try {
         setLoading(true);
         // Obtener detalles del libro
+<<<<<<< HEAD
         const bookData = await bootServices.getBookById(params.id);
+=======
+        const bookData = await bookServices.getBookById(params.id);
+>>>>>>> 09cf035cc837e2ed461c7062e7b08e96daa9d274
         
         if (!bookData || !bookData.id) {
           setError("No se pudo obtener la información del libro");
