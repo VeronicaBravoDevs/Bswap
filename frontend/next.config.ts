@@ -1,15 +1,22 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+const nextConfig = {
   images: {
-    domains: [
-      'res.cloudinary.com',
-      'equipo-s21-05-m-webapp.onrender.com'
-    ], //  dominios de imagenes
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'equipo-s21-05-m-webapp.onrender.com',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '4000',
+        pathname: '/uploads/**',
+      },
+    ],
   },
 };
-
-
 
 export default nextConfig;
