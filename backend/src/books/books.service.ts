@@ -2,7 +2,6 @@ import {
   Injectable,
   BadRequestException,
   HttpException,
-  //HttpServer,
   HttpStatus,
   Inject
 } from '@nestjs/common';
@@ -14,8 +13,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 import formidable from 'formidable';
 import { IncomingMessage } from 'http';
-import { connect } from 'http2';
-//import { File } from 'src/uploads/interface/files';
 
 @Injectable()
 export class BooksService {
@@ -59,6 +56,7 @@ export class BooksService {
   
       const { fields, files } = await parseForm();
  
+
       const book = await this.prismaService.book.create({
         data: {
           title: Array.isArray(fields.title) ? fields.title[0] : fields.title || '',
@@ -97,6 +95,8 @@ export class BooksService {
       }
   
       return { message: 'New book created', data: book };
+
+      return { message: 'new book created', data: book };
     } catch (error) {
       console.error('Error creating book:', error);
       throw new HttpException(
