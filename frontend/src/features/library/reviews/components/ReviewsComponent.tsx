@@ -6,32 +6,36 @@ import ReviewCard from "./ReviewsCard";
 import ReviewForm from "./ReviewForm";
 
 const ReviewsComponent: React.FC = () => {
-  const { 
-    reviews, 
-    books, 
-    loading, 
-    error, 
-    searchTerm, 
+  const {
+    reviews,
+    books,
+    loading,
+    error,
+    searchTerm,
     setSearchTerm,
-    fetchReviews, 
-    fetchBooks, 
-    fetchUsers 
+    fetchReviews,
+    fetchBooks,
+    fetchUsers,
   } = useReviewStore();
 
+  // setCurrentUser no usado
+  // // Estado para el usuario actual (simulado)
+  // const [currentUser, setCurrentUser] = useState({
+  //   id: "usuario1",
+  //   name: "Usuario actual",
+  // });
   // Estado para el usuario actual (simulado)
-  const [currentUser, setCurrentUser] = useState({ id: "usuario1", name: "Usuario actual" });
+  const [currentUser] = useState({ id: "usuario1", name: "Usuario actual" });
 
- 
   useEffect(() => {
     const loadData = async () => {
       await Promise.all([fetchReviews(), fetchBooks(), fetchUsers()]);
     };
-    
+
     loadData();
   }, [fetchReviews, fetchBooks, fetchUsers]);
 
- 
-  const filteredReviews = reviews.filter(review => {
+  const filteredReviews = reviews.filter((review) => {
     const bookTitle = review.bookTitle || "";
     const bookAuthor = review.bookAuthor || "";
     return (
@@ -40,21 +44,25 @@ const ReviewsComponent: React.FC = () => {
     );
   });
 
- 
-  const getBookDetails = (review: any) => {
- 
+  interface Review {
+    id: string;
+    bookId: string;
+    bookTitle?: string;
+    bookAuthor?: string;
+  }
+
+  const getBookDetails = (review: Review) => {
     if (review.bookTitle && review.bookAuthor) {
       return {
         title: review.bookTitle,
-        author: review.bookAuthor
+        author: review.bookAuthor,
       };
     }
-    
- 
-    const book = books.find(b => b.id === review.bookId);
+
+    const book = books.find((b) => b.id === review.bookId);
     return {
       title: book?.title || "Título desconocido",
-      author: book?.author || "Autor desconocido"
+      author: book?.author || "Autor desconocido",
     };
   };
 
@@ -63,14 +71,17 @@ const ReviewsComponent: React.FC = () => {
       {/* Cabecera */}
       <div className="bg-blue-600 text-white p-6 text-center">
         <h1 className="text-3xl font-bold mb-4">Reseñas de lectores</h1>
-        <p>Cada libro es una puerta a un mundo nuevo. Descubre qué opinan otros lectores sobre sus historias favoritas</p>
+        <p>
+          Cada libro es una puerta a un mundo nuevo. Descubre qué opinan otros
+          lectores sobre sus historias favoritas
+        </p>
       </div>
 
- 
       <div className="w-full px-4 py-4 relative">
         <form
           className="relative w-full px-4 py-4"
-          onSubmit={(e) => e.preventDefault()}>
+          onSubmit={(e) => e.preventDefault()}
+        >
           <div className="relative">
             <input
               type="text"
@@ -84,20 +95,22 @@ const ReviewsComponent: React.FC = () => {
         </form>
       </div>
 
- 
       <div className="container mx-auto px-4 py-8">
-      
         <div className="mb-8">
           {loading ? (
             <p className="text-center text-gray-500">Cargando reseñas...</p>
           ) : error ? (
-            <p className="text-center text-red-500">Error al cargar las reseñas: {error}</p>
+            <p className="text-center text-red-500">
+              Error al cargar las reseñas: {error}
+            </p>
           ) : filteredReviews.length === 0 ? (
-            <p className="text-center text-gray-500">No se encontraron reseñas.</p>
+            <p className="text-center text-gray-500">
+              No se encontraron reseñas.
+            </p>
           ) : (
             filteredReviews.map((review) => {
               const bookDetails = getBookDetails(review);
-              
+
               return (
                 <ReviewCard
                   key={review.id || `review-${Math.random()}`}
@@ -109,7 +122,7 @@ const ReviewsComponent: React.FC = () => {
             })
           )}
         </div>
- 
+
         <ReviewForm userId={currentUser.id} />
       </div>
     </div>

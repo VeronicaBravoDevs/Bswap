@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { bootServices } from "../services/books/booksService";
 import { Book } from "@/app/interface/book";
 
@@ -14,7 +14,7 @@ export function useBooks(quantity?: number): {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const fetchBooks = async () => {
+  const fetchBooks = useCallback(async () => {
     setLoading(true);
     try {
       const result = await bootServices.getBooks(quantity);
@@ -26,11 +26,11 @@ export function useBooks(quantity?: number): {
     } finally {
       setLoading(false);
     }
-  };
+  }, [quantity]); // <- Agregar "quantity" como dependencia
 
   useEffect(() => {
     fetchBooks();
-  }, [quantity]);
+  }, [fetchBooks]); // <- Cambiar las dependencias para usar "fetchBooks"
 
   return { data: books, loading, error, refetch: fetchBooks };
 }

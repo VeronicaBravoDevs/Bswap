@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { Review } from '@/app/interface/book';
-import { reviewService } from '@/shared/services/books/reviewService';
+import { useState, useEffect, useCallback } from "react";
+import { Review } from "@/app/interface/book";
+import { reviewService } from "@/shared/services/books/reviewService";
 
 interface UseReviewsReturn {
   data: Review[];
@@ -14,20 +14,17 @@ export const useReviews = (bookId?: string): UseReviewsReturn => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
-  const fetchReviews = async () => {
+  const fetchReviews = useCallback(async () => {
     setLoading(true);
     try {
       let reviewsData: Review[] = [];
 
       if (bookId) {
-        // Obtener reseñas por ID de libro
         reviewsData = await reviewService.getReviewsByBookId(bookId);
       } else {
-        // Obtener todas las reseñas
         reviewsData = await reviewService.getReviews();
       }
 
-      // Si no hay reseñas reales, usamos datos simulados solo para desarrollo
       if (!reviewsData || reviewsData.length === 0) {
         setData([
           {
@@ -42,8 +39,8 @@ export const useReviews = (bookId?: string): UseReviewsReturn => {
               name: "Usuario Demo",
               profile_picture: "/imagenprueba.png",
               country: "Argentina",
-              city: "Buenos Aires"
-            }
+              city: "Buenos Aires",
+            },
           },
           {
             id: "mock-2",
@@ -57,9 +54,9 @@ export const useReviews = (bookId?: string): UseReviewsReturn => {
               name: "Usuario Test",
               profile_picture: "/imagenprueba.png",
               country: "México",
-              city: "CDMX"
-            }
-          }
+              city: "CDMX",
+            },
+          },
         ]);
       } else {
         setData(reviewsData);
@@ -68,15 +65,19 @@ export const useReviews = (bookId?: string): UseReviewsReturn => {
       setError(null);
     } catch (err) {
       console.error("Error obteniendo reseñas:", err);
-      setError(err instanceof Error ? err : new Error('Error desconocido al obtener reseñas'));
+      setError(
+        err instanceof Error
+          ? err
+          : new Error("Error desconocido al obtener reseñas")
+      );
     } finally {
       setLoading(false);
     }
-  };
+  }, [bookId]); // <-- Agregar bookId como dependencia
 
   useEffect(() => {
     fetchReviews();
-  }, [bookId]);
+  }, [fetchReviews]); // <-- Cambiar la dependencia
 
   return { data, loading, error, refetch: fetchReviews };
 };

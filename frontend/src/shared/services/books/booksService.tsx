@@ -100,7 +100,7 @@ class BookServices {
     bookId: string;
     requesterId: string;
     ownerId: string;
-  }): Promise<any> => {
+  }): Promise<{ success: boolean; message: string }> => {
     try {
       const response = await fetch(`${BASE_URL}/exchange`, {
         method: "POST",

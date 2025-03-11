@@ -21,7 +21,7 @@ export default function BookPage() {
     const fetchBookData = async () => {
       try {
         if (!id || Array.isArray(id)) return;
-        
+
         const bookData = await bootServices.getBookById(id);
         if (!bookData) {
           setLoading(false);
@@ -34,7 +34,6 @@ export default function BookPage() {
           const userData = await userServices.getUsersById(bookData.userId);
           setUser(userData);
         }
-
       } catch (error) {
         console.error("Error al cargar los datos:", error);
       } finally {
@@ -49,10 +48,12 @@ export default function BookPage() {
   if (!book) return notFound();
 
   const extraImages = [
-    book.image || "/imagenprueba.png",
+    book.Images || "/imagenprueba.png",
     "/imagenprueba.png",
     "/imagenprueba.png",
-  ].filter(Boolean).slice(0, 3) as string[];
+  ]
+    .filter(Boolean)
+    .slice(0, 3) as string[];
 
   return (
     <div className="container mx-auto p-6">
@@ -61,11 +62,15 @@ export default function BookPage() {
         <div className="w-full md:w-1/3">
           <div className="relative h-[500px] w-full">
             <Image
-              src={book.cover ? book.cover : "/imagenprueba.png"}
-              alt={`Portada del libro ${book.title}`}
-              fill
-              className="object-contain"
-              priority
+              src={
+                book.cover && book.cover.trim() !== ""
+                  ? book.cover
+                  : "/imagenprueba.png"
+              }
+              alt={`Imagen del Libro ${book.title}`}
+              width={250}
+              height={400}
+              className="w-[250px] h-[400px] object-cover"
             />
           </div>
         </div>
@@ -129,7 +134,9 @@ export default function BookPage() {
               className="object-cover"
             />
           </div>
-          <h2 className="text-xl font-bold">{user?.name || "Usuario fantasma"}</h2>
+          <h2 className="text-xl font-bold">
+            {user?.name || "Usuario fantasma"}
+          </h2>
           <button
             className="ml-auto bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 text-sm"
             onClick={() => alert("Funcionalidad de seguir en desarrollo")}
@@ -174,7 +181,9 @@ export default function BookPage() {
                 d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
               />
             </svg>
-            <h3 className="font-semibold">Libros que {user?.name || "el usuario"} desea conseguir</h3>
+            <h3 className="font-semibold">
+              Libros que {user?.name || "el usuario"} desea conseguir
+            </h3>
           </div>
           <ol className="list-decimal pl-8 mt-2">
             <li>El señor de los anillos</li>
@@ -184,7 +193,9 @@ export default function BookPage() {
         </div>
       </div>
 
-      {isModalOpen && <ExchangeModal book={book} onClose={() => setModalOpen(false)} />}
+      {isModalOpen && (
+        <ExchangeModal book={book} onClose={() => setModalOpen(false)} />
+      )}
     </div>
   );
 }

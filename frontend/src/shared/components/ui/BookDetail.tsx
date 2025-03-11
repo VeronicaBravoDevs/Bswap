@@ -23,7 +23,17 @@ export default function BookDetailPage({ params }: BookDetailPageProps) {
   const [error, setError] = useState<string | null>(null);
   const [isModalOpen, setModalOpen] = useState(false);
   const [isImageModalOpen, setImageModalOpen] = useState(false);
-  const [userData, setUserData] = useState<any>(null);
+
+  //Data no final TODO: areglar y exportar
+  interface UserData {
+    id: string;
+    name: string;
+    city?: string;
+    country?: string;
+    profile_picture?: string;
+  }
+
+  const [userData, setUserData] = useState<UserData | null>(null);
 
   useEffect(() => {
     const fetchBookDetails = async () => {
@@ -33,7 +43,7 @@ export default function BookDetailPage({ params }: BookDetailPageProps) {
         const bookData = await bootServices.getBookById(params.id);
         
         if (!bookData || !bookData.id) {
-          throw new Error("No se pudo obtener la información del libro");
+          setError("No se pudo obtener la información del libro");
         }
         
         setBook(bookData);
@@ -51,8 +61,7 @@ export default function BookDetailPage({ params }: BookDetailPageProps) {
           }
         }
       } catch (err) {
-        console.error("Error:", err);
-        setError(err instanceof Error ? err.message : "Error desconocido");
+        setError(`Error: ${err as string}`);
       } finally {
         setLoading(false);
       }
