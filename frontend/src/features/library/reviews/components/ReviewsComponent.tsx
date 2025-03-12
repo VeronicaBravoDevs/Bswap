@@ -1,9 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react"; /* , useState  */
 import { IoSearchOutline } from "react-icons/io5";
 import { useReviewStore } from '../store/reviewStore';
 import ReviewCard from "./ReviewsCard";
 import ReviewForm from "./ReviewForm";
+import useAuth from "@/shared/hooks/useAuth";
 
 const ReviewsComponent: React.FC = () => {
   const {
@@ -17,7 +18,7 @@ const ReviewsComponent: React.FC = () => {
     fetchBooks,
     fetchUsers,
   } = useReviewStore();
-
+ const {user} = useAuth()
   // setCurrentUser no usado
   // // Estado para el usuario actual (simulado)
   // const [currentUser, setCurrentUser] = useState({
@@ -25,7 +26,7 @@ const ReviewsComponent: React.FC = () => {
   //   name: "Usuario actual",
   // });
   // Estado para el usuario actual (simulado)
-  const [currentUser] = useState({ id: "usuario1", name: "Usuario actual" });
+  //const [currentUser] = useState({ id: "usuario1", name: "Usuario actual" });
 
   useEffect(() => {
     const loadData = async () => {
@@ -121,10 +122,15 @@ const ReviewsComponent: React.FC = () => {
               );
             })
           )}
-        </div>
 
-        <ReviewForm userId={currentUser.id} />
+        </div>
+        
+
+       {/*  <ReviewForm userId={currentUser.id} /> */}
       </div>
+      
+      {user ? (<ReviewForm userId={user.id}/>):(<p className="text-center text-red-600">Debes iniciar sesion para publicar una reseña</p>)}
+    
     </div>
   );
 };
