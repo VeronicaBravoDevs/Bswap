@@ -1,7 +1,7 @@
-interface Image {
+export interface Image {
   id: string;
   url: string;
-  file?: string
+  file?: string;
 }
 
 interface Audio {
@@ -9,30 +9,24 @@ interface Audio {
   url: string;
 }
 
-/* interface Review { //agregue export
+export interface Review {
   id: string;
   userId: string;
-  comment?: string;
-  audio?: Audio;   
-} */
-  export interface Review {
+  bookId: string;
+  rating: number;
+  content: string;
+  publication_date: string;
+  comments?: string;
+  reactions?: string;
+  exchange_status?: string;
+  user?: {
     id: string;
-    userId: string;
-    bookId: string;
-    rating: number;
-    content: string;
-    publication_date: string;
-    comments?: string;
-    reactions?: string;
-    exchange_status?: string;
-    user?: {
-      id: string;
-      name: string;
-      profile_picture: string;
-      country: string;
-      city: string;
-    };
-  }
+    name: string;
+    profile_picture: string;
+    country: string;
+    city: string;
+  };
+}
 export interface Book {
   id?: string;
   title: string;
@@ -42,7 +36,7 @@ export interface Book {
   published?: Date;
   publisher?: string;
   cover?: string; //Image [0]
-  Images: Image [];
+  Images: Image[];
   audio?: Audio[];
   genre: string;
   exchange_available: boolean;
@@ -51,5 +45,3 @@ export interface Book {
   userId: string;
   reviews: Review[];
 }
-
-

@@ -24,7 +24,6 @@ export default function BookDetailPage({ params }: BookDetailPageProps) {
   const [isModalOpen, setModalOpen] = useState(false);
   const [isImageModalOpen, setImageModalOpen] = useState(false);
 
-  //Data no final TODO: areglar y exportar
   interface UserData {
     id: string;
     name: string;
@@ -39,19 +38,20 @@ export default function BookDetailPage({ params }: BookDetailPageProps) {
     const fetchBookDetails = async () => {
       try {
         setLoading(true);
-        // Obtener detalles del libro
+
         const bookData = await bookServices.getBookById(params.id);
-        
+
         if (!bookData || !bookData.id) {
           setError("No se pudo obtener la información del libro");
         }
-        
+
         setBook(bookData);
-        
-        // Obtener información del usuario (propietario)
+
         if (bookData.userId) {
           try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/users/${bookData.userId}`);
+            const response = await fetch(
+              `${process.env.NEXT_PUBLIC_API_BASE_URL}/users/${bookData.userId}`
+            );
             if (response.ok) {
               const userData = await response.json();
               setUserData(userData.data || null);
@@ -76,7 +76,7 @@ export default function BookDetailPage({ params }: BookDetailPageProps) {
 
   // Obtener las imágenes adicionales del libro
   const additionalImages = book.Images || [];
-
+  console.log('🚀 ~ BookDetailPage ~ additionalImages:', additionalImages)
   return (
     <div className="max-w-7xl mx-auto py-8 px-4">
       {/* Ficha técnica del libro */}
@@ -84,7 +84,7 @@ export default function BookDetailPage({ params }: BookDetailPageProps) {
         {/* Columna izquierda - Imagen principal */}
         <div className="relative w-full md:w-1/2 h-[400px] md:h-auto">
           <Image
-            src={book.cover ? book.cover : "/imagenprueba.png"}
+            src={book.Images[0].file  ? book.Images[0].file : "/imagenprueba.png"}
             alt={`Portada del libro ${book.title}`}
             fill
             className="object-cover"
@@ -94,21 +94,41 @@ export default function BookDetailPage({ params }: BookDetailPageProps) {
 
         {/* Columna derecha - Detalles del libro */}
         <div className="w-full md:w-1/2 p-6">
-          <h1 className="text-2xl font-bold mb-6 text-gray-800">Ficha Técnica</h1>
-          
+          <h1 className="text-2xl font-bold mb-6 text-gray-800">
+            Ficha Técnica
+          </h1>
+
           <div className="space-y-3 mb-6">
-            <p><strong>Título:</strong> {book.title}</p>
-            <p><strong>Autor:</strong> {book.author}</p>
-            <p><strong>Género:</strong> {book.genre || "No especificado"}</p>
-            <p><strong>Editorial:</strong> {book.publisher || "No especificada"}</p>
-            <p><strong>ISBN:</strong> {book.isbn || "No especificado"}</p>
-            <p><strong>Estado del libro:</strong> {book.status === "pending" ? "Pendiente" : 
-                                                book.status === "approved" ? "Aprobado" : "Rechazado"}</p>
+            <p>
+              <strong>Título:</strong> {book.title}
+            </p>
+            <p>
+              <strong>Autor:</strong> {book.author}
+            </p>
+            <p>
+              <strong>Género:</strong> {book.genre || "No especificado"}
+            </p>
+            <p>
+              <strong>Editorial:</strong> {book.publisher || "No especificada"}
+            </p>
+            <p>
+              <strong>ISBN:</strong> {book.isbn || "No especificado"}
+            </p>
+            <p>
+              <strong>Estado del libro:</strong>{" "}
+              {book.status === "pending"
+                ? "Pendiente"
+                : book.status === "approved"
+                ? "Aprobado"
+                : "Rechazado"}
+            </p>
           </div>
 
           <div className="mb-6">
             <h2 className="text-xl font-semibold mb-2">Sinopsis</h2>
-            <p className="text-gray-700">{book.description || "No hay sinopsis disponible."}</p>
+            <p className="text-gray-700">
+              {book.description || "No hay sinopsis disponible."}
+            </p>
           </div>
 
           <Button
@@ -120,17 +140,19 @@ export default function BookDetailPage({ params }: BookDetailPageProps) {
 
           <div className="mb-6">
             <h2 className="text-xl font-semibold mb-2">Datos de contacto</h2>
-            <p><strong>Subido por:</strong> {book.userId}</p>
+            <p>
+              <strong>Subido por:</strong> {book.userId}
+            </p>
             {userData && (
               <p>
                 <strong>Ubicación:</strong>{" "}
-                <span>{userData.city || "Ciudad no especificada"}</span> - 
+                <span>{userData.city || "Ciudad no especificada"}</span> -
                 <span>{userData.country || "País no especificado"}</span>
               </p>
             )}
           </div>
 
-          <Button 
+          <Button
             onClick={() => setModalOpen(true)}
             className="w-full bg-green-600 hover:bg-green-700 text-white"
           >
@@ -154,20 +176,18 @@ export default function BookDetailPage({ params }: BookDetailPageProps) {
               </div>
               <h2 className="text-xl font-semibold">{userData.name}</h2>
             </div>
-            
-            <Button
-              className="bg-blue-500 hover:bg-blue-600 text-white text-sm px-4"
-            >
+
+            <Button className="bg-blue-500 hover:bg-blue-600 text-white text-sm px-4">
               Seguir
             </Button>
           </div>
-          
+
           <div className="space-y-4">
             <div className="flex items-center">
               <span className="mr-2">📚</span>
               <p>Libros publicados = 5</p>
             </div>
-            
+
             <div>
               <div className="flex items-center mb-2">
                 <span className="mr-2">❤️</span>
@@ -206,7 +226,10 @@ export default function BookDetailPage({ params }: BookDetailPageProps) {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {additionalImages.length > 0 ? (
                   additionalImages.map((image, index) => (
-                    <div key={image.id || index} className="relative h-64 rounded overflow-hidden">
+                    <div
+                      key={image.id || index}
+                      className="relative h-64 rounded overflow-hidden"
+                    >
                       <Image
                         src={image.file || "/imagenprueba.png"}
                         alt={`Imagen ${index + 1} del libro ${book.title}`}
