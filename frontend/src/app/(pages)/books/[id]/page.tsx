@@ -47,13 +47,9 @@ export default function BookPage() {
   if (loading) return <div>Cargando...</div>;
   if (!book) return notFound();
 
-  const extraImages = [
-    book.Images || "/imagenprueba.png",
-    "/imagenprueba.png",
-    "/imagenprueba.png",
-  ]
-    .filter(Boolean)
-    .slice(0, 3) as string[];
+  const extraImages = book.Images?.map(
+    (image) => image.file ?? "/imagenprueba.png"
+  ).slice(0, 3) || ["/imagenprueba.png"];
 
   return (
     <div className="container mx-auto p-6">

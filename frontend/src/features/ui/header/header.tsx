@@ -25,7 +25,6 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    console.log("Estado de autenticacion cambiado:", isAuthenticated, user);
   }, [isAuthenticated, user]);
 
   const handleLogout = () => {

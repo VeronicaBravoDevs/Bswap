@@ -1,6 +1,9 @@
 import { Book } from "@/app/interface/book";
 
-const BASE_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL || "https://equipo-s21-05-m-webapp.onrender.com"}`;
+const BASE_URL = `${
+  process.env.NEXT_PUBLIC_API_BASE_URL ||
+  "https://equipo-s21-05-m-webapp.onrender.com"
+}`;
 
 class BookServices {
   getBooks = async (quantity?: number): Promise<Book[]> => {
@@ -10,11 +13,13 @@ class BookServices {
         : `${BASE_URL}/books`;
 
       const response = await fetch(url);
-      
+
       if (!response.ok) {
-        throw new Error(`Error al obtener libros: ${response.status} ${response.statusText}`);
+        throw new Error(
+          `Error al obtener libros: ${response.status} ${response.statusText}`
+        );
       }
-      
+
       const data = await response.json();
       return Array.isArray(data) ? data : data?.data || [];
     } catch (error) {
@@ -28,7 +33,9 @@ class BookServices {
       const res = await fetch(`${BASE_URL}/books/${bookId}`);
 
       if (!res.ok) {
-        throw new Error(`Error al obtener libro: ${res.status} ${res.statusText}`);
+        throw new Error(
+          `Error al obtener libro: ${res.status} ${res.statusText}`
+        );
       }
 
       const data = await res.json();
@@ -43,7 +50,7 @@ class BookServices {
     try {
       const token = localStorage.getItem("authToken");
 
-      console.log(token)
+      console.log(token);
       const response = await fetch(`${BASE_URL}/books`, {
         method: "POST",
         headers: {
@@ -53,7 +60,9 @@ class BookServices {
       });
 
       if (!response.ok) {
-        throw new Error(`Error al crear libro: ${response.status} ${response.statusText}`);
+        throw new Error(
+          `Error al crear libro: ${response.status} ${response.statusText}`
+        );
       }
 
       return await response.json();
@@ -74,7 +83,9 @@ class BookServices {
       });
 
       if (!response.ok) {
-        throw new Error(`Error al actualizar libro: ${response.status} ${response.statusText}`);
+        throw new Error(
+          `Error al actualizar libro: ${response.status} ${response.statusText}`
+        );
       }
 
       return await response.json();
@@ -91,42 +102,14 @@ class BookServices {
       });
 
       if (!response.ok) {
-        throw new Error(`Error al eliminar libro: ${response.status} ${response.statusText}`);
+        throw new Error(
+          `Error al eliminar libro: ${response.status} ${response.statusText}`
+        );
       }
 
       return true;
     } catch (error) {
       console.error("Error en deleteBook:", error);
-      throw error;
-    }
-  };
-  
-  // Método para solicitar intercambio
-  requestExchange = async (exchangeData: {
-    bookId: string;
-    requesterId: string;
-    ownerId: string;
-  }): Promise<{ success: boolean; message: string }> => {
-    try {
-      const response = await fetch(`${BASE_URL}/exchange`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...exchangeData,
-          status: "pending",
-          request_date: new Date().toISOString(),
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error(`Error al solicitar intercambio: ${response.status} ${response.statusText}`);
-      }
-
-      return await response.json();
-    } catch (error) {
-      console.error("Error en requestExchange:", error);
       throw error;
     }
   };

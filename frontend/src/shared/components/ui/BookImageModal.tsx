@@ -9,6 +9,7 @@ export interface BookImageModalProps {
 
 
 export const BookImageModal = ({images}: BookImageModalProps)=>{
+   console.log('🚀 ~ BookImageModal ~ images:', images)
    const [isModalOpen, setIsModalOpen] = useState(false);
 
 
