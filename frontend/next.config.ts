@@ -1,20 +1,19 @@
 const nextConfig = {
   images: {
-    domains: ["res.cloudinary.com", "equipo-s21-05-m-webapp.onrender.com"],
+    domains: [
+      "equipo-s21-05-m-webapp.onrender.com",
+      "res.cloudinary.com",
+    ],
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "res.cloudinary.com",
+        hostname: "equipo-s21-05-m-webapp.onrender.com",
+        pathname: "/uploads/**",
       },
       {
         protocol: "https",
-        hostname: "equipo-s21-05-m-webapp.onrender.com",
-      },
-      {
-        protocol: "http",
-        hostname: "localhost",
-        port: "4000",
-        pathname: "/uploads/**",
+        hostname: "res.cloudinary.com",
+        pathname: "/**",
       },
     ],
   },
