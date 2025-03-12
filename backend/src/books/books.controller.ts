@@ -19,12 +19,12 @@ import { Request } from 'express';
 
 @Controller('books')
 @ApiTags('Books')
-
+@ApiBearerAuth()
 export class BooksController {
   constructor(private readonly booksService: BooksService) {}
 
   @Post()
-
+  @UseGuards(AuthGuard)
   create(@Req() req: Request, @Body() createBookDto: CreateBookDto) {
     return this.booksService.create(createBookDto, req);
   }
