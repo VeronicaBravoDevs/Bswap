@@ -1,21 +1,8 @@
-const nextConfig = {
+import type { NextConfig } from "next";
+
+const nextConfig:NextConfig = {
   images: {
-    domains: [
-      "equipo-s21-05-m-webapp.onrender.com",
-      "res.cloudinary.com",
-    ],
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "equipo-s21-05-m-webapp.onrender.com",
-        pathname: "/uploads/**",
-      },
-      {
-        protocol: "https",
-        hostname: "res.cloudinary.com",
-        pathname: "/**",
-      },
-    ],
+    domains: ["equipo-s21-05-m-webapp.onrender.com", "res.cloudinary.com"],
   },
 };
 
