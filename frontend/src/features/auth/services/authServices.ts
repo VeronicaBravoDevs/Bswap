@@ -5,7 +5,7 @@ export const loginUser = async (credentials: LoginCredentials): Promise<User> =>
   //  const response = await fetch("/mock/mockDataUser.json");
   // se debe modificar fetch a API_URL/login cuanto este endpoint
 
-  const response = await fetch("https://equipo-s21-05-m-webapp.onrender.com/auth/login", {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(credentials),
@@ -54,7 +54,7 @@ export const getCurrentUser = async (): Promise<User | null> => {
   if (!token) return null;
 
   try {
-    const response = await fetch("https://equipo-s21-05-m-webapp.onrender.com/auth/me", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/me`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -78,7 +78,7 @@ export const registerUser = async (userData: {
   password: string;
 }): Promise<User> => {
   try {
-    const response = await fetch("https://equipo-s21-05-m-webapp.onrender.com/auth/register", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
