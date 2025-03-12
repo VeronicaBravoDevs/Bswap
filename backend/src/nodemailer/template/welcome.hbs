@@ -1,27 +1,116 @@
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-  * {
-    font-family: Roboto, system-ui;
-    padding: 0px;
-    margin: 0px;
-  }
-</style>
+<html lang='es'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Solicitud de intercambio</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+      * {
+        font-family: Roboto, system-ui;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        width: 100%;
+      }
 
-<h1>Bswap</h1>
-<h2>Solicitud de intecambio de libro</h2>
+      body {
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        width: 100%;
+      }
 
-<p>Hola {{name}}</p>
-<p>Mi nombre es {{requesterName}}</p>
-<p>Me interesa el intecambio de tu libro {{bookTitle}}</p>
+      .container {
+        text-align: center;
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        width: 100%;
+      }
 
-<p>Si te interesa el intercambio, podemos coordinar un punto de encuentro</p>
+      .titlePage {
+        .imagen {
+          width: 10px;
+          height: 65px;
+        }
+        h1 {
+          font-size: 2.5rem;
+          color: #333;
+          margin-bottom: 20px;
+        }
+      }
 
-<a
-  class='btn mt-3'
-  href='{{link}}'
-  style='margin-top: 30px;border: none;padding: 15px 25px;border-radius: 5px;color: white;display: inline-block;background-color: #3877ab; text-decoration: none;'
->Continue with the profile</a>
+      h2 {
+        font-size: 1.8rem;
+        color: #555;
+        margin-bottom: 30px;
+      }
 
-<p>Saludos</p>
-<p>{{name}}</p>
-<p>El equipo de BookSwap</p>
+      p {
+        font-size: 1.1rem;
+        color: #666;
+        margin: 15px 0;
+      }
+
+      .btn {
+        width: 346px;
+        height: 86px;
+        margin-top: 30px;
+        border: none;
+        padding: 15px 25px;
+        border-radius: 5px;
+        color: white;
+        display: inline-block;
+        background-color: #0059ee;
+        text-decoration: none;
+        font-size: 36px;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #2a5f8a;
+      }
+
+      .footer {
+        margin-top: 30px;
+        font-size: 0.9rem;
+        color: #777;
+      }
+    </style>
+  </head>
+  <body>
+    <div class='container'>
+      <div class='titlePage'>
+        <img class="imagen"
+          src='https://firebasestorage.googleapis.com/v0/b/autos-f7004.appspot.com/o/documentos%2Flogo%20libro%20a%20yamariillo%20sin%20fondo%201.png?alt=media&token=a9d6d1ba-93fe-4abf-bc46-33dc3e5e1d6f'
+          alt='icono libro logo'
+        />
+        <h1>Bswap</h1>
+
+      </div>
+      <h2>Solicitud de intercambio de libro</h2>
+
+      <p>Hola {{ownerName}},</p>
+      <p>Mi nombre es {{requesterName}}.</p>
+      <p>Me interesa el intercambio de tu libro
+        <strong>{{bookTitle}}</strong>.</p>
+
+      <p>Si te interesa el intercambio, podemos coordinar un punto de encuentro.</p>
+
+      <a class='btn' href='{{link}}'>
+        Contactar aquí
+      </a>
+
+      <div class='footer'>
+        <p>Saludos,</p>
+        <p>{{ownerName}}</p>
+        <p>El equipo de BookSwap</p>
+      </div>
+    </div>
+  </body>
+</html>

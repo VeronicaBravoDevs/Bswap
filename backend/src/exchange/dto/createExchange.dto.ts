@@ -24,15 +24,13 @@ export enum ExchangeStatus {
 export class CreateExchangeDto {
     @ApiProperty()
     @IsString()
+    @IsNotEmpty()
     bookId: string
 
     @ApiProperty()
     @IsString()
+    @IsNotEmpty()
     requesterId: string
-
-    @ApiProperty()
-    @IsString()
-    ownerId: string
 
     @ApiProperty({
         description: 'Status of the book exchange',

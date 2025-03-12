@@ -19,9 +19,9 @@ export class ExchangeService {
 
   async create(createExchangeDto: CreateExchangeDto) {
     try {
-      const { bookId, requesterId,ownerId, status, ...rest } = createExchangeDto;
+      const { bookId, requesterId, status, ...rest } = createExchangeDto;
 
-      
+      console.log(bookId)
       const bookExist = await this.prismaService.book.findUnique({
         where: { id: bookId },
       });
@@ -30,6 +30,7 @@ export class ExchangeService {
         throw new HttpException('Invalid book ID', HttpStatus.BAD_REQUEST);
       }
 
+     
       const requesterIdExist = await this.prismaService.user.findUnique({
         where: { id: requesterId },
       });
@@ -42,7 +43,6 @@ export class ExchangeService {
         data: {
           requester_id: requesterId,
           book_id: bookId,
-          owner_id: ownerId,
           ...rest,
         },
       });
@@ -60,18 +60,24 @@ export class ExchangeService {
         where: { id: ownerEmail },
       });
 
+      const dataUserRequester = await this.prismaService.user.findUnique({
+        where: { id: requesterId },
+      });
+
       if (!dataUserBook?.email) {
         throw new HttpException('User email not found', HttpStatus.BAD_REQUEST);
       }
-      console.log(dataUserBook)
-
+    
+console.log(dataUserBook)
       await this.mailService.sendMail(
         dataUserBook.email,
         'Bienvenido',
         'welcome',
         {
           bookTitle: bookExist.title,  
-          requesterName: dataUserBook.name || 'Solicitante',
+          requesterName: dataUserRequester?.name || 'Solicitante',
+          ownerName: dataUserBook.name,
+
         },
       );
 

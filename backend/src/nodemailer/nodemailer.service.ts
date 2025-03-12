@@ -14,8 +14,7 @@ export class MailService {
       context: {
         bookTitle: context.bookTitle,
         email: to,
-        name: context.name,
-        owneremail: context.owneremail,
+        ownerName: context.ownerName,
         requesterName: context.requesterName,
         link: context.link,
       }
