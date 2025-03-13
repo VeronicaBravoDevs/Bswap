@@ -17,7 +17,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ userId }) => {
     author: '',
     content: '',
     rating: 0,
-    userId: userId || 'usuario1',
+    userId/* : userId || 'usuario1' */,
   });
  
   const [showCustomTitleInput, setShowCustomTitleInput] = useState(false);
@@ -78,7 +78,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ userId }) => {
  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("userId en ReviewForm antes de enviar la reseña:", formData.userId);
+   // console.log("userId en ReviewForm antes de enviar la reseña:", formData.userId);
     setSubmitSuccess(false);
    
     // Verifica que bookId no sea undefined o vacio
