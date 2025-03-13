@@ -42,7 +42,7 @@ export const RegisterForm = () => {
       });
 
       // redirige si se registra ok
-      router.push("/");
+      router.push("/login");
     } catch (err) {
       console.error("Error en registro:", err);
     }
@@ -56,20 +56,6 @@ export const RegisterForm = () => {
         {formError && <div>{formError}</div>}
 
         {error && <div>{error}</div>}
-
-        {/*    <div >
-          <label htmlFor="name">
-            Nombre
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Nombre"
-          />
-        </div> */}
 
         <div>
           <label htmlFor="email">Email</label>
